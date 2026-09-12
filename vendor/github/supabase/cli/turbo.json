@@ -1,0 +1,137 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "futureFlags": {
+    "strictTaskEntrypointSelection": true
+  },
+  "tasks": {
+    "types:check": {
+      "cache": true
+    },
+    "lint:check": {
+      "cache": false
+    },
+    "lint:fix": {
+      "cache": false
+    },
+    "lint:effect:check": {
+      "cache": false
+    },
+    "lint:effect:fix": {
+      "cache": false
+    },
+    "fmt:check": {
+      "cache": false
+    },
+    "fmt:fix": {
+      "cache": false
+    },
+    "knip:check": {
+      "cache": false
+    },
+    "knip:fix": {
+      "cache": false
+    },
+    "@supabase/docs#types:check": {
+      "cache": true,
+      "outputs": [".source/**"]
+    },
+    "test:unit:run": {
+      "cache": false,
+      "passThroughEnv": ["*"]
+    },
+    "test:integration:run": {
+      "cache": false,
+      "passThroughEnv": ["*"]
+    },
+    "test:e2e:run": {
+      "cache": false,
+      "passThroughEnv": ["*"]
+    },
+    "@supabase/cli-go#build": {
+      "cache": true,
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/mise.toml", "$TURBO_ROOT$/mise.lock"],
+      "outputs": ["supabase-go"],
+      "env": ["GO*", "CGO_*", "CC", "CXX"]
+    },
+    "supabase#build": {
+      "cache": true,
+      "dependsOn": ["@supabase/config#build", "@supabase/cli-go#build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/.bun-version",
+        "$TURBO_ROOT$/mise.lock",
+        "$TURBO_ROOT$/packages/api/**"
+      ],
+      "outputs": ["dist/**"]
+    },
+    "@supabase/config#build": {
+      "cache": true,
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/.bun-version", "$TURBO_ROOT$/mise.lock"],
+      "outputs": ["dist/**"]
+    },
+    "@supabase/api#generate": {
+      "cache": false,
+      "outputs": ["src/generated/**", "scripts/openapi-source.json"],
+      "env": ["SUPABASE_API_URL"]
+    },
+    "@supabase/docs#generate": {
+      "cache": true,
+      "dependsOn": ["supabase#build", "@supabase/config#build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!content/docs/commands/**",
+        "!public/cli/config.schema.json",
+        "!public/cli/project-config.schema.json",
+        "$TURBO_ROOT$/.bun-version",
+        "$TURBO_ROOT$/mise.lock"
+      ],
+      "outputs": [
+        "content/docs/commands/**",
+        "public/cli/config.schema.json",
+        "public/cli/project-config.schema.json"
+      ]
+    },
+    "@supabase/docs#build": {
+      "cache": true,
+      "dependsOn": ["generate"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!content/docs/commands/**",
+        "!public/cli/config.schema.json",
+        "!public/cli/project-config.schema.json",
+        "$TURBO_ROOT$/.bun-version",
+        "$TURBO_ROOT$/mise.lock"
+      ],
+      "outputs": [".next/**"]
+    },
+    "supabase#test:live": {
+      "cache": false,
+      "dependsOn": ["supabase#build"],
+      "passThroughEnv": ["*"]
+    },
+    "@supabase/cli-e2e#record": {
+      "cache": false,
+      "dependsOn": ["supabase#build"],
+      "passThroughEnv": ["*"]
+    },
+    "supabase#test:smoke": {
+      "cache": false,
+      "passThroughEnv": ["*"]
+    },
+    "@supabase/docs#dev": {
+      "cache": false,
+      "dependsOn": ["@supabase/docs#generate"],
+      "persistent": true
+    },
+    "supabase#test:e2e:run": {
+      "cache": false,
+      "passThroughEnv": ["*"],
+      "dependsOn": ["supabase#build"]
+    },
+    "@supabase/cli-e2e#test:e2e:run": {
+      "cache": false,
+      "passThroughEnv": ["*"],
+      "dependsOn": ["supabase#build"]
+    }
+  }
+}

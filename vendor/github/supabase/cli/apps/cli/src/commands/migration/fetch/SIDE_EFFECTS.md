@@ -1,0 +1,84 @@
+# `supabase migration fetch`
+
+## Files Read
+
+| Path                                          | Format     | When                                                                                                      |
+| --------------------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------- |
+| `~/.supabase/access-token`                    | plain text | when `SUPABASE_ACCESS_TOKEN` unset and `--linked`                                                         |
+| `<workdir>/supabase/.temp/project-ref`        | plain text | `--linked` (default), to resolve the ref — skipped when `--project-ref` (or `SUPABASE_PROJECT_ID`) is set |
+| `<workdir>/supabase/.env*`, `<workdir>/.env*` | dotenv     | always, to resolve `SUPABASE_YES` (CLI-1878)                                                              |
+
+## Files Written
+
+| Path                                                 | Format   | When                                            |
+| ---------------------------------------------------- | -------- | ----------------------------------------------- |
+| `<workdir>/supabase/migrations/<version>_<name>.sql` | SQL text | always — writes fetched migration files locally |
+
+## API Routes
+
+| Method | Path | Auth | Request body | Response (used fields) |
+| ------ | ---- | ---- | ------------ | ---------------------- |
+| —      | —    | —    | —            | —                      |
+
+## Environment Variables
+
+| Variable                | Purpose                           | Required?                                                                                                         |
+| ----------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `SUPABASE_ACCESS_TOKEN` | auth token for `--linked` mode    | no (falls back to keyring → `~/.supabase/access-token`)                                                           |
+| `SUPABASE_YES`          | auto-confirm the overwrite prompt | no — read from the shell env OR the project `.env`/`.env.local`/`.env.<env>[.local]` files (shell wins; CLI-1878) |
+
+## Exit Codes
+
+| Code | Condition                                                                |
+| ---- | ------------------------------------------------------------------------ |
+| `0`  | success                                                                  |
+| `1`  | database connection failure                                              |
+| `1`  | failed to write migration files                                          |
+| `1`  | `--project-ref` set with a resolved target other than linked (see Notes) |
+
+## Output
+
+### `--output-format text`
+
+Silent on success. Reads
+`SELECT version, coalesce(name, '') as name, statements FROM
+supabase_migrations.schema_migrations` and writes each row to
+`<workdir>/supabase/migrations/<version>_<name>.sql` (statements joined with
+`;\n` plus a trailing `;\n`, mode 0644).
+
+### `--output-format json`
+
+Emits `output.success("Migration history fetched", { files: [<absolute path>] })`.
+
+### `--output-format stream-json`
+
+Same structured `files` result delivered as an NDJSON `result` event.
+
+## Prompts
+
+- When the migrations directory is non-empty, prompts
+  `Do you want to overwrite existing files in supabase/migrations directory?`
+  (default **YES**). Declining exits non-zero (`context canceled`). `--yes` or
+  `SUPABASE_YES` (shell env or project `.env`) auto-confirms; a non-interactive /
+  machine-output run takes the default (YES).
+
+## Notes
+
+- `--linked` (default true), `--local`, and `--db-url` are mutually exclusive.
+- **`--project-ref`** (TS-only, no Go equivalent on any user-facing command)
+  overrides ONLY the linked-ref resolution used for the connection (flag >
+  `SUPABASE_PROJECT_ID` > `.temp/project-ref`). It never implies `--linked`:
+  passing it with a resolved `--local`/`--db-url` target is a hard error rather
+  than a silently discarded flag (deliberately stricter than
+  `SUPABASE_PROJECT_ID`, which Go's equivalent env var simply leaves unused on
+  a non-linked target).
+- Fetches migration file contents from the `supabase_migrations.schema_migrations` history table.
+- **Empty-statements rows:** a row whose `statements` array is empty
+  (NULL/`{}` — possible on older projects or manually-inserted rows) is written as
+  exactly `;\n`, not an empty file.
+- **Path-traversal hardening (TS-only):** before writing, each row's `version`/`name`
+  is validated (`version` is all digits; `name` has no `/`, `\`, or `..` segment).
+  A tampered/hostile remote could otherwise supply separators to escape the
+  migrations directory (CWE-22). This is a new check with no effect on legitimate
+  rows (real versions are digits and names are sanitized file stems); it
+  fails with `failed to write migration: invalid version/name in history table`.

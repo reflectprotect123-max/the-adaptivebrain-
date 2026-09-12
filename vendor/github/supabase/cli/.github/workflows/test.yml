@@ -1,0 +1,275 @@
+name: Test
+
+# Release-notes PRs (head ref `release-notes/*`) only add markdown under
+# `release-notes/` and are published via approval — skip the full CI suite.
+#
+# Default path: ready (non-draft) PRs targeting `develop`, plus the merge queue.
+# `run-ci.yml` calls this workflow for drafts and stacked / non-develop PRs.
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+      - converted_to_draft
+    branches:
+      - develop
+  merge_group:
+    types:
+      - checks_requested
+    branches:
+      - develop
+  workflow_call:
+    inputs:
+      force:
+        description: Run the suite even when the PR is a draft (used by run-ci.yml)
+        type: boolean
+        default: false
+    secrets:
+      DF_FIREWALL_TOKEN:
+        required: true
+
+permissions:
+  contents: read
+  actions: read
+
+# Literal prefix: called workflows inherit github.workflow from the caller
+# (`run-ci`), which would cancel the caller. `inputs.force` keeps a skipped
+# native Test run on a develop draft from cancelling the forced run-ci call.
+concurrency:
+  group: test.yml-${{ github.event.pull_request.number || github.head_ref || github.ref }}-${{ inputs.force && 'run-ci' || 'direct' }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    if: |
+      !startsWith(github.head_ref, 'release-notes/') &&
+      (github.event_name == 'merge_group' ||
+        inputs.force ||
+        github.event.pull_request.draft == false)
+    name: Check code quality
+    runs-on: blacksmith-8vcpu-ubuntu-2404
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          dependency-firewall-token: ${{ secrets.DF_FIREWALL_TOKEN }}
+      - name: Unlock keyring (for cli-go keyring tests)
+        uses: t1m0thyj/unlock-keyring@cbcf205c879ebd86add70bab3a6abfcce59a5cae # v1.2.0
+
+      - name: Check code quality
+        run: pnpm run check:all
+
+      # Advisory only (base-vs-head diff, no acceptance artifact to gate a
+      # required check on) — the hard release-time gate is
+      # tools/config-release-gate.ts in release-config.yml (CLI-2233).
+      # `continue-on-error` flags the diff without failing the job;
+      # the tool's own fetch/unshallow fallback resolves a merge-base from
+      # this checkout's shallow clone, and skips the compare (exit 0) rather
+      # than failing when history still can't be resolved.
+      - name: config type-surface diff (advisory)
+        continue-on-error: true
+        run: pnpm run check:config-api
+
+  test-unit:
+    if: |
+      !startsWith(github.head_ref, 'release-notes/') &&
+      (github.event_name == 'merge_group' ||
+        inputs.force ||
+        github.event.pull_request.draft == false)
+    name: Run unit tests
+    runs-on: blacksmith-4vcpu-ubuntu-2404
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          dependency-firewall-token: ${{ secrets.DF_FIREWALL_TOKEN }}
+
+      - name: Run unit tests
+        run: pnpm run test:unit --coverage.enabled
+
+  test-integration:
+    if: |
+      !startsWith(github.head_ref, 'release-notes/') &&
+      (github.event_name == 'merge_group' ||
+        inputs.force ||
+        github.event.pull_request.draft == false)
+    name: Run integration tests
+    runs-on: blacksmith-8vcpu-ubuntu-2404
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          dependency-firewall-token: ${{ secrets.DF_FIREWALL_TOKEN }}
+
+      - name: Run integration tests
+        run: pnpm run test:integration --coverage.enabled
+
+  test-stack-ports:
+    if: |
+      !startsWith(github.head_ref, 'release-notes/') &&
+      (github.event_name == 'merge_group' ||
+        inputs.force ||
+        github.event.pull_request.draft == false)
+    name: Run stack port tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [blacksmith-8vcpu-ubuntu-2404, macos-latest, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          dependency-firewall-token: ${{ secrets.DF_FIREWALL_TOKEN }}
+
+      - name: Run stack integration tests
+        working-directory: packages/stack
+        run: >-
+          pnpm test:integration
+          src/state/ports.integration.test.ts
+          src/state/registry-lease.integration.test.ts
+          src/state/state-store.integration.test.ts
+          src/supervisor/host-listener.integration.test.ts
+          src/supervisor/ingress.integration.test.ts
+          src/gateway/startup-transports.integration.test.ts
+
+  test-summary:
+    if: |
+      always() &&
+      !startsWith(github.head_ref, 'release-notes/') &&
+      (github.event_name == 'merge_group' ||
+        inputs.force ||
+        github.event.pull_request.draft == false)
+    name: Run unit and integration tests
+    needs: [test-unit, test-integration, test-stack-ports]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify unit and integration tests succeeded
+        run: |
+          if [ "${{ needs.test-unit.result }}" = "failure" ] || [ "${{ needs.test-unit.result }}" = "cancelled" ] || \
+            [ "${{ needs.test-integration.result }}" = "failure" ] || [ "${{ needs.test-integration.result }}" = "cancelled" ]; then
+            echo "::error ::Unit or integration tests failed: unit=${{ needs.test-unit.result }}, integration=${{ needs.test-integration.result }}, stack-ports=${{ needs.test-stack-ports.result }}"
+            exit 1
+          fi
+          if [ "${{ needs.test-stack-ports.result }}" = "failure" ] || [ "${{ needs.test-stack-ports.result }}" = "cancelled" ]; then
+            echo "::error ::Stack port tests failed: stack-ports=${{ needs.test-stack-ports.result }}"
+            exit 1
+          fi
+          echo "Unit and integration tests reported: unit=${{ needs.test-unit.result }}, integration=${{ needs.test-integration.result }}, stack-ports=${{ needs.test-stack-ports.result }}"
+
+  test-e2e:
+    if: |
+      !startsWith(github.head_ref, 'release-notes/') &&
+      (github.event_name == 'merge_group' ||
+        inputs.force ||
+        github.event.pull_request.draft == false)
+    name: Run CLI end-to-end tests (shard ${{ matrix.shard }}/3)
+    runs-on: blacksmith-8vcpu-ubuntu-2404
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    steps:
+      - name: Checkout
+        uses: useblacksmith/checkout@6fd481652155169ed4d2f25ebaf97464f685175f # v1.0.0-beta
+        with:
+          fetch-depth: 0
+
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          dependency-firewall-token: ${{ secrets.DF_FIREWALL_TOKEN }}
+
+      - name: Cache Go CLI binary
+        id: cache-go-binary
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: apps/cli-go/supabase-go
+          key: go-cli-${{ runner.os }}-${{ hashFiles('apps/cli-go/**/*.go',
+            'apps/cli-go/go.mod', 'apps/cli-go/go.sum') }}
+
+      - name: Build Go CLI
+        if: steps.cache-go-binary.outputs.cache-hit != 'true'
+        run: go build -o supabase-go .
+        working-directory: apps/cli-go
+
+      # The e2e harness invokes `node apps/cli/dist/supabase.js` with
+      # `SUPABASE_CLI_BINARY_OVERRIDE` pointing at the compiled binary in
+      # `apps/cli/dist/`. Build the CLI explicitly before invoking every
+      # package-local e2e suite.
+      - name: Build CLI
+        run: pnpm exec turbo run supabase#build
+
+      - name: Run end-to-end tests
+        run: pnpm exec turbo run test:e2e:run --only --concurrency=1 --filter=supabase --filter=@supabase/cli-e2e -- --shard=${{ matrix.shard }}/3
+        env:
+          SUPABASE_GO_BINARY: ${{ github.workspace }}/apps/cli-go/supabase-go
+
+  test-stack-e2e:
+    if: |
+      !startsWith(github.head_ref, 'release-notes/') &&
+      (github.event_name == 'merge_group' ||
+        inputs.force ||
+        github.event.pull_request.draft == false)
+    name: Run stack end-to-end tests (${{ matrix.runtime }})
+    runs-on: blacksmith-8vcpu-ubuntu-2404
+    strategy:
+      fail-fast: false
+      matrix:
+        runtime: [native, container]
+    steps:
+      - name: Checkout
+        uses: useblacksmith/checkout@6fd481652155169ed4d2f25ebaf97464f685175f # v1.0.0-beta
+
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          dependency-firewall-token: ${{ secrets.DF_FIREWALL_TOKEN }}
+
+      - name: Run stack end-to-end tests
+        run: pnpm --filter @supabase/stack test:e2e:run
+        env:
+          SUPABASE_STACK_E2E_RUNTIME: ${{ matrix.runtime }}
+
+  # Summary job that gates branch protection. It preserves the original check
+  # name and succeeds iff every CLI shard and stack runtime succeeded.
+  test-e2e-summary:
+    if: |
+      always() &&
+      !startsWith(github.head_ref, 'release-notes/') &&
+      (github.event_name == 'merge_group' ||
+        inputs.force ||
+        github.event.pull_request.draft == false)
+    name: Run end-to-end tests
+    needs: [test-e2e, test-stack-e2e]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify all shards succeeded
+        run: |
+          if [ "${{ needs.test-e2e.result }}" = "failure" ] || [ "${{ needs.test-e2e.result }}" = "cancelled" ] || [ "${{ needs.test-stack-e2e.result }}" = "failure" ] || [ "${{ needs.test-stack-e2e.result }}" = "cancelled" ]; then
+            echo "::error ::One or more e2e jobs failed: cli=${{ needs.test-e2e.result }}, stack=${{ needs.test-stack-e2e.result }}"
+            exit 1
+          fi
+          echo "All e2e jobs reported: cli=${{ needs.test-e2e.result }}, stack=${{ needs.test-stack-e2e.result }}"

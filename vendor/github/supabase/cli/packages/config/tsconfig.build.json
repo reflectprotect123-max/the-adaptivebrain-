@@ -1,0 +1,24 @@
+{
+  // Compiles the published `dist/` output for `pnpm build`, swapping the `@tsconfig/bun`
+  // baseline's bundler-mode settings for a real Node-compatible ESM emit. `"types": []` drops
+  // the ambient `bun` globals, so a compiled module reaching for a Bun-only global (`Bun.*`)
+  // fails to compile instead of silently type-checking against `bun-types`.
+  "extends": "@tsconfig/bun/tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "types": [],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    "noEmit": false,
+    "declaration": true,
+    // `dist/` ships alongside `src/` in the published tarball (see `files` in
+    // package.json), so declaration maps resolve back to real source.
+    "declarationMap": true,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.test.ts"]
+}

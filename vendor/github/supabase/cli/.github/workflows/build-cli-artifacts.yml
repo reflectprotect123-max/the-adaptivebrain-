@@ -1,0 +1,141 @@
+name: Build CLI Artifacts
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: CLI package version to build
+        required: true
+        type: string
+      ref:
+        description: Optional git ref or SHA to check out before building
+        required: false
+        type: string
+        default: ""
+      runner:
+        description: Runner to use for building artifacts
+        required: false
+        type: string
+        default: blacksmith-32vcpu-ubuntu-2404
+      cache_key_suffix:
+        description: Suffix to distinguish build artifact cache producers
+        required: false
+        type: string
+        default: ""
+      timeout_minutes:
+        description: Maximum minutes to allow for the build job
+        required: false
+        type: number
+        default: 30
+      build_timeout_minutes:
+        description: Maximum minutes to allow for the artifact build step after setup
+        required: false
+        type: number
+        default: 4
+    secrets:
+      SENTRY_DSN:
+        required: false
+      POSTHOG_API_KEY:
+        required: false
+      POSTHOG_ENDPOINT:
+        required: false
+      DF_FIREWALL_TOKEN:
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build CLI artifacts
+    runs-on: ${{ inputs.runner }}
+    timeout-minutes: ${{ inputs.timeout_minutes }}
+    env:
+      VERSION: ${{ inputs.version }}
+      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
+      POSTHOG_ENDPOINT: ${{ secrets.POSTHOG_ENDPOINT }}
+      # Fail the build if the macOS signing tool is missing — release artifacts
+      # must be signed (CLI-1621). Local builds without rcodesign degrade to a
+      # warning instead.
+      SUPABASE_CLI_REQUIRE_SIGNING: "1"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.ref }}
+          persist-credentials: false
+
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          dependency-firewall-token: ${{ secrets.DF_FIREWALL_TOKEN }}
+
+      - name: Pre-download Go modules
+        working-directory: apps/cli-go
+        run: go mod download -x
+
+      - name: Install nfpm
+        env:
+          NFPM_VERSION: "2.47.0"
+          NFPM_SHA256: "0660ca602b2d2d2ae4781a06c692b3eeb9d437ffea05b831d76e41f4a3188783"
+        run: |
+          set -euo pipefail
+          asset="nfpm_${NFPM_VERSION}_Linux_x86_64.tar.gz"
+          curl -fsSL -o /tmp/nfpm.tar.gz \
+            "https://github.com/goreleaser/nfpm/releases/download/v${NFPM_VERSION}/${asset}"
+          echo "${NFPM_SHA256}  /tmp/nfpm.tar.gz" | sha256sum -c
+          tar -xzf /tmp/nfpm.tar.gz -C /tmp nfpm
+          sudo install -m 0755 /tmp/nfpm /usr/local/bin/nfpm
+          nfpm --version
+
+      - name: Install rcodesign
+        env:
+          RCODESIGN_VERSION: "0.29.0"
+          RCODESIGN_SHA256: "dbe85cedd8ee4217b64e9a0e4c2aef92ab8bcaaa41f20bde99781ff02e600002"
+        run: |
+          set -euo pipefail
+          asset="apple-codesign-${RCODESIGN_VERSION}-x86_64-unknown-linux-musl.tar.gz"
+          curl -fsSL -o /tmp/rcodesign.tar.gz \
+            "https://github.com/indygreg/apple-platform-rs/releases/download/apple-codesign%2F${RCODESIGN_VERSION}/${asset}"
+          echo "${RCODESIGN_SHA256}  /tmp/rcodesign.tar.gz" | sha256sum -c
+          tar -xzf /tmp/rcodesign.tar.gz -C /tmp
+          sudo install -m 0755 "/tmp/apple-codesign-${RCODESIGN_VERSION}-x86_64-unknown-linux-musl/rcodesign" /usr/local/bin/rcodesign
+          rcodesign --version
+
+      - name: Sync versions
+        run: pnpm exec bun apps/cli/scripts/sync-versions.ts --version "${VERSION}"
+
+      - name: Build CLI artifacts
+        timeout-minutes: ${{ inputs.build_timeout_minutes }}
+        run: pnpm exec bun apps/cli/scripts/build.ts --version "${VERSION}"
+
+      - name: Verify build artifacts
+        run: |
+          for pkg in cli-darwin-arm64 cli-darwin-x64 cli-linux-arm64 cli-linux-arm64-musl cli-linux-x64 cli-linux-x64-musl cli-windows-arm64 cli-windows-x64; do
+            echo "Checking packages/$pkg/bin/..."
+            ls -la "packages/$pkg/bin/"
+          done
+          echo "Checking dist/..."
+          ls -la dist/
+
+      - name: Check existing build artifacts cache
+        id: build-artifacts-cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            packages/cli-*/bin/
+            dist/
+          key: cli-build-${{ github.run_id }}-${{ inputs.version }}${{ inputs.cache_key_suffix }}-v1
+          enableCrossOsArchive: true
+          lookup-only: true
+
+      - name: Save build artifacts cache
+        if: steps.build-artifacts-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            packages/cli-*/bin/
+            dist/
+          key: cli-build-${{ github.run_id }}-${{ inputs.version }}${{ inputs.cache_key_suffix }}-v1
+          enableCrossOsArchive: true

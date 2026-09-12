@@ -1,0 +1,192 @@
+name: Publish Preview CLI Packages
+
+# Release-notes PRs (head ref `release-notes/*`) are markdown-only and are not
+# meant to produce installable preview packages.
+#
+# Opt-in by label: pkg.pr.new hosts large CLI binaries, so publish only when
+# someone needs a shareable install. Add `run-preview-packages` to publish
+# (and re-publish on each subsequent push while labeled); remove it to cancel
+# in-progress runs via this workflow's concurrency group.
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
+
+permissions:
+  actions: read
+  contents: read
+
+# Unrelated label events still start a run; give them a unique group so they
+# cannot cancel an in-progress publish. Removing `run-preview-packages` stays
+# on the main group and cancels via cancel-in-progress.
+concurrency:
+  group: >-
+    publish-preview-cli-packages.yml-${{ github.event.pull_request.number || github.ref }}${{
+      ((github.event.action == 'labeled' || github.event.action == 'unlabeled')
+        && github.event.label.name != 'run-preview-packages'
+        && format('-noop-{0}', github.run_id))
+      || ''
+    }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: |
+      !startsWith(github.head_ref, 'release-notes/') &&
+      contains(github.event.pull_request.labels.*.name, 'run-preview-packages') &&
+      ((github.event.action != 'labeled' &&
+          github.event.action != 'unlabeled') ||
+        github.event.label.name == 'run-preview-packages')
+    name: Build preview CLI packages
+    uses: ./.github/workflows/build-cli-artifacts.yml
+    with:
+      version: 0.0.0-pr.${{ github.event.pull_request.number }}
+    secrets:
+      DF_FIREWALL_TOKEN: ${{ secrets.DF_FIREWALL_TOKEN }}
+
+  publish:
+    needs: build
+    if: needs.build.result == 'success'
+    name: Publish preview package
+    runs-on: blacksmith-8vcpu-ubuntu-2404
+    outputs:
+      preview_url: ${{ steps.preview-metadata.outputs.preview_url }}
+    env:
+      PREVIEW_VERSION: 0.0.0-pr.${{ github.event.pull_request.number }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          dependency-firewall-token: ${{ secrets.DF_FIREWALL_TOKEN }}
+
+      - name: Restore preview build artifacts cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            packages/cli-*/bin/
+            dist/
+          key: cli-build-${{ github.run_id }}-${{ env.PREVIEW_VERSION }}-v1
+          enableCrossOsArchive: true
+          fail-on-cache-miss: true
+
+      - name: Prepare package files
+        run: |
+          set -euo pipefail
+          pnpm exec bun apps/cli/scripts/sync-versions.ts --version "${PREVIEW_VERSION}"
+          pnpm --dir apps/cli build:shim
+          find packages -path '*/bin/supabase*' -type f -exec chmod +x {} +
+
+      - name: Publish preview package
+        run: |
+          pnpm exec pkg-pr-new publish \
+            --pnpm \
+            --bin \
+            --comment=off \
+            --json pkg-pr-new.json \
+            --no-template \
+            './packages/cli-darwin-arm64' \
+            './packages/cli-darwin-x64' \
+            './packages/cli-linux-arm64' \
+            './packages/cli-linux-arm64-musl' \
+            './packages/cli-linux-x64' \
+            './packages/cli-linux-x64-musl' \
+            './packages/cli-windows-arm64' \
+            './packages/cli-windows-x64' \
+            './apps/cli'
+
+      - name: Read preview package metadata
+        id: preview-metadata
+        run: |
+          set -euo pipefail
+          preview_url="$(
+            node -e "
+              const fs = require('node:fs');
+              const metadata = JSON.parse(fs.readFileSync('pkg-pr-new.json', 'utf8'));
+              const pkg = metadata.packages.find((entry) => entry.name === 'supabase');
+              if (!pkg?.url) {
+                throw new Error('pkg-pr-new.json did not include a supabase package URL');
+              }
+              console.log(pkg.url);
+            "
+          )"
+          echo "Preview command: npx --yes ${preview_url}"
+          echo "preview_url=${preview_url}" >> "${GITHUB_OUTPUT}"
+
+      - name: Smoke test preview command
+        env:
+          PREVIEW_URL: ${{ steps.preview-metadata.outputs.preview_url }}
+        run: |
+          set -euo pipefail
+          npx --yes "${PREVIEW_URL}" --version
+
+  comment:
+    needs: publish
+    if: needs.publish.result == 'success'
+    name: Post preview command comment
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      PREVIEW_URL: ${{ needs.publish.outputs.preview_url }}
+    steps:
+      - name: Post preview command comment
+        run: |
+          set -euo pipefail
+
+          marker="<!-- supabase-cli-preview-package -->"
+          short_sha="${HEAD_SHA:0:7}"
+          comment_file="$(mktemp)"
+
+          cat > "${comment_file}" <<EOF
+          ${marker}
+          ## Supabase CLI preview
+
+          \`\`\`sh
+          npx --yes ${PREVIEW_URL}
+          \`\`\`
+
+          _Preview package for commit [\`${short_sha}\`](https://github.com/${GITHUB_REPOSITORY}/commit/${HEAD_SHA})._
+          EOF
+
+          if ! comment_id="$(
+            gh api \
+              "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" \
+              --jq ".[] | select(.user.login == \"github-actions[bot]\" and (.body | contains(\"${marker}\"))) | .id" \
+              | head -n 1
+          )"; then
+            echo "::warning::Unable to list PR comments. The preview package was published, but this workflow token cannot update the PR comment."
+            exit 0
+          fi
+
+          if [ -n "${comment_id}" ]; then
+            if ! gh api \
+              --method PATCH \
+              "repos/${GITHUB_REPOSITORY}/issues/comments/${comment_id}" \
+              --field "body=@${comment_file}" \
+              >/dev/null; then
+              echo "::warning::Unable to update the preview package PR comment."
+              exit 0
+            fi
+          else
+            if ! gh api \
+              --method POST \
+              "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" \
+              --field "body=@${comment_file}" \
+              >/dev/null; then
+              echo "::warning::Unable to create the preview package PR comment."
+              exit 0
+            fi
+          fi

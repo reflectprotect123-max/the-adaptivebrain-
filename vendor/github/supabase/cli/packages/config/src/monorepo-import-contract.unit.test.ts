@@ -1,0 +1,59 @@
+import { describe, expect, test } from "vitest";
+import { readdirSync, readFileSync } from "node:fs";
+import { dirname, join, sep } from "node:path";
+import { fileURLToPath } from "node:url";
+
+// Enforces the import rules in `packages/config/AGENTS.md`'s "Monorepo import rule". Forbidden
+// specifiers are built by concatenation so this file's own source can't self-match the scan.
+const srcDir = dirname(fileURLToPath(import.meta.url));
+const repoRoot = join(srcDir, "..", "..", "..");
+
+const configPackageName = ["@supabase", "config"].join("/");
+const forbiddenIoSpecifier = `${configPackageName}/io`;
+const forbiddenDeepImportPrefix = `${configPackageName}/src/`;
+const internalSpecifier = `${configPackageName}/internal`;
+const allowedInternalConsumerPrefix = `${join(repoRoot, "apps", "cli")}${sep}`;
+
+const EXCLUDED_DIR_NAMES = new Set(["node_modules", "dist", ".repos"]);
+const thisPackageDir = join(srcDir, "..");
+
+function collectTsFiles(dir: string, into: string[]): void {
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const fullPath = join(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      if (EXCLUDED_DIR_NAMES.has(entry.name) || fullPath === thisPackageDir) {
+        continue;
+      }
+      collectTsFiles(fullPath, into);
+    } else if (entry.isFile() && (entry.name.endsWith(".ts") || entry.name.endsWith(".tsx"))) {
+      into.push(fullPath);
+    }
+  }
+}
+
+function findViolations(forbiddenSpecifier: string): string[] {
+  const files: string[] = [];
+  for (const workspaceRoot of ["apps", "packages"]) {
+    collectTsFiles(join(repoRoot, workspaceRoot), files);
+  }
+
+  return files.filter((file) => readFileSync(file, "utf8").includes(forbiddenSpecifier)).sort();
+}
+
+describe("monorepo import contract for @supabase/config", () => {
+  test("no file outside this package imports the @supabase/config/io entrypoint", () => {
+    expect(findViolations(forbiddenIoSpecifier)).toEqual([]);
+  });
+
+  test("no file outside this package deep-imports @supabase/config/src/*", () => {
+    expect(findViolations(forbiddenDeepImportPrefix)).toEqual([]);
+  });
+
+  test("every @supabase/config/internal import outside this package is under apps/cli/", () => {
+    const violations = findViolations(internalSpecifier).filter(
+      (file) => !file.startsWith(allowedInternalConsumerPrefix),
+    );
+    expect(violations).toEqual([]);
+  });
+});

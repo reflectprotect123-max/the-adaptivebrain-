@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "note": "Union of GitHub-sourced skills installed in strengthside + Engine-side-.",
+  "skills": {
+    "caveman": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman/SKILL.md",
+      "foundIn": ["strengthside", "Engine-side-"]
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "foundIn": ["strengthside", "Engine-side-"]
+    },
+    "mem-search": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/mem-search/SKILL.md",
+      "foundIn": ["strengthside", "Engine-side-"]
+    },
+    "design-taste-frontend": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "foundIn": ["Engine-side-"]
+    },
+    "image-to-code": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/image-to-code-skill/SKILL.md",
+      "foundIn": ["Engine-side-"]
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "foundIn": ["Engine-side-"]
+    },
+    "awesome-design-md": {
+      "source": "VoltAgent/awesome-design-md",
+      "sourceType": "github",
+      "skillPath": "design-md/*/DESIGN.md",
+      "foundIn": ["Engine-side-"]
+    }
+  },
+  "additionalGithubSources": [
+    "obra/superpowers",
+    "supabase/agent-skills",
+    "Graphify-Labs/graphify",
+    "AgriciDaniel/claude-obsidian",
+    "nextlevelbuilder/ui-ux-pro-max-skill",
+    "aradotso/trending-skills",
+    "supabase/cli"
+  ]
+}

@@ -1,0 +1,414 @@
+import { $ } from "bun";
+import { createHash } from "node:crypto";
+import { copyFile, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import path from "node:path";
+import process from "node:process";
+import { parseArgs } from "node:util";
+import { bundleServeMainTemplate } from "../src/shared/functions/serve-main-bundler.ts";
+import { darwinBinaries, MACOS_IDENTIFIERS } from "./macos-signing.ts";
+
+const MUSL_TARGETS = [
+  {
+    bunTarget: "bun-linux-arm64-musl",
+    pkg: "cli-linux-arm64-musl",
+    nfpmArch: "arm64",
+  },
+  {
+    bunTarget: "bun-linux-x64-musl-baseline",
+    pkg: "cli-linux-x64-musl",
+    nfpmArch: "amd64",
+  },
+] as const;
+
+const LINUX_PKG_FORMATS = ["deb", "rpm", "apk"] as const;
+
+const { values } = parseArgs({
+  options: {
+    version: { type: "string" },
+  },
+});
+
+const root = path.resolve(import.meta.dir, "../../..");
+const packageJsonPath = path.join(root, "apps/cli/package.json");
+const packageVersion = JSON.parse(await readFile(packageJsonPath, "utf8")) as { version?: string };
+const version = values.version ?? packageVersion.version;
+if (!version) {
+  console.error("Usage: pnpm exec bun apps/cli/scripts/build.ts [--version <npm-version>]");
+  process.exit(1);
+}
+if (values.version === undefined) {
+  console.warn(
+    `[build] --version not provided; falling back to package.json version "${version}". Pass --version explicitly in release builds.`,
+  );
+}
+
+const TARGETS = [
+  {
+    bunTarget: "bun-darwin-arm64",
+    pkg: "cli-darwin-arm64",
+    archive: `supabase_${version}_darwin_arm64.tar.gz`,
+    ext: "",
+  },
+  {
+    bunTarget: "bun-darwin-x64",
+    pkg: "cli-darwin-x64",
+    archive: `supabase_${version}_darwin_amd64.tar.gz`,
+    ext: "",
+  },
+  {
+    bunTarget: "bun-linux-arm64",
+    pkg: "cli-linux-arm64",
+    archive: `supabase_${version}_linux_arm64.tar.gz`,
+    nfpmArch: "arm64",
+    ext: "",
+  },
+  {
+    bunTarget: "bun-linux-x64-baseline",
+    pkg: "cli-linux-x64",
+    archive: `supabase_${version}_linux_amd64.tar.gz`,
+    nfpmArch: "amd64",
+    ext: "",
+  },
+  {
+    bunTarget: "bun-windows-x64-baseline",
+    pkg: "cli-windows-x64",
+    archive: `supabase_${version}_windows_amd64.zip`,
+    ext: ".exe",
+  },
+  {
+    bunTarget: "bun-windows-arm64",
+    pkg: "cli-windows-arm64",
+    archive: `supabase_${version}_windows_arm64.zip`,
+    ext: ".exe",
+  },
+] as const;
+
+const entrypoint = path.join(root, "apps/cli/src/main.ts");
+const distDir = path.join(root, "dist");
+const goSource = path.resolve(root, "apps/cli-go");
+const serveMainTemplateDefine = `--define=SUPABASE_FUNCTIONS_SERVE_MAIN_TEMPLATE=${JSON.stringify(
+  await bundleServeMainTemplate(),
+)}`;
+const posthogBuildDefines = [
+  `--define=process.env.SUPABASE_CLI_POSTHOG_KEY=${JSON.stringify(process.env.POSTHOG_API_KEY ?? "")}`,
+  `--define=process.env.SUPABASE_CLI_POSTHOG_HOST=${JSON.stringify(process.env.POSTHOG_ENDPOINT ?? "")}`,
+] as const;
+
+type BunTarget = (typeof TARGETS)[number]["bunTarget"];
+
+const GO_TARGETS: Record<BunTarget, { goos: string; goarch: string }> = {
+  "bun-darwin-arm64": { goos: "darwin", goarch: "arm64" },
+  "bun-darwin-x64": { goos: "darwin", goarch: "amd64" },
+  "bun-linux-arm64": { goos: "linux", goarch: "arm64" },
+  "bun-linux-x64-baseline": { goos: "linux", goarch: "amd64" },
+  "bun-windows-x64-baseline": { goos: "windows", goarch: "amd64" },
+  "bun-windows-arm64": { goos: "windows", goarch: "arm64" },
+};
+
+type SignMode = "adhoc" | "off";
+
+function libcForBunTarget(target: string): "glibc" | "musl" | "" {
+  if (!target.startsWith("bun-linux-")) {
+    return "";
+  }
+  return target.includes("-musl") ? "musl" : "glibc";
+}
+
+async function runBunBuild(args: ReadonlyArray<string>) {
+  const child = Bun.spawn({
+    cmd: ["bun", ...args],
+    stdout: "inherit",
+    stderr: "inherit",
+  });
+  const exitCode = await child.exited;
+  if (exitCode !== 0) {
+    throw new Error(`bun build failed with exit code ${exitCode}`);
+  }
+}
+
+async function buildTarget(target: (typeof TARGETS)[number]) {
+  const binDir = path.join(root, "packages", target.pkg, "bin");
+  await mkdir(binDir, { recursive: true });
+
+  const outfile = path.join(binDir, `supabase${target.ext}`);
+  const libc = libcForBunTarget(target.bunTarget);
+
+  console.log(`[${target.pkg}] Compiling Bun CLI...`);
+  await runBunBuild([
+    "build",
+    entrypoint,
+    "--compile",
+    "--minify",
+    `--target=${target.bunTarget}`,
+    `--define=SUPABASE_CLI_VERSION=${JSON.stringify(version)}`,
+    `--define=SUPABASE_LIBC=${JSON.stringify(libc)}`,
+    serveMainTemplateDefine,
+    ...posthogBuildDefines,
+    `--outfile=${outfile}`,
+  ]);
+  console.log(`[${target.pkg}] Done.`);
+}
+
+async function buildGoTarget(target: (typeof TARGETS)[number]) {
+  const binDir = path.join(root, "packages", target.pkg, "bin");
+  await mkdir(binDir, { recursive: true });
+
+  const { goos, goarch } = GO_TARGETS[target.bunTarget];
+  const outfile = path.join(binDir, `supabase-go${target.ext}`);
+
+  console.log(`[${target.pkg}] Compiling Go CLI (${goos}/${goarch})...`);
+  const ldflagParts = ["-s", "-w", `-X github.com/supabase/cli/internal/utils.Version=${version}`];
+  const { SENTRY_DSN, POSTHOG_API_KEY, POSTHOG_ENDPOINT } = process.env;
+  if (SENTRY_DSN) {
+    ldflagParts.push(`-X github.com/supabase/cli/internal/utils.SentryDsn=${SENTRY_DSN}`);
+  }
+  if (POSTHOG_API_KEY) {
+    ldflagParts.push(`-X github.com/supabase/cli/internal/utils.PostHogAPIKey=${POSTHOG_API_KEY}`);
+  }
+  if (POSTHOG_ENDPOINT) {
+    ldflagParts.push(
+      `-X github.com/supabase/cli/internal/utils.PostHogEndpoint=${POSTHOG_ENDPOINT}`,
+    );
+  }
+  const goLdflags = ldflagParts.join(" ");
+  await $`go build -trimpath -ldflags=${goLdflags} -o ${outfile} .`.cwd(goSource).env({
+    ...process.env,
+    GOOS: goos,
+    GOARCH: goarch,
+    CGO_ENABLED: "0",
+  });
+  console.log(`[${target.pkg}] Go binary done.`);
+}
+
+/**
+ * Decides how to sign macOS binaries. `rcodesign` signs Mach-O binaries from Linux, so signing
+ * runs inline on this build runner; falls back to "off" with a warning unless
+ * SUPABASE_CLI_REQUIRE_SIGNING=1, which fails the build when the tool is missing.
+ */
+function resolveSignMode(): SignMode {
+  if (Bun.which("rcodesign")) {
+    return "adhoc";
+  }
+  if (process.env.SUPABASE_CLI_REQUIRE_SIGNING === "1") {
+    console.error(
+      "rcodesign not found but SUPABASE_CLI_REQUIRE_SIGNING=1 is set. Release builds " +
+        "must sign the macOS binaries. Install rcodesign (https://github.com/indygreg/apple-platform-rs).",
+    );
+    process.exit(1);
+  }
+  console.warn(
+    "WARNING: rcodesign not found — macOS binaries will keep Bun's linker-signed ad-hoc " +
+      "signature, which macOS 26+ SIGKILLs at launch (CLI-1621). Install rcodesign to " +
+      "produce runnable macOS binaries locally.",
+  );
+  return "off";
+}
+
+async function signDarwinBinaries(mode: SignMode) {
+  if (mode === "off") {
+    return;
+  }
+
+  const darwinTargets = TARGETS.filter((target) => target.bunTarget.startsWith("bun-darwin"));
+  const binaries = darwinBinaries();
+
+  for (const target of darwinTargets) {
+    const binDir = path.join(root, "packages", target.pkg, "bin");
+
+    for (const binary of binaries) {
+      const binPath = path.join(binDir, binary);
+      const identifier = MACOS_IDENTIFIERS[binary];
+
+      console.log(`[${target.pkg}] Ad-hoc signing ${binary} (${identifier})...`);
+      // No key material, so rcodesign produces an ad-hoc signature, equivalent to
+      // `codesign --sign -`, replacing Bun/Go's linker-signed one.
+      await $`rcodesign sign --binary-identifier ${identifier} ${binPath}`;
+
+      // Matches the identifier's whole value, so the SFE's `com.supabase.cli` can't satisfy
+      // the sidecar's `com.supabase.cli-go`, and confirms the signature is no longer linker-signed.
+      const info = await $`rcodesign print-signature-info ${binPath}`.text();
+      const signedIdentifier = info.match(/^\s*identifier:\s*(\S+)\s*$/m)?.[1];
+      if (signedIdentifier !== identifier) {
+        throw new Error(
+          `Signing ${binPath} failed: expected identifier ${identifier}, got ${signedIdentifier ?? "none"}`,
+        );
+      }
+      if (info.includes("LINKER_SIGNED")) {
+        throw new Error(`Signing ${binPath} failed: signature is still linker-signed`);
+      }
+    }
+  }
+}
+
+async function archiveTarget(target: (typeof TARGETS)[number]) {
+  const binDir = path.join(root, "packages", target.pkg, "bin");
+  const archivePath = path.join(distDir, target.archive);
+
+  console.log(`[${target.pkg}] Creating archive ${target.archive}...`);
+
+  if (target.archive.endsWith(".zip")) {
+    const files = [
+      path.join(binDir, `supabase${target.ext}`),
+      path.join(binDir, `supabase-go${target.ext}`),
+    ];
+    await $`zip -j ${archivePath} ${files}`;
+
+    // setup-cli and other download clients always fetch a .tar.gz, even on Windows, so
+    // publish one alongside the .zip. See #5257.
+    const tarArchive = target.archive.replace(/\.zip$/, ".tar.gz");
+    const tarArchivePath = path.join(distDir, tarArchive);
+    const tarFiles = [`supabase${target.ext}`, `supabase-go${target.ext}`];
+    console.log(`[${target.pkg}] Creating archive ${tarArchive}...`);
+    await $`tar -czf ${tarArchivePath} -C ${binDir} ${tarFiles}`;
+  } else {
+    const files = [`supabase${target.ext}`, `supabase-go${target.ext}`];
+    await $`tar -czf ${archivePath} -C ${binDir} ${files}`;
+  }
+}
+
+async function buildMuslBinaries() {
+  await Promise.all(
+    MUSL_TARGETS.map(async (target) => {
+      const binDir = path.join(root, "packages", target.pkg, "bin");
+      await mkdir(binDir, { recursive: true });
+
+      const outfile = path.join(binDir, "supabase");
+      const libc = libcForBunTarget(target.bunTarget);
+      console.log(`[${target.pkg}] Compiling Bun CLI (musl)...`);
+      await runBunBuild([
+        "build",
+        entrypoint,
+        "--compile",
+        "--minify",
+        `--target=${target.bunTarget}`,
+        `--define=SUPABASE_CLI_VERSION=${JSON.stringify(version)}`,
+        `--define=SUPABASE_LIBC=${JSON.stringify(libc)}`,
+        serveMainTemplateDefine,
+        ...posthogBuildDefines,
+        `--outfile=${outfile}`,
+      ]);
+
+      // The Go binary is fully static (CGO_ENABLED=0), so the glibc build works on musl too;
+      // copy it into the musl package so GoProxy finds supabase-go there.
+      const glibcTarget = TARGETS.find(
+        (candidate) => "nfpmArch" in candidate && candidate.nfpmArch === target.nfpmArch,
+      );
+      if (!glibcTarget) {
+        throw new Error(`No glibc Linux target found for musl arch ${target.nfpmArch}`);
+      }
+      const src = path.join(root, "packages", glibcTarget.pkg, "bin", "supabase-go");
+      const dst = path.join(binDir, "supabase-go");
+      console.log(`[${target.pkg}] Copying Go binary from ${glibcTarget.pkg}...`);
+      await copyFile(src, dst);
+
+      console.log(`[${target.pkg}] Done.`);
+    }),
+  );
+}
+
+async function buildLinuxPackages(version: string) {
+  const linuxTargets = TARGETS.filter((target) => "nfpmArch" in target);
+  const jobs: Promise<void>[] = [];
+
+  for (const target of linuxTargets) {
+    const glibcBinDir = path.join(root, "packages", target.pkg, "bin");
+    const muslTarget = MUSL_TARGETS.find((candidate) => candidate.nfpmArch === target.nfpmArch)!;
+    const muslBinDir = path.join(root, "packages", muslTarget.pkg, "bin");
+
+    for (const fmt of LINUX_PKG_FORMATS) {
+      const outFile = `supabase_${version}_linux_${target.nfpmArch}.${fmt}`;
+      const outPath = path.join(distDir, outFile);
+      const binDir = fmt === "apk" ? muslBinDir : glibcBinDir;
+
+      // The Go binary is fully static, so apk (musl) still references supabase-go
+      // from the glibc dir where it was built.
+      const contents: Array<{ src: string; dst: string }> = [
+        { src: path.join(binDir, "supabase"), dst: "/usr/bin/supabase" },
+        { src: path.join(glibcBinDir, "supabase-go"), dst: "/usr/bin/supabase-go" },
+      ];
+
+      const nfpmConfig: Record<string, unknown> = {
+        name: "supabase",
+        arch: target.nfpmArch,
+        platform: "linux",
+        version,
+        maintainer: "Supabase <support@supabase.io>",
+        description: "Supabase CLI",
+        homepage: "https://supabase.com",
+        license: "MIT",
+        contents,
+      };
+
+      if (fmt === "apk") {
+        nfpmConfig.depends = ["libstdc++", "libgcc"];
+      }
+
+      const configPath = path.join(distDir, `nfpm-${target.nfpmArch}-${fmt}.yaml`);
+      await writeFile(configPath, JSON.stringify(nfpmConfig));
+
+      jobs.push(
+        (async () => {
+          console.log(`[${target.pkg}] Creating ${outFile}...`);
+          await $`nfpm package --config ${configPath} --packager ${fmt} --target ${outPath}`;
+          await rm(configPath);
+        })(),
+      );
+    }
+  }
+
+  await Promise.all(jobs);
+}
+
+async function generateChecksums() {
+  const lines: string[] = [];
+
+  for (const target of TARGETS) {
+    const archivePath = path.join(distDir, target.archive);
+    const data = await readFile(archivePath);
+    const hash = createHash("sha256").update(data).digest("hex");
+    lines.push(`${hash}  ${target.archive}`);
+
+    if (target.archive.endsWith(".zip")) {
+      const tarArchive = target.archive.replace(/\.zip$/, ".tar.gz");
+      const tarData = await readFile(path.join(distDir, tarArchive));
+      const tarHash = createHash("sha256").update(tarData).digest("hex");
+      lines.push(`${tarHash}  ${tarArchive}`);
+    }
+  }
+
+  const linuxTargets = TARGETS.filter((target) => "nfpmArch" in target);
+  for (const target of linuxTargets) {
+    for (const fmt of LINUX_PKG_FORMATS) {
+      const filename = `supabase_${version}_linux_${target.nfpmArch}.${fmt}`;
+      const data = await readFile(path.join(distDir, filename));
+      const hash = createHash("sha256").update(data).digest("hex");
+      lines.push(`${hash}  ${filename}`);
+    }
+  }
+
+  const checksumsPath = path.join(distDir, "checksums.txt");
+  await writeFile(checksumsPath, `${lines.join("\n")}\n`);
+  console.log("Checksums written to dist/checksums.txt");
+}
+
+console.log(`Building the CLI for ${TARGETS.length} targets...\n`);
+
+await Promise.all(TARGETS.map(buildTarget));
+
+console.log("\nCompiling Go CLI for all targets...");
+await Promise.all(TARGETS.map(buildGoTarget));
+
+// Must run before archiveTarget / buildLinuxPackages / generateChecksums so every
+// distribution channel ships the signed bytes.
+const signMode = resolveSignMode();
+console.log(`\nSigning macOS binaries (mode: ${signMode})...`);
+await signDarwinBinaries(signMode);
+
+await mkdir(distDir, { recursive: true });
+await Promise.all(TARGETS.map(archiveTarget));
+
+await buildMuslBinaries();
+await buildLinuxPackages(version);
+await generateChecksums();
+
+console.log("\nAll targets built successfully.");

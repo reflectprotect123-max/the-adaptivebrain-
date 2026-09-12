@@ -1,0 +1,297 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request_review:
+    types: [submitted]
+  # workflow_dispatch is the manual re-cut path. Use it when:
+  #   - a previous release published stale bytes under a version that
+  #     semantic-release keeps re-computing (cut a fresh version forward), or
+  #   - a downstream step (GH release, brew, scoop) failed after npm published
+  #     and you need to rerun the whole pipeline against an explicit version.
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: Release channel
+        required: true
+        type: choice
+        options:
+          - beta
+          - stable
+      version:
+        description: npm package version to publish (must be unique on npm; pick the next unused version)
+        required: true
+        type: string
+      # Defaults to `true` so a stray "Run workflow" click can't accidentally publish; operators
+      # must consciously untick this when dispatching.
+      dry_run:
+        description: Dry run (skip actual publishing)
+        required: false
+        type: boolean
+        default: true
+
+# The release pipeline mutates external registries, git tags, GitHub Releases, Homebrew, and
+# Scoop, so keep one release per ref active at a time to avoid duplicate push events racing.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  fast-forward:
+    name: Fast-forward develop to main
+    if: |
+      github.event_name == 'pull_request_review' &&
+      github.event.pull_request.head.ref == 'develop' &&
+      github.event.pull_request.base.ref == 'main' &&
+      github.event.review.state == 'approved'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.GH_APP_CLIENT_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+          permission-contents: write
+      - uses: useblacksmith/checkout@6fd481652155169ed4d2f25ebaf97464f685175f # v1
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+      - name: Fast-forward main
+        run: |
+          git checkout main
+          git merge --ff-only "${{ github.event.pull_request.head.sha }}"
+          git push origin main
+
+  plan:
+    name: Plan release
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      should_release: ${{ steps.compute.outputs.should_release }}
+      version: ${{ steps.compute.outputs.version }}
+      npm_tag: ${{ steps.compute.outputs.npm_tag }}
+      prerelease: ${{ steps.compute.outputs.prerelease }}
+      brew_name: ${{ steps.compute.outputs.brew_name }}
+      scoop_name: ${{ steps.compute.outputs.scoop_name }}
+      publish_brew_scoop: ${{ steps.compute.outputs.publish_brew_scoop }}
+      dry_run: ${{ steps.compute.outputs.dry_run }}
+      channel: ${{ steps.compute.outputs.channel }}
+    steps:
+      # semantic-release runs `git push --dry-run HEAD:<branch>` as part of verifyAuth even in
+      # `dry_run: true` mode, so the token needs push access to the protected develop/main
+      # branches — the default GITHUB_TOKEN doesn't have it.
+      - id: app-token
+        if: github.event_name == 'push'
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.GH_APP_CLIENT_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+          permission-contents: write
+      # `persist-credentials: false` is required: otherwise checkout caches the default
+      # GITHUB_TOKEN in git config, and its Authorization header overrides the App token
+      # semantic-release puts in the push URL, making the dry-push get rejected by branch protection.
+      - uses: useblacksmith/checkout@6fd481652155169ed4d2f25ebaf97464f685175f # v1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - id: semantic-release
+        if: github.event_name == 'push'
+        uses: cycjimmy/semantic-release-action@b12c8f6015dc215fe37bc154d4ad456dd3833c90 # v6.0.0
+        with:
+          working_directory: apps/cli
+          dry_run: true
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+      - id: compute
+        env:
+          EVENT: ${{ github.event_name }}
+          REF_NAME: ${{ github.ref_name }}
+          DISPATCH_CHANNEL: ${{ inputs.channel }}
+          DISPATCH_VERSION: ${{ inputs.version }}
+          DISPATCH_DRY_RUN: ${{ inputs.dry_run }}
+          SR_PUBLISHED: ${{ steps.semantic-release.outputs.new_release_published }}
+          SR_VERSION: ${{ steps.semantic-release.outputs.new_release_version }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT" == "workflow_dispatch" ]]; then
+            channel="$DISPATCH_CHANNEL"
+            version="$DISPATCH_VERSION"
+            dry_run="$DISPATCH_DRY_RUN"
+            should_release=true
+          else
+            dry_run=false
+            if [[ "$SR_PUBLISHED" != "true" ]]; then
+              echo "should_release=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            version="$SR_VERSION"
+            should_release=true
+            if [[ "$REF_NAME" == "develop" ]]; then
+              channel="beta"
+            else
+              channel="stable"
+            fi
+          fi
+          case "$channel" in
+            beta)
+              npm_tag=beta
+              prerelease=true
+              brew_name=supabase-beta
+              scoop_name=supabase-beta
+              publish_brew_scoop=true
+              ;;
+            stable)
+              npm_tag=latest
+              prerelease=false
+              brew_name=supabase
+              scoop_name=supabase
+              publish_brew_scoop=true
+              ;;
+            *)
+              echo "Unknown channel: $channel" >&2
+              exit 1
+              ;;
+          esac
+          {
+            echo "should_release=$should_release"
+            echo "version=$version"
+            echo "npm_tag=$npm_tag"
+            echo "prerelease=$prerelease"
+            echo "brew_name=$brew_name"
+            echo "scoop_name=$scoop_name"
+            echo "publish_brew_scoop=$publish_brew_scoop"
+            echo "dry_run=$dry_run"
+            echo "channel=$channel"
+          } >> "$GITHUB_OUTPUT"
+
+  release:
+    name: Release
+    needs: plan
+    if: needs.plan.outputs.should_release == 'true'
+    # pull-requests: write is required by the nested propose-release-notes workflow
+    # (release-shared.yml -> propose-release-notes.yml): a called job's permissions can't exceed
+    # those granted to the calling job, so this must be declared here too.
+    permissions:
+      actions: read
+      contents: write
+      id-token: write
+      pull-requests: write
+    uses: ./.github/workflows/release-shared.yml
+    with:
+      version: ${{ needs.plan.outputs.version }}
+      npm_tag: ${{ needs.plan.outputs.npm_tag }}
+      prerelease: ${{ needs.plan.outputs.prerelease == 'true' }}
+      publish_brew_scoop: ${{ needs.plan.outputs.publish_brew_scoop == 'true' }}
+      brew_name: ${{ needs.plan.outputs.brew_name }}
+      scoop_name: ${{ needs.plan.outputs.scoop_name }}
+      dry_run: ${{ needs.plan.outputs.dry_run == 'true' }}
+      channel: ${{ needs.plan.outputs.channel }}
+    secrets:
+      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
+      POSTHOG_ENDPOINT: ${{ secrets.POSTHOG_ENDPOINT }}
+      GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      DF_FIREWALL_TOKEN: ${{ secrets.DF_FIREWALL_TOKEN }}
+      LINEAR_CLI_STABLE_RELEASE_ACCESS_KEY: ${{ secrets.LINEAR_CLI_STABLE_RELEASE_ACCESS_KEY }}
+      LINEAR_CLI_BETA_RELEASE_ACCESS_KEY: ${{ secrets.LINEAR_CLI_BETA_RELEASE_ACCESS_KEY }}
+      SUPABASE_E2E_CLI_LIVE_STAGING_ACCESS_TOKEN: ${{ secrets.SUPABASE_E2E_CLI_LIVE_STAGING_ACCESS_TOKEN }}
+
+  # Republishes the supabase.com CLI reference. Stable only: the reference documents the CLI
+  # users actually install, so pre-releases are skipped. Nothing depends on this job, so a
+  # docs-site failure cannot affect the already-completed release.
+  docs:
+    name: Publish reference docs
+    needs: [plan, release]
+    if: needs.plan.outputs.channel == 'stable'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    continue-on-error: true
+    steps:
+      # Scoped to supabase/supabase: this job pushes a branch and opens a PR
+      # there, and needs nothing beyond a plain read-only checkout here.
+      - id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.GH_APP_CLIENT_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            supabase
+          permission-contents: write
+          permission-pull-requests: write
+      - uses: useblacksmith/checkout@6fd481652155169ed4d2f25ebaf97464f685175f # v1
+        with:
+          persist-credentials: false
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          dependency-firewall-token: ${{ secrets.DF_FIREWALL_TOKEN }}
+      - name: Authenticate git for the docs push
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: gh auth setup-git
+      - name: Publish the CLI reference
+        working-directory: apps/cli
+        # `shell: bash` for `-o pipefail`: the default `run:` shell takes only the publisher's
+        # exit status, so a generator that died part-way would look like a successful run.
+        shell: bash
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          VERSION: ${{ needs.plan.outputs.version }}
+          DRY_RUN: ${{ needs.plan.outputs.dry_run }}
+        run: |
+          args=()
+          if [[ "$DRY_RUN" == "true" ]]; then
+            args+=(--dry-run)
+          fi
+          bun scripts/generate-docs-spec.ts "$VERSION" \
+            | bun scripts/publish-docs-spec.ts --version "$VERSION" "${args[@]}"
+
+  # Listing `release` in `needs` without a status function in `if:` keeps the implicit success()
+  # gate, so this only runs when both plan and release succeeded; the `if:` then filters to real
+  # (non-dry-run) stable cuts. Nothing depends on this job, so a Slack failure can't affect the
+  # already-completed release.
+  notify-slack:
+    name: Notify Slack
+    needs: [plan, release]
+    if: >-
+      needs.plan.outputs.dry_run != 'true' &&
+      needs.plan.outputs.channel == 'stable'
+    uses: ./.github/workflows/slack-notify.yml
+    with:
+      package: Supabase CLI
+      status: success
+      version: ${{ needs.plan.outputs.version }}
+      channel: ${{ needs.plan.outputs.channel }}
+    secrets:
+      SLACK_RELEASE_WEBHOOK: ${{ secrets.SLACK_RELEASE_WEBHOOK }}
+
+  # Reports a broken release on every channel. `failure()` evaluates against the full `needs`
+  # chain, so this fires whenever `plan` or `release` (including the reusable release-shared
+  # workflow) fails. Skipped jobs — e.g. the fast-forward path, or a release that never started —
+  # don't count as failures. Dry runs are excluded via the dispatch input directly, so even a
+  # plan job that dies before recording its `dry_run` output stays quiet.
+  notify-slack-failure:
+    name: Notify Slack (failure)
+    needs: [plan, release]
+    if: ${{ failure() && !(github.event_name == 'workflow_dispatch' && inputs.dry_run) }}
+    uses: ./.github/workflows/slack-notify.yml
+    with:
+      package: Supabase CLI
+      status: failure
+      version: ${{ needs.plan.outputs.version }}
+      channel: ${{ needs.plan.outputs.channel }}
+    secrets:
+      SLACK_RELEASE_WEBHOOK: ${{ secrets.SLACK_RELEASE_WEBHOOK }}

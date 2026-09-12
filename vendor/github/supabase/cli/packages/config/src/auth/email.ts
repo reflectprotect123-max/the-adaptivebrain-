@@ -1,0 +1,206 @@
+import { Effect, Schema } from "effect";
+import { secret } from "../lib/env.ts";
+
+const tags = ["auth"];
+
+const links = {
+  auth: {
+    name: "Auth Server configuration",
+    link: "https://supabase.com/docs/reference/auth",
+  },
+};
+
+const defaultEmail = {};
+const defaultEnableSignup = true;
+const defaultDoubleConfirmChanges = true;
+const defaultEnableConfirmations = false;
+const defaultSecurePasswordChange = false;
+const defaultMaxFrequency = "1s";
+const defaultOtpLength = 6;
+const defaultOtpExpiry = 3600;
+const defaultTemplate = {};
+const defaultNotification = {};
+const defaultSmtpEnabled = false;
+const defaultNotificationEnabled = false;
+const defaultSubject = "";
+const defaultContentPath = "";
+
+/**
+ * `auth.email.template`/`notification` are open maps with no key restriction: an
+ * unrecognized key like `auth.email.template.custom` is a legitimate config
+ * shape, just never synced by Studio or `config push`. Record keys accept any
+ * string.
+ */
+const templateName = Schema.String;
+const notificationName = Schema.String;
+
+function requiredWhenEnabled<
+  T extends Record<string, string | number | boolean | undefined> & { enabled: boolean },
+>(path: string, predicate: (value: T) => boolean, message: string) {
+  return Schema.makeFilter((value: T) => {
+    if (!value.enabled || predicate(value)) {
+      return undefined;
+    }
+
+    return {
+      path: [path],
+      issue: message,
+    };
+  });
+}
+
+const template = Schema.Struct({
+  subject: Schema.String.annotate({
+    default: defaultSubject,
+    description: "Subject line for the email template.",
+  }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultSubject))),
+  content_path: Schema.String.annotate({
+    default: defaultContentPath,
+    description: "Path to the HTML template.",
+  }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultContentPath))),
+}).pipe(Schema.withDecodingDefault(Effect.succeed({})));
+
+const notification = Schema.Struct({
+  enabled: Schema.Boolean.annotate({
+    default: defaultNotificationEnabled,
+    description: "Enable the notification email.",
+  }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultNotificationEnabled))),
+  subject: Schema.String.annotate({
+    default: defaultSubject,
+    description: "Subject line for the notification email.",
+  }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultSubject))),
+  content_path: Schema.String.annotate({
+    default: defaultContentPath,
+    description: "Path to the HTML notification template.",
+  }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultContentPath))),
+}).pipe(Schema.withDecodingDefault(Effect.succeed({})));
+
+export const email = Schema.Struct({
+  enable_signup: Schema.Boolean.annotate({
+    default: defaultEnableSignup,
+    description: "Allow/disallow new user signups via email to your project.",
+    tags,
+    links: [links.auth],
+  }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultEnableSignup))),
+  double_confirm_changes: Schema.Boolean.annotate({
+    default: defaultDoubleConfirmChanges,
+    description:
+      "If enabled, a user will be required to confirm any email change on both the old and new email addresses.",
+    tags,
+    links: [links.auth],
+  }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultDoubleConfirmChanges))),
+  enable_confirmations: Schema.Boolean.annotate({
+    default: defaultEnableConfirmations,
+    description: "If enabled, users need to confirm their email address before signing in.",
+    tags,
+    links: [links.auth],
+  }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultEnableConfirmations))),
+  secure_password_change: Schema.Boolean.annotate({
+    default: defaultSecurePasswordChange,
+    description:
+      "If enabled, users will need to reauthenticate or have logged in recently to change their password.",
+    tags,
+    links: [links.auth],
+  }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultSecurePasswordChange))),
+  max_frequency: Schema.String.annotate({
+    default: defaultMaxFrequency,
+    description:
+      "Controls the minimum amount of time that must pass before sending another signup confirmation or password reset email.",
+    tags,
+    links: [links.auth],
+  }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultMaxFrequency))),
+  otp_length: Schema.Number.annotate({
+    default: defaultOtpLength,
+    description: "Number of characters used in the email OTP.",
+    tags,
+    links: [links.auth],
+  }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultOtpLength))),
+  otp_expiry: Schema.Number.annotate({
+    default: defaultOtpExpiry,
+    description: "Number of seconds before the email OTP expires.",
+    tags,
+    links: [links.auth],
+  }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultOtpExpiry))),
+  smtp: Schema.optionalKey(
+    Schema.Struct({
+      enabled: Schema.Boolean.annotate({
+        default: defaultSmtpEnabled,
+        description: "Enable SMTP for email delivery.",
+      }).pipe(Schema.withDecodingDefaultKey(Effect.succeed(defaultSmtpEnabled))),
+      host: Schema.optionalKey(
+        Schema.String.annotate({
+          description: "Hostname or IP address of the SMTP server.",
+        }),
+      ),
+      port: Schema.optionalKey(
+        Schema.Number.annotate({
+          description: "Port number of the SMTP server.",
+        }),
+      ),
+      user: Schema.optionalKey(
+        Schema.String.annotate({
+          description: "Username for authenticating with the SMTP server.",
+        }),
+      ),
+      pass: Schema.optionalKey(
+        secret({
+          description: "Password for authenticating with the SMTP server.",
+        }),
+      ),
+      admin_email: Schema.optionalKey(
+        Schema.String.annotate({
+          description: "Email used as the sender for emails sent from the application.",
+        }),
+      ),
+      sender_name: Schema.optionalKey(
+        Schema.String.annotate({
+          description: "Display name used as the sender for emails sent from the application.",
+        }),
+      ),
+    })
+      .check(
+        requiredWhenEnabled(
+          "host",
+          (value) => value.host !== undefined && value.host !== "",
+          "Missing required field in config: auth.email.smtp.host",
+        ),
+        requiredWhenEnabled(
+          "port",
+          (value) => value.port !== undefined,
+          "Missing required field in config: auth.email.smtp.port",
+        ),
+        requiredWhenEnabled(
+          "user",
+          (value) => value.user !== undefined && value.user !== "",
+          "Missing required field in config: auth.email.smtp.user",
+        ),
+        requiredWhenEnabled(
+          "pass",
+          (value) => value.pass !== undefined && value.pass !== "",
+          "Missing required field in config: auth.email.smtp.pass",
+        ),
+        requiredWhenEnabled(
+          "admin_email",
+          (value) => value.admin_email !== undefined && value.admin_email !== "",
+          "Missing required field in config: auth.email.smtp.admin_email",
+        ),
+      )
+      .pipe(Schema.withDecodingDefaultKey(Effect.succeed({}))),
+  ),
+  template: Schema.Record(templateName, template)
+    .annotate({
+      default: defaultTemplate,
+      description: "Custom email template configuration.",
+      tags,
+      links: [links.auth],
+    })
+    .pipe(Schema.withDecodingDefault(Effect.succeed({ ...defaultTemplate }))),
+  notification: Schema.Record(notificationName, notification)
+    .annotate({
+      default: defaultNotification,
+      description: "Notification email configuration.",
+      tags,
+      links: [links.auth],
+    })
+    .pipe(Schema.withDecodingDefault(Effect.succeed({ ...defaultNotification }))),
+}).pipe(Schema.withDecodingDefaultKey(Effect.succeed({ ...defaultEmail })));
