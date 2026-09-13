@@ -23,6 +23,9 @@ the shared brain that talks to both apps.
 | `supabase/cli` | [supabase/cli](https://github.com/supabase/cli) | Engine HANDOFF | Supabase CLI source (docs + skill pack cited) |
 | `thedotmack/claude-mem` | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | both (`mem-search`) | Cross-session memory + mem-search skill |
 | `vercel-labs/agent-skills` | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) | Engine `skills-lock.json` | `web-design-guidelines` |
+| `vercel-labs/skills` | [vercel-labs/skills](https://github.com/vercel-labs/skills) | public installer for `npx skills add` | The GitHub behind installing skills from GitHub |
+| `mikekelly/managing-skills` | [mikekelly/managing-skills](https://github.com/mikekelly/managing-skills) | public install/list/remove skill | Alternate install-skill GitHub |
+| `_from-apps/install-skill` | no public repo | both apps (`install-skill`) | Exact SKILL.md the apps had; see `SOURCE.md` |
 | `VoltAgent/awesome-design-md` | [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) | Engine | Design.md collection |
 
 ## Recorded but not cloned

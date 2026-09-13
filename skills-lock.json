@@ -43,6 +43,13 @@
       "sourceType": "github",
       "skillPath": "design-md/*/DESIGN.md",
       "foundIn": ["Engine-side-"]
+    },
+    "install-skill": {
+      "source": "vendor/github/_from-apps/install-skill",
+      "sourceType": "from-apps",
+      "skillPath": "SKILL.md",
+      "foundIn": ["strengthside", "Engine-side-"],
+      "note": "No public GitHub publishes this SKILL.md. Public installers are vercel-labs/skills and mikekelly/managing-skills."
     }
   },
   "additionalGithubSources": [
@@ -52,6 +59,8 @@
     "AgriciDaniel/claude-obsidian",
     "nextlevelbuilder/ui-ux-pro-max-skill",
     "aradotso/trending-skills",
-    "supabase/cli"
+    "supabase/cli",
+    "vercel-labs/skills",
+    "mikekelly/managing-skills"
   ]
 }
