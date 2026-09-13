@@ -9,7 +9,7 @@ Do not start from `docs/contracts/00-HANDOFF.md` — that is the older ZIP contr
 **Repo:** `reflectprotect123-max/the-adaptivebrain-`  
 **Working branch:** `cursor/vendor-installed-github-repos-4d23`  
 **PR:** https://github.com/reflectprotect123-max/the-adaptivebrain-/pull/1 (draft, base `main`)  
-**Do not merge to `main` unless the human asks.**
+**Do not merge this Brain PR to `main` unless the human asks.** Strength and Engine V1 logger PRs are **merged**.
 
 ---
 
@@ -99,19 +99,17 @@ cd apps/engine && node --test engine.test.js session.test.js library.test.js
 ## Cloud / GitHub
 
 - This Cloud Agent environment is **personal** and lists only `the-adaptivebrain-`: [2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7](https://cursor.com/dashboard/cloud-agents/environments/e/2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7).
-- Git here is **`cursor[bot]`**. `git push` to `strengthside` / `Engine-side-` returns `Permission … denied to cursor[bot]` (403). Public **read** of those remotes works.
-- Dashboard `environmentJson` cannot hold `repositoryDependencies`. This branch has `.cursor/environment.json` listing both app repos so later boots can request write. **This running token does not refresh.**
-- Same-chat unblock used a **classic** `ghp_` PAT (fine-grained token was read-only). `scripts/publish-sibling-apps.sh` pushed:
-  - Strength https://github.com/reflectprotect123-max/strengthside/pull/218 (`cursor/emh-logger-4d23`)
-  - Engine https://github.com/reflectprotect123-max/Engine-side-/pull/8 (`cursor/engine-emh-4d23`)
-- Revoke that PAT after use; it was pasted in chat. `cursor[bot]` on this VM still cannot push those remotes.
+- Git here is **`cursor[bot]`**. Sibling writes use a classic PAT stored **only on this VM** at `~/.config/hybrid/gh-sibling-push-token` (not in git). `scripts/publish-sibling-apps.sh` reads that file.
+- Strength **merged** to `main`: https://github.com/reflectprotect123-max/strengthside/pull/218
+- Engine **merged** to `main`: https://github.com/reflectprotect123-max/Engine-side-/pull/8
+- Engine open/close is kernel-only (no HybridAdaptive `openCond` / `softenOpen` fallback).
 - Create-environment picker “no matching repos” is a known Cursor bug; do not uninstall/reinstall the GitHub App as the first fix.
 
 ---
 
 ## Next work (in order)
 
-1. Human reviews draft app PRs: Strength #218, Engine #8. Merge those only when the human wants V1 loggers on app `main`.
+1. Keep Engine/Strength loggers on kernel `open` / `decideNext` / `close`. Do not put Adaptive `softenOpen` back.
 2. **Merge this Brain PR** only when the human wants kernel + snapshots on Brain `main`.
 3. Do **not** implement parked items above.
 4. If wiring more: keep IIFE in sync with `packages/brain/src/*` (`browser-iife.js` + copy to both `brain-kernel.js`).

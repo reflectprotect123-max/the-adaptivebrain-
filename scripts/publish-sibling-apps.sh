@@ -4,6 +4,9 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TOKEN="${GH_SIBLING_PUSH_TOKEN:-}"
+if [[ -z "$TOKEN" && -f "$HOME/.config/hybrid/gh-sibling-push-token" ]]; then
+  TOKEN="$(cat "$HOME/.config/hybrid/gh-sibling-push-token")"
+fi
 WORKDIR="${TMPDIR:-/tmp}/publish-sibling-apps-$$"
 mkdir -p "$WORKDIR"
 cleanup() { rm -rf "$WORKDIR"; }

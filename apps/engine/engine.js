@@ -21,10 +21,6 @@
     return JSON.parse(JSON.stringify(v));
   }
 
-  function ad(passed) {
-    return passed || root.HybridAdaptive;
-  }
-
   function kernel() {
     return root.HybridBrainKernel;
   }
@@ -75,35 +71,11 @@
     return Math.round(500 * pace);
   }
 
-  function targetFromOpen(opened, modality) {
-    const t = emptyTarget();
-    if (!opened || !opened.ok) return t;
-    if (modality === 'split') t.splitSec = opened.splitSec == null ? null : opened.splitSec;
-    else if (modality === 'rpm') t.rpm = opened.rpm == null ? null : opened.rpm;
-    else if (modality === 'watts') t.watts = opened.watts == null ? null : opened.watts;
-    return t;
-  }
-
   function typedFor(piece, modality) {
     if (modality === 'split') return piece.typedSplitSec;
     if (modality === 'rpm') return piece.typedRpm;
     if (modality === 'watts') return piece.typedWatts;
     return null;
-  }
-
-  function softenTarget(target, modality, recovery, adaptive) {
-    const A = ad(adaptive);
-    if (!A || typeof A.softenOpen !== 'function') return target;
-    const rec = recovery == null ? null : Number(recovery);
-    const next = emptyTarget();
-    if (modality === 'split' && target.splitSec != null) {
-      next.splitSec = A.softenOpen(target.splitSec, 'split', rec);
-    } else if (modality === 'rpm' && target.rpm != null) {
-      next.rpm = A.softenOpen(target.rpm, 'rpm', rec);
-    } else if (modality === 'watts' && target.watts != null) {
-      next.watts = A.softenOpen(target.watts, 'watts', rec);
-    }
-    return next;
   }
 
   function openPiece(piece, lastClose, adaptive, recovery) {
@@ -154,23 +126,7 @@
       return { ok: true, skipped: false, modality, target: t };
     }
 
-    const A = ad(adaptive);
-    if (!A) return { ok: true, skipped: true, modality, target: emptyTarget() };
-    const opened = A.openCond({
-      dayKind: 'conditioning',
-      modality,
-      lastClose: lastClose || null,
-      typedWatts: piece.typedWatts,
-      typedSplitSec: piece.typedSplitSec,
-      typedRpm: piece.typedRpm,
-    });
-    if (!opened || !opened.ok) return { ok: false, modality, target: emptyTarget() };
-    let target = targetFromOpen(opened, modality);
-    target = softenTarget(target, modality, recovery, A);
-    const blank = (modality === 'watts' && target.watts == null)
-      || (modality === 'split' && target.splitSec == null)
-      || (modality === 'rpm' && target.rpm == null);
-    return { ok: true, skipped: blank, modality, target };
+    return { ok: true, skipped: true, modality, target: emptyTarget() };
   }
 
   function readyLog(piece, adaptive, lastClose, recovery) {
@@ -350,11 +306,7 @@
         ruleVersion: closed.ruleVersion,
       };
     }
-    const A = ad(adaptive);
-    if (!A || typeof A.closeCond !== 'function' || !Object.keys(lastMade).length) {
-      return { ok: true, ...lastMade };
-    }
-    return A.closeCond({ lastMade });
+    return { ok: true, ...lastMade };
   }
 
   function rxText(piece) {
