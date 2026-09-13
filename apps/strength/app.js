@@ -18,6 +18,7 @@ const defaultState = () => ({
   timer: null,
   loggerOpen: false,
   library: null,
+  liftMemory: {},
   sessions: {},
   planSync: { acks: { template: {}, session: {} }, snapshotRev: 0, lastPlan: null },
   libUi: { screen: 'list', tid: null, tab: 'exercises', q: '', selected: [], draft: {}, date: '', bid: null },
@@ -65,6 +66,9 @@ function load() {
 }
 
 function save() {
+  if (S.session && S.session.liftMemory) {
+    S.liftMemory = Object.assign({}, S.liftMemory || {}, S.session.liftMemory);
+  }
   if (S.session && S.session.date) {
     S.sessions = S.sessions || {};
     S.sessions[S.session.date] = S.session;

@@ -20,8 +20,10 @@ Checkout **`cursor/vendor-installed-github-repos-4d23`**, not `main`. Brain `mai
 | Engine open/close kernel-only (no Adaptive soften) | **Merged** https://github.com/reflectprotect123-max/Engine-side-/pull/9 (`c81c484`) |
 | Engine Capgo assemble includes `brain-kernel.js` | **Pushed** `Engine-side-` `main` `15cdca4` |
 | Brain kernel + app snapshots | On this Brain **branch / draft PR #1**, not on Brain `main` |
-| **Capgo OTA Strength** `com.hybrid.athlete` | **`1.0.85`** on **live + dogfood** (Edge WHOOP + pin live channel) |
-| **Capgo OTA Engine** `com.hybrid.engine` | **`1.0.6`** on **live + dogfood** (pin live channel + SW includes kernel) |
+| **Capgo OTA Strength** `com.hybrid.athlete` | Ship **`1.0.86`** after overlay (LAST/e1RM + snapshot `liftMemory`) |
+| **Capgo OTA Engine** `com.hybrid.engine` | Ship **`1.0.7`** after overlay (`engine_side` snapshot + assemble `plan-sync.js` / `brain-kernel.js`) |
+
+**Lift memory (2026-09-13 afternoon):** LAST ≠ Working Max (e1RM). First empty kg from last working set / % WM / LWP. Logger chrome frozen. Spec `docs/superpowers/specs/2026-09-13-lift-memory-sync-design.md`. Strength snapshot includes `liftMemory`; Engine domain `engine_side`.
 
 Athlete GitHub `main`s are the live product trees. A new agent does **not** need to re-implement EMH loggers.
 
@@ -88,7 +90,7 @@ cd apps/strength && node --test session.test.js library.test.js
 cd apps/engine && node --test engine.test.js session.test.js library.test.js
 ```
 
-Last run on this branch: kernel **25/25**, Engine snapshot **24/24**.
+Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine snapshot **32/32**.
 
 ---
 

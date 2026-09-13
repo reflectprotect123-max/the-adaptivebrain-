@@ -20,6 +20,8 @@ const defaultState = () => ({
   library: null,
   sessions: {},
   engineAnchors: {},
+  liftMemory: {},
+  planSync: { acks: { template: {}, session: {} }, snapshotRev: 0, lastPlan: null },
   libUi: { screen: 'list', tid: null, tab: 'exercises', q: '', selected: [], draft: {}, date: '', bid: null },
   notifications: 0,
   chatUnread: 0,
@@ -69,8 +71,12 @@ function save() {
     S.sessions = S.sessions || {};
     S.sessions[S.session.date] = S.session;
   }
+  if (S.session && S.session.engineAnchors) {
+    S.engineAnchors = Object.assign({}, S.engineAnchors || {}, S.session.engineAnchors);
+  }
   localStorage.setItem(STORAGE_KEY, JSON.stringify(S));
   window.S = S;
+  if (window.PlanSync && typeof PlanSync.schedulePush === 'function') PlanSync.schedulePush();
 }
 
 function today() {
@@ -884,7 +890,9 @@ window.save = save;
 window.today = today;
 window.dailyCheckin = dailyCheckin;
 window.readinessScore = readinessScore;
-window.touchRecord = function () {};
+window.touchRecord = function () {
+  if (window.PlanSync) PlanSync.schedulePush();
+};
 window.num = num;
 window.resetBlankSlate = resetBlankSlate;
 window.setTab = setTab;
@@ -912,6 +920,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   if (window.Whoop && typeof Whoop.hydrateAuth === 'function') {
     try { await Whoop.hydrateAuth(); } catch (_) { /* offline / SDK */ }
+  }
+  if (window.PlanSync && typeof PlanSync.syncNow === 'function') {
+    try { await PlanSync.syncNow(); } catch (_) { /* offline / unsigned */ }
   }
   await refreshOtaStatus(false);
   render();

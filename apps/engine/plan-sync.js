@@ -1,12 +1,10 @@
 /**
- * Strength Side plan sync — Library templates + calendar/logger sessions.
- * Domain `strength_side` is the copy The Brain can pull later.
- * Uses existing upsert_athlete_domain_snapshot (no new table in this repo).
- * WHOOP/Concept2 stay on their own buttons — this is not that path.
+ * Engine plan sync — library, sessions, Close anchors.
+ * Domain `engine_side`. Strength uses `strength_side` (separate row).
  */
 (function (root) {
-  const DOMAIN = 'strength_side';
-  const WRITER = 'strengthside-athlete';
+  const DOMAIN = 'engine_side';
+  const WRITER = 'engine-athlete';
   const SCHEMA = 1;
   const DEBOUNCE_MS = 2500;
 
@@ -81,6 +79,11 @@
       kind: 'lift_memory',
       memory: (state && state.liftMemory) || {},
     }, prev.session.lift_memory));
+    sessions.push(touch({
+      id: 'engine_anchors',
+      kind: 'engine_anchors',
+      anchors: (state && state.engineAnchors) || {},
+    }, prev.session.engine_anchors));
 
     const prevTpls = new Set(Object.keys(prev.template));
     const liveTpls = new Set(templates.map((t) => t.id));
@@ -176,6 +179,7 @@
       else if (row.kind === 'log' && row.date) sessions[row.date] = row.payload;
       else if (row.kind === 'catalog') catalog = { exercises: row.exercises || [], circuits: row.circuits || [] };
       else if (row.kind === 'lift_memory') next.liftMemory = row.memory || {};
+      else if (row.kind === 'engine_anchors') next.engineAnchors = row.anchors || {};
     });
     next.library = {
       templates: plan.templates || [],

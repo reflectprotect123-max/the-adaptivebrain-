@@ -108,7 +108,7 @@
       section: block.section || (block.kind === 'recovery' ? 'Recovery' : block.kind === 'warmup' ? 'Prep' : 'Strength/Power'),
       setCount: mode === 'complete' ? 0 : (Number(block.setCount) || rx.setCount),
       targetReps: rx.targetReps,
-      columns: cols,
+      columns: cols.length ? cols : (mode === 'kg' ? ['reps', 'weight_kg'] : cols),
     };
   }
 
@@ -175,12 +175,60 @@
     return session;
   }
 
-  function startSession({ date, plan, letter, existing } = {}) {
+  function memoryKey(title) {
+    return String(title || '').trim().toLowerCase();
+  }
+
+  function seedLift(session, lift) {
+    if (!lift || lift.logMode !== 'kg') return;
+    const mem = (session.liftMemory || {})[memoryKey(lift.title)];
+    if (!mem) return;
+    session.workingMax = session.workingMax || {};
+    if (mem.e1rmKg) session.workingMax[lift.id] = mem.e1rmKg;
+    const log = session.logs[lift.id];
+    if (!log || !log.sets || !log.sets[0]) return;
+    if (log.sets[0].kg != null && log.sets[0].kg !== '') return;
+    const K = brainKernel();
+    const cols = (lift.columns && lift.columns.length) ? lift.columns : ['reps', 'weight_kg'];
+    const kg = K && typeof K.openingKg === 'function'
+      ? K.openingKg({
+        columns: cols,
+        lastKg: mem.lastKg,
+        e1rmKg: mem.e1rmKg,
+        lastPct: mem.lastPct,
+        lastEffort: mem.lastEffort,
+        lastMiss: mem.lastMiss,
+        lastReps: mem.lastReps,
+        targetReps: lift.targetReps,
+      })
+      : mem.lastKg;
+    if (kg == null || kg === '') return;
+    log.sets[0].kg = kg;
+    log.sets[0].suggestedKg = kg;
+  }
+
+  function seedOpeningLoads(session, liftMemory) {
+    const s = session;
+    s.liftMemory = Object.assign({}, liftMemory || {}, s.liftMemory || {});
+    s.workingMax = s.workingMax || {};
+    for (const page of s.pages || []) {
+      if (page.logMode === 'superset') {
+        for (const m of page.members || []) seedLift(s, m);
+      } else {
+        seedLift(s, page);
+      }
+    }
+    return s;
+  }
+
+  function startSession({ date, plan, letter, existing, liftMemory } = {}) {
     const pages = pagesFromPlan(plan);
+    const memory = liftMemory || (existing && existing.liftMemory) || {};
     if (existing && existing.date === date && existing.phase !== 'summary' && !letter) {
       const s = clone(existing);
       s.pages = pages;
-      return attachLogs(s);
+      s.liftMemory = Object.assign({}, memory, s.liftMemory || {});
+      return seedOpeningLoads(attachLogs(s), s.liftMemory);
     }
     const session = attachLogs({
       date,
@@ -192,6 +240,7 @@
       pages,
       logs: {},
       workingMax: {},
+      liftMemory: Object.assign({}, memory),
       feel: { intensity: null, durationMin: 0, note: '' },
       unit: 'kg',
     });
@@ -199,7 +248,7 @@
       const idx = pages.findIndex((p) => pageMatchesLetter(p, letter));
       session.blockIndex = idx >= 0 ? idx : 0;
     }
-    return session;
+    return seedOpeningLoads(session, memory);
   }
 
   function ackQuote(session) {
@@ -284,6 +333,23 @@
     if (patch.effort !== undefined) row.effort = patch.effort;
     row.logged = canLogRow(row, liftPage);
     if (row.logged) applyStrengthBrain(s, setIndex, memberId, liftPage);
+    if (row.logged && liftPage && liftPage.logMode === 'kg') {
+      const K = brainKernel();
+      s.liftMemory = s.liftMemory || {};
+      const key = memoryKey(liftPage.title);
+      if (K && typeof K.rememberLift === 'function') {
+        s.liftMemory[key] = K.rememberLift(s.liftMemory[key], {
+          loadKg: row.kg,
+          reps: row.reps,
+          effort: row.effort,
+          miss: row.miss,
+        });
+        if (s.liftMemory[key].e1rmKg) {
+          s.workingMax = s.workingMax || {};
+          s.workingMax[liftPage.id] = s.liftMemory[key].e1rmKg;
+        }
+      }
+    }
     return s;
   }
 
@@ -363,6 +429,13 @@
     const s = clone(session);
     s.workingMax = s.workingMax || {};
     s.workingMax[exerciseId] = Number(value);
+    const page = (s.pages || []).find((p) => p.id === exerciseId)
+      || ((s.pages || []).flatMap((p) => p.members || []).find((m) => m.id === exerciseId));
+    if (page && page.title) {
+      s.liftMemory = s.liftMemory || {};
+      const key = memoryKey(page.title);
+      s.liftMemory[key] = Object.assign({}, s.liftMemory[key] || {}, { e1rmKg: Number(value) });
+    }
     return s;
   }
 
@@ -445,6 +518,8 @@
     logSet,
     toggleLogged,
     autofillFrom,
+    seedOpeningLoads,
+    memoryKey,
     logIdsForPage,
     memberOf,
     totals,

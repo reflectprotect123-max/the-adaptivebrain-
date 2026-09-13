@@ -164,6 +164,36 @@ test('feel then finish lands on summary', () => {
   assert.equal(s.phase, 'summary');
 });
 
+test('logged working set remembers lastKg and e1rm; next session seeds first empty kg', () => {
+  let s = HybridSession.startSession({ date: '2026-09-07', plan: demoPlan, letter: 'B' });
+  s = HybridSession.logSet(s, 0, { kg: 100, reps: 3, effort: 'medium' });
+  const mem = s.liftMemory['snatch grip rack deadlift'];
+  assert.equal(mem.lastKg, 100);
+  assert.ok(mem.e1rmKg > 100);
+  let s2 = HybridSession.startSession({
+    date: '2026-09-08',
+    plan: demoPlan,
+    letter: 'B',
+    liftMemory: s.liftMemory,
+  });
+  assert.equal(s2.logs.B.sets[0].kg, 100);
+  assert.equal(s2.workingMax.B, mem.e1rmKg);
+});
+
+test('seed does not overwrite a filled first kg', () => {
+  const liftMemory = { 'snatch grip rack deadlift': { lastKg: 100, e1rmKg: 116.7 } };
+  let s = HybridSession.startSession({ date: '2026-09-08', plan: demoPlan, letter: 'B', liftMemory });
+  s.logs.B.sets[0].kg = 90;
+  s = HybridSession.seedOpeningLoads(s, liftMemory);
+  assert.equal(s.logs.B.sets[0].kg, 90);
+});
+
+test('warmup complete does not write liftMemory', () => {
+  let s = HybridSession.startSession({ date: '2026-09-07', plan: demoPlan, letter: 'A' });
+  s = HybridSession.completeCurrent(s);
+  assert.equal(Object.keys(s.liftMemory || {}).length, 0);
+});
+
 test('logged easy set writes brain nextKg onto the following row', () => {
   let s = HybridSession.startSession({ date: '2026-09-07', plan: demoPlan, letter: 'B' });
   s = HybridSession.logSet(s, 0, { kg: 100, effort: 'easy' });

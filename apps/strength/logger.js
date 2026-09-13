@@ -21,6 +21,7 @@
   function persist(next) {
     root.S.session = next;
     root.S.loggerOpen = true;
+    if (next && next.liftMemory) root.S.liftMemory = next.liftMemory;
     if (typeof root.save === 'function') root.save();
     paint();
   }
@@ -43,12 +44,13 @@
       ? root.S.session
       : null;
     if (letter && existing) {
-      root.S.session = HS.goToLetter(HS.startSession({ date: d, plan: p, existing }), letter);
+      root.S.session = HS.goToLetter(HS.startSession({ date: d, plan: p, existing, liftMemory: root.S.liftMemory }), letter);
     } else if (letter) {
-      root.S.session = HS.startSession({ date: d, plan: p, letter });
+      root.S.session = HS.startSession({ date: d, plan: p, letter, liftMemory: root.S.liftMemory });
     } else {
-      root.S.session = HS.startSession({ date: d, plan: p, existing });
+      root.S.session = HS.startSession({ date: d, plan: p, existing, liftMemory: root.S.liftMemory });
     }
+    if (root.S.session && root.S.session.liftMemory) root.S.liftMemory = root.S.session.liftMemory;
     root.S.loggerOpen = true;
     if (typeof root.save === 'function') root.save();
     document.getElementById('logger').classList.remove('hidden');
@@ -420,14 +422,39 @@
       <input class="log-ex-note" placeholder="Add circuit note" value="${esc(log.note || '')}" onchange="Logger.note('${esc(page.id)}',this.value)">`;
   }
 
+  function resolvePadKg(n, memberId) {
+    const s = session();
+    const page = HybridSession.currentPage(s);
+    const lift = page.logMode === 'superset' ? HybridSession.memberOf(page, memberId) : page;
+    const mem = liftMem(s, lift);
+    const e1 = (s.workingMax && s.workingMax[lift.id]) || mem.e1rmKg;
+    const K = root.HybridBrainKernel;
+    if (K && typeof K.kgFromPctPad === 'function') {
+      const kg = K.kgFromPctPad({ columns: lift.columns, raw: n, e1rmKg: e1 });
+      if (kg != null) return kg;
+    }
+    return n;
+  }
+
+  function liftMem(s, page) {
+    const key = root.HybridSession && HybridSession.memoryKey
+      ? HybridSession.memoryKey(page.title)
+      : String(page.title || '').trim().toLowerCase();
+    return (s && s.liftMemory && s.liftMemory[key])
+      || (root.S && root.S.liftMemory && root.S.liftMemory[key])
+      || {};
+  }
+
   function sideHtml(s, page) {
-    const wm = (s.workingMax && s.workingMax[page.id]) || '';
+    const mem = liftMem(s, page);
+    const wm = (s.workingMax && s.workingMax[page.id]) || mem.e1rmKg || '';
+    const last = mem.lastKg != null && mem.lastKg !== '' ? mem.lastKg : '';
     return `
       <div class="log-meta-row">
         <div class="log-thumb">▶</div>
         <div class="log-side">
           <div class="log-side-row"><span>WORKING MAX</span><button type="button" class="log-add" onclick="Logger.sheet('wm')">${wm ? esc(wm) + ' >' : 'Add >'}</button></div>
-          <div class="log-side-row"><span>LAST</span><span>${wm ? esc(wm) : 'None'}</span></div>
+          <div class="log-side-row"><span>LAST</span><span>${last !== '' ? esc(last) : 'None'}</span></div>
         </div>
       </div>`;
   }
@@ -698,15 +725,15 @@
       if (!pad) return;
       const n = Number(pad.buffer);
       const patch = { miss: pad.miss };
-      if (pad.field === 'kg') patch.kg = n;
+      if (pad.field === 'kg') patch.kg = resolvePadKg(n, pad.memberId);
       else if (pad.field === 'reps') patch.reps = n;
       else patch.cells = { [pad.field]: n };
       let s = HybridSession.logSet(session(), pad.setIndex, patch, pad.memberId);
-      if (pad.field === 'kg' && n > 0) {
+      if (pad.field === 'kg' && patch.kg > 0) {
         const page = HybridSession.currentPage(s);
         const lift = page.logMode === 'superset' ? HybridSession.memberOf(page, pad.memberId) : page;
         const prev = Math.max(0, ...s.logs[lift.id].sets.filter((r, i) => i !== pad.setIndex && r.logged).map((r) => r.kg || 0));
-        if (n >= prev && lift.targetReps) {
+        if (patch.kg >= prev && lift.targetReps) {
           toast = `New ${lift.targetReps} Rep Max!`;
           clearTimeout(toastTimer);
           toastTimer = setTimeout(() => { toast = ''; paint(); }, 2200);
@@ -720,7 +747,7 @@
       const idx = pad.setIndex;
       const n = Number(pad.buffer);
       const patch = { miss: pad.miss };
-      if (pad.field === 'kg') patch.kg = n;
+      if (pad.field === 'kg') patch.kg = resolvePadKg(n, pad.memberId);
       else if (pad.field === 'reps') patch.reps = n;
       else patch.cells = { [pad.field]: n };
       let s = HybridSession.logSet(session(), idx, patch, pad.memberId);
