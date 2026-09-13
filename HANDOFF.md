@@ -128,7 +128,7 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 
 ## Rulings already made (do not re-litigate)
 
-- Stay on `cursor/vendor-installed-github-repos-4d23` in this repo (do not invent extra Brain branches).
+- Brain **`main`** is the live tree (PR #1 merged). Use a `cursor/…-4d23` branch only for new PRs.
 - Two-observation anchors: midpoint `(a+b)/2` (same as median for n=2).
 - `moduleCeiling` is highest allowed **module**, not WHOOP green/yellow/red category names.
 - Engine `echo` **machine** in the app is still **watts**; RPM table is for `modality === 'rpm'` (fan).
