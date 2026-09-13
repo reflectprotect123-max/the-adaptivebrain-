@@ -1,8 +1,8 @@
 # Adaptive Brain ownership — design
 
 **Date:** 2026-09-13  
-**Status:** first design from the three uploaded co-located ZIPs plus the sibling GitHub apps  
-**Authority:** `docs/contracts/00-HANDOFF.md` wins when documents conflict
+**Status:** file-routing / ZIP ownership only. **Product V1 rules live in** `docs/superpowers/specs/2026-09-13-adaptivebrain-v1-design.md` (supersedes Strength RIR and “Brain is not the progression engine” for V1: Brain owns `decideNext`; apps are UI).  
+**Authority:** V1 spec + `docs/contracts/00-FORMULAS-AND-RULES.md`; V1 spec wins on Strength effort (EMH not RIR)
 
 ## What landed
 
