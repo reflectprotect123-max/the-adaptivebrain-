@@ -849,12 +849,14 @@ async function askCoach() {
   renderCoachSheetLog();
   try {
     const coachUrl = (window.Whoop && typeof Whoop.fnUrl === 'function')
-      ? Whoop.fnUrl('/.netlify/functions/brain-coach')
-      : 'https://thehybridsystem.netlify.app/.netlify/functions/brain-coach';
+      ? Whoop.fnUrl('brain-coach')
+      : String((window.STRENGTH_CONFIG && STRENGTH_CONFIG.supabaseUrl) || 'https://orysjncrksmdfabpuftd.supabase.co').replace(/\/$/, '') + '/functions/v1/brain-coach';
     const res = await fetch(coachUrl, {
       method: 'POST',
       headers: {
         authorization: 'Bearer ' + (await Whoop.token()),
+        apikey: (window.STRENGTH_CONFIG && STRENGTH_CONFIG.supabaseAnon) || '',
+        'x-hybrid-product': 'strength',
         'content-type': 'application/json',
       },
       body: JSON.stringify({

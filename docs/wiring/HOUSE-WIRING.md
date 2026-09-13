@@ -61,8 +61,11 @@ Concept2 Netlify functions exist in the tree but Logbook OAuth is **retired / pa
 
 ## Morning circuit: WHOOP
 
+Live connect is **only** Supabase Edge `whoop-connect` (401 without a user JWT).  
+`thehybridsystem.netlify.app` and `thehybridengine1.netlify.app` `/.netlify/functions/whoop-connect` are **404**. Strength APK must use Edge + `x-hybrid-product: strength`, same as Engine.
+
 WHOOP developer dashboard must list Engine callback + webhook Edge URLs.
-Recovery score is mapped into local check-in, then `dailyZones` on Engine **home**.
+Recovery maps into local check-in, then `dailyZones` on Engine **home**.
 WHOOP does not call `decideNext` and must not rewrite a confirmed output anchor.
 
 ## Local stores (in the rooms)

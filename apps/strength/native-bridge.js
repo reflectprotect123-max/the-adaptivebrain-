@@ -104,10 +104,25 @@
     };
   }
 
-  try { notifyLiveUpdateReady(); } catch (_) {}
+  async function pinLiveChannel() {
+    if (!isNative()) return 'skipped';
+    const Updater = plugin('CapacitorUpdater');
+    if (!Updater || typeof Updater.setChannel !== 'function') return 'unavailable';
+    try {
+      await Updater.setChannel({ channel: 'live' });
+      return 'live';
+    } catch (_) {
+      return 'error';
+    }
+  }
+
+  try {
+    Promise.resolve(pinLiveChannel()).then(function () { notifyLiveUpdateReady(); }).catch(function () { notifyLiveUpdateReady(); });
+  } catch (_) {}
 
   global.NativeBridge = {
     isNative,
+    pinLiveChannel,
     notifyLiveUpdateReady,
     probeLiveUpdate,
     applyLiveUpdate,

@@ -20,12 +20,12 @@ Checkout **`cursor/vendor-installed-github-repos-4d23`**, not `main`. Brain `mai
 | Engine open/close kernel-only (no Adaptive soften) | **Merged** https://github.com/reflectprotect123-max/Engine-side-/pull/9 (`c81c484`) |
 | Engine Capgo assemble includes `brain-kernel.js` | **Pushed** `Engine-side-` `main` `15cdca4` |
 | Brain kernel + app snapshots | On this Brain **branch / draft PR #1**, not on Brain `main` |
-| **Capgo OTA Strength** `com.hybrid.athlete` | **`1.0.84`** on **live + dogfood** (V1 EMH + `decideNext`) |
-| **Capgo OTA Engine** `com.hybrid.engine` | **`1.0.5`** on **live + dogfood** (kernel-only open + kernel in www) |
+| **Capgo OTA Strength** `com.hybrid.athlete` | **`1.0.85`** on **live + dogfood** (Edge WHOOP + pin live channel) |
+| **Capgo OTA Engine** `com.hybrid.engine` | **`1.0.6`** on **live + dogfood** (pin live channel + SW includes kernel) |
 
 Athlete GitHub `main`s are the live product trees. A new agent does **not** need to re-implement EMH loggers.
 
-Phones on the native shells pick up Capgo when they next check (Strength default channel **dogfood**; Engine default channel **live**). Web/Supabase www is a separate host path (`assemble-pages` / Edge); this agent shipped **Capgo only**, not Netlify/Supabase functions.
+Phones on the native shells pick up Capgo when they next check. Both apps now **pin the `live` channel** from `native-bridge.js` so Strength is not stuck on dogfood-only. Web/Supabase www is a separate host path; this agent ships **Capgo** for the HTML/WHOOP client. Netlify WHOOP functions are gone (404).
 
 ---
 
@@ -120,7 +120,7 @@ Last run on this branch: kernel **25/25**, Engine snapshot **24/24**.
 1. New agent: stay on `cursor/vendor-installed-github-repos-4d23`. Do **not** re-litigate EMH vs RIR, 1–5 feel, or shadow mode.
 2. **Merge Brain PR #1** only if the human wants kernel + snapshots + vendored skills on Brain `main`.
 3. If changing kernel math: edit `packages/brain/src/*`, rebuild `browser-iife.js`, copy to both `brain-kernel.js` files, then overlay onto sibling `main`s with a write token.
-4. Optional: human deploys Strength/Engine web hosts (Supabase Edge / Netlify) if they still want browser URLs in sync. Capgo OTA for the native apps is already at Strength **1.0.84** and Engine **1.0.5**.
+4. Optional: human deploys Strength/Engine web hosts (Supabase Edge `www`/`strength`) if they still want browser URLs in sync. Capgo OTA is Strength **1.0.85** and Engine **1.0.6**. WHOOP on phones uses Edge, not Netlify.
 5. Do **not** implement parked items.
 
 ---

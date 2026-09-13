@@ -65,16 +65,23 @@ if (!existsSync(join(fnDir, 'brain-coach.mjs'))) {
   throw new Error('missing function: brain-coach.mjs');
 }
 const appJs = readFileSync(join(appRoot, 'app.js'), 'utf8');
-if (!appJs.includes("Whoop.fnUrl('/.netlify/functions/brain-coach')")) {
-  throw new Error('askCoach must use Whoop.fnUrl so Capacitor hits athlete Netlify');
+if (!appJs.includes("Whoop.fnUrl('brain-coach')")) {
+  throw new Error('askCoach must use Whoop.fnUrl so Capacitor hits Edge brain-coach');
 }
 const whoopJs = readFileSync(join(appRoot, 'connectors/whoop.js'), 'utf8');
-if (!whoopJs.includes('resolveProxyBase') || !whoopJs.includes('thehybridsystem.netlify.app')) {
-  throw new Error('connectors/whoop.js must route native/offline clients to athlete Netlify');
+if (!whoopJs.includes('resolveProxyBase') || !whoopJs.includes('functions/v1')) {
+  throw new Error('connectors/whoop.js must route to Supabase Edge functions/v1');
+}
+if (whoopJs.includes('thehybridsystem.netlify.app')) {
+  throw new Error('connectors/whoop.js must not call dead athlete Netlify WHOOP');
 }
 
 const sandbox = {
   console,
+  setInterval,
+  clearInterval,
+  setTimeout,
+  URLSearchParams,
   fetch: async (url) => {
     sandbox.lastFetch = url;
     return { ok: true, json: async () => ({ whoop: { connected: false } }) };
@@ -87,15 +94,26 @@ const sandbox = {
       },
     }),
   },
+  STRENGTH_CONFIG: {
+    supabaseUrl: 'https://orysjncrksmdfabpuftd.supabase.co',
+    supabaseAnon: 'anon',
+  },
   location: { protocol: 'https:', hostname: 'localhost', pathname: '/' },
 };
+sandbox.setInterval = setInterval;
+sandbox.clearInterval = clearInterval;
+sandbox.setTimeout = setTimeout;
+sandbox.URLSearchParams = URLSearchParams;
 sandbox.window = sandbox;
 sandbox.globalThis = sandbox;
 vm.createContext(sandbox);
 vm.runInContext(whoopJs, sandbox);
 await sandbox.Whoop.refreshStatus();
-if (!String(sandbox.lastFetch || '').startsWith('https://thehybridsystem.netlify.app/')) {
-  throw new Error('expected athlete Netlify URL from localhost, got: ' + sandbox.lastFetch);
+if (!String(sandbox.lastFetch || '').includes('/functions/v1/integrations-status')) {
+  throw new Error('expected Edge integrations-status URL, got: ' + sandbox.lastFetch);
+}
+if (!String(sandbox.lastFetch || '').includes('product=strength')) {
+  throw new Error('expected product=strength on Edge URL, got: ' + sandbox.lastFetch);
 }
 
-console.log('hybrid-proxy.smoke: ok', readdirSync(fnDir).length, 'functions');
+console.log('hybrid-proxy.smoke: ok', readdirSync(fnDir).length, 'functions (Netlify leftovers; WHOOP client is Edge)');

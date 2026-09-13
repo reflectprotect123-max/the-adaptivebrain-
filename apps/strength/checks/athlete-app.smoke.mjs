@@ -30,7 +30,7 @@ must(js.includes('function otaBannerHtml'), 'settings OTA banner');
 must(html.includes('Talk to coach'), 'fab coach action');
 must(html.includes('id="coachSheet"'), 'coach lives in + sheet');
 must(!html.includes('data-tab="chat"'), 'no Chat tab — coach is + only');
-must(js.includes("Whoop.fnUrl('/.netlify/functions/brain-coach')"), 'coach uses athlete Netlify proxy on native');
+must(js.includes("Whoop.fnUrl('brain-coach')"), 'coach uses Edge brain-coach on native');
 must(js.includes('function trainingTabHtml'), 'training tab screen');
 must(js.includes('TRAINING_DEMO'), 'HPP training demo plan');
 must(css.includes('.shell-screen--training'), 'training screen styles');
@@ -46,7 +46,7 @@ must(readFileSync(join(root, 'library.css'), 'utf8').includes('margin: 8px 16px 
 must(js.includes('function openLibraryForDay'), 'library calendar door');
 must(readFileSync(join(root, 'service-worker.js'), 'utf8').includes('./library.js'), 'library.js in SW cache');
 must(readFileSync(join(root, 'service-worker.js'), 'utf8').includes('./plan-sync.js'), 'plan-sync.js in SW cache');
-must(readFileSync(join(root, 'service-worker.js'), 'utf8').includes("CACHE = 'the-brain-v12'"), 'SW cache bump');
+must(readFileSync(join(root, 'service-worker.js'), 'utf8').includes("CACHE = 'the-brain-v14'"), 'SW cache bump');
 must(readFileSync(join(root, 'timer.js'), 'utf8').includes('Rest Timer'), 'rest timer picker');
 must(readFileSync(join(root, 'logger.js'), 'utf8').includes('Select Timer'), 'Select Timer chrome');
 must(readFileSync(join(root, 'session.js'), 'utf8').includes("logMode: 'superset'"), 'F1/F2 same-page pairing');

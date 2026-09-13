@@ -1,53 +1,31 @@
 /**
- * WHOOP ownership — brain-app deploy is proxy-only → hybrid1.
+ * WHOOP ownership — TRACK talks to shared Supabase Edge (not Netlify).
  */
-import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const dir = dirname(fileURLToPath(import.meta.url));
-const appRoot = join(dir, '..');
-const fnDir = join(appRoot, 'netlify/functions');
-const OWNER_HOST = 'thehybridengine1.netlify.app';
-const ATHLETE_HOST = 'thehybridsystem.netlify.app';
-
+const appRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const failures = [];
 function must(cond, msg) {
   if (!cond) failures.push(msg);
 }
 
-const BANNED = ['whoop-callback.mjs', 'whoop-webhook.mjs', '_lib/whoop.mjs', '@netlify/blobs'];
-const PROXY = [
-  'whoop-connect.mjs',
-  'whoop-sync.mjs',
-  'concept2-connect.mjs',
-  'concept2-sync.mjs',
-  'concept2-callback.mjs',
-  'integrations-status.mjs',
-  'integrations-disconnect.mjs',
-  'brain-coach.mjs',
-];
-
-must(existsSync(join(fnDir, '_hybrid-proxy.mjs')), 'missing _hybrid-proxy.mjs');
-const proxySrc = readFileSync(join(fnDir, '_hybrid-proxy.mjs'), 'utf8');
-must(proxySrc.includes(OWNER_HOST), 'proxy must target hybrid1');
-
-for (const name of PROXY) {
-  const p = join(fnDir, name);
-  must(existsSync(p), `missing ${name}`);
-  if (name === 'brain-coach.mjs') continue;
-  const src = readFileSync(p, 'utf8');
-  must(src.includes('proxyHybrid'), `${name} must call proxyHybrid`);
-}
-
-for (const banned of BANNED) {
-  if (banned.startsWith('@')) continue;
-  must(!existsSync(join(fnDir, banned)), `banned ${banned}`);
-}
-
 const whoopJs = readFileSync(join(appRoot, 'connectors/whoop.js'), 'utf8');
-must(whoopJs.includes('client: \'native\'') || whoopJs.includes('client: "native"'), 'whoop native connect');
-must(whoopJs.includes(ATHLETE_HOST), 'whoop knows athlete host');
+const cfg = readFileSync(join(appRoot, 'strength-config.js'), 'utf8');
+const html = readFileSync(join(appRoot, 'index.html'), 'utf8');
+const app = readFileSync(join(appRoot, 'app.js'), 'utf8');
+const bridge = readFileSync(join(appRoot, 'native-bridge.js'), 'utf8');
+
+must(cfg.includes("functionsProvider: 'supabase'"), 'STRENGTH_CONFIG uses supabase');
+must(html.includes('strength-config.js'), 'index loads strength-config');
+must(whoopJs.includes("functions/v1"), 'whoop hits Edge functions');
+must(whoopJs.includes("x-hybrid-product': 'strength'") || whoopJs.includes('x-hybrid-product": "strength"'), 'whoop sends strength product');
+must(whoopJs.includes('Browser.open'), 'native WHOOP opens Capacitor Browser');
+must(whoopJs.includes('appUrlOpen'), 'native WHOOP listens for deep link');
+must(!whoopJs.includes('thehybridsystem.netlify.app'), 'whoop must not call dead athlete Netlify WHOOP');
+must(app.includes("Whoop.fnUrl('brain-coach')"), 'coach uses Edge via Whoop.fnUrl');
+must(bridge.includes('setChannel'), 'OTA pins Capgo channel');
 
 if (failures.length) {
   console.error('brain whoop-ownership FAIL');
