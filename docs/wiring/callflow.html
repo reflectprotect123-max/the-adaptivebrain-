@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wiring — Complete Call Flow &amp; Architecture Documentation</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<style>
+:root {
+  --bg: #0f172a; --surface: #1e293b; --border: #334155;
+  --text: #e2e8f0; --muted: #94a3b8; --accent: #38bdf8;
+  --warn: #fbbf24; --err: #f87171; --ok: #34d399;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+.container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+h1 { font-size: 2.4rem; margin-bottom: 8px; background: linear-gradient(135deg, var(--accent), #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+h2 { font-size: 1.7rem; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); }
+h3 { font-size: 1.25rem; margin: 32px 0 12px; color: var(--accent); }
+h4 { font-size: 1.05rem; margin: 20px 0 8px; color: var(--warn); }
+p { margin: 8px 0; color: var(--muted); }
+.subtitle { color: var(--muted); font-size: 1.1rem; margin-bottom: 32px; }
+.mermaid { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0; overflow-x: auto; position: relative; }
+.mermaid.is-enhanced { padding: 0; overflow: hidden; min-height: 260px; }
+.mermaid-viewport { padding: 54px 24px 24px; overflow: hidden; cursor: grab; touch-action: none; min-height: 260px; }
+.mermaid-viewport.is-dragging { cursor: grabbing; }
+.mermaid-viewport svg { max-width: none !important; height: auto; transform-origin: 0 0; transition: transform 120ms ease; }
+.mermaid-toolbar { position: absolute; top: 10px; right: 10px; z-index: 3; display: flex; align-items: center; gap: 6px; padding: 6px; background: rgba(15,23,42,0.92); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.28); }
+.mermaid-toolbar button, .mermaid-toolbar .zoom-level { height: 28px; min-width: 32px; border: 1px solid var(--border); border-radius: 6px; background: #1e293b; color: var(--text); font: 600 0.78rem system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; }
+.mermaid-toolbar button { cursor: pointer; }
+.mermaid-toolbar button:hover { border-color: var(--accent); color: var(--accent); }
+.mermaid-toolbar .zoom-level { min-width: 52px; color: var(--muted); background: transparent; }
+.call-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.92rem; }
+.call-table th { background: #1a2744; color: var(--accent); text-align: left; padding: 10px 14px; border: 1px solid var(--border); }
+.call-table td { padding: 8px 14px; border: 1px solid var(--border); vertical-align: top; }
+.call-table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.tag-async { background: #7c3aed33; color: #a78bfa; }
+.tag-class { background: #05966933; color: var(--ok); }
+.tag-func { background: #2563eb33; color: var(--accent); }
+.tag-cmd { background: #d9770633; color: var(--warn); }
+.tag-endpoint { background: #dc262633; color: var(--err); }
+.tag-hook { background: #db277733; color: #f472b6; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin: 16px 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; margin: 16px 0; }
+.arrow-chain { font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--accent); padding: 10px; background: rgba(56,189,248,0.06); border-radius: 6px; }
+code { font-family: 'Fira Code', 'Cascadia Code', monospace; background: rgba(255,255,255,0.06); padding: 1px 6px; border-radius: 3px; font-size: 0.88em; }
+ul, ol { margin: 8px 0 8px 24px; color: var(--muted); }
+li { margin: 4px 0; }
+a { color: var(--accent); }
+hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+.nav { position: sticky; top: 0; background: var(--bg); z-index: 10; padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.9rem; }
+.nav a { text-decoration: none; }
+.nav a:hover { text-decoration: underline; }
+@media (max-width: 768px) { .container { padding: 16px; } h1 { font-size: 1.8rem; } }
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>wiring — Complete Call Flow &amp; Architecture Documentation</h1>
+<p class="subtitle">Generated from graphify knowledge graph: 54 nodes, 99 edges, 8 communities. Commit: 0347651</p>
+
+<div class="nav">
+    <a href="#overview">Architecture Overview</a>
+    <a href="#build-graph">Graph Build</a>
+    <a href="#tests-fixtures">Tests &amp; Fixtures</a>
+    <a href="#engine-decidenext">Engine decideNext</a>
+    <a href="#rule-types">Rule types</a>
+</div>
+
+<!-- ====== Architecture Overview ====== -->
+<h2 id="overview">1. Architecture Overview</h2>
+
+<div class="mermaid">
+
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    BUILD_GRAPH_321CBB04("Graph Build<br/><small>6 nodes</small>")
+    class BUILD_GRAPH_321CBB04 module;
+    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>33 nodes</small>")
+    class TESTS_FIXTURES_B84B1DCC module;
+    ENGINE_DECIDENEXT_44B0B06A("Engine decideNext<br/><small>10 nodes</small>")
+    class ENGINE_DECIDENEXT_44B0B06A module;
+    RULE_TYPES_55F3B1B0("Rule types<br/><small>5 nodes</small>")
+    class RULE_TYPES_55F3B1B0 module;
+    TESTS_FIXTURES_B84B1DCC -->|imports x18| RULE_TYPES_55F3B1B0
+    RULE_TYPES_55F3B1B0 -->|contains| TESTS_FIXTURES_B84B1DCC
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h4>Architecture Layers</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
+      <tr><td>Graph Build</td><td>6</td><td><code>3</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>33</td><td><code>0, 2, 4, 6, 7</code></td></tr><tr><td>Engine decideNext</td><td>10</td><td><code>1</code></td></tr><tr><td>Rule types</td><td>5</td><td><code>5</code></td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Core Flow</h4>
+    <div class="arrow-chain">Graph Build -&gt; Tests &amp; Fixtures -&gt; Rule types -&gt; Engine decideNext</div>
+  </div>
+</div>
+<div class="grid">
+  <div class="card">
+    <h4>Graph Report Highlights</h4>
+    <ul>
+      <li>54 nodes · 99 edges · 8 communities (7 shown, 1 thin omitted)</li>
+      <li>Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS</li>
+      <li>Token cost: 0 input · 0 output</li>
+      <li>1. `RULE_VERSION` - 9 edges</li>
+      <li>2. `decideNext()` - 6 edges</li>
+      <li>3. `decideNextStrength()` - 6 edges</li>
+    </ul>
+  </div>
+</div>
+<hr>
+<!-- ====== 2. Graph Build ====== -->
+<h2 id="build-graph">2. Graph Build</h2>
+<p>Graph Build groups implementation around packagejson, name, private, scripts, mostly in package.json. This section covers 6 nodes and 5 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Graph Build (6 nodes, 5 edges)
+    package_582681c2("package.json")
+    package_scripts_25cfc1ca("scripts<br/><small>package.json</small>")
+    package_name_b23e1232("name<br/><small>package.json</small>")
+    package_private_9955bf19("private<br/><small>package.json</small>")
+    package_type_7bb9ccc5("type<br/><small>package.json</small>")
+    package_scripts_test_71544dc5("test<br/><small>package.json</small>")
+    package_582681c2 -->|contains| package_name_b23e1232
+    package_582681c2 -->|contains| package_private_9955bf19
+    package_582681c2 -->|contains| package_type_7bb9ccc5
+    package_582681c2 -->|contains| package_scripts_25cfc1ca
+    package_scripts_25cfc1ca -->|contains| package_scripts_test_71544dc5
+    class package_582681c2 function;
+    class package_scripts_25cfc1ca function;
+    class package_name_b23e1232 function;
+    class package_private_9955bf19 function;
+    class package_type_7bb9ccc5 function;
+    class package_scripts_test_71544dc5 function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>package.json</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>package.json node in package.json.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>name</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>name node in package.json.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>private</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>private node in package.json.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>scripts</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>scripts node in package.json.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>test</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>type</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>type node in package.json.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>package.json</code></td><td>6 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x5. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 3. Tests & Fixtures ====== -->
+<h2 id="tests-fixtures">3. Tests &amp; Fixtures</h2>
+<p>Tests &amp; Fixtures groups implementation around test, sessionjs, root, zonestestjs, mostly in src/session.js, test/zones.test.js, test/contracts.test.js. This section covers 33 nodes and 55 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Tests &amp; Fixtures (33 nodes, 55 edges)
+    subgraph tests_fixtures_src_session_js_43dd31b1["src/session.js"]
+        src_session_0fcd8db9("session.js")
+        src_session_close_17b9c68e("close()<br/><small>src/session.js</small>")
+        src_session_decidenext_bdb5fbb6("decideNext()<br/><small>src/session.js</small>")
+        src_session_open_6e5948cd("open()<br/><small>src/session.js</small>")
+    end
+    subgraph tests_fixtures_src_strength_js_672cbc9b["src/strength.js"]
+        src_strength_decidenextstrength_90367fd5("decideNextStrength()<br/><small>src/strength.js</small>")
+        src_strength_rank_e60f5c27("rank()<br/><small>src/strength.js</small>")
+        src_strength_b09fa7ca("strength.js")
+    end
+    subgraph tests_fixtures_src_anchors_js_33ba22ce["src/anchors.js"]
+        src_anchors_confirmanchor_620d4336("confirmAnchor()<br/><small>src/anchors.js</small>")
+        src_anchors_b5d4c93a("anchors.js")
+    end
+    subgraph tests_fixtures_src_zones_js_276925c1["src/zones.js"]
+        src_zones_dailyzones_86d575d8("dailyZones()<br/><small>src/zones.js</small>")
+        src_zones_shifthrrpoints_dd174346("shiftHrrPoints()<br/><small>src/zones.js</small>")
+    end
+    src_engine_decidenextengine_3ef4f0d7("decideNextEngine()<br/><small>src/engine.js</small>")
+    src_index_811cdc82("index.js")
+    test_anchors_test_152fae22("anchors.test.js")
+    test_iife_test_c2928e7e("iife.test.js")
+    test_session_test_48225611("session.test.js")
+    test_strength_test_e1f2cac6("strength.test.js")
+    test_zones_test_5ff5be3e("zones.test.js")
+    src_session_close_17b9c68e -->|calls| src_anchors_confirmanchor_620d4336
+    src_session_decidenext_bdb5fbb6 -->|calls| src_strength_decidenextstrength_90367fd5
+    src_session_decidenext_bdb5fbb6 -->|calls| src_engine_decidenextengine_3ef4f0d7
+    src_zones_dailyzones_86d575d8 -->|calls| src_zones_shifthrrpoints_dd174346
+    src_strength_decidenextstrength_90367fd5 -->|calls| src_strength_rank_e60f5c27
+    src_session_0fcd8db9 -->|imports| src_strength_decidenextstrength_90367fd5
+    src_session_0fcd8db9 -->|imports| src_engine_decidenextengine_3ef4f0d7
+    src_session_0fcd8db9 -->|imports| src_anchors_confirmanchor_620d4336
+    src_session_0fcd8db9 -->|imports| src_strength_b09fa7ca
+    src_session_0fcd8db9 -->|imports| src_anchors_b5d4c93a
+    test_anchors_test_152fae22 -->|imports| src_anchors_confirmanchor_620d4336
+    test_anchors_test_152fae22 -->|imports| src_anchors_b5d4c93a
+    test_iife_test_c2928e7e -->|imports| src_session_decidenext_bdb5fbb6
+    test_iife_test_c2928e7e -->|imports| src_session_open_6e5948cd
+    test_iife_test_c2928e7e -->|imports| src_index_811cdc82
+    test_session_test_48225611 -->|imports| src_session_close_17b9c68e
+    test_session_test_48225611 -->|imports| src_session_decidenext_bdb5fbb6
+    test_session_test_48225611 -->|imports| src_session_open_6e5948cd
+    test_session_test_48225611 -->|imports| src_index_811cdc82
+    test_zones_test_5ff5be3e -->|imports| src_zones_dailyzones_86d575d8
+    test_strength_test_e1f2cac6 -->|imports| src_strength_decidenextstrength_90367fd5
+    test_strength_test_e1f2cac6 -->|imports| src_strength_b09fa7ca
+    %% Omitted for readability: 15 nodes, 0 edges
+    class src_session_0fcd8db9 module;
+    class src_session_close_17b9c68e function;
+    class src_session_decidenext_bdb5fbb6 function;
+    class src_session_open_6e5948cd function;
+    class src_strength_decidenextstrength_90367fd5 function;
+    class src_strength_rank_e60f5c27 function;
+    class src_strength_b09fa7ca module;
+    class src_anchors_confirmanchor_620d4336 function;
+    class src_anchors_b5d4c93a module;
+    class src_zones_dailyzones_86d575d8 function;
+    class src_zones_shifthrrpoints_dd174346 function;
+    class src_engine_decidenextengine_3ef4f0d7 function;
+    class src_index_811cdc82 module;
+    class test_anchors_test_152fae22 test;
+    class test_iife_test_c2928e7e test;
+    class test_session_test_48225611 test;
+    class test_strength_test_e1f2cac6 test;
+    class test_zones_test_5ff5be3e test;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>confirmAnchor()</code><br><small style="color:var(--muted)">src/anchors.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>anchors.test.js</code><br><small style="color:var(--muted)">test/anchors.test.js</small><br><code>close()</code><br><small style="color:var(--muted)">src/session.js</small><br><code>session.js</code><br><small style="color:var(--muted)">src/session.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>confirmAnchor() node in src/anchors.js.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>decideNextEngine()</code><br><small style="color:var(--muted)">src/engine.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>decideNext()</code><br><small style="color:var(--muted)">src/session.js</small><br><code>engine.test.js</code><br><small style="color:var(--muted)">test/engine.test.js</small><br><code>session.js</code><br><small style="color:var(--muted)">src/session.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>decideNextEngine() node in src/engine.js.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>close()</code><br><small style="color:var(--muted)">src/session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>session.test.js</code><br><small style="color:var(--muted)">test/session.test.js</small></td>
+  <td><code>confirmAnchor()</code><br><small style="color:var(--muted)">src/anchors.js</small></td>
+  <td>close() node in src/session.js.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>decideNext()</code><br><small style="color:var(--muted)">src/session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>iife.test.js</code><br><small style="color:var(--muted)">test/iife.test.js</small><br><code>session.test.js</code><br><small style="color:var(--muted)">test/session.test.js</small></td>
+  <td><code>decideNextEngine()</code><br><small style="color:var(--muted)">src/engine.js</small><br><code>decideNextStrength()</code><br><small style="color:var(--muted)">src/strength.js</small></td>
+  <td>decideNext() node in src/session.js.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>open()</code><br><small style="color:var(--muted)">src/session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>iife.test.js</code><br><small style="color:var(--muted)">test/iife.test.js</small><br><code>session.test.js</code><br><small style="color:var(--muted)">test/session.test.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>open() node in src/session.js.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>anchors.js</code><br><small style="color:var(--muted)">src/anchors.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>anchors.test.js</code><br><small style="color:var(--muted)">test/anchors.test.js</small><br><code>session.js</code><br><small style="color:var(--muted)">src/session.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>anchors.js node in src/anchors.js.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>index.js</code><br><small style="color:var(--muted)">src/index.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>iife.test.js</code><br><small style="color:var(--muted)">test/iife.test.js</small><br><code>session.test.js</code><br><small style="color:var(--muted)">test/session.test.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>index.js node in src/index.js.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>session.js</code><br><small style="color:var(--muted)">src/session.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>anchors.js</code><br><small style="color:var(--muted)">src/anchors.js</small><br><code>confirmAnchor()</code><br><small style="color:var(--muted)">src/anchors.js</small><br><code>decideNextEngine()</code><br><small style="color:var(--muted)">src/engine.js</small><br>+5 more</td>
+  <td>session.js node in src/session.js.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>anchors.test.js</code><br><small style="color:var(--muted)">test/anchors.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>anchors.js</code><br><small style="color:var(--muted)">src/anchors.js</small><br><code>confirmAnchor()</code><br><small style="color:var(--muted)">src/anchors.js</small></td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>root</code><br><small style="color:var(--muted)">test/anchors.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>root node in test/anchors.test.js.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>iife.test.js</code><br><small style="color:var(--muted)">test/iife.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>decideNext()</code><br><small style="color:var(--muted)">src/session.js</small><br><code>index.js</code><br><small style="color:var(--muted)">src/index.js</small><br><code>open()</code><br><small style="color:var(--muted)">src/session.js</small></td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>require</code><br><small style="color:var(--muted)">test/iife.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>require node in test/iife.test.js.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>session.test.js</code><br><small style="color:var(--muted)">test/session.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>close()</code><br><small style="color:var(--muted)">src/session.js</small><br><code>decideNext()</code><br><small style="color:var(--muted)">src/session.js</small><br><code>index.js</code><br><small style="color:var(--muted)">src/index.js</small><br>+1 more</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>dailyZones()</code><br><small style="color:var(--muted)">src/zones.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>zones.test.js</code><br><small style="color:var(--muted)">test/zones.test.js</small></td>
+  <td><code>shiftHrrPoints()</code><br><small style="color:var(--muted)">src/zones.js</small></td>
+  <td>dailyZones() node in src/zones.js.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>shiftHrrPoints()</code><br><small style="color:var(--muted)">src/zones.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>dailyZones()</code><br><small style="color:var(--muted)">src/zones.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>shiftHrrPoints() node in src/zones.js.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>zones.js</code><br><small style="color:var(--muted)">src/zones.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>zones.test.js</code><br><small style="color:var(--muted)">test/zones.test.js</small></td>
+  <td><code>RULE_VERSION</code><br><small style="color:var(--muted)">src/types.js</small><br><code>types.js</code><br><small style="color:var(--muted)">src/types.js</small></td>
+  <td>zones.js node in src/zones.js.</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>zones.test.js</code><br><small style="color:var(--muted)">test/zones.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>dailyZones()</code><br><small style="color:var(--muted)">src/zones.js</small><br><code>RULE_VERSION</code><br><small style="color:var(--muted)">src/types.js</small><br><code>types.js</code><br><small style="color:var(--muted)">src/types.js</small><br>+1 more</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td><code>baseInput</code><br><small style="color:var(--muted)">test/zones.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>baseInput node in test/zones.test.js.</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><code>root</code><br><small style="color:var(--muted)">test/zones.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>root node in test/zones.test.js.</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><code>v</code><br><small style="color:var(--muted)">test/zones.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>v node in test/zones.test.js.</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><code>decideNextStrength()</code><br><small style="color:var(--muted)">src/strength.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>decideNext()</code><br><small style="color:var(--muted)">src/session.js</small><br><code>session.js</code><br><small style="color:var(--muted)">src/session.js</small><br><code>strength.test.js</code><br><small style="color:var(--muted)">test/strength.test.js</small></td>
+  <td><code>rank()</code><br><small style="color:var(--muted)">src/strength.js</small></td>
+  <td>decideNextStrength() node in src/strength.js.</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><code>rank()</code><br><small style="color:var(--muted)">src/strength.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>decideNextStrength()</code><br><small style="color:var(--muted)">src/strength.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>rank() node in src/strength.js.</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td><code>strength.js</code><br><small style="color:var(--muted)">src/strength.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>session.js</code><br><small style="color:var(--muted)">src/session.js</small><br><code>strength.test.js</code><br><small style="color:var(--muted)">test/strength.test.js</small></td>
+  <td><code>EFFORTS</code><br><small style="color:var(--muted)">src/types.js</small><br><code>RULE_VERSION</code><br><small style="color:var(--muted)">src/types.js</small><br><code>types.js</code><br><small style="color:var(--muted)">src/types.js</small></td>
+  <td>strength.js node in src/strength.js.</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td><code>strength.test.js</code><br><small style="color:var(--muted)">test/strength.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>decideNextStrength()</code><br><small style="color:var(--muted)">src/strength.js</small><br><code>RULE_VERSION</code><br><small style="color:var(--muted)">src/types.js</small><br><code>strength.js</code><br><small style="color:var(--muted)">src/strength.js</small><br>+1 more</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td><code>root</code><br><small style="color:var(--muted)">test/strength.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>root node in test/strength.test.js.</td>
+</tr>
+<tr>
+  <td>26</td>
+  <td><code>vectors</code><br><small style="color:var(--muted)">test/strength.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>vectors node in test/strength.test.js.</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td><code>contracts.test.js</code><br><small style="color:var(--muted)">test/contracts.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td><code>root</code><br><small style="color:var(--muted)">test/contracts.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>root node in test/contracts.test.js.</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td><code>rules</code><br><small style="color:var(--muted)">test/contracts.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>rules node in test/contracts.test.js.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>vectors</code><br><small style="color:var(--muted)">test/contracts.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>vectors node in test/contracts.test.js.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>src/session.js</code></td><td>4 nodes</td></tr>
+<tr><td><code>test/contracts.test.js</code></td><td>4 nodes</td></tr>
+<tr><td><code>test/zones.test.js</code></td><td>4 nodes</td></tr>
+<tr><td><code>src/strength.js</code></td><td>3 nodes</td></tr>
+<tr><td><code>src/zones.js</code></td><td>3 nodes</td></tr>
+<tr><td><code>test/engine.test.js</code></td><td>3 nodes</td></tr>
+<tr><td><code>test/strength.test.js</code></td><td>3 nodes</td></tr>
+<tr><td><code>src/anchors.js</code></td><td>2 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x20, imports x12, re exports x11, imports x7. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 4. Engine decideNext ====== -->
+<h2 id="engine-decidenext">4. Engine decideNext</h2>
+<p>Engine decideNext groups implementation around browser, iifejs, close, confirmanchor, mostly in browser-iife.js. This section covers 10 nodes and 14 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Engine decideNext (10 nodes, 14 edges)
+    browser_iife_decidenext_cca4225a("decideNext()<br/><small>browser-iife.js</small>")
+    browser_iife_close_20c3d0df("close()<br/><small>browser-iife.js</small>")
+    browser_iife_dailyzones_66f19f03("dailyZones()<br/><small>browser-iife.js</small>")
+    browser_iife_decidenextstrength_4953b0cd("decideNextStrength()<br/><small>browser-iife.js</small>")
+    browser_iife_confirmanchor_eeab9114("confirmAnchor()<br/><small>browser-iife.js</small>")
+    browser_iife_shifthrrpoints_5c7e3b95("shiftHrrPoints()<br/><small>browser-iife.js</small>")
+    browser_iife_decidenextengine_beed9eb1("decideNextEngine()<br/><small>browser-iife.js</small>")
+    browser_iife_rank_5f199300("rank()<br/><small>browser-iife.js</small>")
+    browser_iife_6fba668e("browser-iife.js")
+    browser_iife_open_65213109("open()<br/><small>browser-iife.js</small>")
+    browser_iife_close_20c3d0df -->|calls| browser_iife_confirmanchor_eeab9114
+    browser_iife_dailyzones_66f19f03 -->|calls| browser_iife_shifthrrpoints_5c7e3b95
+    browser_iife_decidenext_cca4225a -->|calls| browser_iife_decidenextstrength_4953b0cd
+    browser_iife_decidenext_cca4225a -->|calls| browser_iife_decidenextengine_beed9eb1
+    browser_iife_decidenextstrength_4953b0cd -->|calls| browser_iife_rank_5f199300
+    class browser_iife_decidenext_cca4225a function;
+    class browser_iife_close_20c3d0df function;
+    class browser_iife_dailyzones_66f19f03 function;
+    class browser_iife_decidenextstrength_4953b0cd function;
+    class browser_iife_confirmanchor_eeab9114 function;
+    class browser_iife_shifthrrpoints_5c7e3b95 function;
+    class browser_iife_decidenextengine_beed9eb1 function;
+    class browser_iife_rank_5f199300 function;
+    class browser_iife_6fba668e module;
+    class browser_iife_open_65213109 function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>close()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>confirmAnchor()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td>close() node in browser-iife.js.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>confirmAnchor()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>close()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>confirmAnchor() node in browser-iife.js.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>dailyZones()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>shiftHrrPoints()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td>dailyZones() node in browser-iife.js.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>decideNext()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>decideNextEngine()</code><br><small style="color:var(--muted)">browser-iife.js</small><br><code>decideNextStrength()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td>decideNext() node in browser-iife.js.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>decideNextEngine()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>decideNext()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>decideNextEngine() node in browser-iife.js.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>decideNextStrength()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>decideNext()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td><code>rank()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td>decideNextStrength() node in browser-iife.js.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>open()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>open() node in browser-iife.js.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>rank()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>decideNextStrength()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>rank() node in browser-iife.js.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>shiftHrrPoints()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>dailyZones()</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>shiftHrrPoints() node in browser-iife.js.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>browser-iife.js</code><br><small style="color:var(--muted)">browser-iife.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>browser-iife.js node in browser-iife.js.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>browser-iife.js</code></td><td>10 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x9, calls x5. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 5. Rule types ====== -->
+<h2 id="rule-types">5. Rule types</h2>
+<p>Rule types groups implementation around typesjs, enginejs, rules, efforts, mostly in src/types.js, src/engine.js. This section covers 5 nodes and 6 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Rule types (5 nodes, 6 edges)
+    subgraph rule_types_src_types_js_0b0b35ef["src/types.js"]
+        src_types_efforts_0238e3c2("EFFORTS<br/><small>src/types.js</small>")
+        src_types_rule_version_e0f7f226("RULE_VERSION<br/><small>src/types.js</small>")
+        src_types_1f6437ac("types.js")
+    end
+    subgraph rule_types_src_engine_js_301ffad6["src/engine.js"]
+        src_engine_1c476bb0("engine.js")
+        src_engine_rules_6a9c89b0("rules<br/><small>src/engine.js</small>")
+    end
+    src_engine_1c476bb0 -->|imports| src_types_efforts_0238e3c2
+    src_engine_1c476bb0 -->|imports| src_types_rule_version_e0f7f226
+    src_engine_1c476bb0 -->|imports| src_types_1f6437ac
+    class src_types_efforts_0238e3c2 klass;
+    class src_types_rule_version_e0f7f226 klass;
+    class src_types_1f6437ac module;
+    class src_engine_1c476bb0 module;
+    class src_engine_rules_6a9c89b0 function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>engine.js</code><br><small style="color:var(--muted)">src/engine.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>engine.test.js</code><br><small style="color:var(--muted)">test/engine.test.js</small><br><code>session.js</code><br><small style="color:var(--muted)">src/session.js</small></td>
+  <td><code>EFFORTS</code><br><small style="color:var(--muted)">src/types.js</small><br><code>RULE_VERSION</code><br><small style="color:var(--muted)">src/types.js</small><br><code>types.js</code><br><small style="color:var(--muted)">src/types.js</small></td>
+  <td>engine.js node in src/engine.js.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>rules</code><br><small style="color:var(--muted)">src/engine.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>rules node in src/engine.js.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>types.js</code><br><small style="color:var(--muted)">src/types.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>engine.js</code><br><small style="color:var(--muted)">src/engine.js</small><br><code>engine.test.js</code><br><small style="color:var(--muted)">test/engine.test.js</small><br><code>session.js</code><br><small style="color:var(--muted)">src/session.js</small><br>+4 more</td>
+  <td>No direct outbound edge</td>
+  <td>types.js node in src/types.js.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>EFFORTS</code><br><small style="color:var(--muted)">src/types.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>engine.js</code><br><small style="color:var(--muted)">src/engine.js</small><br><code>strength.js</code><br><small style="color:var(--muted)">src/strength.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>EFFORTS node in src/types.js.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>RULE_VERSION</code><br><small style="color:var(--muted)">src/types.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>engine.js</code><br><small style="color:var(--muted)">src/engine.js</small><br><code>engine.test.js</code><br><small style="color:var(--muted)">test/engine.test.js</small><br><code>session.js</code><br><small style="color:var(--muted)">src/session.js</small><br>+4 more</td>
+  <td>No direct outbound edge</td>
+  <td>RULE_VERSION node in src/types.js.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>src/types.js</code></td><td>3 nodes</td></tr>
+<tr><td><code>src/engine.js</code></td><td>2 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x3, imports x2, imports x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<h2 id="stats">Project Statistics</h2>
+
+<div class="grid">
+  <div class="card">
+    <h4>Graph</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><td>Nodes</td><td>54</td></tr>
+      <tr><td>Edges</td><td>99</td></tr>
+      <tr><td>Hyperedges</td><td>0</td></tr>
+      <tr><td>Communities</td><td>8</td></tr>
+      <tr><td>Documented Sections</td><td>4</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Edge Confidence</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><td>EXTRACTED</td><td>99</td></tr>
+      <tr><td>INFERRED</td><td>0</td></tr>
+      <tr><td>AMBIGUOUS</td><td>0</td></tr>
+    </table>
+  </div>
+</div>
+
+<div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
+  <p>wiring — Architecture Documentation</p>
+  <p>Generated: 2026-09-13 19:31 UTC · graphify callflow-html</p>
+</div>
+
+</div><!-- .container -->
+
+<script>
+(function () {
+  const mermaidConfig = {
+    startOnLoad: false,
+    theme: 'dark',
+    securityLevel: 'loose',
+    flowchart: { htmlLabels: true, useMaxWidth: true },
+    themeVariables: {
+      primaryColor: '#1e293b',
+      primaryTextColor: '#e2e8f0',
+      primaryBorderColor: '#38bdf8',
+      secondaryColor: '#0f172a',
+      tertiaryColor: '#334155',
+      lineColor: '#64748b',
+      textColor: '#e2e8f0',
+    }
+  };
+
+  mermaid.initialize(mermaidConfig);
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function enhanceMermaidDiagrams() {
+    document.querySelectorAll('.mermaid').forEach((container) => {
+      if (container.dataset.zoomReady === 'true') return;
+      const svg = container.querySelector('svg');
+      if (!svg) return;
+
+      container.dataset.zoomReady = 'true';
+      container.classList.add('is-enhanced');
+
+      const viewport = document.createElement('div');
+      viewport.className = 'mermaid-viewport';
+      svg.parentNode.insertBefore(viewport, svg);
+      viewport.appendChild(svg);
+
+      const toolbar = document.createElement('div');
+      toolbar.className = 'mermaid-toolbar';
+      toolbar.innerHTML = [
+        '<button type="button" data-action="zoom-out" title="Zoom out">-</button>',
+        '<span class="zoom-level" data-role="level">100%</span>',
+        '<button type="button" data-action="zoom-in" title="Zoom in">+</button>',
+        '<button type="button" data-action="fit" title="Fit width">Fit</button>',
+        '<button type="button" data-action="reset" title="Reset view">Reset</button>'
+      ].join('');
+      container.insertBefore(toolbar, viewport);
+
+      const state = { scale: 1, x: 0, y: 0, dragging: false, startX: 0, startY: 0, originX: 0, originY: 0 };
+      const level = toolbar.querySelector('[data-role="level"]');
+
+      function applyTransform() {
+        svg.style.transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
+        level.textContent = `${Math.round(state.scale * 100)}%`;
+      }
+
+      function zoomBy(delta) {
+        state.scale = clamp(state.scale + delta, 0.25, 3);
+        applyTransform();
+      }
+
+      function reset() {
+        state.scale = 1;
+        state.x = 0;
+        state.y = 0;
+        applyTransform();
+      }
+
+      function fitWidth() {
+        const rawWidth = svg.viewBox && svg.viewBox.baseVal && svg.viewBox.baseVal.width
+          ? svg.viewBox.baseVal.width
+          : svg.getBoundingClientRect().width / state.scale;
+        if (!rawWidth) {
+          reset();
+          return;
+        }
+        state.scale = clamp((viewport.clientWidth - 48) / rawWidth, 0.25, 1.4);
+        state.x = 0;
+        state.y = 0;
+        applyTransform();
+      }
+
+      toolbar.addEventListener('click', (event) => {
+        const button = event.target.closest('button[data-action]');
+        if (!button) return;
+        const action = button.dataset.action;
+        if (action === 'zoom-in') zoomBy(0.15);
+        if (action === 'zoom-out') zoomBy(-0.15);
+        if (action === 'fit') fitWidth();
+        if (action === 'reset') reset();
+      });
+
+      viewport.addEventListener('wheel', (event) => {
+        if (!event.ctrlKey && !event.metaKey) return;
+        event.preventDefault();
+        zoomBy(event.deltaY < 0 ? 0.1 : -0.1);
+      }, { passive: false });
+
+      viewport.addEventListener('pointerdown', (event) => {
+        if (event.button !== 0) return;
+        state.dragging = true;
+        state.startX = event.clientX;
+        state.startY = event.clientY;
+        state.originX = state.x;
+        state.originY = state.y;
+        viewport.classList.add('is-dragging');
+        viewport.setPointerCapture(event.pointerId);
+      });
+
+      viewport.addEventListener('pointermove', (event) => {
+        if (!state.dragging) return;
+        state.x = state.originX + event.clientX - state.startX;
+        state.y = state.originY + event.clientY - state.startY;
+        applyTransform();
+      });
+
+      function endDrag(event) {
+        if (!state.dragging) return;
+        state.dragging = false;
+        viewport.classList.remove('is-dragging');
+        if (viewport.hasPointerCapture(event.pointerId)) {
+          viewport.releasePointerCapture(event.pointerId);
+        }
+      }
+
+      viewport.addEventListener('pointerup', endDrag);
+      viewport.addEventListener('pointercancel', endDrag);
+      applyTransform();
+    });
+  }
+
+  function renderMermaid() {
+    const result = mermaid.run
+      ? mermaid.run({ querySelector: '.mermaid' })
+      : Promise.resolve();
+    Promise.resolve(result)
+      .then(enhanceMermaidDiagrams)
+      .catch((error) => {
+        console.error('Mermaid render failed:', error);
+        enhanceMermaidDiagrams();
+      });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderMermaid);
+  } else {
+    renderMermaid();
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hybrid house wiring - fuse box and orb</title>
+  <script src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+  <style>
+    :root { --ink:#1a2330; --paper:#f4efe4; --copper:#c47a2c; --live:#1e3a5f; --off:#8b2942; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background: var(--paper); color: var(--ink); }
+    header { padding: 1.25rem 1.5rem 0.5rem; }
+    h1 { font-size: 1.4rem; margin: 0 0 0.35rem; letter-spacing: 0.04em; }
+    p.lead { margin: 0 0 1rem; max-width: 52rem; line-height: 1.45; }
+    .grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1rem; padding: 0 1.5rem 1.5rem; }
+    @media (max-width: 960px) { .grid { grid-template-columns: 1fr; } }
+    figure { margin: 0; background: #fff; border: 1px solid #d7cbb8; }
+    figure img { width: 100%; height: auto; display: block; }
+    figcaption { font-size: 0.8rem; padding: 0.5rem 0.75rem; color: #4a5560; }
+    #orb { height: min(70vh, 640px); background: #0e141c; border: 1px solid #d7cbb8; }
+    .legend { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; font-size: 0.8rem; padding: 0.6rem 1.5rem 1.5rem; }
+    .sw { display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 50%; margin-right: 0.35rem; vertical-align: middle; }
+    nav { padding: 0 1.5rem 1.5rem; font-size: 0.9rem; }
+    nav a { color: var(--live); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>House wiring: Adaptive Brain is the fuse box</h1>
+    <p class="lead">Athletes live in two rooms. They never stand in the fuse box. Every live wire is <code>open</code> then <code>decideNext</code> then <code>close</code>. WHOOP is a morning tap on Engine home lights only. Coach LLM is an isolated conduit with the target-math breaker off.</p>
+  </header>
+  <div class="grid">
+    <figure>
+      <img src="hybrid-fuse-box-wiring.png" alt="House electrical wiring diagram: Adaptive Brain main breaker feeding Strength and Engine rooms">
+      <figcaption>Fuse box map. Thick cables are athlete logging. Dashed WHOOP tap is read-only. Coach breaker stays off for kg and watts.</figcaption>
+    </figure>
+    <div>
+      <div id="orb" aria-label="Interactive product graph orb"></div>
+      <p class="lead" style="margin-top:0.6rem;font-size:0.85rem">Drag the orb. The big copper node is the fuse box. Red dashed edge is a forbidden wire (WHOOP must not feed decideNext).</p>
+    </div>
+  </div>
+  <div class="legend">
+    <span><i class="sw" style="background:#c47a2c"></i>Fuse box / bus</span>
+    <span><i class="sw" style="background:#2f6f4e"></i>Strength room</span>
+    <span><i class="sw" style="background:#1e5f8a"></i>Engine room</span>
+    <span><i class="sw" style="background:#6b4c9a"></i>WHOOP morning</span>
+    <span><i class="sw" style="background:#8b2942"></i>Isolated / OTA</span>
+  </div>
+  <nav>
+    Kernel orb (Graphify AST): <a href="graphify-out/graph.html">graph.html</a>
+    · Call-flow: <a href="callflow.html">callflow.html</a>
+    · Notes: <a href="HOUSE-WIRING.md">HOUSE-WIRING.md</a>
+  </nav>
+  <script>
+    const nodes = new vis.DataSet([
+      { id: 'brain', label: 'FUSE BOX\nAdaptive Brain\nopen / decideNext / close', color: '#c47a2c', size: 42, font: { color: '#fff', size: 14 } },
+      { id: 'open', label: 'open', color: '#d4a056', size: 18 },
+      { id: 'next', label: 'decideNext', color: '#d4a056', size: 22 },
+      { id: 'close', label: 'close', color: '#d4a056', size: 18 },
+      { id: 'anchor', label: 'confirmAnchor', color: '#d4a056', size: 16 },
+      { id: 'zones', label: 'dailyZones', color: '#d4a056', size: 16 },
+      { id: 'str', label: 'ROOM 1\nStrength TRACK\nkg + reps + EMH', color: '#2f6f4e', size: 32, font: { color: '#fff' } },
+      { id: 'eng', label: 'ROOM 2\nEngine\noutput + rest EMH', color: '#1e5f8a', size: 32, font: { color: '#fff' } },
+      { id: 'phoneS', label: 'Phone Strength\nCapgo 1.0.84', color: '#3d8f66', size: 18, font: { color: '#fff' } },
+      { id: 'phoneE', label: 'Phone Engine\nCapgo 1.0.5', color: '#3a7eb0', size: 18, font: { color: '#fff' } },
+      { id: 'whoop', label: 'WHOOP recovery', color: '#6b4c9a', size: 18, font: { color: '#fff' } },
+      { id: 'home', label: 'Engine home lights\nBlue / Green / Red BPM', color: '#6b4c9a', size: 16, font: { color: '#fff' } },
+      { id: 'storeS', label: 'Store\nTHE-brain-v1', color: '#5a6570', size: 14, font: { color: '#fff' } },
+      { id: 'storeE', label: 'Store\nTHE-hybrid-engine-v1', color: '#5a6570', size: 14, font: { color: '#fff' } },
+      { id: 'coach', label: 'Coach LLM\nbreaker OFF for math', color: '#8b2942', size: 16, font: { color: '#fff' } },
+      { id: 'gh', label: 'GitHub mains\nstrengthside / Engine-side-', color: '#8b2942', size: 14, font: { color: '#fff' } }
+    ]);
+    const edges = new vis.DataSet([
+      { from: 'brain', to: 'open', label: 'bus', arrows: 'to' },
+      { from: 'brain', to: 'next', label: 'bus', arrows: 'to' },
+      { from: 'brain', to: 'close', label: 'bus', arrows: 'to' },
+      { from: 'brain', to: 'anchor', arrows: 'to' },
+      { from: 'brain', to: 'zones', arrows: 'to' },
+      { from: 'str', to: 'open', label: 'last kg', arrows: 'to' },
+      { from: 'open', to: 'str', label: 'target kg', arrows: 'to', dashes: true },
+      { from: 'str', to: 'next', label: 'actual + EMH', arrows: 'to' },
+      { from: 'next', to: 'str', label: 'next row kg', arrows: 'to' },
+      { from: 'str', to: 'close', label: 'session end', arrows: 'to' },
+      { from: 'eng', to: 'open', label: 'typed or last Close', arrows: 'to' },
+      { from: 'open', to: 'eng', label: 'target W/split/rpm', arrows: 'to', dashes: true },
+      { from: 'eng', to: 'next', label: 'actual + EMH', arrows: 'to' },
+      { from: 'next', to: 'eng', label: 'next interval', arrows: 'to' },
+      { from: 'eng', to: 'close', arrows: 'to' },
+      { from: 'close', to: 'anchor', label: 'two obs', arrows: 'to' },
+      { from: 'whoop', to: 'zones', label: 'recovery score', arrows: 'to' },
+      { from: 'zones', to: 'home', label: 'BPM ceiling', arrows: 'to' },
+      { from: 'whoop', to: 'next', label: 'FORBIDDEN', arrows: 'to', dashes: true, color: { color: '#c0392b' } },
+      { from: 'str', to: 'phoneS', label: 'OTA', arrows: 'to' },
+      { from: 'eng', to: 'phoneE', label: 'OTA', arrows: 'to' },
+      { from: 'str', to: 'storeS', arrows: 'to' },
+      { from: 'eng', to: 'storeE', arrows: 'to' },
+      { from: 'gh', to: 'str', dashes: true },
+      { from: 'gh', to: 'eng', dashes: true },
+      { from: 'coach', to: 'next', label: 'no wire', dashes: true, color: { color: '#888' } }
+    ]);
+    new vis.Network(document.getElementById('orb'), { nodes, edges }, {
+      physics: { barnesHut: { gravitationalConstant: -8000, springLength: 140 } },
+      edges: { font: { size: 11, color: '#d7cbb8', strokeWidth: 0 }, color: { color: '#c4b49a' } },
+      nodes: { shape: 'dot', borderWidth: 0, font: { color: '#f4efe4' } }
+    });
+  </script>
+</body>
+</html>
