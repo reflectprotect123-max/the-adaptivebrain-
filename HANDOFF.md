@@ -96,22 +96,22 @@ cd apps/engine && node --test engine.test.js session.test.js library.test.js
 
 ---
 
-## Cloud / GitHub (why the last agent could not push apps)
+## Cloud / GitHub (why this VM cannot push apps)
 
 - This Cloud Agent environment is **personal** and lists only `the-adaptivebrain-`: [2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7](https://cursor.com/dashboard/cloud-agents/environments/e/2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7).
-- Grant **Cursor GitHub App** read-write on `strengthside` and `Engine-side-`, then start a **new** agent (this VM’s token does not refresh).
-- Create-environment picker “no matching repos” is a known Cursor bug; do not uninstall/reinstall the GitHub App as the first fix. Reconnect GitHub in Cursor Integrations + Refresh repositories.
-- Dashboard install proposal was `node -v` (kernel is stdlib-only). User may have Saved it. Custom snapshot draft builds failed; a saved-config draft build succeeded.
+- Git here is **`cursor[bot]`**. `git push` to `strengthside` / `Engine-side-` returns `Permission … denied to cursor[bot]` (403). Public **read** of those remotes works.
+- Dashboard `environmentJson` cannot hold `repositoryDependencies`. This branch has `.cursor/environment.json` listing both app repos so later boots can request write. **This running token does not refresh.**
+- Same-chat unblock: secret `GH_SIBLING_PUSH_TOKEN` (Contents write on those two repos) plus Cursor GitHub App repo access on the GitHub website. Then run `scripts/publish-sibling-apps.sh`.
+- Create-environment picker “no matching repos” is a known Cursor bug; do not uninstall/reinstall the GitHub App as the first fix.
 
 ---
 
 ## Next work (in order)
 
-1. **Human / new agent with write on sibling remotes:** push Strength/Engine branches or copy `apps/*` and open PRs there.
+1. After `GH_SIBLING_PUSH_TOKEN` (or a bot token that includes the app remotes): `scripts/publish-sibling-apps.sh` → PRs on `cursor/emh-logger-4d23` and `cursor/engine-emh-4d23`.
 2. **Merge this PR** only when the human wants kernel + snapshots on `main`.
-3. Optional: commit `.cursor/environment.json` with `repositoryDependencies` for the two app repos (dashboard `environmentJson` cannot hold that field).
-4. Do **not** implement parked items above.
-5. If wiring more: keep IIFE in sync with `packages/brain/src/*` (`browser-iife.js` + copy to both `brain-kernel.js`).
+3. Do **not** implement parked items above.
+4. If wiring more: keep IIFE in sync with `packages/brain/src/*` (`browser-iife.js` + copy to both `brain-kernel.js`).
 
 ---
 

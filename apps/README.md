@@ -9,4 +9,4 @@ GitHub `cursor[bot]` **cannot push** to `strengthside` or `Engine-side-` (403). 
 
 Kernel browser bundle: `packages/brain/browser-iife.js` (copied to each app as `brain-kernel.js`).
 
-To publish upstream later, copy these trees onto `cursor/emh-logger-4d23` / `cursor/engine-emh-4d23` with a token that can write those remotes.
+Publish: `GH_SIBLING_PUSH_TOKEN=… ./scripts/publish-sibling-apps.sh` (writes `cursor/emh-logger-4d23` / `cursor/engine-emh-4d23`).
