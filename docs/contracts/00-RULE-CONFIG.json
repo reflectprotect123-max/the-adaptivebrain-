@@ -5,7 +5,7 @@
     "actual_result_overrides_suggestion": true,
     "store_suggested_and_actual_separately": true,
     "conditioning_feedback": ["easy", "medium", "hard"],
-    "strength_feedback": ["load", "completed_reps", "rir"],
+    "strength_feedback": ["load", "completed_reps", "effort"],
     "required_pain_prompt": false
   },
   "conditioning": {
@@ -58,7 +58,7 @@
     "red_easy_duration_multiplier": 0.75,
     "green_never_upgrades_planned_module": true,
     "round_display_only": true,
-    "shadow_mode_required": true
+    "shadow_mode_required": false
   },
   "concept2": {
     "watts_from_pace_seconds_per_metre": "2.8 / pace_seconds_per_metre^3",

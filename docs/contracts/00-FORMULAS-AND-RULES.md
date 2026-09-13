@@ -229,13 +229,13 @@ The architecture is Morpheus-inspired, but the coefficients are original. No loc
 
 The exact Strength algorithm must respect architecture. The generic next-set decision is:
 
-| Actual result relative to target | Default response |
+| Reported vs intended | Default response |
 | --- | --- |
-| Repetitions missed | Reduce one available equipment step or use architecture rule |
-| Actual RIR at least 2 below target | Reduce one step |
-| Actual RIR within approximately 1 of target | Hold |
-| Actual RIR at least 2 above target | Increase one step only when architecture permits |
-| Missing load/reps/RIR | No automatic change |
+| Missed repetitions or Miss | Reduce one equipment step |
+| Reported Easy (easier than intended) | Increase one equipment step |
+| Reported Medium (matches intended) | Hold |
+| Reported Hard (harder than intended) | Reduce one equipment step |
+| Missing load, reps, or effort | No automatic change |
 
 For rep ranges, use double progression: build repetitions within range at target RIR, then add the smallest load increment and return toward the lower end.
 

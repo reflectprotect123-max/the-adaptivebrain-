@@ -44,6 +44,14 @@
       {"recovery":0,"shift_hrr_points":-8,"shift_bpm":-10.4,"bg_today":127.6,"gr_today":160.1}
     ]
   },
+  "strength": [
+    {"intended":"medium","reported":"easy","actualKg":100,"suggestedKg":100,"miss":false,"step":2.5,"expectedKg":102.5},
+    {"intended":"medium","reported":"medium","actualKg":100,"suggestedKg":100,"miss":false,"step":2.5,"expectedKg":100},
+    {"intended":"medium","reported":"hard","actualKg":100,"suggestedKg":100,"miss":false,"step":2.5,"expectedKg":97.5},
+    {"intended":"medium","reported":"medium","actualKg":70,"suggestedKg":60,"miss":false,"step":2.5,"expectedKg":70},
+    {"intended":"medium","reported":"easy","actualKg":100,"suggestedKg":100,"miss":true,"step":2.5,"expectedKg":97.5},
+    {"intended":"medium","reported":null,"actualKg":100,"suggestedKg":100,"miss":false,"step":2.5,"expectedKg":100}
+  ],
   "safeguards": [
     "suggested output is never written as actual output",
     "incomplete work cannot earn an output increase",

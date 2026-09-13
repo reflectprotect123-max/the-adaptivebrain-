@@ -14,7 +14,7 @@ It deliberately excludes the user's personal lifting split, personal resting-hea
 
 | Surface | Owns | Primary athlete input |
 | --- | --- | --- |
-| Strength / TRACK | Strength templates, set architecture, exercise history and load suggestions | Load, completed repetitions, RIR |
+| Strength / TRACK | Strength templates, set architecture, exercise history and load suggestions | Load, completed repetitions, Easy / Medium / Hard |
 | Engine | Conditioning methods, timers, HR zones, output anchors and interval suggestions | Actual average output, Easy / Medium / Hard |
 | WHOOP morning layer | Daily recovery input used by the Engine | Automatically imported Recovery score and timestamp |
 | Brain | Cross-product context and explanation | Does not become a second progression engine |
@@ -23,14 +23,14 @@ Strength and conditioning share one interaction principle:
 
 > Suggest → perform → log the actual result and effort → calculate from the actual result.
 
-They do not share identical mathematics. Strength learns from load, repetitions and RIR. Conditioning learns from duration, actual average watts/RPM/split and Easy/Medium/Hard.
+They do not share identical mathematics. Both pillars use Easy / Medium / Hard effort feedback; maths still differ (kg steps vs watts/RPM).
 
 ## Authoritative decisions
 
 ### Simple athlete execution
 
 - Conditioning asks only **Easy / Medium / Hard** after the completed work interval. It refers to that work interval, not the recovery period.
-- Strength asks for **load, completed repetitions and RIR**.
+- Strength asks for **load, completed repetitions, Easy / Medium / Hard**.
 - Do not add a required pain signal, cooked question, technique rating or notes prompt to either core logging loop.
 - Prescribed values and actual results are always stored separately.
 - A suggested value must never be silently saved as an actual result.
