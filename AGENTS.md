@@ -6,4 +6,4 @@ When the human says **read the handoff** (also: “read the hand off”, “the 
 2. Follow its authority order, locked UX, parked items, and next-work list.
 3. Do **not** treat `docs/contracts/00-HANDOFF.md` as current unless `HANDOFF.md` sends you there for formulas/history.
 
-Stay on branch `cursor/vendor-installed-github-repos-4d23` unless the human says otherwise. Do not merge **this Brain repo** to `main` unless asked. Strength and Engine V1 loggers are already on those remotes’ `main`.
+Stay on **`main`** (or the working branch if you are mid-PR). Do **not** re-merge ZIP-era history. Strength and Engine V1 loggers + lift memory are on those remotes’ `main`.

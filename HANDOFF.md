@@ -7,7 +7,7 @@ Do not start from `docs/contracts/00-HANDOFF.md` — that is the older ZIP contr
 
 **Date:** 2026-09-13  
 **Start chat with:** “read the handoff” on repo `reflectprotect123-max/the-adaptivebrain-`.  
-Checkout **`cursor/vendor-installed-github-repos-4d23`**, not `main`. Brain `main` is still the uploaded ZIPs (plus a tiny probe/revert). Kernel + snapshots live on this branch / [PR #1](https://github.com/reflectprotect123-max/the-adaptivebrain-/pull/1) (**draft — do not merge unless the human asks**).
+**`main` is current** (merged 2026-09-13: kernel, snapshots, lift memory). Branch `cursor/vendor-installed-github-repos-4d23` is the pre-merge history; [PR #1](https://github.com/reflectprotect123-max/the-adaptivebrain-/pull/1) is **merged**.
 
 ---
 
@@ -19,7 +19,7 @@ Checkout **`cursor/vendor-installed-github-repos-4d23`**, not `main`. Brain `mai
 | Engine athlete logger on **`Engine-side-` `main`** | **Merged** https://github.com/reflectprotect123-max/Engine-side-/pull/8 |
 | Engine open/close kernel-only (no Adaptive soften) | **Merged** https://github.com/reflectprotect123-max/Engine-side-/pull/9 (`c81c484`) |
 | Engine Capgo assemble includes `brain-kernel.js` | **Pushed** `Engine-side-` `main` `15cdca4` |
-| Brain kernel + app snapshots | On this Brain **branch / draft PR #1**, not on Brain `main` |
+| Brain kernel + app snapshots | **`main`** `9ca454d` ([PR #1](https://github.com/reflectprotect123-max/the-adaptivebrain-/pull/1) merged) |
 | **Capgo OTA Strength** `com.hybrid.athlete` | **`1.0.86`** live + dogfood (LAST/e1RM + `liftMemory` snapshot) |
 | **Capgo OTA Engine** `com.hybrid.engine` | **`1.0.7`** live + dogfood (`engine_side` snapshot) |
 
@@ -119,11 +119,10 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 
 ## Next work (in order)
 
-1. New agent: stay on `cursor/vendor-installed-github-repos-4d23`. Do **not** re-litigate EMH vs RIR, 1–5 feel, or shadow mode.
-2. **Merge Brain PR #1** only if the human wants kernel + snapshots + vendored skills on Brain `main`.
-3. If changing kernel math: edit `packages/brain/src/*`, rebuild `browser-iife.js`, copy to both `brain-kernel.js` files, then overlay onto sibling `main`s with a write token.
-4. Optional: human deploys Strength/Engine web hosts (Supabase Edge `www`/`strength`) if they still want browser URLs in sync. Capgo OTA is Strength **1.0.85** and Engine **1.0.6**. WHOOP on phones uses Edge, not Netlify.
-5. Do **not** implement parked items.
+1. New agent: Brain **`main`** is current. Do **not** re-litigate EMH vs RIR, 1–5 feel, or shadow mode.
+2. If changing kernel math: edit `packages/brain/src/*`, rebuild `browser-iife.js`, copy to both `brain-kernel.js` files, then overlay onto sibling `main`s with a write token.
+3. Optional: human deploys Strength/Engine web hosts (Supabase Edge `www`/`strength`) if they still want browser URLs in sync. Capgo OTA is Strength **1.0.86** and Engine **1.0.7**. WHOOP on phones uses Edge, not Netlify.
+4. Do **not** implement parked items.
 
 ---
 
