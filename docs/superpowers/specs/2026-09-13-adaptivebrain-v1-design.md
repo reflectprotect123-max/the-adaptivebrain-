@@ -1,7 +1,7 @@
 # Adaptive Brain V1 — product design
 
 **Date:** 2026-09-13  
-**Status:** implemented kernel; Strength/Engine UI done in local sibling clones (GitHub push 403)  
+**Status:** implemented kernel; athlete apps snapshotted in `apps/` (upstream push 403)  
 **Repos:** Brain = `reflectprotect123-max/the-adaptivebrain-`; Strength = `reflectprotect123-max/strengthside`; Engine = `reflectprotect123-max/Engine-side-`  
 **Authority:** this spec for V1 athlete behaviour and Brain API. Numeric tables already in `docs/contracts/00-FORMULAS-AND-RULES.md` stay in force unless this file overrides them.  
 **Override:** Strength athlete input is **Easy / Medium / Hard**, not RIR. Session-end 1–5 feel screen is **removed**.
