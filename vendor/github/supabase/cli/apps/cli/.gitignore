@@ -1,0 +1,4 @@
+dist/
+coverage/
+supabase/
+!docs/supabase/

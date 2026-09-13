@@ -1,0 +1,10 @@
+{
+  // Declaration-only companion to `tsconfig.build.json`, used by `tools/config-api-compare.ts`
+  // to emit both the base and head `.d.ts` trees it diffs. A separate config rather than a CLI
+  // override because `declarationMap` is a boolean compiler option with no CLI negation flag.
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "declarationMap": false
+  }
+}

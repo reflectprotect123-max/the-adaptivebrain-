@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "status": "authoritative_acceptance_examples",
+  "conditioning": {
+    "echo_rpm": [
+      {"intended":"easy","reported":"easy","actual":60,"expected":60},
+      {"intended":"easy","reported":"medium","actual":60,"expected":59},
+      {"intended":"easy","reported":"hard","actual":60,"expected":58},
+      {"intended":"medium","reported":"easy","actual":60,"expected":61},
+      {"intended":"medium","reported":"medium","actual":60,"expected":60},
+      {"intended":"medium","reported":"hard","actual":60,"expected":59},
+      {"intended":"hard","reported":"easy","actual":60,"expected":62},
+      {"intended":"hard","reported":"medium","actual":60,"expected":61},
+      {"intended":"hard","reported":"hard","actual":60,"expected":60}
+    ],
+    "concept2_watts": [
+      {"intended":"easy","reported":"medium","actual_watts":200,"expected_watts":194},
+      {"intended":"easy","reported":"hard","actual_watts":200,"expected_watts":190},
+      {"intended":"medium","reported":"easy","actual_watts":230,"expected_watts":237},
+      {"intended":"medium","reported":"medium","actual_watts":230,"expected_watts":230},
+      {"intended":"medium","reported":"hard","actual_watts":230,"expected_watts":223},
+      {"intended":"hard","reported":"easy","actual_watts":200,"expected_watts":210},
+      {"intended":"hard","reported":"medium","actual_watts":200,"expected_watts":206},
+      {"intended":"hard","reported":"hard","actual_watts":200,"expected_watts":200}
+    ],
+    "completion": [
+      {"planned_minutes":30,"whoop_category":"green","completed_minutes":27,"qualifies":true},
+      {"planned_minutes":30,"whoop_category":"green","completed_minutes":26.9,"qualifies":false},
+      {"planned_minutes":30,"whoop_category":"red","adjusted_minutes":22.5,"completed_minutes":20.25,"qualifies":true}
+    ],
+    "anchor": [
+      {"unit":"rpm","observations":[55,56],"expected_confidence":"confirmed","expected_anchor":55.5},
+      {"unit":"rpm","observations":[55,57],"expected_confidence":"provisional"},
+      {"unit":"watts","observations":[200,205],"expected_confidence":"confirmed","expected_anchor":202.5},
+      {"unit":"watts","observations":[200,208],"expected_confidence":"provisional"}
+    ]
+  },
+  "daily_zones": {
+    "profile": {"hr_max":190,"rhr_28_median":60,"bg_base":138,"gr_base":170.5},
+    "cases": [
+      {"recovery":100,"shift_hrr_points":0,"shift_bpm":0,"bg_today":138,"gr_today":170.5},
+      {"recovery":67,"shift_hrr_points":-2,"shift_bpm":-2.6,"bg_today":135.4,"gr_today":167.9},
+      {"recovery":34,"shift_hrr_points":-5,"shift_bpm":-6.5,"bg_today":131.5,"gr_today":164},
+      {"recovery":0,"shift_hrr_points":-8,"shift_bpm":-10.4,"bg_today":127.6,"gr_today":160.1}
+    ]
+  },
+  "strength": [
+    {"intended":"medium","reported":"easy","actualKg":100,"suggestedKg":100,"miss":false,"step":2.5,"expectedKg":102.5},
+    {"intended":"medium","reported":"medium","actualKg":100,"suggestedKg":100,"miss":false,"step":2.5,"expectedKg":100},
+    {"intended":"medium","reported":"hard","actualKg":100,"suggestedKg":100,"miss":false,"step":2.5,"expectedKg":97.5},
+    {"intended":"medium","reported":"medium","actualKg":70,"suggestedKg":60,"miss":false,"step":2.5,"expectedKg":70},
+    {"intended":"medium","reported":"easy","actualKg":100,"suggestedKg":100,"miss":true,"step":2.5,"expectedKg":97.5},
+    {"intended":"medium","reported":null,"actualKg":100,"suggestedKg":100,"miss":false,"step":2.5,"expectedKg":100}
+  ],
+  "safeguards": [
+    "suggested output is never written as actual output",
+    "incomplete work cannot earn an output increase",
+    "missing output or effort causes abstention",
+    "WHOOP daily zones never overwrite baseline zones",
+    "Concept2 calculations use watts before split display conversion"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "extends": "@tsconfig/bun/tsconfig.json",
+  "compilerOptions": {
+    // Resolves `@supabase/config`'s exports-map `bun` condition straight to its `src/*.ts`
+    // sources instead of `dist/*.d.ts`, which requires that package to be built first — see
+    // `packages/config/package.json`'s exports map and `packages/config/AGENTS.md`'s "Build"
+    // section. Any other dependency with its own `bun` exports condition can hit the same issue.
+    "customConditions": ["bun"],
+    // `@supabase/pg-topo`'s `bun` exports condition points at unbuilt `src/*.ts` with type
+    // errors at 1.0.0-alpha.5 that its published `dist/*.d.ts` doesn't have. `paths` wins over
+    // exports-condition resolution, so pin to the published types until a fixed release is
+    // bumped here.
+    "paths": {
+      "@supabase/pg-topo": ["./node_modules/@supabase/pg-topo/dist/index.d.ts"]
+    }
+  },
+  "exclude": ["supabase", "src/shared/compute/stacks"]
+}

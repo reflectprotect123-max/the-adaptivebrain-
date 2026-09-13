@@ -1,0 +1,7 @@
+{
+  "install": "node -v",
+  "repositoryDependencies": [
+    "github.com/reflectprotect123-max/strengthside",
+    "github.com/reflectprotect123-max/Engine-side-"
+  ]
+}

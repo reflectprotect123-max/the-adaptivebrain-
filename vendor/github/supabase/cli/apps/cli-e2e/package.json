@@ -1,0 +1,22 @@
+{
+  "name": "@supabase/cli-e2e",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "pnpm run test:e2e",
+    "test:e2e": "pnpm exec turbo run supabase#build && pnpm exec turbo run @supabase/cli-e2e#test:e2e:run --only --",
+    "test:e2e:run": "bun --bun vitest run",
+    "record": "RECORD=true pnpm run test:e2e:run",
+    "types:check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/cli-test-helpers": "workspace:*"
+  },
+  "devDependencies": {
+    "@tsconfig/bun": "catalog:",
+    "@types/bun": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

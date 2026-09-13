@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "status": "approved_experimental_v1",
+  "shared": {
+    "actual_result_overrides_suggestion": true,
+    "store_suggested_and_actual_separately": true,
+    "conditioning_feedback": ["easy", "medium", "hard"],
+    "strength_feedback": ["load", "completed_reps", "effort"],
+    "required_pain_prompt": false
+  },
+  "conditioning": {
+    "anchor": {
+      "minimum_qualifying_observations": 2,
+      "power_agreement_fraction": 0.03,
+      "rpm_agreement_absolute": 1,
+      "selection": "median_actual_qualifying_output",
+      "observations_must_be_consecutive": false
+    },
+    "echo_bike_rpm_multipliers": {
+      "easy": { "easy": 0, "medium": -1, "hard": -2 },
+      "medium": { "easy": 1, "medium": 0, "hard": -1 },
+      "hard": { "easy": 2, "medium": 1, "hard": 0 }
+    },
+    "concept2_power_multipliers": {
+      "easy": { "easy": 1.0, "medium": 0.97, "hard": 0.95 },
+      "medium": { "easy": 1.03, "medium": 1.0, "hard": 0.97 },
+      "hard": { "easy": 1.05, "medium": 1.03, "hard": 1.0 }
+    },
+    "continuous_easy": {
+      "completion_fraction": 0.9,
+      "maximum_acceptable_output_fade_fraction": 0.05,
+      "qualifying_exposures_before_duration_increase": 2,
+      "duration_increase_minutes": 5,
+      "review_minutes": 45,
+      "automatic_ceiling_minutes": 60
+    }
+  },
+  "daily_zones": {
+    "baseline": {
+      "rhr_days": 28,
+      "rhr_statistic": "median",
+      "karvonen_blue_floor_fraction": 0.4,
+      "karvonen_blue_green_fraction": 0.6,
+      "karvonen_green_red_fraction": 0.85
+    },
+    "whoop_hrr_shift_points": [
+      { "recovery": 0, "shift_percentage_points": -8 },
+      { "recovery": 34, "shift_percentage_points": -5 },
+      { "recovery": 67, "shift_percentage_points": -2 },
+      { "recovery": 100, "shift_percentage_points": 0 }
+    ],
+    "module_ceiling": {
+      "green": "red",
+      "yellow": "green",
+      "red": "blue",
+      "missing_or_stale": "planned"
+    },
+    "red_easy_duration_multiplier": 0.75,
+    "green_never_upgrades_planned_module": true,
+    "round_display_only": true,
+    "shadow_mode_required": false
+  },
+  "concept2": {
+    "watts_from_pace_seconds_per_metre": "2.8 / pace_seconds_per_metre^3",
+    "split_seconds": "distance_metres * cbrt(2.8 / watts)",
+    "canonical_calculation_unit": "watts"
+  }
+}

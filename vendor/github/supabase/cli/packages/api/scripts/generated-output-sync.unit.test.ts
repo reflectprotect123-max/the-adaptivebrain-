@@ -1,0 +1,104 @@
+import { execFileSync } from "node:child_process";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { describe, expect, test } from "vitest";
+
+import { extractOperations, loadSpec, renderContracts, renderEffectClient } from "./generate.ts";
+
+// Full-fidelity drift guard: re-renders every generated file from the committed
+// snapshot, formats it with the same oxfmt the pipeline uses, and requires byte
+// equality. Catches hand edits to schema definitions, parameter lists, request
+// bodies, response types, and the executor switch, which the operation-level
+// bijection test in src/generated-contract-sync doesn't.
+
+const scriptDir = path.dirname(fileURLToPath(import.meta.url));
+const packageDir = path.join(scriptDir, "..");
+const repoDir = path.join(packageDir, "..", "..");
+const generatedDir = path.join(packageDir, "src", "generated");
+// oxfmt is a repo-root devDependency configured by the root .oxfmtrc.json,
+// which is also how the pipeline's root fmt:fix target runs it.
+const oxfmtBin = path.join(repoDir, "node_modules", ".bin", "oxfmt");
+
+function formatWithOxfmt(source: string, fileName: string): string {
+  // Runs oxfmt in file mode, not via stdin/stdout: Bun on Linux truncates a
+  // child's piped stdout at ~219 KB, and these renders are 600+ KB. The temp
+  // dir lives inside the package (same oxfmt config) but outside node_modules,
+  // which oxfmt skips by default.
+  const tempDir = mkdtempSync(path.join(packageDir, ".generated-output-sync-"));
+  try {
+    const tempFile = path.join(tempDir, fileName);
+    writeFileSync(tempFile, source);
+    execFileSync(oxfmtBin, [tempFile], { cwd: repoDir });
+    return readFileSync(tempFile, "utf8");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+}
+
+function committedFile(fileName: string): string {
+  return readFileSync(path.join(generatedDir, fileName), "utf8");
+}
+
+function expectSameSource(rendered: string, fileName: string): void {
+  const committed = committedFile(fileName);
+  if (rendered === committed) {
+    return;
+  }
+  const renderedLines = rendered.split("\n");
+  const committedLines = committed.split("\n");
+  const limit = Math.min(renderedLines.length, committedLines.length);
+  let line = 0;
+  while (line < limit && renderedLines[line] === committedLines[line]) {
+    line += 1;
+  }
+  expect.fail(
+    `src/generated/${fileName} is not what the generator renders from the committed snapshot ` +
+      `(first difference at line ${line + 1}):\n` +
+      `  committed: ${JSON.stringify(committedLines[line] ?? "<end of file>")}\n` +
+      `  rendered:  ${JSON.stringify(renderedLines[line] ?? "<end of file>")}\n` +
+      `Hand edits to src/generated are not allowed — run \`pnpm generate\` instead.`,
+  );
+}
+
+// Rendering contracts.ts runs the real schema codegen for every operation,
+// which takes well over vitest's default 5s budget.
+const RENDER_TIMEOUT_MS = 120_000;
+
+describe("generated output sync", () => {
+  const document = loadSpec();
+  const operations = extractOperations(document);
+
+  test(
+    "contracts.ts is byte-identical to the generator's render of the committed snapshot",
+    { timeout: RENDER_TIMEOUT_MS },
+    () => {
+      expectSameSource(
+        formatWithOxfmt(renderContracts(document, operations), "contracts.ts"),
+        "contracts.ts",
+      );
+    },
+  );
+
+  test(
+    "effect-client.ts is byte-identical to the generator's render of the committed snapshot",
+    { timeout: RENDER_TIMEOUT_MS },
+    () => {
+      expectSameSource(
+        formatWithOxfmt(renderEffectClient(operations), "effect-client.ts"),
+        "effect-client.ts",
+      );
+    },
+  );
+
+  test(
+    "openapi.json is byte-identical to the generator's normalized rewrite of itself",
+    { timeout: RENDER_TIMEOUT_MS },
+    () => {
+      expectSameSource(
+        formatWithOxfmt(`${JSON.stringify(document, null, 2)}\n`, "openapi.json"),
+        "openapi.json",
+      );
+    },
+  );
+});

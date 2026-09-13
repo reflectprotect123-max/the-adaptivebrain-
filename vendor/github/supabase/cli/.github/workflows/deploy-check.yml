@@ -1,0 +1,23 @@
+name: Check Deploy
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - edited
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    if: github.head_ref != 'develop' && !startsWith(github.head_ref, 'hotfix/')
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Pull requests to main branch are only allowed from develop or hotfix/* branches."
+          exit 1

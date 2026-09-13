@@ -1,0 +1,5 @@
+web-design-guidelines
+from https://github.com/vercel-labs/agent-skills (063bee9)
+rules snapshot: vercel-labs/web-interface-guidelines command.md
+installed 2026-09-12
+Remove: rm -rf .cursor/skills/web-design-guidelines

@@ -1,0 +1,117 @@
+import type { Effect } from "effect";
+import { Context } from "effect";
+
+import type { NonInteractiveError } from "./errors.ts";
+import type { OutputFormat, StreamEvent } from "./types.ts";
+
+export interface OutputTask {
+  readonly message: (message: string) => Effect.Effect<void>;
+  readonly succeed: (message?: string) => Effect.Effect<void>;
+  readonly fail: (message?: string) => Effect.Effect<void>;
+  readonly info: (message?: string) => Effect.Effect<void>;
+  readonly cancel: (message?: string) => Effect.Effect<void>;
+  readonly clear: () => Effect.Effect<void>;
+}
+
+interface OutputSelectOption {
+  readonly value: string;
+  readonly label: string;
+  readonly hint?: string;
+}
+
+interface OutputSelectBehavior {
+  readonly mode?: "auto" | "select" | "autocomplete";
+  readonly autocompleteThreshold?: number;
+  readonly placeholder?: string;
+  readonly maxItems?: number;
+  /**
+   * Which stream the interactive picker renders to. Defaults to `"stdout"`
+   * (clack's default). Pass `"stderr"` when the command's own stdout is a
+   * machine-readable payload even in text mode (e.g. `gen bearer-jwt`'s
+   * signed token).
+   */
+  readonly stream?: "stdout" | "stderr";
+}
+
+/**
+ * Output - User-facing CLI output boundary.
+ *
+ * This service abstracts prompts, logging, progress reporting, and structured
+ * result/error emission so commands can stay agnostic to the active output mode.
+ */
+interface OutputShape {
+  readonly format: OutputFormat;
+  readonly interactive: boolean;
+  readonly intro: (title: string) => Effect.Effect<void>;
+  readonly outro: (message: string) => Effect.Effect<void>;
+  readonly info: (message: string) => Effect.Effect<void>;
+  readonly warn: (message: string) => Effect.Effect<void>;
+  readonly error: (message: string) => Effect.Effect<void>;
+  readonly event: (event: StreamEvent) => Effect.Effect<void>;
+  readonly task: (message: string) => Effect.Effect<OutputTask>;
+  readonly promptText: (
+    message: string,
+    opts?: { validate?: (v: string) => string | undefined; defaultValue?: string },
+  ) => Effect.Effect<string, NonInteractiveError>;
+  readonly promptPassword: (message: string) => Effect.Effect<string, NonInteractiveError>;
+  readonly promptConfirm: (
+    message: string,
+    opts?: { defaultValue?: boolean },
+  ) => Effect.Effect<boolean, NonInteractiveError>;
+  readonly promptSelect: (
+    message: string,
+    options: ReadonlyArray<OutputSelectOption>,
+    behavior?: OutputSelectBehavior,
+  ) => Effect.Effect<string, NonInteractiveError>;
+  readonly promptMultiSelect: (
+    message: string,
+    options: ReadonlyArray<{
+      readonly value: string;
+      readonly label: string;
+      readonly hint?: string;
+    }>,
+  ) => Effect.Effect<ReadonlyArray<string>, NonInteractiveError>;
+  readonly progress: (opts: { max: number }) => Effect.Effect<{
+    readonly start: (msg: string) => Effect.Effect<void>;
+    readonly advance: (step: number, msg?: string) => Effect.Effect<void>;
+    readonly message: (msg: string) => Effect.Effect<void>;
+    readonly stop: (msg: string) => Effect.Effect<void>;
+  }>;
+  /**
+   * Emits a successful result without adding a human-readable message.
+   *
+   * JSON mode writes `data` directly, while stream-json mode wraps it in the
+   * standard timestamped result event. Text mode leaves rendering to the caller.
+   */
+  readonly result: (data: unknown) => Effect.Effect<void>;
+  readonly success: (message: string, data?: Record<string, unknown>) => Effect.Effect<void>;
+  readonly fail: (err: {
+    readonly code: string;
+    readonly message: string;
+    readonly detail?: string;
+    readonly suggestion?: string;
+  }) => Effect.Effect<void>;
+  /**
+   * Writes a raw chunk to stdout or stderr without framing.
+   *
+   * Reserved for byte-exact output (machine-format encoders, Glamour-styled
+   * tables) where structured framing would change the bytes on the wire.
+   * Routes through the active output layer so tests can capture it without
+   * monkey-patching `process.stdout`/`process.stderr`.
+   */
+  readonly raw: (text: string, stream?: "stdout" | "stderr") => Effect.Effect<void>;
+  /**
+   * Writes raw bytes to stdout or stderr without framing or text re-encoding.
+   *
+   * Like {@link raw} but byte-exact: for payloads that may not be valid UTF-8 (e.g. a
+   * `pg_dump` of a SQL_ASCII/LATIN1 database streamed to stdout), decoding to a string
+   * and back would corrupt the bytes, so callers that must preserve the exact wire
+   * bytes use this instead.
+   */
+  readonly rawBytes: (bytes: Uint8Array, stream?: "stdout" | "stderr") => Effect.Effect<void>;
+}
+
+/**
+ * Output - Service tag for CLI output and prompt behavior.
+ */
+export class Output extends Context.Service<Output, OutputShape>()("supabase/output/Output") {}
