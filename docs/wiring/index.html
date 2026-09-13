@@ -3,105 +3,160 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hybrid house wiring - fuse box and orb</title>
+  <title>Hybrid house wiring - fuse box, rooms, and basement</title>
   <script src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
   <style>
-    :root { --ink:#1a2330; --paper:#f4efe4; --copper:#c47a2c; --live:#1e3a5f; --off:#8b2942; }
+    :root { --ink:#1a2330; --paper:#f4efe4; --live:#1e3a5f; }
     * { box-sizing: border-box; }
     body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background: var(--paper); color: var(--ink); }
     header { padding: 1.25rem 1.5rem 0.5rem; }
     h1 { font-size: 1.4rem; margin: 0 0 0.35rem; letter-spacing: 0.04em; }
-    p.lead { margin: 0 0 1rem; max-width: 52rem; line-height: 1.45; }
-    .grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1rem; padding: 0 1.5rem 1.5rem; }
-    @media (max-width: 960px) { .grid { grid-template-columns: 1fr; } }
+    p.lead { margin: 0 0 1rem; max-width: 58rem; line-height: 1.45; }
+    .grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 1rem; padding: 0 1.5rem 1rem; }
+    @media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
     figure { margin: 0; background: #fff; border: 1px solid #d7cbb8; }
     figure img { width: 100%; height: auto; display: block; }
     figcaption { font-size: 0.8rem; padding: 0.5rem 0.75rem; color: #4a5560; }
-    #orb { height: min(70vh, 640px); background: #0e141c; border: 1px solid #d7cbb8; }
-    .legend { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; font-size: 0.8rem; padding: 0.6rem 1.5rem 1.5rem; }
+    #orb { height: min(78vh, 720px); background: #0e141c; border: 1px solid #d7cbb8; }
+    .legend { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; font-size: 0.8rem; padding: 0.6rem 1.5rem 1rem; }
     .sw { display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 50%; margin-right: 0.35rem; vertical-align: middle; }
     nav { padding: 0 1.5rem 1.5rem; font-size: 0.9rem; }
     nav a { color: var(--live); }
+    pre.split { background: #1a2330; color: #f4efe4; padding: 1rem 1.25rem; margin: 0 1.5rem 1.5rem; overflow: auto; font-size: 0.8rem; line-height: 1.45; }
   </style>
 </head>
 <body>
   <header>
-    <h1>House wiring: Adaptive Brain is the fuse box</h1>
-    <p class="lead">Athletes live in two rooms. They never stand in the fuse box. Every live wire is <code>open</code> then <code>decideNext</code> then <code>close</code>. WHOOP is a morning tap on Engine home lights only. Coach LLM is an isolated conduit with the target-math breaker off.</p>
+    <h1>House wiring: fuse box, two rooms, basement backends</h1>
+    <p class="lead">Athletes live in Strength and Engine. Math lives in Adaptive Brain. Hosts, OAuth, OTA, and coach live in the basement. They do not share a wire into <code>decideNext</code>.</p>
   </header>
   <div class="grid">
     <figure>
-      <img src="hybrid-fuse-box-wiring.png" alt="House electrical wiring diagram: Adaptive Brain main breaker feeding Strength and Engine rooms">
-      <figcaption>Fuse box map. Thick cables are athlete logging. Dashed WHOOP tap is read-only. Coach breaker stays off for kg and watts.</figcaption>
+      <img src="hybrid-fuse-box-wiring.png" alt="Two-floor house wiring: Adaptive Brain fuse box upstairs, Supabase Netlify WHOOP Capgo GitHub in the basement">
+      <figcaption>Upstairs is athlete logging. Basement is Supabase Edge, Netlify porch, WHOOP, Capgo, GitHub, OpenRouter.</figcaption>
     </figure>
     <div>
-      <div id="orb" aria-label="Interactive product graph orb"></div>
-      <p class="lead" style="margin-top:0.6rem;font-size:0.85rem">Drag the orb. The big copper node is the fuse box. Red dashed edge is a forbidden wire (WHOOP must not feed decideNext).</p>
+      <div id="orb" aria-label="Interactive product and backend graph orb"></div>
+      <p class="lead" style="margin-top:0.6rem;font-size:0.85rem">Drag the orb. Red dashed edges are forbidden (WHOOP and coach must not feed decideNext).</p>
     </div>
   </div>
   <div class="legend">
-    <span><i class="sw" style="background:#c47a2c"></i>Fuse box / bus</span>
-    <span><i class="sw" style="background:#2f6f4e"></i>Strength room</span>
-    <span><i class="sw" style="background:#1e5f8a"></i>Engine room</span>
-    <span><i class="sw" style="background:#6b4c9a"></i>WHOOP morning</span>
-    <span><i class="sw" style="background:#8b2942"></i>Isolated / OTA</span>
+    <span><i class="sw" style="background:#c47a2c"></i>Fuse box</span>
+    <span><i class="sw" style="background:#2f6f4e"></i>Strength</span>
+    <span><i class="sw" style="background:#1e5f8a"></i>Engine</span>
+    <span><i class="sw" style="background:#3d5c7a"></i>Supabase / Postgres</span>
+    <span><i class="sw" style="background:#6b4c9a"></i>WHOOP</span>
+    <span><i class="sw" style="background:#8b5a2b"></i>Netlify porch</span>
+    <span><i class="sw" style="background:#8b2942"></i>OTA / coach / git</span>
   </div>
+  <pre class="split">decideNext(facts)
+  if kind === 'strength' → decideNextStrength   // kg steps, EMH vs intended, hold if missing
+  if kind === 'engine'   → decideNextEngine     // RPM table or watts * factor from 00-RULE-CONFIG.json
+  else                   → hold
+No HTTP. No WHOOP. No OpenRouter. Same IIFE in both apps (brain-kernel.js).</pre>
   <nav>
-    Kernel orb (Graphify AST): <a href="graphify-out/graph.html">graph.html</a>
+    Kernel Graphify orb: <a href="graphify-out/graph.html">graph.html</a>
     · Call-flow: <a href="callflow.html">callflow.html</a>
     · Notes: <a href="HOUSE-WIRING.md">HOUSE-WIRING.md</a>
   </nav>
   <script>
+    const n = (id, label, color, size) => ({
+      id, label, color, size, font: { color: '#f4efe4', size: size > 24 ? 13 : 11 }
+    });
     const nodes = new vis.DataSet([
-      { id: 'brain', label: 'FUSE BOX\nAdaptive Brain\nopen / decideNext / close', color: '#c47a2c', size: 42, font: { color: '#fff', size: 14 } },
-      { id: 'open', label: 'open', color: '#d4a056', size: 18 },
-      { id: 'next', label: 'decideNext', color: '#d4a056', size: 22 },
-      { id: 'close', label: 'close', color: '#d4a056', size: 18 },
-      { id: 'anchor', label: 'confirmAnchor', color: '#d4a056', size: 16 },
-      { id: 'zones', label: 'dailyZones', color: '#d4a056', size: 16 },
-      { id: 'str', label: 'ROOM 1\nStrength TRACK\nkg + reps + EMH', color: '#2f6f4e', size: 32, font: { color: '#fff' } },
-      { id: 'eng', label: 'ROOM 2\nEngine\noutput + rest EMH', color: '#1e5f8a', size: 32, font: { color: '#fff' } },
-      { id: 'phoneS', label: 'Phone Strength\nCapgo 1.0.84', color: '#3d8f66', size: 18, font: { color: '#fff' } },
-      { id: 'phoneE', label: 'Phone Engine\nCapgo 1.0.5', color: '#3a7eb0', size: 18, font: { color: '#fff' } },
-      { id: 'whoop', label: 'WHOOP recovery', color: '#6b4c9a', size: 18, font: { color: '#fff' } },
-      { id: 'home', label: 'Engine home lights\nBlue / Green / Red BPM', color: '#6b4c9a', size: 16, font: { color: '#fff' } },
-      { id: 'storeS', label: 'Store\nTHE-brain-v1', color: '#5a6570', size: 14, font: { color: '#fff' } },
-      { id: 'storeE', label: 'Store\nTHE-hybrid-engine-v1', color: '#5a6570', size: 14, font: { color: '#fff' } },
-      { id: 'coach', label: 'Coach LLM\nbreaker OFF for math', color: '#8b2942', size: 16, font: { color: '#fff' } },
-      { id: 'gh', label: 'GitHub mains\nstrengthside / Engine-side-', color: '#8b2942', size: 14, font: { color: '#fff' } }
+      n('brain', 'FUSE BOX\nAdaptive Brain kernel', '#c47a2c', 44),
+      n('open', 'open', '#d4a056', 16),
+      n('next', 'decideNext', '#d4a056', 22),
+      n('strFn', 'decideNextStrength\nkg steps', '#d4a056', 16),
+      n('engFn', 'decideNextEngine\nwatts / rpm table', '#d4a056', 16),
+      n('rules', '00-RULE-CONFIG.json', '#d4a056', 14),
+      n('close', 'close', '#d4a056', 16),
+      n('anchor', 'confirmAnchor', '#d4a056', 14),
+      n('zones', 'dailyZones', '#d4a056', 14),
+      n('str', 'ROOM 1 Strength TRACK', '#2f6f4e', 30),
+      n('eng', 'ROOM 2 Engine', '#1e5f8a', 30),
+      n('lsS', 'localStorage\nTHE-brain-v1', '#3d8f66', 14),
+      n('lsE', 'localStorage\nTHE-hybrid-engine-v1', '#3a7eb0', 14),
+      n('phoneS', 'Capgo athlete\n1.0.84', '#8b2942', 16),
+      n('phoneE', 'Capgo engine\n1.0.5', '#8b2942', 16),
+      n('sb', 'Supabase\norysjncrksmdfabpuftd', '#3d5c7a', 28),
+      n('auth', 'Auth (GoTrue)\nuser JWT', '#3d5c7a', 14),
+      n('kv', 'Postgres\nengine.integration_kv', '#3d5c7a', 16),
+      n('edgeWww', 'Edge www\nEngine site', '#3d5c7a', 14),
+      n('edgeStr', 'Edge strength\nTRACK site', '#3d5c7a', 14),
+      n('edgeBrain', 'Edge brain\nlanding', '#3d5c7a', 12),
+      n('edgeWhoop', 'Edge whoop-*\nconnect callback webhook sync', '#6b4c9a', 16),
+      n('edgeCoach', 'Edge brain-coach', '#8b2942', 14),
+      n('off', 'Edge off-proxy\nnutrition', '#3d5c7a', 12),
+      n('snap', 'RPC\nupsert_athlete_domain_snapshot', '#3d5c7a', 12),
+      n('netAth', 'Netlify\nthehybridsystem', '#8b5a2b', 18),
+      n('netOwn', 'Netlify owner\nthehybridengine1', '#8b5a2b', 16),
+      n('whoop', 'WHOOP cloud', '#6b4c9a', 18),
+      n('or', 'OpenRouter', '#8b2942', 14),
+      n('ghB', 'GitHub\nthe-adaptivebrain-', '#5a6570', 12),
+      n('ghS', 'GitHub\nstrengthside', '#5a6570', 12),
+      n('ghE', 'GitHub\nEngine-side-', '#5a6570', 12)
     ]);
+    const e = (from, to, label, extra) => Object.assign({ from, to, label, arrows: 'to' }, extra || {});
+    const forbidden = { dashes: true, color: { color: '#c0392b' } };
     const edges = new vis.DataSet([
-      { from: 'brain', to: 'open', label: 'bus', arrows: 'to' },
-      { from: 'brain', to: 'next', label: 'bus', arrows: 'to' },
-      { from: 'brain', to: 'close', label: 'bus', arrows: 'to' },
-      { from: 'brain', to: 'anchor', arrows: 'to' },
-      { from: 'brain', to: 'zones', arrows: 'to' },
-      { from: 'str', to: 'open', label: 'last kg', arrows: 'to' },
-      { from: 'open', to: 'str', label: 'target kg', arrows: 'to', dashes: true },
-      { from: 'str', to: 'next', label: 'actual + EMH', arrows: 'to' },
-      { from: 'next', to: 'str', label: 'next row kg', arrows: 'to' },
-      { from: 'str', to: 'close', label: 'session end', arrows: 'to' },
-      { from: 'eng', to: 'open', label: 'typed or last Close', arrows: 'to' },
-      { from: 'open', to: 'eng', label: 'target W/split/rpm', arrows: 'to', dashes: true },
-      { from: 'eng', to: 'next', label: 'actual + EMH', arrows: 'to' },
-      { from: 'next', to: 'eng', label: 'next interval', arrows: 'to' },
-      { from: 'eng', to: 'close', arrows: 'to' },
-      { from: 'close', to: 'anchor', label: 'two obs', arrows: 'to' },
-      { from: 'whoop', to: 'zones', label: 'recovery score', arrows: 'to' },
-      { from: 'zones', to: 'home', label: 'BPM ceiling', arrows: 'to' },
-      { from: 'whoop', to: 'next', label: 'FORBIDDEN', arrows: 'to', dashes: true, color: { color: '#c0392b' } },
-      { from: 'str', to: 'phoneS', label: 'OTA', arrows: 'to' },
-      { from: 'eng', to: 'phoneE', label: 'OTA', arrows: 'to' },
-      { from: 'str', to: 'storeS', arrows: 'to' },
-      { from: 'eng', to: 'storeE', arrows: 'to' },
-      { from: 'gh', to: 'str', dashes: true },
-      { from: 'gh', to: 'eng', dashes: true },
-      { from: 'coach', to: 'next', label: 'no wire', dashes: true, color: { color: '#888' } }
+      e('brain', 'open', 'bus'),
+      e('brain', 'next', 'bus'),
+      e('brain', 'close', 'bus'),
+      e('brain', 'zones', 'bus'),
+      e('next', 'strFn', "kind==='strength'"),
+      e('next', 'engFn', "kind==='engine'"),
+      e('engFn', 'rules', 'multipliers'),
+      e('close', 'anchor', 'engine only'),
+      e('str', 'open', 'lastKg'),
+      e('open', 'str', 'targetKg', { dashes: true }),
+      e('str', 'next', 'actual+EMH'),
+      e('strFn', 'str', 'nextKg'),
+      e('str', 'close', 'lastKg'),
+      e('eng', 'open', 'typed or anchor'),
+      e('open', 'eng', 'target output', { dashes: true }),
+      e('eng', 'next', 'actual+EMH'),
+      e('engFn', 'eng', 'next output'),
+      e('eng', 'close'),
+      e('str', 'lsS', 'save'),
+      e('eng', 'lsE', 'save'),
+      e('str', 'phoneS', 'OTA'),
+      e('eng', 'phoneE', 'OTA'),
+      e('ghS', 'str', 'main HTML'),
+      e('ghE', 'eng', 'main HTML'),
+      e('ghB', 'brain', 'kernel PR'),
+      e('sb', 'auth', 'sessions'),
+      e('sb', 'kv', 'tokens'),
+      e('sb', 'edgeWww', 'host'),
+      e('sb', 'edgeStr', 'host'),
+      e('sb', 'edgeBrain', 'host'),
+      e('sb', 'edgeWhoop', 'host'),
+      e('sb', 'edgeCoach', 'host'),
+      e('sb', 'off', 'host'),
+      e('edgeWww', 'eng', 'browser'),
+      e('edgeStr', 'str', 'TRACK web'),
+      e('eng', 'auth', 'sign in'),
+      e('str', 'auth', 'sign in'),
+      e('eng', 'edgeWhoop', 'Bearer JWT'),
+      e('edgeWhoop', 'kv', 'token:whoop:u:'),
+      e('edgeWhoop', 'whoop', 'OAuth + webhook'),
+      e('whoop', 'eng', 'recovery on home', { dashes: true }),
+      e('whoop', 'zones', 'score'),
+      e('zones', 'eng', 'BPM ceiling'),
+      e('whoop', 'next', 'FORBIDDEN', forbidden),
+      e('str', 'netAth', 'WHOOP proxy'),
+      e('netAth', 'netOwn', '_hybrid-proxy'),
+      e('netOwn', 'whoop', 'legacy WHOOP'),
+      e('str', 'edgeCoach', 'or via Netlify coach', { dashes: true }),
+      e('eng', 'edgeCoach', 'POST packet'),
+      e('edgeCoach', 'or', 'chat only'),
+      e('or', 'next', 'FORBIDDEN', forbidden),
+      e('str', 'snap', 'plan-sync optional')
     ]);
     new vis.Network(document.getElementById('orb'), { nodes, edges }, {
-      physics: { barnesHut: { gravitationalConstant: -8000, springLength: 140 } },
-      edges: { font: { size: 11, color: '#d7cbb8', strokeWidth: 0 }, color: { color: '#c4b49a' } },
-      nodes: { shape: 'dot', borderWidth: 0, font: { color: '#f4efe4' } }
+      physics: { barnesHut: { gravitationalConstant: -12000, springLength: 160, damping: 0.4 } },
+      edges: { font: { size: 10, color: '#d7cbb8', strokeWidth: 0 }, color: { color: '#c4b49a' } },
+      nodes: { shape: 'dot', borderWidth: 0 }
     });
   </script>
 </body>

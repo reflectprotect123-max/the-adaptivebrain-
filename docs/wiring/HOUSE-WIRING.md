@@ -1,6 +1,6 @@
-# Hybrid house wiring (product graph)
+# Hybrid house wiring (product + backend)
 
-The Adaptive Brain is the **fuse box**. Athletes never stand in this room. Strength and Engine are the **rooms**. Wires are messages, not shared UI.
+The Adaptive Brain is the **fuse box**. Athletes never stand in this room. Strength and Engine are the **rooms**. The **basement** is backend. Wires are messages, not shared UI.
 
 ## Fuse box (main breaker)
 
@@ -10,45 +10,77 @@ Does not own: screens, timers, WHOOP login, Capgo upload, coach chat math.
 
 Rule current: `RULE_VERSION` v1.0.0. LLM never feeds `decideNext`.
 
+## How `decideNext` splits (no shared maths)
+
+`session.js` `decideNext(facts)` looks at `facts.kind` only:
+
+- `kind === 'strength'` → `decideNextStrength` (kg steps, EMH vs intended, miss/shortfall −step, hold if missing kg/reps/effort)
+- `kind === 'engine'` → `decideNextEngine` (reads `00-RULE-CONFIG.json`; Echo RPM integer deltas; Concept2 watts `Math.round(actual * factor)`; incomplete cannot increase)
+- anything else → `{ hold: true }`
+
+The apps copy the same kernel as `brain-kernel.js`. They do not call each other.
+
 ## Room: Strength TRACK
 
 Repo: `strengthside` `apps/athlete`. Snapshot: `apps/strength`.
 Athlete logs: kg, reps, Easy / Medium / Hard.
 Logger talks to Brain: `open` (last kg) → `decideNext` (next row kg) → `close` (lastKg).
-Miss / shortfall steps down. Missing kg, reps, or effort holds.
-Phone OTA: Capgo app `com.hybrid.athlete` (dogfood default, live also pinned).
+Phone OTA: Capgo `com.hybrid.athlete` **1.0.84** (dogfood default; live pinned too).
 
 ## Room: Engine
 
 Repo: `Engine-side-`. Snapshot: `apps/engine`.
 Athlete logs: actual output, Easy / Medium / Hard after rest.
-Logger talks to Brain: `open` (typed number or last Close anchor) → `decideNext` (next watts / split / rpm) → `close` (`confirmAnchor`).
-WHOOP recovery must not rewrite a confirmed output anchor.
-Phone OTA: Capgo app `com.hybrid.engine` (live default). Assemble www must copy `brain-kernel.js`.
+Logger talks to Brain: `open` (typed number or last Close) → `decideNext` → `close` (`confirmAnchor`).
+Phone OTA: Capgo `com.hybrid.engine` **1.0.5**. Assemble www must copy `brain-kernel.js`.
+
+## Basement: one Supabase project
+
+Project: `orysjncrksmdfabpuftd.supabase.co` (Auth + Postgres + Edge).
+
+| Edge function | Job |
+| --- | --- |
+| `www` | Engine public site |
+| `strength` | TRACK HTML on the same project |
+| `brain` | Brain landing page |
+| `whoop-connect` / `whoop-callback` / `whoop-webhook` / `whoop-sync` / `whoop-health` | WHOOP OAuth + inbound events |
+| `integrations-status` / `integrations-disconnect` | connection UI |
+| `brain-coach` | OpenRouter coach (sign-in required; no `decideNext`) |
+| `off-proxy` | nutrition OFF proxy |
+
+Postgres schema `engine.integration_kv` holds WHOOP tokens (`token:whoop:u:<uuid>` Engine, `token:whoop:s:<uuid>` TRACK). Service role stays on Edge. Client uses anon + user JWT.
+
+Engine `ENGINE_CONFIG.functionsProvider` is `'supabase'`. Public origin: `/functions/v1/www/`.
+
+## Strength web still uses Netlify as a porch
+
+Athlete HTML / Netlify: `thehybridsystem.netlify.app`.
+WHOOP and `brain-coach` Netlify functions are **proxies** (`_hybrid-proxy.mjs`) onto `thehybridengine1.netlify.app` (Brain owner site). Tokens do not live on the athlete site.
+Strength `whoop.js` still talks Netlify for those functions, plus the **same** Supabase Auth project for the user session.
+Concept2 Netlify functions exist in the tree but Logbook OAuth is **retired / parked**.
 
 ## Morning circuit: WHOOP
 
-WHOOP recovery score enters Engine **home** only.
-Brain `dailyZones` paints Blue / Green / Red BPM ceilings.
-WHOOP is not a second progression engine. It does not call `decideNext`.
+WHOOP developer dashboard must list Engine callback + webhook Edge URLs.
+Recovery score is mapped into local check-in, then `dailyZones` on Engine **home**.
+WHOOP does not call `decideNext` and must not rewrite a confirmed output anchor.
 
-## Storage circuits
+## Local stores (in the rooms)
 
-Strength store: athlete local / `THE-brain-v1` as Strength app uses.
-Engine store: `THE-hybrid-engine-v1`.
-Anchors live with Engine Close receipts, not in WHOOP.
+- Strength: `localStorage` key `THE-brain-v1`
+- Engine: `localStorage` key `THE-hybrid-engine-v1`
+- Strength plan-sync (optional): Supabase `upsert_athlete_domain_snapshot` domain `strength_side` — templates/calendar copy, not WHOOP, not `decideNext`
 
-## Delivery circuits (not math)
+## Delivery (not math)
 
-Capgo OTA pushes HTML bundles to phones.
-GitHub `main` on Strength/Engine is the source tree.
-Brain GitHub `the-adaptivebrain-` is the kernel workshop; draft PR until merge.
+- GitHub: `the-adaptivebrain-` (kernel workshop), `strengthside` `main`, `Engine-side-` `main`
+- Capgo Cloud: two apps, dogfood + live channels
+- Native shells: Capacitor `@capgo/capacitor-updater`
 
-## Isolated circuit: coach chat
+## Isolated circuit: coach
 
-Coach LLM may explain. It must not set kg or watts. No wire from OpenRouter into `decideNext`.
+OpenRouter from Engine Edge `brain-coach` (or Strength via Netlify proxy → owner site). Breaker off for kg and watts.
 
-## Shared law on every live wire
+## Shared law
 
 Actual beats suggestion. Never silently save a suggestion as actual unless number and effort both match intended.
-Dropped: session 1-5 feel. Parked: 2k opening pace, extra machines.
