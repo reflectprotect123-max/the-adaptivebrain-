@@ -42,6 +42,22 @@ test('missing actual kg holds suggestion', () => {
   assert.equal(out.ruleVersion, RULE_VERSION);
 });
 
+test('missing completedReps holds actual', () => {
+  const out = decideNextStrength({
+    intendedEffort: 'medium',
+    reportedEffort: 'easy',
+    suggestedKg: 100,
+    actualKg: 100,
+    miss: false,
+    completedReps: null,
+    targetReps: 5,
+    equipmentStepKg: 2.5,
+  });
+  assert.equal(out.nextKg, 100);
+  assert.equal(out.hold, true);
+  assert.equal(out.ruleVersion, RULE_VERSION);
+});
+
 test('rep shortfall reduces one step without miss flag', () => {
   const out = decideNextStrength({
     intendedEffort: 'medium',

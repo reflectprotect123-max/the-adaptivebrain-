@@ -12,6 +12,7 @@ export function decideNextStrength(input) {
 
   const missingEffort = !EFFORTS.includes(input.reportedEffort);
   const missingLoad = actual == null || Number.isNaN(actual);
+  const missingReps = input.completedReps == null || Number.isNaN(Number(input.completedReps));
   const missedReps = !!input.miss || (
     input.completedReps != null &&
     input.targetReps != null &&
@@ -21,7 +22,7 @@ export function decideNextStrength(input) {
   if (missingLoad && !missedReps) {
     return { nextKg: suggested, hold: true, ruleVersion: RULE_VERSION };
   }
-  if (missingEffort && !missedReps) {
+  if ((missingEffort || missingReps) && !missedReps) {
     return { nextKg: reference, hold: true, ruleVersion: RULE_VERSION };
   }
   if (missedReps) {
