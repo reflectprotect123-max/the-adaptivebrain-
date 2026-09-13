@@ -4,6 +4,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
 import { decideNextStrength } from '../src/strength.js';
+import { RULE_VERSION } from '../src/types.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '../../..');
 const vectors = JSON.parse(readFileSync(join(root, 'docs/contracts/00-TEST-VECTORS.json'), 'utf8'));
@@ -21,6 +22,7 @@ test('strength vectors', () => {
       equipmentStepKg: row.step,
     });
     assert.equal(out.nextKg, row.expectedKg);
+    assert.equal(out.ruleVersion, RULE_VERSION);
   }
 });
 
@@ -37,4 +39,21 @@ test('missing actual kg holds suggestion', () => {
   });
   assert.equal(out.nextKg, 80);
   assert.equal(out.hold, true);
+  assert.equal(out.ruleVersion, RULE_VERSION);
+});
+
+test('rep shortfall reduces one step without miss flag', () => {
+  const out = decideNextStrength({
+    intendedEffort: 'medium',
+    reportedEffort: 'easy',
+    suggestedKg: 100,
+    actualKg: 100,
+    miss: false,
+    completedReps: 3,
+    targetReps: 5,
+    equipmentStepKg: 2.5,
+  });
+  assert.equal(out.nextKg, 97.5);
+  assert.equal(out.hold, false);
+  assert.equal(out.ruleVersion, RULE_VERSION);
 });
