@@ -690,19 +690,19 @@ No rows omitted.
 | `M` | **adaptivebrain** | `shared-contract` | 1181 | `FILES.txt` | Canonical 00-* lives in Adaptive Brain. Copies inside S/C zips are for ZIP self-containment only. |
 | `M` | **adaptivebrain** | `shared-contract` | 677 | `PART-README.md` | Canonical 00-* lives in Adaptive Brain. Copies inside S/C zips are for ZIP self-containment only. |
 | `M` | **adaptivebrain** | `shared-contract` | 6299 | `README.md` | Canonical 00-* lives in Adaptive Brain. Copies inside S/C zips are for ZIP self-containment only. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 399559 | `Screenshot 2026-09-12 172048.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 410564 | `Screenshot 2026-09-12 172104.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 449246 | `Screenshot 2026-09-12 172117.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 450202 | `Screenshot 2026-09-12 172137.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 465076 | `Screenshot 2026-09-12 172147.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 547655 | `Screenshot 2026-09-12 172154.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 540284 | `Screenshot 2026-09-12 172200.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 562846 | `Screenshot 2026-09-12 172207.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 553080 | `Screenshot 2026-09-12 172216.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 455845 | `Screenshot 2026-09-12 172229.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 455093 | `Screenshot 2026-09-12 172239.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 455093 | `Screenshot 2026-09-12 172249.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 582945 | `Screenshot 2026-09-12 172257.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
-| `screen-shots` | **unassigned** | `ui-screenshots` | 564585 | `Screenshot 2026-09-12 172305.png` | Conditioning ZIP screenshots; product UI evidence, not yet mapped to a specific Engine screen file. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 399559 | `Screenshot 2026-09-12 172048.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 410564 | `Screenshot 2026-09-12 172104.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 449246 | `Screenshot 2026-09-12 172117.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 450202 | `Screenshot 2026-09-12 172137.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 465076 | `Screenshot 2026-09-12 172147.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 547655 | `Screenshot 2026-09-12 172154.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 540284 | `Screenshot 2026-09-12 172200.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 562846 | `Screenshot 2026-09-12 172207.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 553080 | `Screenshot 2026-09-12 172216.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 455845 | `Screenshot 2026-09-12 172229.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 455093 | `Screenshot 2026-09-12 172239.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 455093 | `Screenshot 2026-09-12 172249.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 582945 | `Screenshot 2026-09-12 172257.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
+| `screen-shots` | **engine-side** | `morpheus-method-catalog` | 564585 | `Screenshot 2026-09-12 172305.png` | Morpheus Hub lesson capture (Engine method catalogue). See docs/handoff-engine/morpheus-hub-lessons/README.md. |
 
 Total files classified: 699

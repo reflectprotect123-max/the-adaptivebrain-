@@ -57,13 +57,13 @@ Still incomplete there (handoff): executable tables + tests for every set archit
 ### `Engine-side-`
 
 - `C/01-current-system/`, `C/02-conditioning/`, `C/03-recovery-readiness/`, `C/04-research-audits/`, `C/05-source-programs/`, `C/07-wearables-integrations/`.
+- Conditioning ZIP root `screen shots/` — 14 Morpheus Hub lesson captures (Steady State Z1/Z2, Tempo, Blue Zone Repeats, Green Power/Endurance/Repeats/Threshold, Red Power/Endurance/Threshold/Max). Identified and stored at `docs/handoff-engine/morpheus-hub-lessons/`.
 - Live code already in that GitHub (snapshot `62516cc…`).
 
 Known Engine gap vs this contract: still numeric RPE + cooked/stopped; fixed % watts/RPM instead of target-relative tables; split seconds instead of watts; anchors / 90% completion / 5% fade / continuous progression / WHOOP HRR V1 not wired end to end.
 
 ### Unassigned (park here until mapped)
 
-- `screen shots/` from the Conditioning ZIP (14 PNGs) — UI evidence, no Engine path mapping yet.
 - Nested `Hybrid-Conditioning.zip` inside the Conditioning ZIP — duplicate archive, do not treat as a fourth source of truth.
 - Other machines beyond Echo and Concept2 — OPEN in the decision worktree.
 - Personal lifting split and personal RHR episode — excluded on purpose; do not restore.

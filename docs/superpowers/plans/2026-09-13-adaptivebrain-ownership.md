@@ -64,16 +64,17 @@ First Strength build after copy: one canonical decision table + tests for straig
 
 ## Task 5: Route Engine pack (separate PR on Engine-side-)
 
-**Copy into Engine-side-:** `C/01-current-system/`, `C/02-conditioning/`, `C/03-recovery-readiness/`, `C/04-research-audits/`, `C/05-source-programs/`, `C/07-wearables-integrations/`.
+**Copy into Engine-side-:** `C/01-current-system/`, `C/02-conditioning/`, `C/03-recovery-readiness/`, `C/04-research-audits/`, `C/05-source-programs/`, `C/07-wearables-integrations/`, and `docs/handoff-engine/morpheus-hub-lessons/`.
 
 First Engine build after copy: follow `00-HANDOFF.md` build order (EMH enums → actual-output-first Echo/Concept2 → anchors → continuous Easy → WHOOP HRR shadow).
 
-## Task 6: Park unassigned UI screenshots
+## Task 6: Morpheus Hub screenshots belong on Engine
 
-**Files:** 14 PNGs from Conditioning ZIP `screen shots/`.
+**Files:** `docs/handoff-engine/morpheus-hub-lessons/` (14 PNGs + README)
 
-- [ ] Keep listed in `docs/audits/inventory-screen-shots.md`.
-- [ ] Map each screenshot to an Engine screen only when a human confirms the UI.
+- [x] Read every screenshot. They are Morpheus Hub method lessons (zone-based cardio), captured in ChatGPT, not Adaptive Brain UI.
+- [x] Caption index in that README (Steady State Z1/Z2 through Red Max; `172239`/`172249` are duplicates).
+- [ ] Copy with the rest of the Conditioning pack onto `Engine-side-` in the routing PR.
 
 ## Task 7: Brain product surface (later, after Tasks 4–5)
 
