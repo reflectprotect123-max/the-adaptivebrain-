@@ -96,20 +96,23 @@ cd apps/engine && node --test engine.test.js session.test.js library.test.js
 
 ---
 
-## Cloud / GitHub (why this VM cannot push apps)
+## Cloud / GitHub
 
 - This Cloud Agent environment is **personal** and lists only `the-adaptivebrain-`: [2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7](https://cursor.com/dashboard/cloud-agents/environments/e/2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7).
 - Git here is **`cursor[bot]`**. `git push` to `strengthside` / `Engine-side-` returns `Permission … denied to cursor[bot]` (403). Public **read** of those remotes works.
 - Dashboard `environmentJson` cannot hold `repositoryDependencies`. This branch has `.cursor/environment.json` listing both app repos so later boots can request write. **This running token does not refresh.**
-- Same-chat unblock: secret `GH_SIBLING_PUSH_TOKEN` (Contents write on those two repos) plus Cursor GitHub App repo access on the GitHub website. Then run `scripts/publish-sibling-apps.sh`.
+- Same-chat unblock used a **classic** `ghp_` PAT (fine-grained token was read-only). `scripts/publish-sibling-apps.sh` pushed:
+  - Strength https://github.com/reflectprotect123-max/strengthside/pull/218 (`cursor/emh-logger-4d23`)
+  - Engine https://github.com/reflectprotect123-max/Engine-side-/pull/8 (`cursor/engine-emh-4d23`)
+- Revoke that PAT after use; it was pasted in chat. `cursor[bot]` on this VM still cannot push those remotes.
 - Create-environment picker “no matching repos” is a known Cursor bug; do not uninstall/reinstall the GitHub App as the first fix.
 
 ---
 
 ## Next work (in order)
 
-1. After `GH_SIBLING_PUSH_TOKEN` (or a bot token that includes the app remotes): `scripts/publish-sibling-apps.sh` → PRs on `cursor/emh-logger-4d23` and `cursor/engine-emh-4d23`.
-2. **Merge this PR** only when the human wants kernel + snapshots on `main`.
+1. Human reviews draft app PRs: Strength #218, Engine #8. Merge those only when the human wants V1 loggers on app `main`.
+2. **Merge this Brain PR** only when the human wants kernel + snapshots on Brain `main`.
 3. Do **not** implement parked items above.
 4. If wiring more: keep IIFE in sync with `packages/brain/src/*` (`browser-iife.js` + copy to both `brain-kernel.js`).
 

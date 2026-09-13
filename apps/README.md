@@ -9,4 +9,9 @@ GitHub `cursor[bot]` **cannot push** to `strengthside` or `Engine-side-` (403). 
 
 Kernel browser bundle: `packages/brain/browser-iife.js` (copied to each app as `brain-kernel.js`).
 
-Publish: `GH_SIBLING_PUSH_TOKEN=… ./scripts/publish-sibling-apps.sh` (writes `cursor/emh-logger-4d23` / `cursor/engine-emh-4d23`).
+Upstream drafts (do not merge unless asked):
+
+- Strength: https://github.com/reflectprotect123-max/strengthside/pull/218 (`cursor/emh-logger-4d23`)
+- Engine: https://github.com/reflectprotect123-max/Engine-side-/pull/8 (`cursor/engine-emh-4d23`)
+
+Re-publish: `GH_SIBLING_PUSH_TOKEN=… ./scripts/publish-sibling-apps.sh`
