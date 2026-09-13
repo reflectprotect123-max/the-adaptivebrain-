@@ -121,7 +121,7 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 
 1. New agent: Brain **`main`** is current. Do **not** re-litigate EMH vs RIR, 1–5 feel, or shadow mode.
 2. If changing kernel math: edit `packages/brain/src/*`, rebuild `browser-iife.js`, copy to both `brain-kernel.js` files, then overlay onto sibling `main`s with a write token.
-3. Optional: human deploys Strength/Engine web hosts (Supabase Edge `www`/`strength`) if they still want browser URLs in sync. Capgo OTA is Strength **1.0.86** and Engine **1.0.7**. WHOOP on phones uses Edge, not Netlify.
+3. Optional: human deploys Strength/Engine web hosts (Supabase Edge `www`/`strength`) if they still want browser URLs in sync. Capgo OTA is Strength **1.0.86** and Engine **1.0.7**. WHOOP on phones uses Edge, not Netlify. Live `whoop-callback` 503 `BOOT_ERROR` was a missing `whoopCallbackUrl` export in Engine `_shared/auth.ts` (dropped when Concept2 was retired). Restore + redeploy Edge `whoop-callback` and `whoop-connect` — client HTML cannot fix that.
 4. Do **not** implement parked items.
 
 ---
