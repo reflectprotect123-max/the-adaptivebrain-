@@ -77,7 +77,7 @@ Keep in sync with sibling `main`s. Overlay: `apps/strength` → `strengthside` `
 | `apps/strength/` | Effort **column** → **small popover** Easy/Medium/Hard → green tick. Tick needs reps, kg, and effort (Miss can skip popover). `logSet` → Brain `decideNext` fills next empty row kg. Library **RPE** track removed. No 1–5 feel. |
 | `apps/engine/` | Work → **rest** → EMH (no RPE slider, Stopped, cooked). Hide “Up next” until effort. `open` / `close` are **kernel-only** (no HybridAdaptive `openCond` / `softenOpen` / `closeCond`). WHOOP must **not** rewrite the output anchor. Home zone card via `dailyZones`. |
 
-### Tests
+### Tests to run
 
 ```bash
 cd packages/brain && npm test
@@ -105,8 +105,9 @@ Last run on this branch: kernel **25/25**, Engine snapshot **24/24**.
 - Git identity is **`cursor[bot]`**. `gh repo list` is one repo. Push to Strength/Engine as the bot is **403**. Public **read** works.
 - The Cursor GitHub App being installed on “all repos” does **not** enlarge this VM’s token. Fine-grained `github_pat_` with Contents **Read-only** also 403s (`Resource not accessible by personal access token`). A **classic `ghp_` with `repo`** was able to write.
 - `.cursor/environment.json` lists `repositoryDependencies` for the two app repos (dashboard JSON cannot hold that field). **A new chat still gets a one-repo bot token** until Cursor remints after that config is actually used at boot.
-- Classic PAT was saved **only on the previous VM** at `~/.config/hybrid/gh-sibling-push-token` (not in git). **A new chat will not have that file.** Do not commit tokens. If you need to push apps, ask the human for a **new** classic PAT (previous ones were pasted in chat — they should revoke those).
-- Re-publish overlay: `./scripts/publish-sibling-apps.sh` (needs `GH_SIBLING_PUSH_TOKEN` or that local file). Do not force-push `cursor/emh-logger-4d23` / `cursor/engine-emh-4d23`; those predate merge. Use a new branch name.
+- Do **not** commit tokens. Do **not** keep a PAT on disk for the next chat. If apps need another overlay, ask the human for a **new** classic PAT with `repo` (any PAT pasted in chat should be **revoked** in GitHub → Settings → Developer settings → Personal access tokens).
+- 2026-09-13: a classic PAT confirmed `push: true` on both remotes. **No overlay was required** — Strength #218 and Engine #8/#9 are already on `main`.
+- Re-publish overlay: `./scripts/publish-sibling-apps.sh` (needs `GH_SIBLING_PUSH_TOKEN`). Do not force-push `cursor/emh-logger-4d23` / `cursor/engine-emh-4d23`; those predate merge. Use a new branch name.
 - Create-environment picker “no matching repos” is a known Cursor bug; do not uninstall/reinstall the GitHub App as the first fix.
 
 ---
