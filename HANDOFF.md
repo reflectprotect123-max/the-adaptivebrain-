@@ -6,21 +6,29 @@ Do not start from `docs/contracts/00-HANDOFF.md` — that is the older ZIP contr
 **Then read:** V1 spec → plan → code (paths below).
 
 **Date:** 2026-09-13  
-**Repo:** `reflectprotect123-max/the-adaptivebrain-`  
-**Working branch:** `cursor/vendor-installed-github-repos-4d23`  
-**PR:** https://github.com/reflectprotect123-max/the-adaptivebrain-/pull/1 (draft, base `main`)  
-**Do not merge this Brain PR to `main` unless the human asks.** Strength and Engine V1 logger PRs are **merged**.
+**Start chat with:** “read the handoff” on repo `reflectprotect123-max/the-adaptivebrain-`.  
+Checkout **`cursor/vendor-installed-github-repos-4d23`**, not `main`. Brain `main` is still the uploaded ZIPs (plus a tiny probe/revert). Kernel + snapshots live on this branch / [PR #1](https://github.com/reflectprotect123-max/the-adaptivebrain-/pull/1) (**draft — do not merge unless the human asks**).
+
+---
+
+## What is good to go
+
+| Surface | Status |
+| --- | --- |
+| Strength athlete logger on **`strengthside` `main`** | **Merged** https://github.com/reflectprotect123-max/strengthside/pull/218 (`24376dc`) |
+| Engine athlete logger on **`Engine-side-` `main`** | **Merged** https://github.com/reflectprotect123-max/Engine-side-/pull/8 |
+| Engine open/close kernel-only (no Adaptive soften) | **Merged** https://github.com/reflectprotect123-max/Engine-side-/pull/9 (`c81c484`) |
+| Brain kernel + app snapshots | On this Brain **branch / draft PR #1**, not on Brain `main` |
+
+Athlete GitHub `main`s are the live product trees. A new agent does **not** need to re-implement EMH loggers.
+
+This Cloud Agent did **not** deploy Capgo / Supabase / Netlify. Merged GitHub `main` ≠ phones updated until the human’s usual host pipeline runs.
 
 ---
 
 ## What this product is
 
-Adaptive Brain is a **decision hub with no athlete UI**. Athletes only use:
-
-| App | Upstream GitHub | Logs |
-| --- | --- | --- |
-| Strength / TRACK | `reflectprotect123-max/strengthside` | kg, reps, Easy / Medium / Hard |
-| Engine | `reflectprotect123-max/Engine-side-` | actual output, Easy / Medium / Hard |
+Adaptive Brain is a **decision hub with no athlete UI**. Athletes only use Strength and Engine.
 
 **Approach A (locked):** Brain = deterministic `open` → `decideNext` → `close` + receipts. Apps = UI. **LLM never** for target math (coach chat only).
 
@@ -41,15 +49,13 @@ Adaptive Brain is a **decision hub with no athlete UI**. Athletes only use:
 3. `docs/contracts/00-FORMULAS-AND-RULES.md` — tables; stale sentences (“shadow mode”, “target RIR” in §10) lose to the spec/JSON.
 4. `docs/contracts/00-HANDOFF.md` — older ZIP/product contract. **This file + the V1 spec supersede it** where they disagree (Brain **does** own `decideNext`).
 
-Implementation plan: `docs/superpowers/plans/2026-09-13-adaptivebrain-v1.md`.
+Implementation plan: `docs/superpowers/plans/2026-09-13-adaptivebrain-v1.md` (tasks 1–9 are implemented).
 
 ---
 
-## What is done in this PR
+## Kernel (`packages/brain`)
 
-### Kernel (`packages/brain`)
-
-Deterministic ESM. `npm test` in that folder: **25 passing** (as of `accf9d6` / `9493e01`).
+Deterministic ESM. Last run: **25 passing**.
 
 | Surface | File | Behaviour |
 | --- | --- | --- |
@@ -62,27 +68,24 @@ Deterministic ESM. `npm test` in that folder: **25 passing** (as of `accf9d6` / 
 
 `RULE_VERSION` is `v1.0.0` on receipts. No `llm` field.
 
-### Athlete snapshots (this repo, because sibling push is 403)
+### Athlete snapshots in this repo (`apps/*`)
+
+Keep in sync with sibling `main`s. Overlay: `apps/strength` → `strengthside` `apps/athlete`; `apps/engine` → Engine repo root (do not delete Engine `mobile/`, `supabase/`, etc.).
 
 | Path | What |
 | --- | --- |
-| `apps/strength/` | Effort **column** → **small popover** Easy/Medium/Hard → green tick. Tick needs reps, kg, and effort (Miss can skip popover). `logSet` calls Brain `decideNext` and fills next empty row kg. Library **RPE** track removed. No 1–5 feel. |
-| `apps/engine/` | Work → **rest** → EMH (no RPE slider, Stopped, cooked). Hide “Up next” until effort. `open` uses Brain (typed number or last Close). WHOOP must **not** rewrite the output anchor. `close` → `confirmAnchor`. Home zone card via `dailyZones`. |
+| `apps/strength/` | Effort **column** → **small popover** Easy/Medium/Hard → green tick. Tick needs reps, kg, and effort (Miss can skip popover). `logSet` → Brain `decideNext` fills next empty row kg. Library **RPE** track removed. No 1–5 feel. |
+| `apps/engine/` | Work → **rest** → EMH (no RPE slider, Stopped, cooked). Hide “Up next” until effort. `open` / `close` are **kernel-only** (no HybridAdaptive `openCond` / `softenOpen` / `closeCond`). WHOOP must **not** rewrite the output anchor. Home zone card via `dailyZones`. |
 
-Local sibling clones (not on GitHub):
-
-- Strength `cursor/emh-logger-4d23` @ `2060e31` (`/tmp/strengthside` on the old VM)
-- Engine `cursor/engine-emh-4d23` @ `d0a2c9d` (`/tmp/Engine-side-`)
-
-**`cursor[bot]` cannot push those remotes (403).** Shipping UI in this PR is `apps/*`. To publish upstream, a human (or a **new** Cloud Agent whose GitHub App includes those repos) copies `apps/strength` and `apps/engine` onto those remotes.
-
-### Tests to run
+### Tests
 
 ```bash
 cd packages/brain && npm test
 cd apps/strength && node --test session.test.js library.test.js
 cd apps/engine && node --test engine.test.js session.test.js library.test.js
 ```
+
+Last run on this branch: kernel **25/25**, Engine snapshot **24/24**.
 
 ---
 
@@ -96,23 +99,25 @@ cd apps/engine && node --test engine.test.js session.test.js library.test.js
 
 ---
 
-## Cloud / GitHub
+## Cloud / GitHub (read this before trying to push apps)
 
-- This Cloud Agent environment is **personal** and lists only `the-adaptivebrain-`: [2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7](https://cursor.com/dashboard/cloud-agents/environments/e/2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7).
-- Git here is **`cursor[bot]`**. Sibling writes use a classic PAT stored **only on this VM** at `~/.config/hybrid/gh-sibling-push-token` (not in git). `scripts/publish-sibling-apps.sh` reads that file.
-- Strength **merged** to `main`: https://github.com/reflectprotect123-max/strengthside/pull/218
-- Engine **merged** to `main`: https://github.com/reflectprotect123-max/Engine-side-/pull/8
-- Engine open/close is kernel-only (no HybridAdaptive `openCond` / `softenOpen` fallback).
+- Environment is **personal** and lists only `the-adaptivebrain-`: [2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7](https://cursor.com/dashboard/cloud-agents/environments/e/2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7).
+- Git identity is **`cursor[bot]`**. `gh repo list` is one repo. Push to Strength/Engine as the bot is **403**. Public **read** works.
+- The Cursor GitHub App being installed on “all repos” does **not** enlarge this VM’s token. Fine-grained `github_pat_` with Contents **Read-only** also 403s (`Resource not accessible by personal access token`). A **classic `ghp_` with `repo`** was able to write.
+- `.cursor/environment.json` lists `repositoryDependencies` for the two app repos (dashboard JSON cannot hold that field). **A new chat still gets a one-repo bot token** until Cursor remints after that config is actually used at boot.
+- Classic PAT was saved **only on the previous VM** at `~/.config/hybrid/gh-sibling-push-token` (not in git). **A new chat will not have that file.** Do not commit tokens. If you need to push apps, ask the human for a **new** classic PAT (previous ones were pasted in chat — they should revoke those).
+- Re-publish overlay: `./scripts/publish-sibling-apps.sh` (needs `GH_SIBLING_PUSH_TOKEN` or that local file). Do not force-push `cursor/emh-logger-4d23` / `cursor/engine-emh-4d23`; those predate merge. Use a new branch name.
 - Create-environment picker “no matching repos” is a known Cursor bug; do not uninstall/reinstall the GitHub App as the first fix.
 
 ---
 
 ## Next work (in order)
 
-1. Keep Engine/Strength loggers on kernel `open` / `decideNext` / `close`. Do not put Adaptive `softenOpen` back.
-2. **Merge this Brain PR** only when the human wants kernel + snapshots on Brain `main`.
-3. Do **not** implement parked items above.
-4. If wiring more: keep IIFE in sync with `packages/brain/src/*` (`browser-iife.js` + copy to both `brain-kernel.js`).
+1. New agent: stay on `cursor/vendor-installed-github-repos-4d23`. Do **not** re-litigate EMH vs RIR, 1–5 feel, or shadow mode.
+2. **Merge Brain PR #1** only if the human wants kernel + snapshots + vendored skills on Brain `main`.
+3. If changing kernel math: edit `packages/brain/src/*`, rebuild `browser-iife.js`, copy to both `brain-kernel.js` files, then overlay onto sibling `main`s with a write token.
+4. Optional: human deploys Strength/Engine `main` through their usual host (Capgo / Supabase / Netlify). Agents have not shipped binaries from here.
+5. Do **not** implement parked items.
 
 ---
 
@@ -123,6 +128,7 @@ cd apps/engine && node --test engine.test.js session.test.js library.test.js
 - `moduleCeiling` is highest allowed **module**, not WHOOP green/yellow/red category names.
 - Engine `echo` **machine** in the app is still **watts**; RPM table is for `modality === 'rpm'` (fan).
 - WHOOP recovery must not soften / rewrite last Close output.
+- Do not tell the human to “start a new Cloud Agent” to fix sibling 403; that only helps if the **environment repo list / PAT** actually includes write. Classic PAT in-chat is what worked.
 
 ---
 
@@ -132,7 +138,9 @@ cd apps/engine && node --test engine.test.js session.test.js library.test.js
 | --- | --- |
 | `HANDOFF.md` | **This file** — current agent start |
 | `docs/superpowers/specs/2026-09-13-adaptivebrain-v1-design.md` | Locked V1 product |
-| `docs/superpowers/plans/2026-09-13-adaptivebrain-v1.md` | Task list (1–9) |
+| `docs/superpowers/plans/2026-09-13-adaptivebrain-v1.md` | Task list (1–9, done) |
 | `docs/contracts/00-*` | Formulas, rule JSON, vectors, older ZIP handoff |
 | `packages/brain/` | Kernel |
 | `apps/strength/`, `apps/engine/` | Wired athlete UI snapshots |
+| `scripts/publish-sibling-apps.sh` | Overlay snapshots onto sibling remotes |
+| `.cursor/environment.json` | `repositoryDependencies` for the two apps |

@@ -9,9 +9,10 @@ GitHub `cursor[bot]` **cannot push** to `strengthside` or `Engine-side-` (403). 
 
 Kernel browser bundle: `packages/brain/browser-iife.js` (copied to each app as `brain-kernel.js`).
 
-Merged to `main`:
+Merged to sibling `main`:
 
 - Strength: https://github.com/reflectprotect123-max/strengthside/pull/218
-- Engine: https://github.com/reflectprotect123-max/Engine-side-/pull/8
+- Engine logger: https://github.com/reflectprotect123-max/Engine-side-/pull/8
+- Engine kernel-only open/close: https://github.com/reflectprotect123-max/Engine-side-/pull/9
 
 Re-publish: `./scripts/publish-sibling-apps.sh` (uses `GH_SIBLING_PUSH_TOKEN` or `~/.config/hybrid/gh-sibling-push-token`).
