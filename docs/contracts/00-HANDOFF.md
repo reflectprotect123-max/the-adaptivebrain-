@@ -1,5 +1,7 @@
 # Hybrid System Complete Handoff
 
+**Current V1 agent start:** `HANDOFF.md` at the repo root (say “read the handoff”). This file is the older ZIP/product contract from 12 September 2026. Where they disagree, **V1 spec + root `HANDOFF.md` win** (Brain owns `decideNext`; Strength effort is Easy / Medium / Hard, not RIR; no session 1–5 feel; no athlete shadow mode).
+
 **Checkpoint:** 12 September 2026  
 **Purpose:** authoritative product, research, formula, data and source-code handoff  
 **Start here:** this file, then `00-DECISION-WORKTREE.md`, `00-FORMULAS-AND-RULES.md`, and `00-BUILD-SPEC.md`
@@ -17,7 +19,7 @@ It deliberately excludes the user's personal lifting split, personal resting-hea
 | Strength / TRACK | Strength templates, set architecture, exercise history and load suggestions | Load, completed repetitions, Easy / Medium / Hard |
 | Engine | Conditioning methods, timers, HR zones, output anchors and interval suggestions | Actual average output, Easy / Medium / Hard |
 | WHOOP morning layer | Daily recovery input used by the Engine | Automatically imported Recovery score and timestamp |
-| Brain | Cross-product context and explanation | Does not become a second progression engine |
+| Brain | Deterministic `open` / `decideNext` / `close` (Approach A). Apps own UI. | No athlete UI; athletes log in Strength and Engine |
 
 Strength and conditioning share one interaction principle:
 
