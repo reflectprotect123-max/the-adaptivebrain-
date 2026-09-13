@@ -4,6 +4,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
 import { decideNextEngine } from '../src/engine.js';
+import { RULE_VERSION } from '../src/types.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '../../..');
 const v = JSON.parse(readFileSync(join(root, 'docs/contracts/00-TEST-VECTORS.json'), 'utf8'));
@@ -20,6 +21,7 @@ test('echo rpm table', () => {
     });
     assert.equal(out.nextOutput, row.expected);
     assert.equal(out.unit, 'rpm');
+    assert.equal(out.ruleVersion, RULE_VERSION);
   }
 });
 
@@ -34,6 +36,7 @@ test('concept2 watt table', () => {
       unit: 'watts',
     });
     assert.equal(out.nextOutput, row.expected_watts);
+    assert.equal(out.ruleVersion, RULE_VERSION);
   }
 });
 
@@ -47,6 +50,22 @@ test('incomplete cannot increase', () => {
     unit: 'watts',
   });
   assert.equal(out.nextOutput, 200);
+  assert.equal(out.hold, true);
+  assert.equal(out.ruleVersion, RULE_VERSION);
+});
+
+test('echo incomplete cannot increase', () => {
+  const out = decideNextEngine({
+    machine: 'echo',
+    intendedEffort: 'medium',
+    reportedEffort: 'easy',
+    actualOutput: 60,
+    complete: false,
+    unit: 'rpm',
+  });
+  assert.equal(out.nextOutput, 60);
+  assert.equal(out.hold, true);
+  assert.equal(out.ruleVersion, RULE_VERSION);
 });
 
 test('missing effort holds', () => {
@@ -59,4 +78,20 @@ test('missing effort holds', () => {
     unit: 'rpm',
   });
   assert.equal(out.nextOutput, 60);
+  assert.equal(out.hold, true);
+  assert.equal(out.ruleVersion, RULE_VERSION);
+});
+
+test('missing actualOutput holds', () => {
+  const out = decideNextEngine({
+    machine: 'echo',
+    intendedEffort: 'medium',
+    reportedEffort: 'easy',
+    actualOutput: null,
+    complete: true,
+    unit: 'rpm',
+  });
+  assert.equal(out.nextOutput, null);
+  assert.equal(out.hold, true);
+  assert.equal(out.ruleVersion, RULE_VERSION);
 });
