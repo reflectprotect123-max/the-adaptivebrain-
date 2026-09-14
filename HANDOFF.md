@@ -41,6 +41,8 @@ Adaptive Brain is a **decision hub with no athlete UI**. Athletes only use Stren
 
 **WHOOP:** daily Blue / Green / Red BPM on Engine **home**. Does not overwrite stored baselines or a **confirmed output anchor**. No athlete-visible shadow mode (`shadow_mode_required: false`).
 
+**WHOOP adapter (locked 2026-09-14):** [thebriangao/totem](https://github.com/thebriangao/totem) MCP. Totem holds the full wearable projection. Adaptive Brain **uses only the slice it needs** (Recovery → `dailyZones`). Not [mmnto-ai/totem](https://github.com/mmnto-ai/totem). Spec: `docs/superpowers/specs/2026-09-14-whoop-totem-mcp-design.md`. Do not feed Totem lifts/coach/live HR into `decideNext` or TRACK `liftMemory`.
+
 **Dropped:** session-end “How did this session feel?” **1–5** (both apps). Done Training → summary.
 
 **Parked (do not build):** 2k → opening pace; Engine logger visual redesign; full Strength set-architecture tables; extra machines; Concept2 Logbook OAuth; TrainHeroic import into Engine; pain prompts.
@@ -121,7 +123,7 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 
 1. New agent: Brain **`main`** is current. Do **not** re-litigate EMH vs RIR, 1–5 feel, or shadow mode.
 2. If changing kernel math: edit `packages/brain/src/*`, rebuild `browser-iife.js`, copy to both `brain-kernel.js` files, then overlay onto sibling `main`s with a write token.
-3. Optional: human deploys Strength/Engine web hosts (Supabase Edge `www`/`strength`) if they still want browser URLs in sync. Capgo OTA is Strength **1.0.86** and Engine **1.0.7**. WHOOP on phones uses Edge, not Netlify. Live `whoop-callback` 503 `BOOT_ERROR` was a missing `whoopCallbackUrl` export in Engine `_shared/auth.ts` (dropped when Concept2 was retired). Restore + redeploy Edge `whoop-callback` and `whoop-connect` — client HTML cannot fix that.
+3. Optional: human deploys Strength/Engine web hosts (Supabase Edge `www`/`strength`) if they still want browser URLs in sync. Capgo OTA is Strength **1.0.86** and Engine **1.0.7**. Phone WHOOP still uses Edge developer OAuth until Totem is wired. Live `whoop-callback` 503 `BOOT_ERROR` was a missing `whoopCallbackUrl` export in Engine `_shared/auth.ts`. Restore + redeploy `whoop-callback` / `whoop-connect`. Totem MCP is the locked **shape** for Brain’s WHOOP slice, not a Capgo drop-in this turn.
 4. Do **not** implement parked items.
 
 ---
@@ -133,6 +135,7 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 - `moduleCeiling` is highest allowed **module**, not WHOOP green/yellow/red category names.
 - Engine `echo` **machine** in the app is still **watts**; RPM table is for `modality === 'rpm'` (fan).
 - WHOOP recovery must not soften / rewrite last Close output.
+- WHOOP data plane: Totem MCP (`thebriangao/totem`) holds the full projection; Brain consumes Recovery (+ freshness / RHR already in `dailyZones`). Do not treat mmnto-ai/totem as this product.
 - Do not tell the human to “start a new Cloud Agent” to fix sibling 403; that only helps if the **environment repo list / PAT** actually includes write. Classic PAT in-chat is what worked.
 
 ---
@@ -143,6 +146,7 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 | --- | --- |
 | `HANDOFF.md` | **This file** — current agent start |
 | `docs/superpowers/specs/2026-09-13-adaptivebrain-v1-design.md` | Locked V1 product |
+| `docs/superpowers/specs/2026-09-14-whoop-totem-mcp-design.md` | Totem WHOOP MCP; Brain takes a slice |
 | `docs/superpowers/plans/2026-09-13-adaptivebrain-v1.md` | Task list (1–9, done) |
 | `docs/contracts/00-*` | Formulas, rule JSON, vectors, older ZIP handoff |
 | `packages/brain/` | Kernel |
