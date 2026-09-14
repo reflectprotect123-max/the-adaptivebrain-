@@ -1,0 +1,51 @@
+{
+  "name": "@hybrid/coach-desktop",
+  "version": "1.0.1",
+  "private": true,
+  "description": "THE Hybrid System coach — Windows desktop shell with GitHub-release OTA",
+  "main": "src/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "typecheck": "node --check src/main.cjs && node --check src/updater.cjs && node --check desktop.smoke.mjs",
+    "dist": "electron-builder --win nsis --publish never",
+    "check": "node desktop.smoke.mjs"
+  },
+  "dependencies": {
+    "electron-updater": "^6.6.2"
+  },
+  "devDependencies": {
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.hybrid.coach",
+    "productName": "THE Hybrid Coach",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "package.json",
+      "node_modules/electron-updater/**/*"
+    ],
+    "publish": {
+      "provider": "generic",
+      "url": "https://github.com/reflectprotect123-max/strengthside/releases/download/coach-desktop-latest"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "THE-Hybrid-Coach-Setup-${version}.${ext}"
+    }
+  }
+}

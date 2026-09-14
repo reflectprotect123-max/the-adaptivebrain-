@@ -1,0 +1,1773 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>THE Hybrid — Coach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* Screenshot-clone chrome — Hybrid labels only */
+:root{
+  --th-blue:#2563eb;--th-blue-hover:#1d4ed8;--th-blue-deep:#1e40af;
+  --color-copper:#d4a574;--color-copper-bright:#e8c49a;
+  --color-bg-deep:#000000;--color-bg-panel:#ffffff;--line:#e6e8eb;
+  --bg:#ffffff;--panel:#ffffff;--panel2:#f4f6f8;--panel3:#ffffff;
+  --text:#111418;--muted:#5c6570;--dim:#8a9299;
+  --copper:var(--th-blue);--copper2:var(--th-blue-hover);
+  --ok:#16a34a;--warn:#d97706;--bad:#dc2626;
+  --coach-nav-bg:#000000;--coach-header-bg:#000000;
+  --coach-main-bg:#f4f6f8;--coach-main-text:#111418;--coach-main-muted:#5c6570;
+  --coach-card-bg:#ffffff;--coach-card-border:#e6e8eb;
+  --coach-nav-active:rgba(255,255,255,.12);--coach-link:var(--th-blue);
+  --coach-rail-width:64px;
+  --font-body:"Inter",ui-sans-serif,system-ui,sans-serif;
+  --font-display:"Inter",ui-sans-serif,system-ui,sans-serif;
+  --tap:40px;--r:8px;--r-lg:10px;--ease:160ms ease;
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;
+  --focus:0 0 0 2px #fff,0 0 0 4px rgba(37,99,235,.45);
+  --shadow:0 8px 24px rgba(17,20,24,.08);
+  --zone:#2563eb;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;font-family:var(--font-body);min-height:100%;background:var(--bg);color:var(--text)}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:none;box-shadow:var(--focus)}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+h1,h2,h3,p{margin:0}
+a{color:var(--coach-link)}
+.hidden{display:none !important}
+
+/* shared page chrome */
+.page-intro{margin-bottom:18px}
+.page-intro .eyebrow{margin-bottom:6px}
+.page-intro h1{font-family:var(--font-display);font-size:28px;font-weight:600;letter-spacing:.01em;color:var(--coach-main-text)}
+.page-intro .lede{margin-top:8px;color:var(--coach-main-muted);font-size:13px;line-height:1.5;max-width:54ch}
+.page-back{margin-bottom:4px}
+.toolbar-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.toolbar-row .field{margin:0;flex:1;min-width:180px}
+.empty-panel{padding:22px 18px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
+.empty-panel .eyebrow{margin-bottom:6px}
+.empty-panel h2{font-family:var(--font-display);font-size:22px;font-weight:600;margin-top:2px}
+.empty-panel .muted{margin-top:8px}
+.empty-panel .empty-actions{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.err-card{margin-top:12px;padding:12px 14px;border:1px solid var(--bad);border-radius:var(--r);background:rgba(208,137,125,.08);color:var(--text);font-size:13px;line-height:1.45}
+.check-row{display:flex;align-items:center;justify-content:flex-start;gap:8px;margin-bottom:12px;color:var(--muted);font-size:13px;cursor:pointer;user-select:none}
+.check-row input{width:auto;accent-color:var(--copper)}
+.fade-in{animation:coachFade .35s var(--ease) both}
+@keyframes coachFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* gate */
+#gate{max-width:440px;margin:0 auto;padding:48px 20px;background:var(--bg);color:var(--text);min-height:100vh}
+.mark{display:grid;place-items:center;width:36px;height:36px;border:0;border-radius:8px;background:#fff;color:#111;font-weight:800;letter-spacing:.04em;font-size:14px;flex-shrink:0}
+.acct{display:grid;gap:8px;margin-top:18px}
+.acct button{text-align:left;color:var(--text)}
+#gate .btn{min-height:var(--tap);padding:10px 14px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel2);font-weight:650;color:var(--text);transition:border-color var(--ease),background var(--ease),color var(--ease),transform var(--ease)}
+#gate .btn:hover{border-color:rgba(212,165,116,.35)}
+#gate .btn.primary{border-color:var(--th-blue);background:var(--th-blue);color:#fff}
+#gate .btn.primary:hover{background:var(--copper2);border-color:var(--copper2)}
+#gate .field{margin-top:12px}
+#gate label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+#gate input{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:11px;background:var(--panel3);color:var(--text);transition:border-color var(--ease)}
+#gate input:hover{border-color:rgba(255,255,255,.14)}
+#gate .muted{color:var(--muted);font-size:13px;line-height:1.45}
+#gate .gate-title{margin-top:28px;font-family:var(--font-display);font-size:clamp(34px,6vw,42px);font-weight:600;letter-spacing:.01em;line-height:1.05}
+
+/* shell — slim black icon rail + black header + light canvas */
+#coachApp.coach-shell{display:grid;grid-template-columns:var(--coach-rail-width) 1fr;min-height:100vh;background:var(--coach-main-bg)}
+.coach-side.coach-rail-slim,.coach-side{display:flex;flex-direction:column;padding:12px 8px;background:var(--coach-nav-bg);color:#fff;min-height:100vh;width:var(--coach-rail-width)}
+.coach-brand{display:grid;place-items:center;padding:8px 0 16px}
+.coach-brand b,.coach-brand .sub{display:none}
+.coach-side nav{display:grid;gap:4px;flex:1;margin-top:4px}
+.coach-side nav button,.coach-side .nav-soon{display:grid;place-items:center;width:100%;min-height:44px;padding:8px;border:0;border-radius:8px;background:transparent;color:rgba(255,255,255,.55);font-size:0;text-align:center}
+.coach-side nav button .nav-label,.coach-side .nav-soon .nav-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.coach-side nav button.on{background:var(--coach-nav-active);color:#fff}
+.coach-side nav button:hover:not(.on):not(:disabled){background:rgba(255,255,255,.08);color:#fff}
+.coach-side nav button:disabled,.coach-side .nav-soon{opacity:.42;cursor:not-allowed}
+.nav-ico{width:20px;height:20px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.coach-side-foot{margin-top:auto;padding-top:10px;display:grid;gap:4px}
+.coach-side-foot button,.coach-side-foot a.btn{display:grid;place-items:center;width:100%;min-height:36px;padding:6px;border:0;border-radius:8px;background:transparent;color:rgba(255,255,255,.45);font-size:9px;text-align:center}
+.coach-side-foot button:hover,.coach-side-foot a.btn:hover{color:#fff;background:rgba(255,255,255,.08)}
+
+.coach-workspace{display:flex;flex-direction:column;min-width:0;min-height:100vh}
+.coach-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 20px;min-height:56px;background:var(--coach-header-bg);color:#fff}
+.coach-header-title{font-size:15px;font-weight:600;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+.coach-header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.coach-header-actions .btn-assist{min-height:36px;padding:8px 14px;border:0;border-radius:6px;background:var(--th-blue);color:#fff;font-size:12px;font-weight:650;opacity:1;cursor:not-allowed}
+.icon-btn{position:relative;display:grid;place-items:center;width:36px;height:36px;border:0;border-radius:8px;background:transparent;color:rgba(255,255,255,.7);cursor:not-allowed;opacity:1}
+.icon-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.75}
+.icon-btn .badge{position:absolute;top:2px;right:2px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#fff;color:#111;font-size:9px;font-weight:800;line-height:16px;text-align:center}
+.coach-avatar{width:32px;height:32px;border-radius:999px;border:0;background:#3f3f46;display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff}
+
+.coach-body{display:grid;flex:1;grid-template-columns:1fr;background:var(--coach-main-bg)}
+.coach-body.has-rail{grid-template-columns:1fr 280px}
+.coach-main{padding:20px 28px 48px;color:var(--coach-main-text);min-width:0;background:var(--coach-main-bg)}
+.coach-rail{padding:20px 16px;border-left:1px solid var(--line);background:#fff;min-width:0}
+
+/* main primitives */
+.eyebrow{color:var(--copper);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.muted{color:var(--coach-main-muted);font-size:13px;line-height:1.45}
+.coach-main h1,.coach-main h2{color:var(--coach-main-text)}
+.coach-main h1{font-family:var(--font-display);font-size:28px;font-weight:600;letter-spacing:.01em}
+.btn{min-height:var(--tap);padding:8px 14px;border:1px solid var(--line);border-radius:6px;background:#fff;font-weight:600;color:var(--text);transition:border-color var(--ease),background var(--ease),color var(--ease),opacity var(--ease);touch-action:manipulation}
+.btn:hover:not(:disabled){border-color:#c5c9ce;background:#fafbfc}
+.btn.primary{border-color:var(--th-blue);background:var(--th-blue);color:#fff}
+.btn.primary:hover:not(:disabled){background:var(--th-blue-hover);border-color:var(--th-blue-hover)}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--th-blue)}
+.btn.ghost:hover:not(:disabled){background:rgba(37,99,235,.06);border-color:transparent}
+.btn.danger,.btn.ghost.danger{color:var(--bad)}
+.btn.block{width:100%}
+.btn.small{min-height:var(--tap);min-width:var(--tap);padding:10px 12px;font-size:13px}
+.btn:disabled,.btn[disabled]{opacity:.42;cursor:not-allowed}
+input,select,textarea{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--text);transition:border-color var(--ease)}
+input:hover,select:hover,textarea:hover{border-color:#c5c9ce}
+textarea{min-height:88px;resize:vertical}
+.prep-textarea,.block-card.block-text textarea{min-height:200px;resize:vertical;line-height:1.45}
+label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.field{margin-top:12px}
+.stack{display:grid;gap:12px}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.card{padding:16px;border:1px solid var(--line);border-radius:var(--r);background:#fff;transition:border-color var(--ease),box-shadow var(--ease)}
+.card.interactive:hover,.feed-card:hover{border-color:#d0d4d8;box-shadow:var(--shadow)}
+.th-table,.data-table{width:100%;border-collapse:collapse;background:#fff;font-size:13px}
+.th-table th,.data-table th,.th-table td,.data-table td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;color:var(--text)}
+.th-table th,.data-table th{color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.04em}
+.th-table tbody tr:hover,.data-table tbody tr:hover{background:#f7f9fb}
+.th-table tbody tr.selected,.data-table tbody tr.selected{background:#eff6ff}
+.table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:0}
+.table-foot{display:flex;justify-content:flex-end;align-items:center;gap:12px;padding:10px 14px;background:#fff;border:1px solid var(--line);border-top:0;color:var(--muted);font-size:12px}
+.session-comment-bar{display:block;width:100%;margin-top:14px;min-height:44px;border:0;border-radius:4px;background:var(--th-blue);color:#fff;font-weight:650;letter-spacing:.02em}
+.session-comment-bar:hover{background:var(--th-blue-hover)}
+.filter-pill{display:flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;min-height:40px}
+.welcome-h{font-size:13px;font-weight:600;color:#fff}
+.pill{padding:4px 8px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.03)}
+.pill.ok{border-color:rgba(125,186,154,.45);color:var(--ok)}
+.pill.warn{border-color:rgba(212,163,91,.45);color:var(--warn)}
+.slice-stub{display:grid;place-items:center;min-height:280px;text-align:center;gap:8px}
+.slice-stub b{font-family:var(--font-display);font-size:22px}
+
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.topbar select{width:auto;min-width:160px}
+.metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:14px}
+.metrics.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.feed-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 12px;margin-top:14px}
+.feed-metrics .metric{text-align:center;padding:8px 4px;min-width:0}
+.feed-metrics .metric b{display:block;font-family:var(--font-display);font-size:clamp(16px,2.2vw,20px);font-weight:600;color:var(--coach-main-text);line-height:1.15}
+.feed-metrics .metric span{display:block;margin-top:4px;color:var(--coach-main-muted);font-size:10px;letter-spacing:.06em;text-transform:uppercase;line-height:1.25}
+.feed-metrics .metric--blocks{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;gap:2px 12px;text-align:left;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.02)}
+.feed-metrics .metric--blocks .ring{grid-row:1/span 2;margin:0;width:42px;height:42px}
+.feed-metrics .metric--blocks b,.feed-metrics .metric--blocks span{text-align:left}
+.metric{text-align:center;padding:10px 4px}
+.metric b{display:block;font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--coach-main-text)}
+.metric span{color:var(--coach-main-muted);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.ring{width:42px;height:42px;margin:0 auto 4px}
+.dateh{margin:22px 0 10px;font-family:var(--font-display);font-size:20px;letter-spacing:.02em;color:var(--coach-main-text)}
+.presc{text-decoration:line-through;color:var(--dim)}
+.actual{color:var(--copper2);font-weight:600}
+.grid7{display:grid;grid-template-columns:88px repeat(7,1fr);gap:6px;align-items:stretch}
+.cell{min-height:72px;padding:8px;border:1px solid var(--line);border-radius:8px;background:#fff;text-align:left;font-size:12px;color:var(--text)}
+.cell.empty{color:var(--dim)}
+.wk{display:grid;place-items:center;color:var(--muted);font-size:12px}
+.cal{display:grid;gap:8px}
+.item{padding:12px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);text-align:left;width:100%;color:var(--text)}
+
+/* session builder */
+.lib-tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:0;margin-bottom:16px}
+.lib-tabs button{min-height:var(--tap);padding:10px 14px;border:0;border-radius:0;background:transparent;color:var(--muted);font-size:13px;font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color var(--ease),border-color var(--ease);touch-action:manipulation}
+.lib-tabs button:hover{color:var(--text)}
+.lib-tabs button.on{color:var(--th-blue);border-bottom-color:var(--th-blue)}
+.lib-tabs button:disabled{opacity:.4;cursor:not-allowed}
+.builder-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.builder-title{font-family:var(--font-display);font-size:28px;font-weight:600;background:transparent;border:0;border-bottom:1px solid transparent;padding:4px 0;width:min(100%,520px);color:var(--text)}
+.builder-title:focus{border-bottom-color:var(--copper);outline:none}
+.builder-title:focus-visible{box-shadow:var(--focus);border-radius:4px}
+.builder-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.instructions-box{position:relative}
+.instructions-box textarea{min-height:120px}
+.char-count{position:absolute;top:8px;right:10px;font-size:11px;color:var(--dim)}
+.block-card{margin-top:16px;padding:0;border:1px solid var(--line);border-radius:8px;background:#fff;overflow:hidden;transition:border-color var(--ease),box-shadow var(--ease)}
+.block-card.dragging{opacity:.55;border-color:rgba(212,165,116,.45)}
+.block-card.drop-target{border-color:var(--copper);box-shadow:0 0 0 1px rgba(212,165,116,.25)}
+.block-drag-handle{display:grid;place-items:center;min-width:var(--tap);min-height:var(--tap);padding:0 6px;border:1px solid var(--line);border-radius:10px;background:var(--panel3);color:var(--muted);cursor:grab;font-size:14px;line-height:1;letter-spacing:-2px;flex-shrink:0;touch-action:none}
+.block-drag-handle:active{cursor:grabbing}
+.block-drag-spacer{width:var(--tap);flex-shrink:0}
+.block-list{display:grid;gap:0}
+.block-head{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.letter-badge{display:grid;place-items:center;width:32px;height:32px;border-radius:999px;border:1px solid var(--line);font-weight:700;font-size:13px;color:var(--copper2);flex-shrink:0}
+.block-head select{max-width:180px;min-height:36px;padding:6px 8px;font-size:12px}
+.block-head .grow{flex:1;min-width:120px}
+.block-body{padding:14px}
+.exercise-card{margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.exercise-pick{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;text-align:left;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel3);color:var(--text);font-weight:650;transition:border-color var(--ease)}
+.exercise-pick:hover{border-color:rgba(212,165,116,.35)}
+.rx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.rx-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+.rx-grid .field{margin-top:0}
+.set-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px}
+.set-table th,.set-table td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left;color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.set-table td{color:var(--text);font-size:13px;text-transform:none;font-weight:500;letter-spacing:0}
+.set-table input{padding:6px 8px;font-size:13px}
+.setrow{display:grid;grid-template-columns:34px repeat(4,minmax(0,1fr)) auto;gap:7px;align-items:end;padding:10px 0;border-bottom:1px solid var(--line)}
+.setrow .setnum{font-weight:700;font-size:13px;color:var(--muted)}
+.setrow .setnum .target{display:block;font-size:10px;color:var(--dim);font-weight:500;margin-top:2px}
+.setrow .mini{display:block;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.builder-setrow input,.builder-setrow select,.logcol-kind{width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--text);font-size:13px}
+.setrow.last-set{border-left:2px solid var(--copper);padding-left:8px;margin-left:-4px}
+.setrow.last-set .mini{color:var(--copper2)}
+.guardrail{font-size:12px;color:var(--muted);padding:8px 10px;border-radius:8px;background:rgba(212,165,116,.08);border:1px solid rgba(212,165,116,.15)}
+.divider{height:1px;background:var(--line);margin:10px 0}
+.rx-summary{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.45}
+.rx-metric-grid{display:grid;gap:10px;margin-top:12px}
+.rx-metric-grid.cols-1{grid-template-columns:1fr}
+.rx-metric-grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.rx-metric-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.rx-metric-col{padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--panel2)}
+.rx-metric-col input{width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--panel3);color:var(--text);font-size:13px}
+.rx-metric-hint{margin:6px 0 0;font-size:10px;color:var(--dim);line-height:1.35}
+.rx-metric-remove{min-width:28px;padding:4px 8px}
+.autopilot-strip{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:12px;padding:10px 12px;border-radius:10px;border:1px solid rgba(212,165,116,.2);background:rgba(212,165,116,.06)}
+.autopilot-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.autopilot-value{font-size:14px;font-weight:700;color:var(--copper2)}
+.autopilot-note{font-size:11px;color:var(--dim);flex:1;min-width:180px}
+.rx-advanced{margin-top:8px}
+.rx-overrides summary{cursor:pointer;font-size:12px;font-weight:650;color:var(--muted);padding:6px 0}
+.rx-overrides[open] summary{color:var(--copper2);margin-bottom:8px}
+.rx-override-table{margin-top:4px}
+.add-block-bar{margin-top:20px}
+.kebab-btn{min-height:var(--tap);min-width:var(--tap);padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--muted);transition:border-color var(--ease),color var(--ease);touch-action:manipulation}
+.kebab-btn:hover{border-color:rgba(212,165,116,.35);color:var(--text)}
+.kebab-btn.danger{color:var(--bad);border-color:rgba(208,137,125,.35)}
+.kebab-btn.danger:hover{background:rgba(208,137,125,.1)}
+.picker-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);display:grid;place-items:center;z-index:50;padding:20px;animation:coachFade .2s var(--ease) both}
+.picker-panel{width:min(520px,100%);max-height:min(80vh,640px);overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:16px;box-shadow:var(--shadow)}
+.picker-list{display:grid;gap:6px;margin-top:12px;max-height:360px;overflow:auto}
+.picker-item{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel3);color:var(--text);transition:border-color var(--ease)}
+.picker-item:hover{border-color:rgba(212,165,116,.35)}
+.template-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);color:var(--text);transition:border-color var(--ease),box-shadow var(--ease)}
+.template-row:hover{border-color:rgba(212,165,116,.28);box-shadow:var(--shadow)}
+.engine-box{margin-top:4px}
+.engine-plan{margin:0 0 12px;padding:10px 12px;border:1px solid rgba(212,165,116,.22);border-radius:10px;background:rgba(212,165,116,.06);color:var(--copper2);font-weight:650;font-size:14px}
+.engine-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.efforts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.eff{display:grid;gap:2px;min-height:56px;padding:10px 8px;border:1px solid var(--line);border-radius:10px;background:var(--panel3);color:var(--muted);text-align:left;transition:border-color var(--ease),background var(--ease),color var(--ease)}
+.eff.on{border-color:rgba(212,165,116,.55);background:rgba(212,165,116,.12);color:var(--copper2)}
+.eff b{font-size:14px}
+.eff small{font-size:11px;color:var(--dim);font-weight:500}
+.eff.on small{color:var(--copper)}
+.mins-row{display:flex;align-items:center;gap:8px}
+.mins-row input{flex:1}
+.mins-row button{min-width:40px;min-height:40px}
+.engine-hint{margin:8px 0 0;color:var(--dim);font-size:12px;line-height:1.4}
+
+/* program grid */
+.prog-list{display:grid;gap:10px}
+.prog-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);transition:border-color var(--ease)}
+.prog-row:hover{border-color:rgba(212,165,116,.25)}
+.prog-row-main{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;padding:0;border:0;background:transparent;color:var(--text);cursor:pointer;min-height:44px}
+.prog-row-main:hover b{color:var(--copper2)}
+.prog-row-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.prog-toolbar{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.prog-title{font-family:var(--font-display);font-size:28px;font-weight:600;background:transparent;border:0;border-bottom:1px solid transparent;padding:4px 0;width:min(100%,420px);color:var(--text)}
+.prog-title:focus{border-bottom-color:var(--copper);outline:none}
+.prog-title:focus-visible{box-shadow:var(--focus);border-radius:4px}
+.prog-icons{display:flex;gap:6px;align-items:center}
+.prog-icon{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--muted);transition:border-color var(--ease),color var(--ease)}
+.prog-icon:hover{color:var(--copper2);border-color:rgba(212,165,116,.35)}
+.prog-icon:disabled,.prog-icon[disabled]{opacity:.35;cursor:not-allowed}
+.prog-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.prog-week{margin-top:22px}
+.prog-week-label{font-family:var(--font-display);font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.prog-days{display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));gap:8px;overflow-x:auto;padding-bottom:4px}
+.prog-day-h{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);padding:0 4px 6px}
+.prog-cell{position:relative;min-height:120px;padding:0;border:1px solid var(--line);border-radius:4px;background:#fff;text-align:left;color:var(--text);overflow:visible;transition:border-color var(--ease)}
+.prog-cell.empty{cursor:pointer;background:#fff}
+.prog-cell.empty:hover{border-color:rgba(212,165,116,.35);border-style:dashed}
+.prog-cell.empty::after{content:"+";position:absolute;inset:0;display:grid;place-items:center;color:var(--dim);font-size:18px;opacity:0;transition:opacity var(--ease);pointer-events:none}
+.prog-cell.empty:hover::after{opacity:.7}
+.prog-card{padding:10px;min-height:120px;display:flex;flex-direction:column;gap:8px}
+.prog-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:6px}
+.prog-card-mark{display:grid;place-items:center;width:22px;height:22px;border-radius:5px;border:1px solid var(--copper);color:var(--copper2);font-size:9px;font-weight:800;letter-spacing:.06em;flex-shrink:0}
+.prog-card-title{font-size:12px;font-weight:650;line-height:1.3;flex:1;min-width:0}
+.prog-card-body{display:flex;gap:8px;align-items:flex-start;margin-top:auto}
+.prog-card-body .letter-badge{width:24px;height:24px;font-size:11px}
+.prog-card-ex{font-size:12px;line-height:1.35}
+.prog-card-ex .muted{font-size:11px;margin-top:2px}
+.kebab-menu{position:absolute;top:36px;right:6px;z-index:20;min-width:180px;padding:6px;border:1px solid var(--line);border-radius:10px;background:var(--panel);box-shadow:var(--shadow);display:grid;gap:2px}
+.kebab-menu button{width:100%;text-align:left;padding:10px 12px;border:0;border-radius:8px;background:transparent;color:var(--text);font-size:13px;min-height:var(--tap)}
+.kebab-menu button:hover{background:rgba(212,165,116,.12);color:var(--copper2)}
+.kebab-menu button.danger{color:var(--bad)}
+.prog-footer{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.prog-hint{margin:0 0 12px;padding:10px 12px;border:1px dashed rgba(212,165,116,.35);border-radius:10px;background:rgba(212,165,116,.06);color:var(--copper2);font-size:13px}
+
+/* calendars + roster */
+.roster-table{width:100%;border-collapse:collapse;font-size:13px}
+.roster-table th,.roster-table td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left}
+.roster-table th{color:var(--muted);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.roster-table tbody tr{transition:background var(--ease)}
+.roster-table tbody tr:hover{background:rgba(255,255,255,.025)}
+.linkish{background:transparent;border:0;padding:0;color:var(--copper2);font-weight:650;cursor:pointer;text-align:left}
+.linkish:hover{text-decoration:underline;text-underline-offset:3px}
+.cal-toolbar{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin:12px 0 16px;flex-wrap:wrap}
+.cal-month{margin-top:8px}
+.cal-dow-row{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
+.cal-dow{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-align:center}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal-day{min-height:88px;border:1px solid var(--line);border-radius:4px;background:#fff;padding:6px;position:relative;transition:border-color var(--ease),background var(--ease)}
+.cal-day:hover{border-color:rgba(212,165,116,.28)}
+.cal-day.has-sessions{border-color:rgba(212,165,116,.22)}
+.cal-day.has-sessions .cal-day-num{color:var(--text)}
+.cal-day-num{width:100%;border:0;background:transparent;color:var(--muted);font-size:11px;font-weight:700;text-align:left;padding:2px 4px;cursor:pointer}
+.cal-day-num:hover{color:var(--copper2)}
+.cal-day-body{display:grid;gap:6px;margin-top:4px}
+.cal-day.cal-pad{min-height:88px;border-color:transparent;background:transparent;pointer-events:none}
+.cal-chip-ath{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--copper2);margin-bottom:2px}
+.coach-toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:50;max-width:min(92vw,420px);padding:12px 16px;border:1px solid rgba(212,165,116,.45);border-radius:12px;background:#12161af0;color:var(--text);font-size:13px;line-height:1.4;box-shadow:var(--shadow);pointer-events:none}
+.coach-toast.ok{border-color:rgba(125,186,154,.5)}
+.prog-icon:disabled,.prog-icon[disabled]{display:none}
+.cal-chip{padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);position:relative;font-size:11px;transition:border-color var(--ease)}
+.cal-chip.unpublished{border-style:dashed;border-color:rgba(212,165,116,.35);opacity:.95}
+.cal-chip.published{border-color:rgba(125,186,154,.5);background:rgba(125,186,154,.06)}
+.cal-chip-top{display:flex;align-items:flex-start;justify-content:space-between;gap:4px}
+.cal-chip-title{font-weight:650;line-height:1.25}
+.cal-chip-meta{margin-top:4px;color:var(--dim);font-size:10px}
+.cal-empty-actions{margin-top:6px}
+.ex-cat-row{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}
+.ex-cat-row:last-child{border-bottom:0}
+.feed-card h2{font-family:var(--font-display);font-weight:600}
+.feed-card{animation:coachFade .4s var(--ease) both}
+.coach-side-foot a.btn{display:flex;align-items:center;justify-content:center;text-decoration:none;margin-top:8px}
+.gate-demo{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.gate-demo .muted{font-size:12px}
+
+@media(max-width:1100px){
+  .metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .metrics.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .feed-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:980px){
+  #coachApp.coach-shell{grid-template-columns:1fr}
+  .coach-side{flex-direction:row;flex-wrap:wrap;min-height:auto;border-right:0;border-bottom:1px solid var(--line)}
+  .coach-side nav{display:flex;flex-wrap:wrap;margin:0}
+  .coach-body.has-rail{grid-template-columns:1fr}
+  .coach-rail{display:none}
+  .coach-main{padding:18px 16px 40px}
+  .prog-days{grid-template-columns:repeat(7,minmax(96px,1fr))}
+  .rx-grid,.rx-grid.cols-4{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .feed-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 8px}
+  .cal-grid,.cal-dow-row{gap:4px}
+  .cal-day{min-height:72px;padding:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+}
+
+</style>
+</head>
+<body>
+<div id="gate"></div>
+<div id="coachApp" class="coach-shell hidden"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.8/dist/umd/supabase.js"></script>
+<script src="./whoop.js"></script>
+<script src="./exercise-search-index.js"></script>
+<script src="./exercise-search.js"></script>
+<script src="./coach-exercise-catalog.js"></script>
+<script src="./coach-loop.js"></script>
+<script src="./log-columns.js"></script>
+<script src="./coach-nutrition.js"></script>
+<script src="./coach-bridge.js"></script>
+<script src="./coach-cloud.js"></script>
+<script src="./coach-views.js"></script>
+<script src="./coach-native-bridge.js"></script>
+<script>
+const L = window.CoachLoop;
+const N = window.CoachNutrition;
+let S = L.mergeExerciseCatalog(L.loadState());
+const ui = {
+  view:'home', lib:'sessions', athleteId:null, teamId:null, programId:null, templateId:null, sessionId:null,
+  expandAll:false, expanded:{}, err:'', exPicker:null, exSearch:'', exEdit:null,
+  cellMenu:null, cellPick:null, progSearch:'',
+  calMonth:null, calDay:null, chipMenu:null, libPick:null,
+  assignTeamId:null, assignStart:null, nutAthleteId:null,
+  exCatalogSearch:'', commentDrawer:null, filterAthlete:'all',
+};
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const dash = (v) => (v == null || v === '') ? '–' : String(v);
+function persist(){
+  L.saveState(null, S);
+  if (window.CoachBridge) CoachBridge.push(S);
+  if (window.CoachViews) CoachViews.bindState(S);
+  scheduleCloudPush();
+}
+
+let cloudPushTimer = null;
+function scheduleCloudPush(){
+  if (!window.CoachCloud) return;
+  clearTimeout(cloudPushTimer);
+  cloudPushTimer = setTimeout(async () => {
+    try {
+      if (!(await CoachCloud.isSignedIn())) return;
+      const r = await CoachCloud.pushPublished(S);
+      if (r && r.errors && r.errors.length) console.warn('coach cloud push', r.errors);
+    } catch (e) {
+      console.warn('coach cloud push failed', e);
+    }
+  }, 800);
+}
+
+async function bindMyCloudIdToAthlete(athleteId){
+  if (!window.CoachCloud) return alert('Cloud module missing');
+  const uid = await CoachCloud.sessionUserId();
+  if (!uid) return alert('Sign in first (coach Settings / WHOOP account — same Supabase as athlete).');
+  const a = athleteBy(athleteId);
+  if (!a) return;
+  a.cloudUserId = uid;
+  persist(); render();
+  showCoachToast('Linked ' + a.name + ' to your signed-in account.', 'ok');
+}
+
+async function pushCloudNow(){
+  if (!window.CoachCloud) return alert('Cloud module missing');
+  if (!(await CoachCloud.isSignedIn())) return alert('Sign in with the athlete Supabase account (WHOOP sign-in) so publish can write assigned_session.');
+  const r = await CoachCloud.pushPublished(S);
+  coachPortalToast(r, '');
+  render();
+}
+
+let coachToastTimer = null;
+function showCoachToast(msg, tone){
+  if (!msg) return;
+  const old = document.querySelector('.coach-toast');
+  if (old) old.remove();
+  clearTimeout(coachToastTimer);
+  const el = document.createElement('div');
+  el.className = 'coach-toast' + (tone === 'ok' ? ' ok' : '');
+  el.setAttribute('role', 'status');
+  el.textContent = msg;
+  document.body.appendChild(el);
+  coachToastTimer = setTimeout(() => { el.remove(); }, 4500);
+}
+window.showCoachToast = showCoachToast;
+
+function coachPortalToast(result, athleteName){
+  if (!result) return;
+  if (result.ok) {
+    const n = result.pushed || 0;
+    const who = athleteName ? ' to ' + athleteName : '';
+    showCoachToast('Published ' + n + ' session(s)' + who + '. Phone syncs on next open.', 'ok');
+    return;
+  }
+  const msg = (result.errors || []).map(e => e.error).join('; ') || result.reason || result.error || 'Push failed';
+  showCoachToast('Cloud push: ' + msg, 'warn');
+}
+window.coachPortalToast = coachPortalToast;
+
+let refreshStatesTimer = null;
+function scheduleRefreshCloudStates(){
+  clearTimeout(refreshStatesTimer);
+  refreshStatesTimer = setTimeout(async () => {
+    if (ui._cloudRefresh || !window.CoachCloud || !CoachCloud.refreshPublishedStates) return;
+    try {
+      if (!(await CoachCloud.isSignedIn())) return;
+      ui._cloudRefresh = true;
+      const r = await CoachCloud.refreshPublishedStates(S);
+      if (r.ok && r.updated) { L.saveState(null, S); render(); }
+    } catch (e) {
+      console.warn('coach cloud refresh', e);
+    } finally {
+      ui._cloudRefresh = false;
+    }
+  }, 900);
+}
+function account(){ return L.currentAccount(S); }
+function athleteBy(id){ return (S.athletes||[]).find(a => a.id === id); }
+function tpl(id){ return (S.templates||[]).find(t => t.id === id); }
+function ses(id){ return (S.sessions||[]).find(s => s.id === id); }
+function prog(id){ return (S.programs||[]).find(p => p.id === id); }
+function team(id){ return (S.teams||[]).find(t => t.id === id); }
+
+function go(view, extra){
+  if (view !== 'session') closeCoachExEdit();
+  Object.assign(ui, extra||{}, { view });
+  if (view === 'library' && !ui.lib) ui.lib = 'programs';
+  if (view !== 'session') ui.exPicker = null;
+  if (view !== 'program') {
+    ui.cellMenu = null;
+    if (!ui.cellPick || (ui.cellPick.mode !== 'copyTarget' && ui.cellPick.mode !== 'moveTarget')) {
+      ui.cellPick = null;
+    }
+  }
+  if (view !== 'athlete' && view !== 'team') {
+    ui.chipMenu = null;
+    ui.libPick = null;
+    ui.calDay = null;
+  }
+  if (view !== 'home') ui.commentDrawer = null;
+  if (view === 'assign' && !ui.assignTeamId && S.teams && S.teams[0]) ui.assignTeamId = S.teams[0].id;
+  if ((view === 'athlete' || view === 'team') && !ui.calMonth) ui.calMonth = L.today().slice(0, 7);
+  render();
+}
+function openSession(templateId){
+  closeCoachExEdit();
+  ui.cellMenu = null;
+  ui.templateId = templateId;
+  ui.lib = 'sessions';
+  ui.exPicker = null;
+  ui.view = 'session';
+  render();
+}
+function openProgram(programId){
+  ui.programId = programId;
+  ui.lib = 'programs';
+  ui.cellMenu = null;
+  ui.cellPick = null;
+  ui.view = 'program';
+  render();
+}
+async function signOut(){
+  try {
+    if (window.Whoop && typeof Whoop.client === 'function') {
+      await Whoop.client().auth.signOut();
+    }
+  } catch (_) { /* best-effort */ }
+  L.logout(S);
+  persist();
+  ui.view = 'home';
+  ui.err = '';
+  render();
+}
+function resetDemo(){
+  S = L.resetState();
+  Object.assign(ui, { view:'home', lib:'sessions', templateId:null, programId:null, cellMenu:null, cellPick:null, exPicker:null, err:'', calMonth:null, calDay:null, chipMenu:null, libPick:null });
+  if (window.CoachViews) CoachViews.bindState(S);
+  render();
+}
+
+/** Ensure a local coach account row for a Supabase-authenticated email. */
+function ensureCoachAccount(email, name){
+  const e = String(email || '').trim().toLowerCase();
+  if (!e) return null;
+  S.accounts = S.accounts || [];
+  let acc = S.accounts.find((a) => a.role === 'coach' && String(a.email || '').toLowerCase() === e);
+  if (!acc) {
+    acc = {
+      id: 'coach-cloud-' + e.replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+      email: e,
+      password: '',
+      role: 'coach',
+      name: name || e.split('@')[0] || 'Coach',
+      athleteId: null,
+    };
+    S.accounts.push(acc);
+  } else if (name) {
+    acc.name = name;
+  }
+  S.coach = S.coach || { id: acc.id, name: acc.name };
+  S.coach.name = acc.name;
+  S.currentUserId = acc.id;
+  return acc;
+}
+
+async function tryLogin(email, pass){
+  ui.err = '';
+  const e = String(email || '').trim();
+  const p = String(pass || '');
+  if (!e || !p) {
+    ui.err = 'Enter email and password';
+    render();
+    return;
+  }
+
+  // Offline / seeded demo accounts (dan@thehybrid.local · demo).
+  const local = L.login(S, e, p);
+  if (local.ok) {
+    if (local.account.role !== 'coach') {
+      L.logout(S);
+      ui.err = 'Coach workspace only. Athletes use the Hybrid athlete app.';
+      persist();
+      render();
+      return;
+    }
+    ui.err = '';
+    persist();
+    render();
+    return;
+  }
+
+  // Real account: same Supabase password auth as athlete Settings → Account.
+  try {
+    if (!(window.Whoop && typeof Whoop.client === 'function')) {
+      throw new Error(local.error || 'Auth not loaded — check network and refresh');
+    }
+    const { data, error } = await Whoop.client().auth.signInWithPassword({ email: e, password: p });
+    if (error) throw error;
+    const user = data && data.user;
+    if (!user) throw new Error('Sign-in succeeded but no user returned');
+    const meta = user.user_metadata || {};
+    const name = meta.full_name || meta.name || e.split('@')[0];
+    ensureCoachAccount(user.email || e, name);
+    ui.err = '';
+    persist();
+    render();
+  } catch (err) {
+    ui.err = (err && err.message) || local.error || 'Sign-in failed';
+    render();
+  }
+}
+
+function navActive(key){
+  if (key === 'home') return ui.view === 'home';
+  if (key === 'athletes') return ui.view === 'athletes' || ui.view === 'athlete';
+  if (key === 'teams') return ui.view === 'teams' || ui.view === 'team';
+  if (key === 'library') return ['library','program','session'].includes(ui.view);
+  if (key === 'nutrition') return ui.view === 'nutrition';
+  return false;
+}
+
+function headerTitle(){
+  const coachName = S.coach?.name || 'Dan';
+  if (ui.view === 'home') return `Welcome back, Coach ${coachName}`;
+  const titles = { athletes:'My Athletes', athlete:'My Athletes', teams:'My Teams', team:'My Teams', library:'Library', program:'Library', session:'Library', assign:'Assign', nutrition:'Nutrition' };
+  return titles[ui.view] || 'Coach Home';
+}
+
+function icon(name){
+  const paths = {
+    home:'<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+    users:'<path d="M16 19v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1"/><circle cx="9" cy="7" r="3"/><path d="M22 19v-1a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    teams:'<path d="M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M18 11a2.5 2.5 0 1 0 0-5"/><path d="M6 11a2.5 2.5 0 1 0 0-5"/><path d="M12 13c-4 0-7 2-7 4v2h14v-2c0-2-3-4-7-4Z"/>',
+    library:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>',
+    nutrition:'<path d="M12 3v18"/><path d="M5 8h14"/><path d="M7 8c0 7 5 11 5 11s5-4 5-11"/><path d="M9 4h6"/>',
+    chart:'<path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-6"/>',
+    gym:'<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 18h.01"/>',
+    support:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 4.8 1 2 2 0 0 0-1 1.8V14"/><path d="M12 17h.01"/>',
+    msg:'<path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>',
+    bell:'<path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>',
+  };
+  return `<svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true">${paths[name]||''}</svg>`;
+}
+
+function sliceStub(label, slice){
+  return `<div class="card slice-stub"><div><b>${esc(label)}</b><p class="muted">${esc(slice)} — layout stub for chrome review (R0)</p></div></div>`;
+}
+
+function ringSvg(done, total){
+  const p = total ? done/total : 0;
+  const c = 2*Math.PI*16;
+  const dashn = `${p*c} ${c}`;
+  return `<svg class="ring" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="4"/><circle cx="21" cy="21" r="16" fill="none" stroke="#7dba9a" stroke-width="4" stroke-dasharray="${dashn}" stroke-linecap="round" transform="rotate(-90 21 21)"/></svg>`;
+}
+
+function metricRow(m){
+  return `<div class="metrics feed-metrics">
+    <div class="metric metric--blocks">${ringSvg(m.blocksDone,m.blocksTotal)}<b>${m.blocksDone}/${m.blocksTotal}</b><span>Blocks</span></div>
+    <div class="metric"><b>${dash(m.readiness)}</b><span>Readiness</span></div>
+    <div class="metric"><b>${dash(m.minutes)}</b><span>Minutes</span></div>
+    <div class="metric"><b>${m.intensity==null?'–':m.intensity+'%'}</b><span>Intensity</span></div>
+    <div class="metric"><b>${m.volumeKg?m.volumeKg+' kg':'–'}</b><span>Volume</span></div>
+  </div>`;
+}
+
+function blockDetail(session){
+  return (session.blocks||[]).map(b => {
+    const letter = b.letter ? `<span class="pill">${esc(b.letter)}</span>` : '';
+    const ex = (b.exercises||[]).map(e => {
+      const actual = L.actualLine(e);
+      const swap = e.swappedFrom ? `<div class="muted">Swapped from ${esc(e.swappedFrom.name)}</div>` : '';
+      return `<div style="margin-top:10px"><div class="row"><b>${esc(e.name)}</b><span class="pill">${esc(e.metric||'Weight')}</span></div>
+        <div class="presc">${esc(L.prescriptionLine(e))}</div>
+        ${actual?`<div class="actual">${esc(actual)}</div>`:''}
+        ${e.athleteNote?`<div class="muted">${esc(e.athleteNote)}</div>`:''}${swap}</div>`;
+    }).join('');
+    const notes = b.notes ? `<div class="muted" style="margin-top:8px">${esc(b.notes)}</div>` : '';
+    return `<div class="card" style="margin-top:10px"><div class="row"><div><span class="eyebrow">${esc(b.category||b.type)}</span><div>${letter} ${esc(b.heading||'')}</div></div><span class="pill">${b.scoring==='weight'?'For Weight':'For Completion'}</span></div>${notes}${ex}</div>`;
+  }).join('');
+}
+
+function saveComment(sessionId){
+  const el = document.getElementById('note-'+sessionId);
+  const s = ses(sessionId); if (!s || !el) return;
+  L.setSessionComment(s, el.value, L.IDS.coach);
+  persist(); render();
+}
+
+function toggleCard(id){ ui.expanded[id] = !ui.expanded[id]; render(); }
+
+function feedHtml(){
+  const athletes = S.athletes||[];
+  let list = S.sessions||[];
+  if (ui.filterAthlete === '1to1') {
+    const teamIds = new Set((S.teams||[]).flatMap(t => t.athleteIds||[]));
+    list = list.filter(s => !teamIds.has(s.athleteId));
+  } else if (ui.filterAthlete && ui.filterAthlete !== 'all') {
+    list = list.filter(s => s.athleteId === ui.filterAthlete);
+  }
+  const groups = L.groupFeed(list, athletes);
+  const cards = groups.map(g => `<div class="dateh">${esc(g.label)}</div>` + g.cards.map(c => {
+    const s = c.session;
+    const open = ui.expandAll || ui.expanded[s.id];
+    const title = s.sessionTitle || s.name;
+    const notePreview = s.comment?.text ? `<div class="muted" style="margin-top:8px">${esc(s.comment.text.slice(0,120))}${s.comment.text.length>120?'…':''}</div>` : '';
+    const statusPill = s.status === 'completed' ? 'pill ok' : (s.status === 'active' ? 'pill warn' : 'pill');
+    return `<div class="card feed-card interactive">
+      <div class="row"><div><div class="eyebrow">${esc(c.athlete?.name||'Athlete')}</div><h2 style="font-size:20px;margin-top:4px">${esc(s.name)}</h2><div class="muted">${esc(title)}</div></div><span class="${statusPill}">${esc(s.status)}</span></div>
+      ${metricRow(c.metrics)}
+      ${notePreview}
+      <div class="row" style="margin-top:12px;justify-content:flex-start;gap:8px;flex-wrap:wrap">
+        <button type="button" class="btn ghost small" onclick="toggleCard('${s.id}')">${open?'See less':'See more'}</button>
+      </div>
+      <button type="button" class="session-comment-bar" onclick="openCommentDrawer('${s.id}')">Session Comment</button>
+      ${open?blockDetail(s):''}
+    </div>`;
+  }).join('')).join('') || `<div class="empty-panel"><div class="eyebrow">Latest feed</div><h2>No sessions yet</h2><p class="muted">When athletes log work, cards land here. Assign and publish from Library to get started.</p><div class="empty-actions"><button type="button" class="btn primary small" onclick="go('library',{lib:'programs'})">Open library</button></div></div>`;
+  const opts = athletes.map(a => `<option value="${a.id}" ${ui.filterAthlete===a.id?'selected':''}>${esc(a.name)}</option>`).join('');
+  return `<div class="fade-in"><div class="topbar"><div class="filter-pill"><span class="muted">All Athletes (${athletes.length})</span>
+    <select onchange="ui.filterAthlete=this.value;render()" aria-label="Filter athletes" style="border:0;width:auto;min-width:140px">
+      <option value="all" ${ui.filterAthlete==='all'?'selected':''}>All Athletes</option>
+      <option value="1to1" ${ui.filterAthlete==='1to1'?'selected':''}>1:1 Athletes</option>
+      ${opts}</select></div>
+      <div class="row" style="gap:8px"><button type="button" class="btn small">Latest</button></div></div>
+    <label class="check-row"><input type="checkbox" ${ui.expandAll?'checked':''} onchange="ui.expandAll=this.checked;render()"> Expand all cards</label>
+    <div class="stack">${cards}</div>
+    ${commentDrawerHtml()}</div>`;
+}
+
+function openCommentDrawer(sessionId){
+  ui.commentDrawer = sessionId;
+  render();
+}
+
+function closeCommentDrawer(){ ui.commentDrawer = null; render(); }
+
+function commentDrawerHtml(){
+  if (!ui.commentDrawer) return '';
+  const s = ses(ui.commentDrawer);
+  if (!s) return '';
+  const a = athleteBy(s.athleteId);
+  return `<div class="picker-overlay" onclick="if(event.target===this)closeCommentDrawer()">
+    <div class="picker-panel" role="dialog" aria-label="Session comment">
+      <div class="row"><div><div class="eyebrow">${esc(a?.name||'Athlete')}</div><b>${esc(s.sessionTitle||s.name)}</b></div>
+      <button type="button" class="btn ghost small" onclick="closeCommentDrawer()">Close</button></div>
+      <div class="field" style="margin-top:12px"><label>Session comment</label>
+        <textarea id="note-${s.id}" placeholder="Comment on this session…">${esc(s.comment?.text||'')}</textarea></div>
+      <button class="btn primary block" style="margin-top:8px" onclick="saveComment('${s.id}');closeCommentDrawer()">Send</button>
+    </div></div>`;
+}
+
+function needsHtml(){
+  const n = L.needsProgramming(S);
+  if (!n.athletes.length && !n.teams.length) {
+    return `<div class="empty-panel"><div class="eyebrow">Needs Programming</div><h2>All Clear</h2><p class="muted">There are currently no teams or athletes in need of programming.</p></div>`;
+  }
+  return `<div class="card interactive"><div class="eyebrow">Needs programming</div><h2 style="font-size:20px;margin-top:6px">${n.athletes.length} athlete${n.athletes.length===1?'':'s'}</h2><p class="muted" style="margin-top:8px">${n.athletes.map(a=>esc(a.name)).join(', ')}</p></div>`;
+}
+
+function monthKey(){ return ui.calMonth || L.today().slice(0,7); }
+
+function athleteListHtml(){ return CoachViews.athleteListHtml(); }
+function athleteCalHtml(){ return CoachViews.athleteCalHtml(); }
+function teamListHtml(){ return CoachViews.teamListHtml(); }
+function teamCalHtml(){ return CoachViews.teamCalHtml(); }
+function assignHtml(){ return CoachViews.assignHtml(); }
+function nutritionHtml(){ return CoachViews.nutritionHtml(); }
+
+function libraryTabs(){
+  const tabs = [['programs','Programs'],['sessions','Sessions'],['exercises','Exercises'],['circuits','Circuits'],['prescriptions','Prescriptions']];
+  return `<div class="lib-tabs" role="tablist">${tabs.map(([k,l]) => {
+    const off = k==='circuits' || k==='prescriptions';
+    return `<button type="button" role="tab" ${off?'disabled':''} aria-selected="${ui.lib===k?'true':'false'}" class="${ui.lib===k?'on':''}" onclick="${off?'':'ui.lib=\''+k+'\';ui.cellMenu=null;render()'}">${l}</button>`;
+  }).join('')}<button type="button" disabled>More</button></div>`;
+}
+
+function programsListHtml(){
+  const q = String(ui.progSearch||'').trim().toLowerCase();
+  const list = (S.programs||[]).filter(p => !q || String(p.name).toLowerCase().includes(q));
+  const rows = list.map(p => {
+    const weeks = Number(p.weeks)||1;
+    return `<tr>
+      <td><button type="button" class="linkish" onclick="openProgram('${p.id}')">${esc(p.name)}</button><div class="muted">${weeks} week${weeks===1?'':'s'}</div></td>
+      <td class="muted">—</td>
+      <td class="muted">hybrid S&C</td>
+      <td><button type="button" class="linkish" onclick="go('assign',{programId:'${p.id}'})">Assign</button></td>
+      <td><button type="button" class="btn small" onclick="openProgram('${p.id}')">Open grid</button></td>
+    </tr>`;
+  }).join('');
+  return `<div class="toolbar-row">
+      <div class="field"><label>Search programs</label>
+        <input value="${esc(ui.progSearch)}" oninput="ui.progSearch=this.value;render()" placeholder="Hybrid Strength…"></div>
+      <button type="button" class="btn primary small" onclick="newProgram()">Create program</button>
+    </div>
+    ${rows ? `<div class="table-wrap"><table class="th-table data-table"><thead><tr><th>Title</th><th>Difficulty</th><th>Focus</th><th></th><th>Actions</th></tr></thead><tbody>${rows}</tbody></table></div><div class="table-foot"><span class="rows-per-page">Rows per page: 100</span><span>1–${list.length} of ${list.length}</span></div>` : '<div class="empty-panel"><div class="eyebrow">Programs</div><h2>No programs yet</h2><p class="muted">Build a week×day grid, then assign it to a team.</p><div class="empty-actions"><button type="button" class="btn primary small" onclick="newProgram()">Create program</button></div></div>'}`;
+}
+
+function libraryHtml(){
+  const tabs = libraryTabs();
+  if (ui.lib === 'sessions') {
+    const rows = (S.templates||[]).map(t => {
+      const n = (t.blocks||[]).length;
+      const kinds = (t.blocks||[]).map(b => b.category || b.type).filter(Boolean).slice(0,2).join(' · ');
+      return `<button type="button" class="template-row" data-template-id="${esc(t.id)}" onclick="openSession('${t.id}')">
+        <div><b>${esc(t.name)}</b><div class="muted">${n} block${n===1?'':'s'}${kinds?' · '+esc(kinds):''}</div></div>
+        <span class="pill">Edit</span></button>`;
+    }).join('');
+    return `${tabs}
+      <div class="toolbar-row"><p class="lede" style="margin:0;flex:1">Session templates — same block shape the athlete app logs.</p>
+      <button type="button" class="btn primary small" onclick="newTemplate()">New session</button></div>
+      <div class="stack">${rows || '<div class="empty-panel"><div class="eyebrow">Sessions</div><h2>No templates yet</h2><p class="muted">Create a session, then drop it into a program grid.</p><div class="empty-actions"><button type="button" class="btn primary small" onclick="newTemplate()">New session</button></div></div>'}</div>`;
+  }
+  if (ui.lib === 'exercises') {
+    return `${tabs}${exercisesCatalogHtml()}`;
+  }
+  ui.lib = 'programs';
+  return `${tabs}${programsListHtml()}`;
+}
+
+function exercisesCatalogHtml(){
+  const q = String(ui.exCatalogSearch||'').trim().toLowerCase();
+  const list = (S.exercises||[]).filter(e => !q || String(e.name).toLowerCase().includes(q) || String(e.category||'').toLowerCase().includes(q));
+  const rows = list.map(e => `<tr><td><b>${esc(e.name)}</b></td><td class="muted">${e.builtIn?'EXERCISE':'CUSTOM'}</td><td class="muted">${esc(e.category||'—')}</td><td class="muted">—</td><td class="muted">—</td></tr>`).join('');
+  return `<div class="toolbar-row">
+      <div class="field"><label>Search exercises</label>
+        <input value="${esc(ui.exCatalogSearch||'')}" oninput="ui.exCatalogSearch=this.value;render()" placeholder="Squat, row…"></div>
+      <button type="button" class="btn primary small" onclick="addCustomExercise()">New exercise</button>
+    </div>
+    <p class="muted" style="margin-bottom:8px">${list.length} exercise${list.length===1?'':'s'} · 120-library variant search in session builder</p>
+    ${rows ? `<div class="table-wrap"><table class="th-table data-table"><thead><tr><th>Title</th><th>Type</th><th>Tags</th><th>Video</th><th>Created By</th></tr></thead><tbody>${rows}</tbody></table></div><div class="table-foot"><span class="rows-per-page">Rows per page: 100</span><span>1–${list.length} of ${list.length}</span></div>` : '<div class="empty-panel"><div class="eyebrow">Exercises</div><h2>No matches</h2><p class="muted">Try another search, or add a custom exercise.</p></div>'}`;
+}
+
+function addCustomExercise(){
+  const name = prompt('Exercise name');
+  if (!name || !String(name).trim()) return;
+  const category = prompt('Category (optional)', 'Custom') || 'Custom';
+  S.exercises = S.exercises || [];
+  S.exercises.push({ id: L.uid('ex'), name: String(name).trim(), category: String(category).trim(), builtIn: false, source: 'coach-custom' });
+  persist(); render();
+}
+
+function newTemplate(){
+  const t = L.makeTemplate({
+    name:'New session',
+    coachInstructions:'',
+    blocks:[L.makeBlock({ heading:'Strength', type:'strength', category:'Strength/Power', scoring:'weight', exercises:[L.makeExercise({ name:'Back Squat', exerciseId:'core-back-squat', sets:3, reps:'5', load:'', metric:'Weight' })] })],
+  });
+  S.templates.push(t);
+  persist();
+  openSession(t.id);
+}
+
+function newProgram(){
+  const p = L.emptyProgram('New program', 1);
+  S.programs = S.programs || [];
+  S.programs.push(p);
+  persist();
+  openProgram(p.id);
+}
+
+function cellSummary(templateId){
+  const t = tpl(templateId);
+  if (!t) return null;
+  const work = (t.blocks||[]).find(b => {
+    const v = blockTypeValue(b);
+    return v === 'strength' || v === 'conditioning' || v === 'recovery';
+  }) || (t.blocks||[])[0];
+  if (!work) return { title:t.name, letter:'A', line:'Empty session', sets:'' };
+  const kind = blockTypeValue(work);
+  if (kind === 'conditioning' || kind === 'recovery') {
+    return { title:t.name, letter:work.letter||'A', line:L.condPlanLineBlock(work)||work.heading||(kind==='recovery'?'Recovery':'Conditioning'), sets:work.targetDurationMin?`${work.targetDurationMin} min`:'' };
+  }
+  if (kind === 'text') {
+    return { title:t.name, letter:work.letter||'A', line:work.heading||'Notes', sets:'' };
+  }
+  const e = (work.exercises||[])[0];
+  return { title:t.name, letter:work.letter||'A', line:e?.name||work.heading||'Exercise', sets:e?.sets?`${e.sets} Sets`:'' };
+}
+
+function toggleCellMenu(week, day, ev){
+  if (ev) ev.stopPropagation();
+  const cur = ui.cellMenu;
+  if (cur && cur.week === week && cur.day === day) ui.cellMenu = null;
+  else ui.cellMenu = { week, day };
+  if (!ui.cellPick || (ui.cellPick.mode !== 'copyTarget' && ui.cellPick.mode !== 'moveTarget')) {
+    ui.cellPick = null;
+  }
+  render();
+}
+
+function openCellPick(week, day, mode){
+  ui.cellPick = { week, day, mode: mode || 'set' };
+  ui.cellMenu = null;
+  render();
+}
+
+function closeCellPick(){ ui.cellPick = null; render(); }
+
+function placeCellTemplate(templateId){
+  const pick = ui.cellPick; if (!pick) return;
+  const p = prog(ui.programId); if (!p) return;
+  if (pick.mode === 'set' || pick.mode === 'copy' || pick.mode === 'move') {
+    L.setProgramCell(p, pick.week, pick.day, templateId);
+    if (pick.mode === 'move' && pick.fromWeek != null) {
+      L.setProgramCell(p, pick.fromWeek, pick.fromDay, null);
+    }
+  }
+  ui.cellPick = null;
+  persist(); render();
+}
+
+function clearCell(week, day){
+  const p = prog(ui.programId); if (!p) return;
+  L.setProgramCell(p, week, day, null);
+  ui.cellMenu = null;
+  persist(); render();
+}
+
+function startCopyCell(week, day){
+  const p = prog(ui.programId); if (!p) return;
+  const tid = (p.cells||{})[L.cellKey(week, day)];
+  if (!tid) return;
+  ui.cellMenu = null;
+  ui.cellPick = { week:null, day:null, mode:'copyTarget', templateId:tid };
+  render();
+}
+
+function startMoveCell(week, day){
+  const p = prog(ui.programId); if (!p) return;
+  const tid = (p.cells||{})[L.cellKey(week, day)];
+  if (!tid) return;
+  ui.cellMenu = null;
+  ui.cellPick = { week:null, day:null, mode:'moveTarget', templateId:tid, fromWeek:week, fromDay:day };
+  render();
+}
+
+function onEmptyCell(week, day){
+  const pick = ui.cellPick;
+  if (pick && (pick.mode === 'copyTarget' || pick.mode === 'moveTarget')) {
+    const p = prog(ui.programId); if (!p) return;
+    const key = L.cellKey(week, day);
+    const occupied = !!(p.cells || {})[key];
+    if (occupied && pick.mode === 'copyTarget') {
+      if (!confirm('This cell already has a session. Replace it with the copy?')) return;
+    }
+    if (occupied && pick.mode === 'moveTarget') {
+      if (!confirm('This cell already has a session. Swap/move anyway?')) return;
+    }
+    L.setProgramCell(p, week, day, pick.templateId);
+    if (pick.mode === 'moveTarget') L.setProgramCell(p, pick.fromWeek, pick.fromDay, null);
+    ui.cellPick = null;
+    persist(); render();
+    return;
+  }
+  openCellPick(week, day, 'set');
+}
+
+function saveCellAsTemplate(week, day){
+  const p = prog(ui.programId); if (!p) return;
+  const tid = (p.cells||{})[L.cellKey(week, day)];
+  const src = tpl(tid); if (!src) return;
+  const fresh = L.makeTemplate({
+    name: src.name + ' (copy)',
+    coachInstructions: src.coachInstructions || '',
+    blocks: (src.blocks||[]).map(b => {
+      const { id, letter, ...rest } = b;
+      const exercises = (b.exercises||[]).map(e => {
+        const { id:eid, ...er } = e;
+        return L.makeExercise(er);
+      });
+      return L.makeBlock({ ...rest, exercises });
+    }),
+  });
+  S.templates.push(fresh);
+  ui.cellMenu = null;
+  persist();
+  openSession(fresh.id);
+}
+
+function addWeek(){
+  const p = prog(ui.programId); if (!p) return;
+  L.addProgramWeek(p);
+  persist(); render();
+}
+
+function progIcon(name){
+  const paths = {
+    eye:'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',
+    folder:'<path d="M12 10v6"/><path d="M9 13h6"/><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7l-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Z"/>',
+    gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  };
+  return `<svg viewBox="0 0 24 24" aria-hidden="true">${paths[name]||''}</svg>`;
+}
+
+function templatePickerHtml(){
+  const pick = ui.cellPick;
+  if (!pick || (pick.mode !== 'set' && pick.mode !== 'copy' && pick.mode !== 'move')) return '';
+  const list = (S.templates||[]).map(t =>
+    `<button type="button" class="picker-item" onclick="placeCellTemplate('${t.id}')"><span>${esc(t.name)}</span><span class="muted">${(t.blocks||[]).length} blocks</span></button>`
+  ).join('');
+  return `<div class="picker-overlay" onclick="if(event.target===this)closeCellPick()">
+    <div class="picker-panel" role="dialog" aria-label="Choose session template">
+      <div class="row"><b>Add from library</b><button type="button" class="btn ghost small" onclick="closeCellPick()">Close</button></div>
+      <p class="muted" style="margin-top:8px">Week ${pick.week} · Day ${pick.day}</p>
+      <div class="picker-list">${list || '<div class="muted">No session templates.</div>'}</div>
+    </div></div>`;
+}
+
+function programCellHtml(p, week, day){
+  const key = L.cellKey(week, day);
+  const tid = (p.cells||{})[key];
+  const menuOn = ui.cellMenu && ui.cellMenu.week === week && ui.cellMenu.day === day;
+  if (!tid) {
+    const hint = ui.cellPick && (ui.cellPick.mode === 'copyTarget' || ui.cellPick.mode === 'moveTarget')
+      ? `<span class="muted" style="padding:12px;display:block;font-size:11px">${ui.cellPick.mode==='moveTarget'?'Drop here to move':'Drop here to copy'}</span>`
+      : '';
+    return `<button type="button" class="prog-cell empty" aria-label="Week ${week} Day ${day} empty" onclick="onEmptyCell(${week},${day})">${hint}</button>`;
+  }
+  const sum = cellSummary(tid) || { title:'Session', letter:'A', line:'—', sets:'' };
+  const menu = menuOn ? `<div class="kebab-menu" role="menu">
+      <button type="button" onclick="openSession('${tid}')">Edit session</button>
+      <button type="button" onclick="startCopyCell(${week},${day})">Copy</button>
+      <button type="button" onclick="startMoveCell(${week},${day})">Move</button>
+      <button type="button" onclick="saveCellAsTemplate(${week},${day})">Save as template</button>
+      <button type="button" class="danger" onclick="clearCell(${week},${day})">Delete</button>
+    </div>` : '';
+  return `<div class="prog-cell">
+    <div class="prog-card">
+      <div class="prog-card-top">
+        <span class="prog-card-mark">TH</span>
+        <button type="button" class="prog-card-title" style="background:transparent;border:0;padding:0;text-align:left;color:inherit;cursor:pointer" onclick="openSession('${tid}')">${esc(sum.title)}</button>
+        <button type="button" class="kebab-btn" aria-label="Cell menu" onclick="toggleCellMenu(${week},${day},event)">⋯</button>
+      </div>
+      <div class="prog-card-body">
+        <span class="letter-badge">${esc(sum.letter)}</span>
+        <div class="prog-card-ex"><div>${esc(sum.line)}</div>${sum.sets?`<div class="muted">${esc(sum.sets)}</div>`:''}</div>
+      </div>
+    </div>${menu}</div>`;
+}
+
+function programHtml(){
+  const p = prog(ui.programId);
+  if (!p) return libraryHtml();
+  ui.lib = 'programs';
+  const weeks = Math.max(1, Number(p.weeks)||1);
+  const dayHeads = [1,2,3,4,5,6,7].map(d => `<div class="prog-day-h">Day ${d}</div>`).join('');
+  const weekBlocks = Array.from({ length: weeks }, (_, i) => {
+    const w = i + 1;
+    const cells = [1,2,3,4,5,6,7].map(d => programCellHtml(p, w, d)).join('');
+    return `<div class="prog-week"><div class="prog-week-label">Week ${w}</div>
+      <div class="prog-days">${dayHeads}${cells}</div></div>`;
+  }).join('');
+  const pasteHint = ui.cellPick && (ui.cellPick.mode === 'copyTarget' || ui.cellPick.mode === 'moveTarget')
+    ? `<p class="prog-hint">${ui.cellPick.mode==='moveTarget'?'Click an empty cell to move the session.':'Click an empty cell to paste the copy.'} <button type="button" class="btn ghost small" onclick="closeCellPick()">Cancel</button></p>`
+    : '';
+  return `<button type="button" class="btn ghost small" onclick="go('library',{lib:'programs'})">← Back to programs</button>
+    <div class="prog-toolbar" style="margin-top:12px">
+      <input class="prog-title" value="${esc(p.name)}" aria-label="Program title" oninput="prog(ui.programId).name=this.value;persist()">
+      <div class="prog-icons">
+        <button type="button" class="prog-icon" title="Preview (coming soon)" disabled>${progIcon('eye')}</button>
+        <button type="button" class="prog-icon" title="Save to folder (coming soon)" disabled>${progIcon('folder')}</button>
+        <button type="button" class="prog-icon" title="Program settings (coming soon)" disabled>${progIcon('gear')}</button>
+        <button type="button" class="btn small" onclick="go('assign',{programId:ui.programId})">Assign</button>
+      </div>
+    </div>
+    ${pasteHint}
+    ${weekBlocks}
+    <div class="prog-footer">
+      <button type="button" class="btn" onclick="addWeek()">Add week</button>
+      <span class="muted">Empty cells stay blank — click to place a session template.</span>
+    </div>
+    ${templatePickerHtml()}`;
+}
+
+function tplBlocks(){ return tpl(ui.templateId)?.blocks || []; }
+
+function coachExerciseSummary(ex){
+  return L.prescriptionLine(ex);
+}
+
+function syncCoachExFromColumns(bi, ei){
+  if (!window.LogColumns) return;
+  const ex = tpl(ui.templateId).blocks[bi].exercises[ei];
+  LogColumns.syncLegacyFromColumns(ex, LogColumns.getSheetColumns(), LogColumns.getSetCount());
+  ex.restSec = LogColumns.getRestSec();
+  L.ensureRows(ex);
+  persist();
+}
+
+function openCoachExEdit(bi, ei){
+  closeCoachExEdit();
+  ui.exEdit = { bi, ei };
+  const ex = tplBlocks()[bi].exercises[ei];
+  if (window.LogColumns) {
+    LogColumns.beginSheet(ex);
+    LogColumns.setChangeHandler(() => syncCoachExFromColumns(bi, ei));
+  }
+  render();
+}
+
+function closeCoachExEdit(){
+  if (ui.exEdit && window.LogColumns) {
+    syncCoachExFromColumns(ui.exEdit.bi, ui.exEdit.ei);
+    LogColumns.setChangeHandler(null);
+  }
+  ui.exEdit = null;
+  render();
+}
+
+function patchCoachExTargetRir(bi, ei, raw){
+  const ex = tplBlocks()[bi].exercises[ei];
+  const v = String(raw == null ? '' : raw).trim();
+  if (!v) delete ex.targetRir;
+  else {
+    const n = Math.max(0, Math.min(10, Math.round(Number(v))));
+    if (Number.isFinite(n)) ex.targetRir = n;
+  }
+  if (ui.exEdit && window.LogColumns) LogColumns.setTargetRir(ex.targetRir);
+  persist();
+}
+
+function coachTargetRirField(bi, ei){
+  const ex = tplBlocks()[bi].exercises[ei];
+  const val = ex.targetRir != null ? ex.targetRir : '';
+  return `<div class="field" style="margin-top:8px"><label>Target RIR</label>
+    <input type="number" min="0" max="10" step="1" placeholder="2 (default)" value="${val}" aria-label="Target reps in reserve" onchange="patchCoachExTargetRir(${bi},${ei},this.value)">
+    <p class="muted" style="margin:4px 0 0;font-size:11px">In-session autoreg aims for this many reps in reserve. Blank uses engine default (2).</p></div>`;
+}
+
+function coachExerciseRxHtml(bi, ei){
+  const ex = tplBlocks()[bi].exercises[ei];
+  const editing = ui.exEdit && ui.exEdit.bi === bi && ui.exEdit.ei === ei;
+  if (!window.LogColumns) return setRowsTable(bi, ei);
+  if (!editing) {
+    return `<p class="rx-summary">${esc(coachExerciseSummary(ex))}</p>
+      <p class="rx-summary muted">Autopilot — engine handles sets, reps, and load · in-session autoreg after set 1.</p>
+      ${coachTargetRirField(bi, ei)}
+      <button type="button" class="btn small" style="margin-top:8px" onclick="openCoachExEdit(${bi},${ei})">Edit prescription</button>`;
+  }
+  LogColumns.beginSheet(ex);
+  return `${coachTargetRirField(bi, ei)}
+    <div class="rx-grid cols-2" style="margin-top:8px">
+      <div class="field"><label>Rest (seconds)</label>
+        <input type="number" min="0" value="${LogColumns.getRestSec()}" onchange="LogColumns.onRestChange(this.value)"></div>
+    </div>
+    ${LogColumns.builderPrescriptionHtml()}
+    <div class="btns" style="margin-top:8px;justify-content:flex-start">
+      <button type="button" class="btn small primary" onclick="closeCoachExEdit()">Done</button>
+    </div>`;
+}
+
+function parseSets(tid, bi, ei, raw){
+  const t = tpl(tid); const e = t.blocks[bi].exercises[ei];
+  const m = String(raw).match(/(\d+)\s*[x×]\s*(.+)/i);
+  if (m){ e.sets = Number(m[1]); e.reps = m[2].trim(); }
+  persist();
+}
+
+function addEx(bi){
+  const t = tpl(ui.templateId);
+  t.blocks[bi].exercises = t.blocks[bi].exercises || [];
+  t.blocks[bi].exercises.push(L.makeExercise({ name:'New lift', autopilotVolume:true, load:'', metric:'Weight', restSec:90 }));
+  t.blocks = L.decorateBlocks(t.blocks);
+  persist(); render();
+}
+
+function removeEx(bi, ei){
+  if (ui.exEdit && ui.exEdit.bi === bi && ui.exEdit.ei === ei) closeCoachExEdit();
+  const t = tpl(ui.templateId);
+  t.blocks[bi].exercises.splice(ei, 1);
+  t.blocks = L.decorateBlocks(t.blocks);
+  persist(); render();
+}
+
+function addBlk(type){
+  const t = tpl(ui.templateId);
+  const partial = type === 'recovery'
+    ? { type:'conditioning', heading:'Recovery movement', category:'Recovery', scoring:'completion', recoverySession:true, condFmt:'steady', effort:'easy', modality:'Mixed', baselineDurationMin:30, targetDurationMin:30, timeCapMin:30, notes:'Mixed modal — walk, easy bike, mobility. Log time and feel, not output.' }
+    : type === 'conditioning'
+    ? { type:'conditioning', heading:'Steady-state', category:'Conditioning', scoring:'completion', condFmt:'steady', effort:'easy', modality:'Bike', targetDurationMin:20 }
+    : type === 'text'
+      ? { type:'text', heading:'Prep', category:'Prep', scoring:'completion', notes:'' }
+      : { type:'strength', heading:'Strength', category:'Strength/Power', scoring:'weight', exercises:[L.makeExercise({ name:'Back Squat', exerciseId:'core-back-squat', sets:3, reps:'8', load:'', metric:'Weight' })] };
+  t.blocks.push(L.makeBlock(partial));
+  t.blocks = L.decorateBlocks(t.blocks);
+  persist(); render();
+}
+
+function clearCondFields(b){
+  delete b.recoverySession;
+  delete b.baselineDurationMin;
+  delete b.condFmt;
+  delete b.modality;
+  delete b.targetDurationMin;
+  delete b.conditioningType;
+  delete b.effort;
+  delete b.timeCapMin;
+  delete b.rounds;
+  delete b.workSec;
+  delete b.restSec;
+  delete b.targetHrZone;
+  delete b.targetPace;
+  delete b.targetWatts;
+  delete b.targetDistance;
+}
+
+function setBlockType(bi, type){
+  closeCoachExEdit();
+  const t = tpl(ui.templateId);
+  const b = t.blocks[bi];
+  if (!b) return;
+  if (b.supersetPartner && bi > 0) t.blocks[bi - 1].superset = false;
+  if (b.superset && t.blocks[bi + 1]?.supersetPartner) delete t.blocks[bi + 1].supersetPartner;
+  if (type === 'strength') {
+    b.type = 'strength';
+    b.scoring = b.scoring === 'completion' ? 'completion' : 'weight';
+    b.category = 'Strength/Power';
+    clearCondFields(b);
+    if (!(b.exercises || []).length) {
+      b.exercises = [L.makeExercise({ name:'Back Squat', exerciseId:'core-back-squat', sets:3, reps:'8', load:'', metric:'Weight' })];
+    }
+  } else if (type === 'conditioning') {
+    b.superset = false;
+    delete b.exercises;
+    delete b.recoverySession;
+    delete b.baselineDurationMin;
+    L.applyCondBuilderToBlock(b, { condFmt:'steady', effort:'easy', modality:'Bike', targetDurationMin:20, heading:b.heading || 'Steady-state' });
+    b.category = 'Conditioning';
+  } else if (type === 'recovery') {
+    b.superset = false;
+    delete b.exercises;
+    b.recoverySession = true;
+    b.baselineDurationMin = L.num(b.baselineDurationMin) || L.num(b.targetDurationMin) || 30;
+    L.applyCondBuilderToBlock(b, { condFmt:'steady', effort:'easy', modality:'Mixed', targetDurationMin:b.baselineDurationMin, heading:b.heading || 'Recovery movement' });
+    b.category = 'Recovery';
+    b.type = 'conditioning';
+  } else {
+    b.type = 'text';
+    b.category = 'Prep';
+    b.scoring = 'completion';
+    b.superset = false;
+    delete b.exercises;
+    clearCondFields(b);
+  }
+  t.blocks = L.decorateBlocks(t.blocks);
+  persist(); render();
+}
+
+function blockTypeValue(b){
+  if (!b) return 'strength';
+  if (b.type === 'text') return 'text';
+  if (b.recoverySession) return 'recovery';
+  if (b.type === 'conditioning') return 'conditioning';
+  return 'strength';
+}
+
+function blockTypeSelectHtml(i, b){
+  const v = blockTypeValue(b);
+  return `<select class="grow" aria-label="Block type" onchange="setBlockType(${i}, this.value)">
+    <option value="strength" ${v==='strength'?'selected':''}>Strength</option>
+    <option value="conditioning" ${v==='conditioning'?'selected':''}>Conditioning</option>
+    <option value="recovery" ${v==='recovery'?'selected':''}>Recovery</option>
+    <option value="text" ${v==='text'?'selected':''}>Prep notes</option>
+  </select>`;
+}
+
+function removeBlk(bi){
+  if (!confirm('Delete this block?')) return;
+  if (ui.exEdit && ui.exEdit.bi === bi) closeCoachExEdit();
+  const t = tpl(ui.templateId);
+  const b = t.blocks[bi];
+  if (b?.supersetPartner && bi > 0) t.blocks[bi - 1].superset = false;
+  if (b?.superset && t.blocks[bi + 1]?.supersetPartner) delete t.blocks[bi + 1].supersetPartner;
+  t.blocks.splice(bi, 1);
+  t.blocks = L.decorateBlocks(t.blocks);
+  persist(); render();
+}
+
+function isSupersetPartnerBlock(blocks, bi){
+  const b = blocks[bi];
+  if (!b || blockTypeValue(b) !== 'strength') return false;
+  if (b.supersetPartner) return true;
+  const prev = blocks[bi - 1];
+  return !!(prev && prev.superset && blockTypeValue(prev) === 'strength');
+}
+
+function toggleSuperset(bi, on){
+  const t = tpl(ui.templateId);
+  t.blocks.forEach((b) => {
+    delete b.supersetPartner;
+  });
+  t.blocks[bi].superset = on;
+  if (on) {
+    const next = t.blocks[bi + 1];
+    if (!next || blockTypeValue(next) !== 'strength') {
+      showCoachToast('Add a strength block after this one to complete the superset pair.', 'warn');
+    }
+  }
+  t.blocks = L.decorateBlocks(t.blocks);
+  persist(); render();
+}
+
+function moveBlock(from, to){
+  closeCoachExEdit();
+  const t = tpl(ui.templateId);
+  if (!t) return;
+  t.blocks = L.decorateBlocks(L.reorderBlocks(t.blocks, from, to));
+  persist();
+  render();
+}
+
+function initBlockDrag(){
+  const list = document.getElementById('coachBlockList');
+  if (!list) return;
+  let dragFrom = null;
+  list.querySelectorAll('.block-drag-handle').forEach((handle) => {
+    handle.addEventListener('dragstart', (ev) => {
+      dragFrom = Number(handle.dataset.blockIndex);
+      ev.dataTransfer.effectAllowed = 'move';
+      ev.dataTransfer.setData('text/plain', String(dragFrom));
+      handle.closest('.block-card')?.classList.add('dragging');
+    });
+    handle.addEventListener('dragend', () => {
+      dragFrom = null;
+      list.querySelectorAll('.block-card').forEach((el) => {
+        el.classList.remove('dragging', 'drop-target');
+      });
+    });
+  });
+  list.querySelectorAll('.block-card').forEach((card) => {
+    card.addEventListener('dragover', (ev) => {
+      ev.preventDefault();
+      ev.dataTransfer.dropEffect = 'move';
+      card.classList.add('drop-target');
+    });
+    card.addEventListener('dragleave', (ev) => {
+      if (!card.contains(ev.relatedTarget)) card.classList.remove('drop-target');
+    });
+    card.addEventListener('drop', (ev) => {
+      ev.preventDefault();
+      card.classList.remove('drop-target');
+      const from = dragFrom != null ? dragFrom : Number(ev.dataTransfer.getData('text/plain'));
+      const to = Number(card.dataset.blockIndex);
+      if (Number.isFinite(from) && Number.isFinite(to)) moveBlock(from, to);
+    });
+  });
+}
+
+function openExPicker(bi, ei){
+  closeCoachExEdit();
+  ui.exPicker = { bi, ei };
+  ui.exSearch = '';
+  render();
+}
+
+function coachExerciseSuggestHits(query){
+  const q = String(query||'').trim();
+  if (q.length < 1) return [];
+  if (window.ExerciseSearch?.search) {
+    const hits = ExerciseSearch.search(q, 12);
+    return ExerciseSearch.mergeCustomHits(hits, S.exercises||[], q, 12);
+  }
+  const ql = q.toLowerCase();
+  return (S.exercises||[]).filter(e => String(e.name||'').toLowerCase().includes(ql) || String(e.category||'').toLowerCase().includes(ql))
+    .slice(0, 12).map(e => ({ exerciseId: e.id, name: e.name, category: e.category||'Custom' }));
+}
+
+function ensureCoachExerciseInCatalog(exerciseId, name, category){
+  if (!exerciseId) return;
+  S.exercises = S.exercises || [];
+  let row = S.exercises.find(e => e.id === exerciseId);
+  if (!row) {
+    row = { id: exerciseId, name: name||exerciseId, category: category||'Custom', builtIn: !!ExerciseSearch?.byId?.(exerciseId), source: ExerciseSearch?.byId?.(exerciseId) ? 'THE-core-120' : 'coach-custom' };
+    S.exercises.push(row);
+  } else {
+    if (name) row.name = name;
+    if (category) row.category = category;
+  }
+}
+
+function closeExPicker(){ ui.exPicker = null; ui.exSearch = ''; render(); }
+
+function pickExerciseVariant(exerciseId, name, category){
+  if (!ui.exPicker) return;
+  ensureCoachExerciseInCatalog(exerciseId, name, category);
+  const t = tpl(ui.templateId);
+  const ex = t.blocks[ui.exPicker.bi].exercises[ui.exPicker.ei];
+  ex.name = name || ex.name;
+  ex.exerciseId = exerciseId || ex.exerciseId;
+  ex.category = category || ex.category;
+  ui.exPicker = null;
+  ui.exSearch = '';
+  t.blocks = L.decorateBlocks(t.blocks);
+  persist(); render();
+}
+
+function filteredExercises(){
+  const q = String(ui.exSearch||'').trim();
+  if (q) return coachExerciseSuggestHits(q).map(h => ({ id: h.exerciseId, name: h.name, category: h.category }));
+  return (S.exercises||[]).slice(0, 80);
+}
+
+function exercisePickerHtml(){
+  if (!ui.exPicker) return '';
+  const q = String(ui.exSearch||'').trim();
+  const hits = coachExerciseSuggestHits(q);
+  const list = hits.length
+    ? hits.map(x => `<button type="button" class="picker-item" onclick='pickExerciseVariant(${JSON.stringify(x.exerciseId||'')},${JSON.stringify(x.name)},${JSON.stringify(x.category||'Custom')})'><span>${esc(x.name)}</span><span class="muted">${esc(x.category||'Custom')}</span></button>`).join('')
+    : (q ? '<div class="muted">No library match — try another variant name.</div>' : '<div class="muted">Type to search exercise variants (names only).</div>');
+  return `<div class="picker-overlay" onclick="if(event.target===this)closeExPicker()">
+    <div class="picker-panel" role="dialog" aria-label="Choose exercise">
+      <div class="row"><b>Choose exercise</b><button type="button" class="btn ghost small" onclick="closeExPicker()">Close</button></div>
+      <div class="field" style="margin-top:12px"><label>Search variants</label>
+        <input value="${esc(ui.exSearch)}" oninput="ui.exSearch=this.value;render()" placeholder="deadlift, lateral raise…" autofocus></div>
+      <div class="picker-list">${list}</div>
+    </div></div>`;
+}
+
+function setRowsTable(bi, ei){
+  const e = tplBlocks()[bi].exercises[ei];
+  const n = Math.max(1, Number(e.sets) || 1);
+  const reps = L.targetList(e);
+  const loads = L.loadList(e);
+  let rows = '';
+  for (let i = 0; i < n; i++) {
+    rows += `<tr><td>${i+1}</td><td><input value="${esc(reps[i] ?? e.reps ?? '')}" oninput="setRowRep(${bi},${ei},${i},this.value)"></td>
+      <td><input value="${esc(loads[i] ?? '')}" oninput="setRowLoad(${bi},${ei},${i},this.value)" placeholder="Load"></td></tr>`;
+  }
+  return `<table class="set-table"><thead><tr><th>Set</th><th>Reps</th><th>Load</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function setRowRep(bi, ei, ri, val){
+  const e = tplBlocks()[bi].exercises[ei];
+  const parts = L.targetList(e);
+  while (parts.length < (e.sets || 1)) parts.push(String(e.reps || ''));
+  parts[ri] = val;
+  for (let i = ri + 1; i < parts.length; i++) parts[i] = val;
+  e.reps = parts.length === 1 ? parts[0] : parts.join(',');
+  persist();
+  render();
+}
+
+function setRowLoad(bi, ei, ri, val){
+  const e = tplBlocks()[bi].exercises[ei];
+  const parts = L.loadList(e);
+  while (parts.length < (e.sets || 1)) parts.push('');
+  parts[ri] = val;
+  e.load = parts.length === 1 ? parts[0] : parts.join(',');
+  persist();
+}
+
+function patchCond(bi, patch){
+  const t = tpl(ui.templateId);
+  L.applyCondBuilderToBlock(t.blocks[bi], patch);
+  persist(); render();
+}
+
+function nudgeCondMin(bi, delta){
+  const b = tplBlocks()[bi];
+  const cur = Number(b.targetDurationMin) || 20;
+  patchCond(bi, { targetDurationMin: Math.max(1, Math.min(180, cur + delta)) });
+}
+
+function setCondFmt(bi, key){
+  const fmt = L.condFormatMeta(key);
+  const patch = { condFmt:key, heading:fmt.name };
+  if (L.fmtNeedsIntervalFields(fmt)) {
+    patch.rounds = fmt.rounds || 4;
+    patch.workSec = fmt.workSec || 240;
+    patch.restSec = fmt.restSec || 180;
+  }
+  patchCond(bi, patch);
+}
+
+function modalityWantsWatts(mod){
+  const m = String(mod||'').toLowerCase();
+  return m.includes('bike') || m.includes('echo') || m.includes('air');
+}
+
+function condEngineHtml(b, bi){
+  const fmt = L.condFormatMeta(b.condFmt || 'steady');
+  const effort = L.condEffortMeta(b.effort || 'easy');
+  const interval = L.fmtNeedsIntervalFields(fmt);
+  const plan = L.condPlanLineBlock(b) || '—';
+  const fmtOpts = L.COND_FORMATS.map(f => `<option value="${f.key}" ${fmt.key===f.key?'selected':''}>${esc(f.name)}</option>`).join('');
+  const modOpts = L.COND_MODALITIES.map(m => `<option ${b.modality===m?'selected':''}>${esc(m)}</option>`).join('');
+  const chips = L.COND_EFFORTS.map(e => {
+    const on = effort.key === e.key;
+    return `<button type="button" class="eff ${esc(e.key)}${on?' on':''}" aria-pressed="${on?'true':'false'}" onclick="patchCond(${bi},{effort:'${e.key}'})"><b>${esc(e.name)}</b><small>RPE ${esc(e.rpe)}</small></button>`;
+  }).join('');
+  const timing = interval
+    ? `<div class="engine-fields" style="grid-template-columns:1fr 1fr 1fr;margin-top:10px">
+        <div class="field"><label>Rounds</label><input type="number" min="1" step="1" value="${esc(b.rounds||fmt.rounds||1)}" onchange="patchCond(${bi},{rounds:Number(this.value)||1})"></div>
+        <div class="field"><label>Work</label><input value="${esc(L.formatMmSs(b.workSec||fmt.workSec||30))}" onchange="patchCond(${bi},{workSec:L.parseMmSs(this.value)})"></div>
+        <div class="field"><label>Rest</label><input value="${esc(L.formatMmSs(b.restSec!=null?b.restSec:(fmt.restSec||90)))}" onchange="patchCond(${bi},{restSec:L.parseMmSs(this.value)})"></div>
+      </div><p class="engine-hint">Total ≈ ${L.condIntervalTotalMin(b)} min · stored as seconds.</p>`
+    : `<div class="field" style="margin-top:10px"><label>Minutes</label>
+        <div class="mins-row">
+          <button type="button" class="btn small" onclick="nudgeCondMin(${bi},-5)">−</button>
+          <input type="number" min="1" max="180" value="${esc(b.targetDurationMin||20)}" onchange="patchCond(${bi},{targetDurationMin:Number(this.value)||20})">
+          <button type="button" class="btn small" onclick="nudgeCondMin(${bi},5)">+</button>
+        </div></div>`;
+  const watts = modalityWantsWatts(b.modality)
+    ? `<div class="field" style="margin-top:10px"><label>Target watts <span class="muted">(optional)</span></label>
+        <input type="number" min="0" step="5" placeholder="180" value="${esc(b.targetWatts||'')}" onchange="patchCond(${bi},{targetWatts:this.value})"></div>`
+    : '';
+  return `<div class="engine-box">
+    <div class="engine-plan">${esc(plan)}</div>
+    <div class="engine-fields">
+      <div class="field"><label>Format</label><select onchange="setCondFmt(${bi},this.value)">${fmtOpts}</select></div>
+      <div class="field"><label>Modality</label><select onchange="patchCond(${bi},{modality:this.value})">${modOpts}</select></div>
+    </div>
+    <div class="field" style="margin-top:10px"><label>Effort</label></div>
+    <div class="efforts" role="group" aria-label="Effort">${chips}</div>
+    ${timing}
+    ${watts}
+    <div class="field" style="margin-top:10px"><label>Coach notes</label>
+      <textarea oninput="tpl(ui.templateId).blocks[${bi}].notes=this.value;persist()">${esc(b.notes||'')}</textarea></div>
+  </div>`;
+}
+
+function blockExerciseHtml(b, bi){
+  const kind = blockTypeValue(b);
+  if (kind === 'conditioning' || kind === 'recovery') return condEngineHtml(b, bi);
+  if (kind === 'text') {
+    return `<div class="field prep-field"><label>Block notes</label>
+      <textarea class="prep-textarea" rows="8" oninput="tpl(ui.templateId).blocks[${bi}].notes=this.value;persist();growTextAreas()">${esc(b.notes||'')}</textarea></div>`;
+  }
+  const exHtml = (b.exercises||[]).map((e, ei) => `<div class="exercise-card">
+    <div class="row" style="align-items:flex-start"><span class="letter-badge" style="width:26px;height:26px;font-size:11px">${esc(b.letter||'?')}</span>
+      <button type="button" class="exercise-pick grow" onclick="openExPicker(${bi},${ei})">${esc(e.name||'Choose exercise')}</button>
+      <button type="button" class="kebab-btn" title="Remove exercise" onclick="removeEx(${bi},${ei})">×</button></div>
+    ${coachExerciseRxHtml(bi, ei)}
+  </div>`).join('');
+  return `${exHtml}<button type="button" class="btn small" style="margin-top:10px" onclick="addEx(${bi})">Add exercise</button>`;
+}
+
+function sessionHtml(){
+  const t = tpl(ui.templateId);
+  if (!t) return libraryHtml();
+  ui.lib = 'sessions';
+  const blocks = tplBlocks().map((b, i) => {
+    const kind = blockTypeValue(b);
+    const blocksRef = tpl(ui.templateId).blocks;
+    const isPartner = isSupersetPartnerBlock(blocksRef, i);
+    const scoring = `<select title="How the athlete logs this strength block" onchange="tpl(ui.templateId).blocks[${i}].scoring=this.value;persist()"><option value="weight" ${b.scoring==='weight'?'selected':''}>Track load</option><option value="completion" ${b.scoring==='completion'?'selected':''}>Completion only</option></select>`;
+    const superset = kind === 'strength' && !isPartner
+      ? `<label class="row" style="gap:6px;margin:0;font-size:11px;color:var(--muted);text-transform:none;letter-spacing:0;font-weight:500">
+          <input type="checkbox" style="width:auto" ${b.superset?'checked':''} onchange="toggleSuperset(${i},this.checked)"> Superset</label>`
+      : (isPartner ? `<span class="pill" style="font-size:10px">Superset pair</span>` : '');
+    return `<section class="block-card block-${kind}" data-block-index="${i}">
+      <div class="block-head">
+        ${isPartner
+          ? '<span class="block-drag-spacer" aria-hidden="true"></span>'
+          : `<button type="button" class="block-drag-handle" draggable="true" data-block-index="${i}" aria-label="Drag to reorder block" title="Drag to reorder">⋮⋮</button>`}
+        <span class="letter-badge">${esc(b.letter||'?')}</span>
+        ${blockTypeSelectHtml(i, b)}
+        ${kind==='strength'?scoring:''}
+        ${superset}
+        <button type="button" class="kebab-btn danger" title="Delete block" aria-label="Delete block" onclick="removeBlk(${i})">Delete</button>
+      </div>
+      <div class="block-body">
+        <div class="field"><label>Block title</label><input value="${esc(b.heading||'')}" oninput="tpl(ui.templateId).blocks[${i}].heading=this.value;persist()"></div>
+        ${kind==='strength'?`<div class="field"><label>Block notes</label><textarea oninput="tpl(ui.templateId).blocks[${i}].notes=this.value;persist()">${esc(b.notes||'')}</textarea></div>`:''}
+        ${blockExerciseHtml(b, i)}
+      </div>
+    </section>`;
+  }).join('');
+  const instrLen = (t.coachInstructions||'').length;
+  return `<div class="fade-in"><button type="button" class="btn ghost small page-back" onclick="go('library',{lib:'sessions'})">← Back to sessions</button>
+    <div class="builder-top" style="margin-top:12px">
+      <input class="builder-title" value="${esc(t.name)}" aria-label="Session title" oninput="tpl(ui.templateId).name=this.value;persist()">
+      <div class="builder-actions"><span class="pill">Saved locally</span></div>
+    </div>
+    <div class="card instructions-box">
+      <label>Coach instructions</label>
+      <span class="char-count">${instrLen}/10000</span>
+      <textarea maxlength="10000" placeholder="Use this area to help the athlete understand goals for today's session." oninput="tpl(ui.templateId).coachInstructions=this.value;persist();var c=this.closest('.instructions-box')&&this.closest('.instructions-box').querySelector('.char-count');if(c)c.textContent=this.value.length+'/10000'">${esc(t.coachInstructions||'')}</textarea>
+    </div>
+    <div class="block-list" id="coachBlockList">${blocks}</div>
+    <div class="add-block-bar stack">
+      <p class="muted" style="margin:0">Add a block type</p>
+      <div class="row" style="justify-content:flex-start;gap:8px;flex-wrap:wrap">
+        <button type="button" class="btn primary small" onclick="addBlk('strength')">+ Strength</button>
+        <button type="button" class="btn small" onclick="addBlk('conditioning')">+ Conditioning</button>
+        <button type="button" class="btn small" onclick="addBlk('recovery')">+ Recovery</button>
+        <button type="button" class="btn small" onclick="addBlk('text')">+ Prep notes</button>
+      </div>
+    </div>
+    ${exercisePickerHtml()}</div>`;
+}
+
+function coachChrome(body){
+  const nav = [
+    ['home','Coach Home','home',false],
+    ['athletes','Athletes','users',false],
+    ['teams','Teams','teams',false],
+    ['library','Library','library',false],
+    ['nutrition','Nutrition','nutrition',false],
+    ['analytics','Analytics','chart',true],
+    ['gym','Gym Tools','gym',true],
+  ];
+  const navHtml = nav.map(([k,l,ic,off]) => {
+    if (off) return `<span class="nav-soon" title="${esc(l)}">${icon(ic)}<span class="nav-label">${esc(l)}</span></span>`;
+    return `<button type="button" class="${navActive(k)?'on':''}" data-nav="${k}" title="${esc(l)}" onclick="go('${k}')">${icon(ic)}<span class="nav-label">${esc(l)}</span></button>`;
+  }).join('');
+  const initials = String(S.coach?.name||'D').slice(0,1).toUpperCase();
+  const hasRail = ui.view === 'home';
+  const welcome = S.coach?.name ? `Welcome back, Coach ${esc(S.coach.name)}` : 'Welcome back';
+  return `<aside class="coach-side coach-rail-slim" aria-label="Coach navigation">
+    <div class="coach-brand"><div class="mark">H</div><div><b>THE Hybrid</b><div class="sub">hybrid S&C · coach workspace</div></div></div>
+    <nav>${navHtml}</nav>
+    <div class="coach-side-foot">
+      <span class="nav-soon" title="Coming soon">${icon('support')}<span class="nav-label">Support</span></span>
+      <a class="btn small block" href="https://thehybridsystem.netlify.app/" target="_blank" rel="noopener noreferrer" title="Open athlete app">Open athlete app</a>
+      <button type="button" onclick="pushCloudNow()" title="Push cloud now">Push cloud now</button>
+      <button type="button" onclick="exportBridgeFile()" title="Export bridge file">Export bridge file</button>
+      <button type="button" onclick="resetDemo()" title="Reset demo data">Reset demo</button>
+      <button type="button" onclick="signOut()" title="Sign out">Sign out</button>
+    </div>
+  </aside>
+  <div class="coach-workspace">
+    <header class="coach-header">
+      <div class="coach-header-title"><span class="welcome-h">${welcome}</span> · ${esc(headerTitle())}</div>
+      <div class="coach-header-actions">
+        <button type="button" class="btn-assist" disabled title="Coming soon">Manage Assistants</button>
+        <span class="icon-btn" title="Coming soon">${icon('msg')}<span class="badge">·</span></span>
+        <span class="icon-btn" title="Coming soon">${icon('bell')}</span>
+        <div class="coach-avatar" title="Coach profile">${initials}</div>
+      </div>
+    </header>
+    <div class="coach-body ${hasRail?'has-rail':''}">
+      <main class="coach-main">${body}</main>
+      ${hasRail?`<aside class="coach-rail" aria-label="Programming status">${needsHtml()}</aside>`:''}
+    </div>
+  </div>`;
+}
+
+function exportBridgeFile(){
+  if (!window.CoachBridge) return alert('Bridge module missing');
+  const r = CoachBridge.push(S);
+  if (!r.ok) return alert('Export failed: ' + (r.error||''));
+  const blob = new Blob([JSON.stringify(r.payload, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'the-coach-bridge-' + (r.payload.exportedAt||'').slice(0,10) + '.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function gateHtml(){
+  return `<div class="fade-in"><div class="row" style="justify-content:flex-start;gap:12px"><div class="mark">TH</div><div><b>THE Hybrid System</b><div class="muted">Coach workspace</div></div></div>
+    <div class="eyebrow" style="margin-top:28px">Coach access</div>
+    <h1 class="gate-title">Sign in</h1>
+    <p class="muted" style="margin-top:8px">Use the <b>same email + password</b> as the athlete app (Settings → Account). That unlocks cloud publish for athletes.</p>
+    ${ui.err?`<div class="err-card" role="alert">${esc(ui.err)}</div>`:''}
+    <form id="gateForm" onsubmit="event.preventDefault();tryLogin($('em').value,$('pw').value);return false;">
+      <div class="field"><label>Email</label><input id="em" type="email" autocomplete="username" placeholder="you@email.com" value="" required></div>
+      <div class="field"><label>Password</label><input id="pw" type="password" autocomplete="current-password" value="" required></div>
+      <button type="submit" class="btn primary block" style="margin-top:16px">Sign in</button>
+    </form>
+    <div class="gate-demo">
+      <p class="muted">Offline demo — local assign only. Sign in above with your Supabase account to cloud-publish to the athlete app.</p>
+      <button type="button" class="btn small" onclick="tryLogin('dan@thehybrid.local','demo')">Demo coach (offline)</button>
+    </div></div>`;
+}
+
+function growTextAreas(){
+  try {
+    document.querySelectorAll('.prep-textarea, .instructions-box textarea').forEach(function(el){
+      el.style.height = 'auto';
+      el.style.height = Math.max(el.scrollHeight, 200) + 'px';
+    });
+  } catch (e) {}
+}
+
+function render(){
+  const acc = account();
+  $('gate').classList.add('hidden');
+  $('coachApp').classList.add('hidden');
+  if (!acc || acc.role !== 'coach'){
+    if (acc) { L.logout(S); persist(); }
+    $('gate').classList.remove('hidden'); $('gate').innerHTML = gateHtml(); return;
+  }
+  $('coachApp').classList.remove('hidden');
+  let body = '';
+  if (ui.view==='athletes') body = athleteListHtml();
+  else if (ui.view==='athlete') body = athleteCalHtml();
+  else if (ui.view==='teams') body = teamListHtml();
+  else if (ui.view==='team') body = teamCalHtml();
+  else if (ui.view==='library') body = libraryHtml();
+  else if (ui.view==='program') body = programHtml();
+  else if (ui.view==='session') body = sessionHtml();
+  else if (ui.view==='assign') body = assignHtml();
+  else if (ui.view==='nutrition') body = nutritionHtml();
+  else body = feedHtml();
+  $('coachApp').innerHTML = coachChrome(body);
+  if (ui.view === 'session') {
+    growTextAreas();
+    initBlockDrag();
+  }
+  scheduleRefreshCloudStates();
+}
+
+document.addEventListener('click', function coachKebabDismiss(ev) {
+  if (!ui.cellMenu && !ui.chipMenu) return;
+  if (ev.target && ev.target.closest && ev.target.closest('.kebab-menu, .kebab-btn')) return;
+  let changed = false;
+  if (ui.cellMenu) { ui.cellMenu = null; changed = true; }
+  if (ui.chipMenu) { ui.chipMenu = null; changed = true; }
+  if (changed) render();
+});
+
+window.go=go; window.signOut=signOut; window.resetDemo=resetDemo; window.tryLogin=tryLogin;
+window.saveComment=saveComment; window.toggleCard=toggleCard;
+window.openSession=openSession; window.openProgram=openProgram;
+window.newTemplate=newTemplate; window.newProgram=newProgram; window.parseSets=parseSets; window.addEx=addEx; window.addBlk=addBlk;
+window.removeBlk=removeBlk; window.removeEx=removeEx; window.toggleSuperset=toggleSuperset; window.moveBlock=moveBlock; window.growTextAreas=growTextAreas;
+window.openExPicker=openExPicker; window.closeExPicker=closeExPicker; window.pickExerciseVariant=pickExerciseVariant;
+window.setRowRep=setRowRep; window.setRowLoad=setRowLoad;
+window.patchCond=patchCond; window.setCondFmt=setCondFmt; window.nudgeCondMin=nudgeCondMin;
+window.toggleCellMenu=toggleCellMenu; window.openCellPick=openCellPick; window.closeCellPick=closeCellPick;
+window.placeCellTemplate=placeCellTemplate; window.clearCell=clearCell;
+window.startCopyCell=startCopyCell; window.startMoveCell=startMoveCell; window.onEmptyCell=onEmptyCell;
+window.saveCellAsTemplate=saveCellAsTemplate; window.addWeek=addWeek;
+window.addCustomExercise=addCustomExercise;
+window.openCommentDrawer=openCommentDrawer; window.closeCommentDrawer=closeCommentDrawer;
+window.exportBridgeFile=exportBridgeFile;
+window.bindMyCloudIdToAthlete=bindMyCloudIdToAthlete;
+window.pushCloudNow=pushCloudNow;
+CoachViews.init({ L, S, ui, persist, esc, go, render, $, tpl, prog, ses, athleteBy, team });
+render();
+(async function coachAuthBoot(){
+  try {
+    if (!(window.Whoop && Whoop.client)) return;
+    const { data } = await Whoop.client().auth.getSession();
+    const session = data && data.session;
+    if (!session || !session.user) return;
+    const email = session.user.email;
+    if (!email) return;
+    const meta = session.user.user_metadata || {};
+    const name = meta.full_name || meta.name || email.split('@')[0];
+    // Already in as matching coach — leave UI alone.
+    const acc = account();
+    if (acc && acc.role === 'coach' && String(acc.email || '').toLowerCase() === email.toLowerCase()) {
+      console.info('coach cloud: signed in', email);
+      return;
+    }
+    // Session present but gate still up (or wrong local user) — enter coach workspace.
+    if (!acc || acc.role !== 'coach') {
+      ensureCoachAccount(email, name);
+      persist();
+      render();
+    }
+  } catch (_) {}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+node_modules/
+capacitor/android/.gradle/
+capacitor/android/app/build/
+capacitor/android/build/
+capacitor/www/
+*.apk
+*.log
+.DS_Store
+desktop/dist/
+desktop/node_modules/

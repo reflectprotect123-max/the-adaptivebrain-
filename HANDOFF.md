@@ -49,7 +49,7 @@ Adaptive Brain is a **decision hub with no athlete UI**. Athletes only use Stren
 
 **Parked (do not build):** 2k → opening pace; Engine logger visual redesign; full Strength set-architecture tables; extra machines; Concept2 Logbook OAuth; TrainHeroic import into Engine; pain prompts.
 
-**Coach:** Windows Electron already uses `com.hybrid.coach`. **Next native work is an Android APK with that same applicationId**, wrapping `strengthside` `apps/coach/coach.html`. Art: `docs/concept-art/`. Plan: `docs/superpowers/plans/2026-09-14-coach-apk.md`. Totem and WHOOP come after the APK exists.
+**Coach:** Own GitHub repo **`reflectprotect123-max/coach-side`** (Android `com.hybrid.coach`, wraps `coach.html`). Snapshot in this Brain repo: `apps/coach-side/`. The Cloud Agent token cannot create that GitHub repo; push with `./scripts/push-coach-side-repo.sh` and `GH_SIBLING_PUSH_TOKEN`. Do not put Coach inside Strength or Engine. Plan: `docs/superpowers/plans/2026-09-14-coach-apk.md`. Totem and WHOOP come after the APK exists.
 
 ---
 
@@ -157,7 +157,9 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 | `docs/contracts/00-*` | Formulas, rule JSON, vectors, older ZIP handoff |
 | `packages/brain/` | Kernel |
 | `apps/strength/`, `apps/engine/` | Wired athlete UI snapshots |
+| `apps/coach-side/` | Coach snapshot (push to `coach-side` GitHub repo) |
 | `scripts/publish-sibling-apps.sh` | Overlay snapshots onto sibling remotes |
-| `.cursor/environment.json` | `repositoryDependencies` for the two apps |
+| `scripts/push-coach-side-repo.sh` | Create/push `reflectprotect123-max/coach-side` with a PAT |
+| `.cursor/environment.json` | `repositoryDependencies` for Strength, Engine, Coach |
 | `docs/wiring/` | House-wiring map: fuse box drawing + Graphify orb (`index.html`, `graphify-out/graph.html`, `callflow.html`) |
 | `docs/concept-art/` | Hybrid Coach HTML capture + concept board |
