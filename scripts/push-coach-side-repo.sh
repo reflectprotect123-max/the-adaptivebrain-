@@ -27,7 +27,14 @@ auth_url() {
 git clone --depth 20 "$(auth_url)" "$WORKDIR/repo"
 git -C "$WORKDIR/repo" checkout -B "$BRANCH"
 # Copy snapshot onto repo root; keep existing .git
-tar -C "$ROOT/apps/coach-side" --exclude=capacitor/www --exclude=node_modules -cf - . \
+tar -C "$ROOT/apps/coach-side" \
+  --exclude=capacitor/www \
+  --exclude=node_modules \
+  --exclude=capacitor/android/.gradle \
+  --exclude=capacitor/android/app/build \
+  --exclude=capacitor/android/build \
+  --exclude=.capgo \
+  -cf - . \
   | tar -C "$WORKDIR/repo" -xf -
 git -C "$WORKDIR/repo" add -A
 if git -C "$WORKDIR/repo" diff --cached --quiet; then

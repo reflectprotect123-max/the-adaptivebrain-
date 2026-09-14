@@ -13,6 +13,7 @@ This is **Coach**, not TRACK and not Engine.
 node coach-apk-shell.smoke.mjs
 node coach-bridge.smoke.mjs
 node coach-capgo.smoke.mjs
+node coach-apk-ci.smoke.mjs
 ```
 
 ## Capgo OTA (Capacitor)
@@ -28,14 +29,16 @@ CAPGO_TOKEN=... CAPGO_BUNDLE_VERSION=1.0.0 bash capacitor/scripts/ship-capgo.sh
 
 Do not upload Coach bundles to `com.hybrid.athlete` or `com.hybrid.engine`.
 
-## Android (next)
+## Android APK via GitHub
 
-```bash
-bash scripts/sync-coach-apk.sh
-cd capacitor && npm install && npx cap add android && npx cap sync android
-```
+GitHub Actions builds the debug APK (same pattern as TRACK `strengthside`).
 
-Do not copy TRACK WHOOP URL schemes onto this APK.
+- **Product repo:** push `The-coach` `main`, or **Actions → Coach dogfood APK → Run workflow**. Release **`coach-apk-latest`**.
+- **Until that overlay lands:** Brain repo Actions **Coach dogfood APK** publishes the same asset on `the-adaptivebrain-` release **`coach-apk-latest`**.
+
+Install: Releases → `the-hybrid-coach-dogfood-debug.apk`. Then Capgo `live` updates HTML.
+
+Local (needs Android SDK): `bash capacitor/scripts/build-dogfood-apk.sh`
 
 ## Windows desktop
 

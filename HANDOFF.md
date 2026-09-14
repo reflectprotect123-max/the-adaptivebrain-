@@ -21,7 +21,7 @@ Do not start from `docs/contracts/00-HANDOFF.md` — that is the older ZIP contr
 | Engine Capgo assemble includes `brain-kernel.js` | **Pushed** `Engine-side-` `main` `15cdca4` |
 | Brain kernel + app snapshots | **`main`** `9ca454d` ([PR #1](https://github.com/reflectprotect123-max/the-adaptivebrain-/pull/1) merged) |
 | **Capgo OTA Strength** `com.hybrid.athlete` | **`1.0.86`** live + dogfood (LAST/e1RM + `liftMemory` snapshot) |
-| **Coach** on **`The-coach` `main`** | **Live** https://github.com/reflectprotect123-max/The-coach — `coach.html` + Capacitor `com.hybrid.coach` config. Brain snapshot `apps/coach-side/` |
+| **Coach** on **`The-coach` `main`** | **Live** https://github.com/reflectprotect123-max/The-coach — `coach.html` + Capacitor `com.hybrid.coach`. GitHub Actions **Coach dogfood APK** (Brain workflow until overlay; then The-coach). Snapshot `apps/coach-side/` |
 
 **Lift memory (2026-09-13 afternoon):** LAST ≠ Working Max (e1RM). First empty kg from last working set / % WM / LWP. Logger chrome frozen. Spec `docs/superpowers/specs/2026-09-13-lift-memory-sync-design.md`. Strength snapshot includes `liftMemory`; Engine domain `engine_side`.
 
@@ -49,7 +49,7 @@ Adaptive Brain is a **decision hub with no athlete UI**. Athletes only use Stren
 
 **Parked (do not build):** 2k → opening pace; Engine logger visual redesign; full Strength set-architecture tables; extra machines; Concept2 Logbook OAuth; TrainHeroic import into Engine; pain prompts.
 
-**Coach:** Own GitHub repo **`reflectprotect123-max/The-coach`** is live (`main`). Android id `com.hybrid.coach`, wraps `coach.html`. Capgo OTA: Capacitor `@capgo/capacitor-updater`, pin **`live`**, ship `capacitor/scripts/ship-capgo.sh` (needs Capgo dashboard app + `CAPGO_TOKEN`). Brain snapshot: `apps/coach-side/`. Do not put Coach inside Strength or Engine. Plan: `docs/superpowers/plans/2026-09-14-coach-apk.md`. Totem and WHOOP come after the APK exists.
+**Coach:** Own GitHub repo **`reflectprotect123-max/The-coach`** is live (`main`). Android id `com.hybrid.coach`, wraps `coach.html`. **APK is GitHub Actions** (`assembleDebug` → release `coach-apk-latest` / `the-hybrid-coach-dogfood-debug.apk`), not a Cloud Agent SDK. Capgo OTA: Capacitor `@capgo/capacitor-updater`, pin **`live`**, ship `capacitor/scripts/ship-capgo.sh` (needs Capgo dashboard app + `CAPGO_TOKEN`). Brain snapshot: `apps/coach-side/`. Overlay: `./scripts/push-coach-side-repo.sh`. Do not put Coach inside Strength or Engine. Plan: `docs/superpowers/plans/2026-09-14-coach-apk.md`. Totem and WHOOP come after the APK exists.
 
 ---
 
