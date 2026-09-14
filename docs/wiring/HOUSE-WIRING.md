@@ -68,7 +68,7 @@ WHOOP developer dashboard must list Engine callback + webhook Edge URLs.
 Recovery maps into local check-in, then `dailyZones` on Engine **home**.
 WHOOP does not call `decideNext` and must not rewrite a confirmed output anchor.
 
-**Totem MCP (locked):** [thebriangao/totem](https://github.com/thebriangao/totem) is the WHOOP adapter we keep. Full projection stays in Totem; the fuse box only takes the Recovery slice for `dailyZones`. Not mmnto-ai/totem. Do not route Totem Strength Trainer or Whoop Coach into kernel math.
+**Totem MCP (locked):** [thebriangao/totem](https://github.com/thebriangao/totem) is the **product** WHOOP ingest. Full projection stays in Totem; the fuse box only takes the Recovery slice for `dailyZones`. Edge `whoop-*` is fallback until Totem recovery is dual-run. Not mmnto-ai/totem. Do not route Totem Strength Trainer or Whoop Coach into kernel math. Athlete apps stay two APKs; Me switches open the sibling (`docs/superpowers/specs/2026-09-14-athlete-back-to-back-design.md`).
 
 ## Local stores (in the rooms)
 
