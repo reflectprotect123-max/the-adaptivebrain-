@@ -12,7 +12,21 @@ This is **Coach**, not TRACK and not Engine.
 ```bash
 node coach-apk-shell.smoke.mjs
 node coach-bridge.smoke.mjs
+node coach-capgo.smoke.mjs
 ```
+
+## Capgo OTA (Capacitor)
+
+App id **`com.hybrid.coach`**. Channel **`live`** (pinned at boot). `autoUpdate` on. Handshake: `notifyAppReady` in `coach-native-bridge.js`.
+
+Create the Capgo app `com.hybrid.coach` in the Capgo dashboard (human). Then:
+
+```bash
+bash scripts/sync-coach-apk.sh
+CAPGO_TOKEN=... CAPGO_BUNDLE_VERSION=1.0.0 bash capacitor/scripts/ship-capgo.sh
+```
+
+Do not upload Coach bundles to `com.hybrid.athlete` or `com.hybrid.engine`.
 
 ## Android (next)
 

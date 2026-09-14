@@ -8,3 +8,4 @@ capacitor/www/
 .DS_Store
 desktop/dist/
 desktop/node_modules/
+.capgo
