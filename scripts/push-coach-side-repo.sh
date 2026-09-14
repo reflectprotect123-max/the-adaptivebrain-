@@ -1,42 +1,40 @@
 #!/usr/bin/env bash
-# Create github.com/reflectprotect123-max/coach-side (if missing) and push apps/coach-side as repo root.
-# Requires GH_SIBLING_PUSH_TOKEN (classic PAT with repo scope). Do not commit the token.
+# Overlay Brain apps/coach-side onto github.com/reflectprotect123-max/The-coach (repo root).
+# Requires GH_SIBLING_PUSH_TOKEN (classic PAT with repo). Do not commit the token.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TOKEN="${GH_SIBLING_PUSH_TOKEN:-}"
 if [[ -z "$TOKEN" && -f "$HOME/.config/hybrid/gh-sibling-push-token" ]]; then
   TOKEN="$(cat "$HOME/.config/hybrid/gh-sibling-push-token")"
 fi
-if [[ -z "$TOKEN" ]]; then
-  echo "Set GH_SIBLING_PUSH_TOKEN (classic PAT, repo scope). This Cloud Agent GitHub App token cannot create repos." >&2
-  exit 1
-fi
 OWNER="${COACH_SIDE_OWNER:-reflectprotect123-max}"
 NAME="${COACH_SIDE_REPO:-The-coach}"
-API="https://api.github.com/repos/${OWNER}/${NAME}"
-code="$(curl -sS -o /tmp/coach-side-repo.json -w '%{http_code}' \
-  -H "Authorization: Bearer ${TOKEN}" -H "Accept: application/vnd.github+json" "$API")"
-if [[ "$code" == "404" ]]; then
-  echo "Creating ${OWNER}/${NAME} …"
-  curl -sS -f -X POST "https://api.github.com/user/repos" \
-    -H "Authorization: Bearer ${TOKEN}" \
-    -H "Accept: application/vnd.github+json" \
-    -d "{\"name\":\"${NAME}\",\"description\":\"THE Hybrid Coach — third app (not TRACK, not Engine)\",\"private\":false,\"auto_init\":false}" \
-    >/tmp/coach-side-create.json
-elif [[ "$code" != "200" ]]; then
-  echo "GitHub GET ${API} HTTP ${code}" >&2
-  cat /tmp/coach-side-repo.json >&2
-  exit 1
-fi
-WORKDIR="${TMPDIR:-/tmp}/coach-side-push-$$"
-rm -rf "$WORKDIR"
+REPO="${OWNER}/${NAME}"
+BRANCH="${COACH_SIDE_BRANCH:-main}"
+WORKDIR="${TMPDIR:-/tmp}/the-coach-overlay-$$"
 mkdir -p "$WORKDIR"
-tar -C "$ROOT/apps/coach-side" -cf - . | tar -C "$WORKDIR" -xf -
-cd "$WORKDIR"
-git init -b main
-git add -A
-git -c user.email=cursoragent@cursor.com -c user.name='Cursor Agent' \
-  commit -m "feat: THE Hybrid Coach side (HTML + Capacitor config)"
-git remote add origin "https://x-access-token:${TOKEN}@github.com/${OWNER}/${NAME}.git"
-git push -u origin main
-echo "Pushed https://github.com/${OWNER}/${NAME}"
+cleanup() { rm -rf "$WORKDIR"; }
+trap cleanup EXIT
+
+auth_url() {
+  if [[ -n "$TOKEN" ]]; then
+    printf 'https://x-access-token:%s@github.com/%s.git' "$TOKEN" "$REPO"
+  else
+    printf 'https://github.com/%s.git' "$REPO"
+  fi
+}
+
+git clone --depth 20 "$(auth_url)" "$WORKDIR/repo"
+git -C "$WORKDIR/repo" checkout -B "$BRANCH"
+# Copy snapshot onto repo root; keep existing .git
+tar -C "$ROOT/apps/coach-side" --exclude=capacitor/www --exclude=node_modules -cf - . \
+  | tar -C "$WORKDIR/repo" -xf -
+git -C "$WORKDIR/repo" add -A
+if git -C "$WORKDIR/repo" diff --cached --quiet; then
+  echo "No changes for $REPO"
+  exit 0
+fi
+git -C "$WORKDIR/repo" -c user.email=cursoragent@cursor.com -c user.name='Cursor Agent' \
+  commit -m "chore: overlay Coach snapshot from Adaptive Brain"
+git -C "$WORKDIR/repo" push -u origin "$BRANCH"
+echo "Pushed https://github.com/${REPO} ${BRANCH}"

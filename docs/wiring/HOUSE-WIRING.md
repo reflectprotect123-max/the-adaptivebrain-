@@ -78,11 +78,17 @@ WHOOP does not call `decideNext` and must not rewrite a confirmed output anchor.
 
 ## Delivery (not math)
 
-- GitHub: `the-adaptivebrain-` (kernel workshop), `strengthside` `main`, `Engine-side-` `main`
+- GitHub: `the-adaptivebrain-` (kernel), `strengthside` `main`, `Engine-side-` `main`, **`The-coach` `main`**
 - Capgo Cloud: two apps, dogfood + live channels
 - Native shells: Capacitor `@capgo/capacitor-updater`
 
-## Isolated circuit: coach
+## Isolated circuit: Coach (own house)
+
+Repo: **`https://github.com/reflectprotect123-max/The-coach`** (`main`). Snapshot: `apps/coach-side/`. Overlay: `./scripts/push-coach-side-repo.sh`.
+Android id: `com.hybrid.coach`. UI: `coach.html`.
+Not TRACK. Not Engine. Totem analytics later. Do not load gym loggers here.
+
+## Isolated circuit: coach chat
 
 OpenRouter from Engine Edge `brain-coach` (or Strength via Netlify proxy → owner site). Breaker off for kg and watts.
 

@@ -21,7 +21,7 @@ Do not start from `docs/contracts/00-HANDOFF.md` — that is the older ZIP contr
 | Engine Capgo assemble includes `brain-kernel.js` | **Pushed** `Engine-side-` `main` `15cdca4` |
 | Brain kernel + app snapshots | **`main`** `9ca454d` ([PR #1](https://github.com/reflectprotect123-max/the-adaptivebrain-/pull/1) merged) |
 | **Capgo OTA Strength** `com.hybrid.athlete` | **`1.0.86`** live + dogfood (LAST/e1RM + `liftMemory` snapshot) |
-| **Capgo OTA Engine** `com.hybrid.engine` | **`1.0.7`** live + dogfood (`engine_side` snapshot) |
+| **Coach** on **`The-coach` `main`** | **Live** https://github.com/reflectprotect123-max/The-coach — `coach.html` + Capacitor `com.hybrid.coach` config. Brain snapshot `apps/coach-side/` |
 
 **Lift memory (2026-09-13 afternoon):** LAST ≠ Working Max (e1RM). First empty kg from last working set / % WM / LWP. Logger chrome frozen. Spec `docs/superpowers/specs/2026-09-13-lift-memory-sync-design.md`. Strength snapshot includes `liftMemory`; Engine domain `engine_side`.
 
@@ -81,7 +81,7 @@ Deterministic ESM. Last run: **25 passing**.
 
 ### Athlete snapshots in this repo (`apps/*`)
 
-Keep in sync with sibling `main`s. Overlay: `apps/strength` → `strengthside` `apps/athlete`; `apps/engine` → Engine repo root (do not delete Engine `mobile/`, `supabase/`, etc.).
+Keep in sync with sibling `main`s. Overlay: `apps/strength` → `strengthside` `apps/athlete`; `apps/engine` → Engine repo root (do not delete Engine `mobile/`, `supabase/`, etc.); **`apps/coach-side/` → `The-coach` repo root** (`./scripts/push-coach-side-repo.sh`).
 
 | Path | What |
 | --- | --- |
@@ -115,8 +115,9 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 - Environment is **personal** and lists only `the-adaptivebrain-`: [2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7](https://cursor.com/dashboard/cloud-agents/environments/e/2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7).
 - Git identity is **`cursor[bot]`**. `gh repo list` is one repo. Push to Strength/Engine as the bot is **403**. Public **read** works.
 - The Cursor GitHub App being installed on “all repos” does **not** enlarge this VM’s token. Fine-grained `github_pat_` with Contents **Read-only** also 403s (`Resource not accessible by personal access token`). A **classic `ghp_` with `repo`** was able to write.
-- `.cursor/environment.json` lists `repositoryDependencies` for the two app repos (dashboard JSON cannot hold that field). **A new chat still gets a one-repo bot token** until Cursor remints after that config is actually used at boot.
+- `.cursor/environment.json` lists `repositoryDependencies` for Strength, Engine, and **The-coach**. **A new chat still gets a one-repo bot token** until Cursor remints after that config is actually used at boot. Add the Cursor GitHub App to `The-coach` so `cursor[bot]` can push it.
 - Do **not** commit tokens. Do **not** keep a PAT on disk for the next chat. If apps need another overlay, ask the human for a **new** classic PAT with `repo` (any PAT pasted in chat should be **revoked** in GitHub → Settings → Developer settings → Personal access tokens).
+- Re-publish Coach: `./scripts/push-coach-side-repo.sh` (needs write on `The-coach`). Re-publish gym overlays: `./scripts/publish-sibling-apps.sh`.
 - 2026-09-13: a classic PAT confirmed `push: true` on both remotes. **No overlay was required** — Strength #218 and Engine #8/#9 are already on `main`.
 - Re-publish overlay: `./scripts/publish-sibling-apps.sh` (needs `GH_SIBLING_PUSH_TOKEN`). Do not force-push `cursor/emh-logger-4d23` / `cursor/engine-emh-4d23`; those predate merge. Use a new branch name.
 - Create-environment picker “no matching repos” is a known Cursor bug; do not uninstall/reinstall the GitHub App as the first fix.
@@ -127,7 +128,7 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 
 1. New agent: Brain **`main`** is current. Do **not** re-litigate EMH vs RIR, 1–5 feel, or shadow mode.
 2. If changing kernel math: edit `packages/brain/src/*`, rebuild `browser-iife.js`, copy to both `brain-kernel.js` files, then overlay onto sibling `main`s with a write token.
-3. **Order (locked):** Coach APK → Totem → WHOOP ingest → byte-by-byte `systematic-debugging` → gym Me switches last. Spec: `docs/superpowers/specs/2026-09-14-athlete-back-to-back-design.md`. Plan for step 1: `docs/superpowers/plans/2026-09-14-coach-apk.md`. Do not merge gym apps. Do not restyle loggers. Do not “just redeploy” WHOOP until phase 4 has boundary logs. Live `whoop-callback` 503 stays a **later** Edge proof (`whoopCallbackUrl`), not a Coach APK blocker.
+3. **Keep using `The-coach`.** Coach APK → Totem → WHOOP ingest → byte-by-byte `systematic-debugging` → gym Me switches last. Spec: `docs/superpowers/specs/2026-09-14-athlete-back-to-back-design.md`. Plan: `docs/superpowers/plans/2026-09-14-coach-apk.md`. Overlay Coach from Brain with `./scripts/push-coach-side-repo.sh`. Do not merge gym apps. Do not restyle loggers.
 4. Do **not** implement parked items.
 
 ---
