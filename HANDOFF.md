@@ -47,6 +47,8 @@ Adaptive Brain is a **decision hub with no athlete UI**. Athletes only use Stren
 
 **Parked (do not build):** 2k → opening pace; Engine logger visual redesign; full Strength set-architecture tables; extra machines; Concept2 Logbook OAuth; TrainHeroic import into Engine; pain prompts.
 
+**Coach concept (not shipped):** desktop workspace above the athlete apps. Art: `docs/concept-art/` (HTML capture + board). Source HTML: `strengthside` `apps/coach/coach.html`.
+
 ---
 
 ## Authority (if docs conflict)
@@ -154,3 +156,4 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 | `scripts/publish-sibling-apps.sh` | Overlay snapshots onto sibling remotes |
 | `.cursor/environment.json` | `repositoryDependencies` for the two apps |
 | `docs/wiring/` | House-wiring map: fuse box drawing + Graphify orb (`index.html`, `graphify-out/graph.html`, `callflow.html`) |
+| `docs/concept-art/` | Hybrid Coach HTML capture + concept board |
