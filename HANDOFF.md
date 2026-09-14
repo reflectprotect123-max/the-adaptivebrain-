@@ -49,7 +49,7 @@ Adaptive Brain is a **decision hub with no athlete UI**. Athletes only use Stren
 
 **Parked (do not build):** 2k → opening pace; Engine logger visual redesign; full Strength set-architecture tables; extra machines; Concept2 Logbook OAuth; TrainHeroic import into Engine; pain prompts.
 
-**Coach:** Own GitHub repo **`reflectprotect123-max/The-coach`** (Android `com.hybrid.coach`, wraps `coach.html`). Snapshot in this Brain repo: `apps/coach-side/`. Cursor GitHub App must be installed on `The-coach` or `cursor[bot]` cannot push. Do not put Coach inside Strength or Engine. Plan: `docs/superpowers/plans/2026-09-14-coach-apk.md`. Totem and WHOOP come after the APK exists.
+**Coach:** Own GitHub repo **`reflectprotect123-max/The-coach`** is live (`main`). Android id `com.hybrid.coach`, wraps `coach.html`. Brain snapshot: `apps/coach-side/`. Do not put Coach inside Strength or Engine. Plan: `docs/superpowers/plans/2026-09-14-coach-apk.md`. Totem and WHOOP come after the APK exists.
 
 ---
 

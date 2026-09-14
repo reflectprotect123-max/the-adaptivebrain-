@@ -29,8 +29,4 @@ Do not copy TRACK WHOOP URL schemes onto this APK.
 
 ## Pushing this tree to GitHub
 
-Brain keeps a snapshot at `apps/coach-side/`. The live GitHub repo is **`The-coach`**. Cursor’s GitHub App must include that repo or `cursor[bot]` cannot push (403). Then:
-
-```bash
-./scripts/push-coach-side-repo.sh
-```
+Brain keeps a snapshot at `apps/coach-side/`. Live GitHub: **https://github.com/reflectprotect123-max/The-coach** (`main`).
