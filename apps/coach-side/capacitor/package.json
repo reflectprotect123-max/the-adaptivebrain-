@@ -1,0 +1,18 @@
+{
+  "name": "@hybrid/coach-capacitor",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Capacitor Android shell wrapping THE Hybrid coach.html",
+  "scripts": {
+    "sync": "bash ../scripts/sync-coach-apk.sh && npx cap sync android",
+    "open": "npx cap open android",
+    "copy": "npx cap copy android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.0",
+    "@capacitor/app": "^8.1.1",
+    "@capacitor/cli": "^8.5.0",
+    "@capacitor/core": "^8.5.0",
+    "@capgo/capacitor-updater": "^8.51.14"
+  }
+}

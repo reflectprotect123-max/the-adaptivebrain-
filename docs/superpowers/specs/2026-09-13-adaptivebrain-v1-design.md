@@ -160,6 +160,8 @@ Same as Strength: no 1–5 feel page. Piece done → Next / summary.
 
 Implemented on Engine Home; Brain consumes the score for zone math.
 
+Adapter: **[thebriangao/totem](https://github.com/thebriangao/totem)** WHOOP MCP holds the full wearable projection. Brain **uses only Recovery (and freshness / RHR already in zone math)**. See `2026-09-14-whoop-totem-mcp-design.md`. Phone Edge OAuth can still fetch that same small slice until Totem is wired.
+
 - Every current Recovery score recalculates **today’s** BG/GR boundaries (`00-FORMULAS-AND-RULES.md` §8). Coefficients are product heuristics, not Morpheus/WHOOP published formulas.
 - Store baseline vs daily working zones separately. One morning never rewrites long-term fitness.
 - Module ceiling §9: Green keeps scheduled module; Yellow caps at Green; Red caps at Blue; Easy duration may suggest −25% on Red.

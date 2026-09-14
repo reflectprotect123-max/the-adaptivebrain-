@@ -1,0 +1,92 @@
+name: Coach dogfood APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'apps/coach-side/**'
+      - '.github/workflows/coach-dogfood-apk.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/coach-side/capacitor/package-lock.json
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install Android SDK
+        run: |
+          set -euo pipefail
+          SDK="$HOME/Android/Sdk"
+          mkdir -p "$SDK/cmdline-tools" "$SDK/licenses"
+          curl -fsSL https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -o /tmp/cmdline-tools.zip
+          unzip -q /tmp/cmdline-tools.zip -d /tmp/cmdline-tools-unpack
+          rm -rf "$SDK/cmdline-tools/latest"
+          mv /tmp/cmdline-tools-unpack/cmdline-tools "$SDK/cmdline-tools/latest"
+          printf '%s\n' \
+            24333f8a63b6825ea9c5514f83c2829b004d1fee \
+            84831b9409646a918e305e696a5a315c534a430 \
+            d975f751698a77b662f1254ddbe140390d961f \
+            601085b94cd77f0b157c6306946f4c23 \
+            33b6a2b64607f11b759f320ef9dff4ae \
+            8403addf88ab4874007e1c1b80d62b47 \
+            1fde451af62354da92ce2630df5a2c65 \
+            e9ac551e6ee698725b50a05caa2f6a59 \
+            > "$SDK/licenses/android-sdk-license"
+          cp "$SDK/licenses/android-sdk-license" "$SDK/licenses/android-sdk-preview-license"
+          "$SDK/cmdline-tools/latest/bin/sdkmanager" \
+            "platform-tools" \
+            "platforms;android-36" \
+            "build-tools;36.0.0"
+          echo "ANDROID_HOME=$SDK" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$SDK" >> "$GITHUB_ENV"
+
+      - name: Build debug Coach APK
+        run: bash apps/coach-side/capacitor/scripts/build-dogfood-apk.sh
+
+      - name: Publish coach-apk-latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          APK_SRC="apps/coach-side/capacitor/android/app/build/outputs/apk/debug/app-debug.apk"
+          APK="apps/coach-side/capacitor/android/app/build/outputs/apk/debug/the-hybrid-coach-dogfood-debug.apk"
+          cp -f "$APK_SRC" "$APK"
+          SHA="$(git rev-parse --short HEAD)"
+          NOTES="Debug Android shell for THE Hybrid Coach (\`com.hybrid.coach\`).
+
+          **Commit:** \`${SHA}\`
+
+          Install: GitHub → Releases → \`coach-apk-latest\` → Assets → \`the-hybrid-coach-dogfood-debug.apk\`.
+          This is the native shell. Capgo channel \`live\` updates HTML after install.
+          Canonical product repo is \`The-coach\`; this release is the Brain snapshot build until that repo runs the same workflow."
+
+          if gh release view coach-apk-latest >/dev/null 2>&1; then
+            gh release edit coach-apk-latest --title "Coach APK (latest)" --notes "$NOTES" --latest
+            gh release upload coach-apk-latest "$APK" --clobber
+          else
+            gh release create coach-apk-latest "$APK" \
+              --title "Coach APK (latest)" \
+              --notes "$NOTES" \
+              --latest
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: the-hybrid-coach-dogfood-debug
+          path: apps/coach-side/capacitor/android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 30

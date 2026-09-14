@@ -21,7 +21,7 @@ Do not start from `docs/contracts/00-HANDOFF.md` — that is the older ZIP contr
 | Engine Capgo assemble includes `brain-kernel.js` | **Pushed** `Engine-side-` `main` `15cdca4` |
 | Brain kernel + app snapshots | **`main`** `9ca454d` ([PR #1](https://github.com/reflectprotect123-max/the-adaptivebrain-/pull/1) merged) |
 | **Capgo OTA Strength** `com.hybrid.athlete` | **`1.0.86`** live + dogfood (LAST/e1RM + `liftMemory` snapshot) |
-| **Capgo OTA Engine** `com.hybrid.engine` | **`1.0.7`** live + dogfood (`engine_side` snapshot) |
+| **Coach** on **`The-coach` `main`** | **Live** https://github.com/reflectprotect123-max/The-coach — `coach.html` + Capacitor `com.hybrid.coach`. GitHub Actions **Coach dogfood APK** (Brain workflow until overlay; then The-coach). Snapshot `apps/coach-side/` |
 
 **Lift memory (2026-09-13 afternoon):** LAST ≠ Working Max (e1RM). First empty kg from last working set / % WM / LWP. Logger chrome frozen. Spec `docs/superpowers/specs/2026-09-13-lift-memory-sync-design.md`. Strength snapshot includes `liftMemory`; Engine domain `engine_side`.
 
@@ -41,9 +41,15 @@ Adaptive Brain is a **decision hub with no athlete UI**. Athletes only use Stren
 
 **WHOOP:** daily Blue / Green / Red BPM on Engine **home**. Does not overwrite stored baselines or a **confirmed output anchor**. No athlete-visible shadow mode (`shadow_mode_required: false`).
 
+**WHOOP adapter (locked 2026-09-14):** [thebriangao/totem](https://github.com/thebriangao/totem) MCP is the **product ingest**. Totem holds the full wearable projection. Adaptive Brain **uses only the slice it needs** (Recovery → `dailyZones`). Not [mmnto-ai/totem](https://github.com/mmnto-ai/totem). Spec: `docs/superpowers/specs/2026-09-14-whoop-totem-mcp-design.md`. Do not feed Totem lifts/coach/live HR into `decideNext` or TRACK `liftMemory`. Edge `whoop-*` stays as **fallback** until Totem recovery is dual-run proven.
+
+**Athlete back-to-back (locked 2026-09-14):** no merge, no `---` door. Two APKs. Me/settings TRACK ↔ Engine switches **open the other installed app**. Spec: `docs/superpowers/specs/2026-09-14-athlete-back-to-back-design.md`. Surgical: do not touch frozen loggers or kernel math for that switch.
+
 **Dropped:** session-end “How did this session feel?” **1–5** (both apps). Done Training → summary.
 
 **Parked (do not build):** 2k → opening pace; Engine logger visual redesign; full Strength set-architecture tables; extra machines; Concept2 Logbook OAuth; TrainHeroic import into Engine; pain prompts.
+
+**Coach:** Own GitHub repo **`reflectprotect123-max/The-coach`** is live (`main`). Android id `com.hybrid.coach`, wraps `coach.html`. **APK is GitHub Actions** (`assembleDebug` → release `coach-apk-latest` / `the-hybrid-coach-dogfood-debug.apk`), not a Cloud Agent SDK. Capgo OTA: Capacitor `@capgo/capacitor-updater`, pin **`live`**, ship `capacitor/scripts/ship-capgo.sh` (needs Capgo dashboard app + `CAPGO_TOKEN`). Brain snapshot: `apps/coach-side/`. Overlay: `./scripts/push-coach-side-repo.sh`. Do not put Coach inside Strength or Engine. Plan: `docs/superpowers/plans/2026-09-14-coach-apk.md`. Totem and WHOOP come after the APK exists.
 
 ---
 
@@ -75,7 +81,7 @@ Deterministic ESM. Last run: **25 passing**.
 
 ### Athlete snapshots in this repo (`apps/*`)
 
-Keep in sync with sibling `main`s. Overlay: `apps/strength` → `strengthside` `apps/athlete`; `apps/engine` → Engine repo root (do not delete Engine `mobile/`, `supabase/`, etc.).
+Keep in sync with sibling `main`s. Overlay: `apps/strength` → `strengthside` `apps/athlete`; `apps/engine` → Engine repo root (do not delete Engine `mobile/`, `supabase/`, etc.); **`apps/coach-side/` → `The-coach` repo root** (`./scripts/push-coach-side-repo.sh`).
 
 | Path | What |
 | --- | --- |
@@ -109,8 +115,9 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 - Environment is **personal** and lists only `the-adaptivebrain-`: [2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7](https://cursor.com/dashboard/cloud-agents/environments/e/2c6b12e6-af02-11f1-bf4b-42ffb4d10ea7).
 - Git identity is **`cursor[bot]`**. `gh repo list` is one repo. Push to Strength/Engine as the bot is **403**. Public **read** works.
 - The Cursor GitHub App being installed on “all repos” does **not** enlarge this VM’s token. Fine-grained `github_pat_` with Contents **Read-only** also 403s (`Resource not accessible by personal access token`). A **classic `ghp_` with `repo`** was able to write.
-- `.cursor/environment.json` lists `repositoryDependencies` for the two app repos (dashboard JSON cannot hold that field). **A new chat still gets a one-repo bot token** until Cursor remints after that config is actually used at boot.
+- `.cursor/environment.json` lists `repositoryDependencies` for Strength, Engine, and **The-coach**. **A new chat still gets a one-repo bot token** until Cursor remints after that config is actually used at boot. Add the Cursor GitHub App to `The-coach` so `cursor[bot]` can push it.
 - Do **not** commit tokens. Do **not** keep a PAT on disk for the next chat. If apps need another overlay, ask the human for a **new** classic PAT with `repo` (any PAT pasted in chat should be **revoked** in GitHub → Settings → Developer settings → Personal access tokens).
+- Re-publish Coach: `./scripts/push-coach-side-repo.sh` (needs write on `The-coach`). Re-publish gym overlays: `./scripts/publish-sibling-apps.sh`.
 - 2026-09-13: a classic PAT confirmed `push: true` on both remotes. **No overlay was required** — Strength #218 and Engine #8/#9 are already on `main`.
 - Re-publish overlay: `./scripts/publish-sibling-apps.sh` (needs `GH_SIBLING_PUSH_TOKEN`). Do not force-push `cursor/emh-logger-4d23` / `cursor/engine-emh-4d23`; those predate merge. Use a new branch name.
 - Create-environment picker “no matching repos” is a known Cursor bug; do not uninstall/reinstall the GitHub App as the first fix.
@@ -121,7 +128,7 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 
 1. New agent: Brain **`main`** is current. Do **not** re-litigate EMH vs RIR, 1–5 feel, or shadow mode.
 2. If changing kernel math: edit `packages/brain/src/*`, rebuild `browser-iife.js`, copy to both `brain-kernel.js` files, then overlay onto sibling `main`s with a write token.
-3. Optional: human deploys Strength/Engine web hosts (Supabase Edge `www`/`strength`) if they still want browser URLs in sync. Capgo OTA is Strength **1.0.86** and Engine **1.0.7**. WHOOP on phones uses Edge, not Netlify.
+3. **Keep using `The-coach`.** Coach APK → Totem → WHOOP ingest → byte-by-byte `systematic-debugging` → gym Me switches last. Spec: `docs/superpowers/specs/2026-09-14-athlete-back-to-back-design.md`. Plan: `docs/superpowers/plans/2026-09-14-coach-apk.md`. Overlay Coach from Brain with `./scripts/push-coach-side-repo.sh`. Do not merge gym apps. Do not restyle loggers.
 4. Do **not** implement parked items.
 
 ---
@@ -133,6 +140,7 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 - `moduleCeiling` is highest allowed **module**, not WHOOP green/yellow/red category names.
 - Engine `echo` **machine** in the app is still **watts**; RPM table is for `modality === 'rpm'` (fan).
 - WHOOP recovery must not soften / rewrite last Close output.
+- WHOOP data plane: Totem MCP (`thebriangao/totem`) holds the full projection; Brain consumes Recovery (+ freshness / RHR already in `dailyZones`). Do not treat mmnto-ai/totem as this product.
 - Do not tell the human to “start a new Cloud Agent” to fix sibling 403; that only helps if the **environment repo list / PAT** actually includes write. Classic PAT in-chat is what worked.
 
 ---
@@ -143,10 +151,16 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 | --- | --- |
 | `HANDOFF.md` | **This file** — current agent start |
 | `docs/superpowers/specs/2026-09-13-adaptivebrain-v1-design.md` | Locked V1 product |
+| `docs/superpowers/specs/2026-09-14-whoop-totem-mcp-design.md` | Totem WHOOP MCP; Brain takes a slice |
+| `docs/superpowers/specs/2026-09-14-athlete-back-to-back-design.md` | Coach APK first, then Totem, WHOOP, debug, then gym switches |
+| `docs/superpowers/plans/2026-09-14-coach-apk.md` | `com.hybrid.coach` Capacitor wrap of `coach.html` |
 | `docs/superpowers/plans/2026-09-13-adaptivebrain-v1.md` | Task list (1–9, done) |
 | `docs/contracts/00-*` | Formulas, rule JSON, vectors, older ZIP handoff |
 | `packages/brain/` | Kernel |
 | `apps/strength/`, `apps/engine/` | Wired athlete UI snapshots |
+| `apps/coach-side/` | Coach snapshot (push to `The-coach`) |
 | `scripts/publish-sibling-apps.sh` | Overlay snapshots onto sibling remotes |
-| `.cursor/environment.json` | `repositoryDependencies` for the two apps |
+| `scripts/push-coach-side-repo.sh` | Push snapshot to `reflectprotect123-max/The-coach` |
+| `.cursor/environment.json` | `repositoryDependencies` for Strength, Engine, Coach |
 | `docs/wiring/` | House-wiring map: fuse box drawing + Graphify orb (`index.html`, `graphify-out/graph.html`, `callflow.html`) |
+| `docs/concept-art/` | Hybrid Coach HTML capture + concept board |

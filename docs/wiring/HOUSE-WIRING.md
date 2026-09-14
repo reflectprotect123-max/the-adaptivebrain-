@@ -68,6 +68,8 @@ WHOOP developer dashboard must list Engine callback + webhook Edge URLs.
 Recovery maps into local check-in, then `dailyZones` on Engine **home**.
 WHOOP does not call `decideNext` and must not rewrite a confirmed output anchor.
 
+**Totem MCP (locked):** [thebriangao/totem](https://github.com/thebriangao/totem) is the **product** WHOOP ingest **after** Coach APK exists. Full projection stays in Totem; the fuse box only takes the Recovery slice for `dailyZones`. Edge `whoop-*` is fallback until Totem recovery is dual-run. Not mmnto-ai/totem. Do not route Totem Strength Trainer or Whoop Coach into kernel math. Gym apps stay two APKs; Me switches are last (`docs/superpowers/specs/2026-09-14-athlete-back-to-back-design.md`).
+
 ## Local stores (in the rooms)
 
 - Strength: `localStorage` key `THE-brain-v1`
@@ -76,11 +78,17 @@ WHOOP does not call `decideNext` and must not rewrite a confirmed output anchor.
 
 ## Delivery (not math)
 
-- GitHub: `the-adaptivebrain-` (kernel workshop), `strengthside` `main`, `Engine-side-` `main`
+- GitHub: `the-adaptivebrain-` (kernel), `strengthside` `main`, `Engine-side-` `main`, **`The-coach` `main`**
 - Capgo Cloud: two apps, dogfood + live channels
 - Native shells: Capacitor `@capgo/capacitor-updater`
 
-## Isolated circuit: coach
+## Isolated circuit: Coach (own house)
+
+Repo: **`https://github.com/reflectprotect123-max/The-coach`** (`main`). Snapshot: `apps/coach-side/`. Overlay: `./scripts/push-coach-side-repo.sh`.
+Android id: `com.hybrid.coach`. UI: `coach.html`.
+Not TRACK. Not Engine. Totem analytics later. Do not load gym loggers here.
+
+## Isolated circuit: coach chat
 
 OpenRouter from Engine Edge `brain-coach` (or Strength via Netlify proxy → owner site). Breaker off for kg and watts.
 
