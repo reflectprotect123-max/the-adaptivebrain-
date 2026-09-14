@@ -2,7 +2,7 @@
 
 This is **Coach**, not TRACK and not Engine.
 
-- **GitHub (intended):** `https://github.com/reflectprotect123-max/coach-side`
+- **GitHub:** `https://github.com/reflectprotect123-max/The-coach`
 - **Android id:** `com.hybrid.coach` (same as the Windows Electron `appId`)
 - **UI:** `coach.html` (locked Hybrid Coach home). `index.html` is the older workspace; Capacitor wraps **`coach.html`** as `www/index.html`.
 - **Do not** merge gym loggers into this app. Totem and WHOOP ingest come **after** the APK exists.
@@ -29,9 +29,8 @@ Do not copy TRACK WHOOP URL schemes onto this APK.
 
 ## Pushing this tree to GitHub
 
-This folder currently also lives inside Brain (`the-adaptivebrain-` `apps/coach-side`) because the Cloud Agent token **cannot create** a new GitHub repo (403). From Brain, with a classic PAT that can create repos:
+Brain keeps a snapshot at `apps/coach-side/`. The live GitHub repo is **`The-coach`**. Cursor’s GitHub App must include that repo or `cursor[bot]` cannot push (403). Then:
 
 ```bash
-export GH_SIBLING_PUSH_TOKEN=ghp_...
 ./scripts/push-coach-side-repo.sh
 ```

@@ -12,7 +12,7 @@ if [[ -z "$TOKEN" ]]; then
   exit 1
 fi
 OWNER="${COACH_SIDE_OWNER:-reflectprotect123-max}"
-NAME="${COACH_SIDE_REPO:-coach-side}"
+NAME="${COACH_SIDE_REPO:-The-coach}"
 API="https://api.github.com/repos/${OWNER}/${NAME}"
 code="$(curl -sS -o /tmp/coach-side-repo.json -w '%{http_code}' \
   -H "Authorization: Bearer ${TOKEN}" -H "Accept: application/vnd.github+json" "$API")"

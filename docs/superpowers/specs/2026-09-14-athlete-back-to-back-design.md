@@ -50,7 +50,7 @@ If a change needs gym logger files or kernel math, **stop**.
 
 ## Phase 1 — Coach APK (this plan)
 
-**Repo:** `https://github.com/reflectprotect123-max/coach-side` (own GitHub tree, **not** `strengthside`, **not** Engine). Until that remote exists, the tree lives in Brain `apps/coach-side/` and is pushed with `scripts/push-coach-side-repo.sh` + a classic PAT (`GH_SIBLING_PUSH_TOKEN`). The Cloud Agent GitHub App token **cannot** create repos.
+**Repo:** `https://github.com/reflectprotect123-max/The-coach` (own GitHub tree, **not** `strengthside`, **not** Engine). Brain snapshot: `apps/coach-side/`. Push with `scripts/push-coach-side-repo.sh` once the Cursor GitHub App can write to `The-coach`.
 
 **Shape:** New Capacitor Android shell, copy of the athlete pattern (`apps/mobile/capacitor`) but **minimal plugins**: `@capacitor/core`, `@capacitor/android`, `@capacitor/app`, `@capgo/capacitor-updater`. No Bluetooth, camera, barcode, keep-awake unless Coach HTML already requires them (it does not for home).
 
