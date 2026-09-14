@@ -49,7 +49,7 @@ Adaptive Brain is a **decision hub with no athlete UI**. Athletes only use Stren
 
 **Parked (do not build):** 2k → opening pace; Engine logger visual redesign; full Strength set-architecture tables; extra machines; Concept2 Logbook OAuth; TrainHeroic import into Engine; pain prompts.
 
-**Coach concept (not shipped):** desktop workspace above the athlete apps. Art: `docs/concept-art/` (HTML capture + board). Source HTML: `strengthside` `apps/coach/coach.html`.
+**Coach:** Windows Electron already uses `com.hybrid.coach`. **Next native work is an Android APK with that same applicationId**, wrapping `strengthside` `apps/coach/coach.html`. Art: `docs/concept-art/`. Plan: `docs/superpowers/plans/2026-09-14-coach-apk.md`. Totem and WHOOP come after the APK exists.
 
 ---
 
@@ -127,8 +127,8 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 
 1. New agent: Brain **`main`** is current. Do **not** re-litigate EMH vs RIR, 1–5 feel, or shadow mode.
 2. If changing kernel math: edit `packages/brain/src/*`, rebuild `browser-iife.js`, copy to both `brain-kernel.js` files, then overlay onto sibling `main`s with a write token.
-3. **Surgical product (spec approved, wait for plan):** `docs/superpowers/specs/2026-09-14-athlete-back-to-back-design.md`. Phase 1 only: Me switches open the sibling APK. Do not merge apps. Do not restyle loggers. Phase 2 Totem ingest **after** phase 1 is live; keep Edge WHOOP as fallback. Live `whoop-callback` 503 is still the missing `whoopCallbackUrl` export — restore + redeploy **without** coupling to the settings switch.
-4. Do **not** implement parked items. Do not start Coach Totem analytics until phase 3 spec.
+3. **Order (locked):** Coach APK → Totem → WHOOP ingest → byte-by-byte `systematic-debugging` → gym Me switches last. Spec: `docs/superpowers/specs/2026-09-14-athlete-back-to-back-design.md`. Plan for step 1: `docs/superpowers/plans/2026-09-14-coach-apk.md`. Do not merge gym apps. Do not restyle loggers. Do not “just redeploy” WHOOP until phase 4 has boundary logs. Live `whoop-callback` 503 stays a **later** Edge proof (`whoopCallbackUrl`), not a Coach APK blocker.
+4. Do **not** implement parked items.
 
 ---
 
@@ -151,7 +151,8 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 | `HANDOFF.md` | **This file** — current agent start |
 | `docs/superpowers/specs/2026-09-13-adaptivebrain-v1-design.md` | Locked V1 product |
 | `docs/superpowers/specs/2026-09-14-whoop-totem-mcp-design.md` | Totem WHOOP MCP; Brain takes a slice |
-| `docs/superpowers/specs/2026-09-14-athlete-back-to-back-design.md` | Two APKs; Me switches; Totem ingest sequenced after |
+| `docs/superpowers/specs/2026-09-14-athlete-back-to-back-design.md` | Coach APK first, then Totem, WHOOP, debug, then gym switches |
+| `docs/superpowers/plans/2026-09-14-coach-apk.md` | `com.hybrid.coach` Capacitor wrap of `coach.html` |
 | `docs/superpowers/plans/2026-09-13-adaptivebrain-v1.md` | Task list (1–9, done) |
 | `docs/contracts/00-*` | Formulas, rule JSON, vectors, older ZIP handoff |
 | `packages/brain/` | Kernel |

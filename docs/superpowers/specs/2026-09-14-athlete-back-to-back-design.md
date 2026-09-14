@@ -1,16 +1,16 @@
-# Athlete back-to-back + Totem WHOOP — surgical
+# Athlete stack sequence — Coach APK first
 
 **Date:** 2026-09-14  
-**Status:** approved in chat (Approach A; WHOOP ingest = Totem; no merge; no `---` door)  
-**Constraint:** nothing athlete-visible may break. Two live APKs stay live.
+**Status:** approved in chat (Coach APK → Totem → WHOOP → byte-by-byte debug; Approach A later; no merge; no `---` door)  
+**Constraint:** live TRACK (`com.hybrid.athlete`) and Engine (`com.hybrid.engine`) must not break. Do not restyle frozen loggers. Do not change kernel math.
 
-**Authority:** this spec for *navigation between apps* and *WHOOP ingest sequencing*. Logger UX and `decideNext` stay in `2026-09-13-adaptivebrain-v1-design.md`. Totem slice math stays in `2026-09-14-whoop-totem-mcp-design.md` except where this file **replaces** “Edge OAuth is the product phone path.”
+**Authority:** this spec for *order of work* and Coach native shell. Logger UX and `decideNext` stay in `2026-09-13-adaptivebrain-v1-design.md`. Totem slice: `2026-09-14-whoop-totem-mcp-design.md`.
 
 ---
 
 ## ELI5
 
-Two apps. Settings has TRACK / Engine switches. Flip one → the **other installed app** opens. Homework does not mix. WHOOP talks through Totem. Engine home still only shows recovery colors. Fancy WHOOP lives in Coach later.
+First we put **Coach** on the phone as its own icon. Then we plug in **Totem**. Then **WHOOP** talks through Totem. Then we check every hop with evidence (no guessing). TRACK and Engine stay two separate gym apps. Settings switches that open the other gym app come **after** that, not before.
 
 ---
 
@@ -18,131 +18,101 @@ Two apps. Settings has TRACK / Engine switches. Flip one → the **other install
 
 | Decision | Meaning |
 | --- | --- |
-| No merge | Do not fuse `com.hybrid.athlete` and `com.hybrid.engine`. Do not load both loggers in one WebView. Do not share `localStorage`. |
-| Approach A | Settings switches **open the other APK** (Android package / URL). Navigation only. |
-| No `---` | Do not add a hidden door on athlete chrome. |
-| Wall | Strength `decideNext` + `strength_side`. Engine `decideNext` + `engine_side`. Never mix kinds. |
+| Order | **1 Coach APK → 2 Totem → 3 WHOOP ingest → 4 systematic debug.** Do not skip ahead. |
+| No merge | Do not fuse TRACK and Engine. Do not load gym loggers inside Coach. |
+| Coach package | Android `applicationId` **`com.hybrid.coach`** (same id as the Windows Electron shell in `strengthside` `apps/desktop`). Third icon. |
+| Coach HTML | Wrap **`apps/coach/coach.html`** (Hybrid Coach home you locked), **not** `apps/coach/index.html` (different older workspace). |
+| Totem | [thebriangao/totem](https://github.com/thebriangao/totem). Not mmnto-ai/totem. Full projection = Coach analytics (after APK exists). Brain still Recovery → `dailyZones` only. |
+| Approach A | Me TRACK/Engine switches open the sibling gym APK. **Phase 5.** |
+| No `---` | No hidden door on athlete chrome. |
+| Wall | `strength_side` vs `engine_side`. Never mix `decideNext` kinds. |
 | Loggers frozen | No new columns, sheets, restyle, RIR, 1–5 feel, Engine visual redesign. |
-| WHOOP product path | [thebriangao/totem](https://github.com/thebriangao/totem). Not mmnto-ai/totem. Brain still Recovery → `dailyZones` only. |
-| Coach | Separate workspace. Totem **full** projection = Coach analytics. Not this phase’s UI. |
 
 ---
 
 ## Surgical law
 
-**Violating the letter is violating the spirit.** Small surface. Existing tests must still pass before any Capgo.
+**Violating the letter is violating the spirit.**
 
-**Do not touch**
+**Do not touch for phase 1 (Coach APK)**
 
-- `packages/brain/src/*` math, `00-RULE-CONFIG.json`, `00-TEST-VECTORS.json`
-- Logger paint / EMH popover / rest flow / lift memory seed
-- Capgo `appId`, channel pin behaviour, Capacitor major version unification
-- Vendor Totem source / iOS private API client into this monorepo
-- Delete or “simplify” Edge `whoop-*` functions in the same change as the toggle
-- Parked list in `HANDOFF.md`
+- `packages/brain/src/*`, `00-RULE-CONFIG.json`, `00-TEST-VECTORS.json`
+- Strength / Engine `Logger.paint`, `logSet`, `decideNext`, lift memory
+- Capgo app ids / channels of **athlete** and **engine**
+- Edge `whoop-*` (leave fallback as-is, including live 503 until phase 3–4)
+- Vendor Totem source / iOS private API
+- `apps/coach/index.html` content rewrite
+- Parked `HANDOFF.md` items
 
-**Allowed files (phase 1)**
-
-- Strength Me/settings HTML in `strengthside` `apps/athlete` (`meHtml` / Me tab — already aliases `settings`)
-- Engine Me/settings HTML in `Engine-side-` athlete shell (same pattern)
-- A **new** tiny helper (one file per app, or one shared snippet copied) whose only job is: resolve target package, try open, report missing
-- Tests that **only** cover the helper (package ids, exclusive switch, missing-app message)
-- This spec + `HANDOFF.md` pointer
-
-If a change needs `Logger.paint`, `logSet`, `decideNext`, or WHOOP connect HTML, it is **out of phase 1**. Stop.
+If a change needs gym logger files or kernel math, **stop**.
 
 ---
 
-## Phase 1 — settings switches (ship first)
+## Phase 1 — Coach APK (this plan)
 
-### Behaviour
+**Repo:** `reflectprotect123-max/strengthside` (not Brain kernel, not Engine gym APK).
 
-On **Me** (settings) in both apps, a **Side** card with two switches: TRACK and Engine.
+**Shape:** New Capacitor Android shell, copy of the athlete pattern (`apps/mobile/capacitor`) but **minimal plugins**: `@capacitor/core`, `@capacitor/android`, `@capacitor/app`, `@capgo/capacitor-updater`. No Bluetooth, camera, barcode, keep-awake unless Coach HTML already requires them (it does not for home).
 
-- The current app’s switch is on and disabled (you are already here).
-- The other switch, when turned on, opens that app:
-  - TRACK → `com.hybrid.athlete`
-  - Engine → `com.hybrid.engine`
-- Exactly one side is the *intent*. Do not invent a third mode.
-- If the target is not installed: stay on Me, show a short “install TRACK / Engine” line. Do not crash. Do not swap logger UI in-place.
-- If open fails (no plugin, web browser): same stay-put message. Browser/web hosts do **not** need to open the other APK.
-- Mid-session: do not auto-`close` into the other side. Android backgrounding keeps the current session as today.
+**www:** Sync script copies `coach.html` → `www/index.html` plus the `./` scripts `coach.html` already loads (`whoop.js`, `coach-*.js`, `log-columns.js`, `exercise-search*.js`). Do not copy `*.smoke.mjs`.
 
-### Data
+**OTA:** New Capgo app id `com.hybrid.coach`, pin `live` the same way athlete `native-bridge.js` pins live. Human must create the Capgo app; agent must not invent a token.
 
-No new snapshot domain. Do not write `strength_side` from Engine or `engine_side` from Strength because of the switch. Optional local flag `lastSideHandoffAt` is allowed only in that app’s existing `S.settings` object; it must not sync into Brain kernel payloads.
+**Desktop:** Windows Electron stays. Do not delete `apps/desktop`. APK is an extra shell, not a replacement.
 
-### Native
+**WHOOP in this phase:** `coach.html` may keep existing `whoop.js`. Do **not** retarget it to Totem yet. Do **not** add OAuth intent filters copied from athlete (`com.hybrid.athlete://whoop`) onto Coach. Coach must not steal the gym WHOOP callback.
 
-Use existing Capacitor **App** plugin if already on that binary. Do not add a new native plugin for phase 1 if `App.openUrl` / Android intent to the other package works. Engine already listens to `appUrlOpen` for WHOOP — **do not** reuse the WHOOP callback URL for this handoff. Use a dedicated scheme or explicit package start that cannot be confused with `whoop-callback`.
-
-### Tests (phase 1)
-
-- Helper: TRACK target package is `com.hybrid.athlete`; Engine is `com.hybrid.engine`.
-- Helper: current-app switch does not call open.
-- Helper: missing target returns a stable error code (`NOT_INSTALLED` / `NOT_NATIVE`), never throws through `render()`.
-- Existing Strength session/library tests and Engine session/library/kernel tests: **zero failures**, no edits unless a test file is new and isolated.
-- Manual (human phones): both APKs installed → Me → flip → other app foreground; kg still only in TRACK; output still only in Engine; Engine home zone card unchanged.
-
-### Rollback
-
-Revert the Me-card + helper only. OTA the two HTML bundles independently. Do not roll kernel.
+**Success:** Debug APK launches Coach home (the locked Hybrid layout). Existing Coach smoke tests still pass. Athlete and Engine APKs unchanged.
 
 ---
 
-## Phase 2 — WHOOP via Totem (after phase 1 is live)
+## Phase 2 — Totem (own plan, after Coach APK is installable)
 
-Product path: WHOOP → Totem (full projection) → Brain **slice only** → Engine home BPM card.
-
-### Sequencing (do not skip)
-
-1. Keep Edge `whoop-connect` / `whoop-callback` / `whoop-sync` **working as fallback** until Totem recovery is proven on a dogfood channel. Live callback 503 is a **separate** Engine `_shared/auth.ts` `whoopCallbackUrl` redeploy — do not block phase 1 on it.
-2. Add a **slice ingest** that maps Totem Recovery (0–100) + freshness into the same shape Engine home already feeds `HybridBrainKernel.dailyZones`. No new kernel functions unless tests in `packages/brain` demand a pure mapper (prefer app-side map).
-3. Dual-run: if Totem slice is fresh, use it; else keep last successful Edge/local recovery; else show existing missing/stale home state. Never blank a working card because Totem failed.
-4. Only then stop sending athletes through developer OAuth as the **happy path**. Do not delete Edge functions in the dual-run commit.
-5. Coach analytics (full Totem) is **phase 3 / own spec**. Do not build Coach UI here.
-
-### Still forbidden
-
-- Totem Strength Trainer → TRACK `liftMemory`
-- Totem coach / live HR / writes → `decideNext` or Close anchors
-- LLM for target math
-
-### Supabase
-
-If Totem needs stored tokens or a projection cache: new tables get RLS, `TO authenticated` **and** `(select auth.uid()) = user_id` (and `WITH CHECK` on UPDATE). Never authorize from `user_metadata`. No `SECURITY DEFINER` to “make WHOOP work.” Pin client libraries if adding packages. Run advisors before any migration commit.
-
-Do not expose Totem raw dumps on `anon`.
+Consume Totem as an **external** adapter. Do not vendor the iOS private client. Coach is the MCP/analytics host. Brain still does not become 55 tools.
 
 ---
 
-## Phase 3 (not this spec)
+## Phase 3 — WHOOP through Totem (own plan, after Totem talks)
 
-Coach workspace + Totem analytics. Existing concept art: `docs/concept-art/`. Source HTML: `strengthside` `apps/coach/coach.html`.
+Happy path: WHOOP → Totem → Recovery slice → Brain `dailyZones` → Engine home. Dual-run Edge `whoop-sync` until Totem recovery is proven. Do not delete Edge functions in the first Totem commit.
 
 ---
 
-## Error handling
+## Phase 4 — Byte-by-byte systematic debug (own plan)
+
+**REQUIRED:** `systematic-debugging`. No fix without root cause. No bundled “while I’m here.”
+
+For **each** boundary, log enter/exit once, then read the logs:
+
+1. WHOOP account / Totem auth  
+2. Totem Recovery object (0–100, sample time)  
+3. Mapper → `{ recovery, capturedAt }`  
+4. Brain `dailyZones({ recovery })` BPM triple  
+5. Engine home card render  
+6. Coach analytics (full projection) — must not write `decideNext`
+
+Live `whoop-callback` 503: already hypothesized as missing `whoopCallbackUrl` in Engine `_shared/auth.ts`. Phase 4 **re-proves** with GET/OPTIONS + worker boot logs before any further Edge change. If ≥3 failed fixes, stop and question architecture with the human.
+
+**Do not** start phase 4 by “just redeploying” unless evidence from this list says that hop is the failure.
+
+---
+
+## Phase 5 — Gym back-to-back switches (own plan, after 1–4)
+
+Me card on TRACK and Engine: switches open `com.hybrid.athlete` / `com.hybrid.engine`. Navigation only. Dedicated scheme, never WHOOP callback URLs. Missing APK → stay on Me.
+
+---
+
+## Error handling (phase 1)
 
 | Case | Result |
 | --- | --- |
-| Other APK missing | Stay on Me; one sentence; switches unchanged |
-| Open throws | Catch at helper; same as missing |
-| Totem down (phase 2) | Keep last good recovery / Edge fallback; home does not crash |
-| Athlete in logger | Switch is not on the logger screen; no new chrome there |
+| Sync missed a JS file | Coach console 404; fix the copy list; do not ship |
+| Capgo app missing | APK still runs local www; updater no-ops |
+| Human opens Coach instead of TRACK | Expected; gym apps untouched |
 
 ---
 
-## Success
+## Explicit non-goals (phase 1)
 
-- Two icons still on the phone.
-- Me switches open the sibling app when installed.
-- Kernel tests and athlete session tests still pass.
-- Engine home colors still come from Recovery slice only.
-- No logger visual change. No merged WebView.
-
----
-
-## Explicit non-goals
-
-One APK, shared WebView, `---` button, Capacitor 7→8 unification, restyling Engine, TrainHeroic import, Concept2 OAuth, vendoring Totem, feeding Totem into `decideNext`.
+One gym APK, shared WebView, `---` button, Totem, Edge OAuth rewrite, Engine restyle, TrainHeroic import, Concept2 OAuth, kernel changes, rewriting `apps/coach/index.html` into `coach.html`.

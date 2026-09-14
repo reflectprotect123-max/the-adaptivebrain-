@@ -48,7 +48,7 @@ Coach chat may talk to Totem as an MCP client later. That chat still cannot rewr
 
 - Logger chrome frozen.
 - WHOOP must not soften or replace last Close output.
-- **Product ingest (locked 2026-09-14):** Totem is how WHOOP enters Hybrid. Official Edge developer OAuth is **fallback until Totem recovery is proven** — dual-run, then retire the happy path. Do not delete `whoop-*` in the same change as athlete settings switches. Redeploying `whoopCallbackUrl` still unblocks today’s 503 fallback.
+- **Product ingest (locked 2026-09-14):** Totem is how WHOOP enters Hybrid. **Do not wire Totem until the Coach APK exists** (`2026-09-14-athlete-back-to-back-design.md` order). Official Edge developer OAuth is **fallback until Totem recovery is proven** — dual-run, then retire the happy path. Do not delete `whoop-*` in the Coach APK change. Redeploying `whoopCallbackUrl` is a later debug hop, not a Coach shell task.
 - Do not vendor Totem into this repo. Do not copy iOS private-API client code here. Consume Totem as an external adapter (MCP or a future small projection JSON Totem already validates).
 - Athlete **back-to-back** (two APKs, Me switches open the other app): `2026-09-14-athlete-back-to-back-design.md`. No merge. Phase 1 of that spec must not change this WHOOP path.
 
