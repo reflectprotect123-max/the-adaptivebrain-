@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#111418" />
 <title>THE Hybrid — Coach</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,14 +18,14 @@
   --text:#111418;--muted:#5c6570;--dim:#8a9299;
   --copper:var(--th-blue);--copper2:var(--th-blue-hover);
   --ok:#16a34a;--warn:#d97706;--bad:#dc2626;
-  --coach-nav-bg:#000000;--coach-header-bg:#000000;
+  --coach-nav-bg:#111418;--coach-header-bg:#111418;
   --coach-main-bg:#f4f6f8;--coach-main-text:#111418;--coach-main-muted:#5c6570;
   --coach-card-bg:#ffffff;--coach-card-border:#e6e8eb;
   --coach-nav-active:rgba(255,255,255,.12);--coach-link:var(--th-blue);
-  --coach-rail-width:64px;
+  --coach-rail-width:64px;--coach-tabbar-h:56px;
   --font-body:"Inter",ui-sans-serif,system-ui,sans-serif;
   --font-display:"Inter",ui-sans-serif,system-ui,sans-serif;
-  --tap:40px;--r:8px;--r-lg:10px;--ease:160ms ease;
+  --tap:44px;--r:8px;--r-lg:10px;--ease:160ms ease;
   --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;
   --focus:0 0 0 2px #fff,0 0 0 4px rgba(37,99,235,.45);
   --shadow:0 8px 24px rgba(17,20,24,.08);
@@ -32,7 +33,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html,body{margin:0;font-family:var(--font-body);min-height:100%;background:var(--bg);color:var(--text)}
+html,body{margin:0;font-family:var(--font-body);min-height:100dvh;background:var(--bg);color:var(--text)}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:none;box-shadow:var(--focus)}
@@ -63,7 +64,7 @@ a{color:var(--coach-link)}
 @keyframes coachFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
 /* gate */
-#gate{max-width:440px;margin:0 auto;padding:48px 20px;background:var(--bg);color:var(--text);min-height:100vh}
+#gate{max-width:440px;margin:0 auto;padding:max(32px,env(safe-area-inset-top)) 20px max(32px,env(safe-area-inset-bottom));background:var(--bg);color:var(--text);min-height:100dvh}
 .mark{display:grid;place-items:center;width:36px;height:36px;border:0;border-radius:8px;background:#fff;color:#111;font-weight:800;letter-spacing:.04em;font-size:14px;flex-shrink:0}
 .acct{display:grid;gap:8px;margin-top:18px}
 .acct button{text-align:left;color:var(--text)}
@@ -79,22 +80,28 @@ a{color:var(--coach-link)}
 #gate .gate-title{margin-top:28px;font-family:var(--font-display);font-size:clamp(34px,6vw,42px);font-weight:600;letter-spacing:.01em;line-height:1.05}
 
 /* shell — slim black icon rail + black header + light canvas */
-#coachApp.coach-shell{display:grid;grid-template-columns:var(--coach-rail-width) 1fr;min-height:100vh;background:var(--coach-main-bg)}
-.coach-side.coach-rail-slim,.coach-side{display:flex;flex-direction:column;padding:12px 8px;background:var(--coach-nav-bg);color:#fff;min-height:100vh;width:var(--coach-rail-width)}
+#coachApp.coach-shell{display:grid;grid-template-columns:var(--coach-rail-width) 1fr;min-height:100dvh;background:var(--coach-main-bg)}
+.coach-side.coach-rail-slim,.coach-side{display:flex;flex-direction:column;padding:12px 8px;background:var(--coach-nav-bg);color:#fff;min-height:100dvh;width:var(--coach-rail-width)}
 .coach-brand{display:grid;place-items:center;padding:8px 0 16px}
 .coach-brand b,.coach-brand .sub{display:none}
-.coach-side nav{display:grid;gap:4px;flex:1;margin-top:4px}
-.coach-side nav button,.coach-side .nav-soon{display:grid;place-items:center;width:100%;min-height:44px;padding:8px;border:0;border-radius:8px;background:transparent;color:rgba(255,255,255,.55);font-size:0;text-align:center}
-.coach-side nav button .nav-label,.coach-side .nav-soon .nav-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-.coach-side nav button.on{background:var(--coach-nav-active);color:#fff}
-.coach-side nav button:hover:not(.on):not(:disabled){background:rgba(255,255,255,.08);color:#fff}
+.coach-side nav{display:grid;gap:4px;margin-top:4px}
+.coach-nav-tabs{flex:0}
+.coach-nav-rest{flex:0;margin-top:auto}
+.coach-side nav button,.coach-side .nav-soon,.coach-more-tab{display:grid;place-items:center;width:100%;min-height:44px;padding:8px;border:0;border-radius:8px;background:transparent;color:rgba(255,255,255,.55);font-size:0;text-align:center}
+.coach-side nav button .nav-label,.coach-side .nav-soon .nav-label,.coach-more-tab .nav-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.coach-side nav button.on,.coach-more-tab.on{background:var(--coach-nav-active);color:#fff}
+.coach-side nav button:hover:not(.on):not(:disabled),.coach-more-tab:hover:not(.on){background:rgba(255,255,255,.08);color:#fff}
 .coach-side nav button:disabled,.coach-side .nav-soon{opacity:.42;cursor:not-allowed}
 .nav-ico{width:20px;height:20px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
-.coach-side-foot{margin-top:auto;padding-top:10px;display:grid;gap:4px}
+.coach-side-foot{margin-top:8px;padding-top:10px;display:grid;gap:4px}
 .coach-side-foot button,.coach-side-foot a.btn{display:grid;place-items:center;width:100%;min-height:36px;padding:6px;border:0;border-radius:8px;background:transparent;color:rgba(255,255,255,.45);font-size:9px;text-align:center}
 .coach-side-foot button:hover,.coach-side-foot a.btn:hover{color:#fff;background:rgba(255,255,255,.08)}
 
-.coach-workspace{display:flex;flex-direction:column;min-width:0;min-height:100vh}
+.coach-workspace{display:flex;flex-direction:column;min-width:0;min-height:100dvh}
+.coach-more-tab{display:none}
+.coach-side nav .coach-more-tab{display:none}
+.coach-more-sheet{display:none}
+.coach-back{display:none}
 .coach-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 20px;min-height:56px;background:var(--coach-header-bg);color:#fff}
 .coach-header-title{font-size:15px;font-weight:600;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
 .coach-header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
@@ -326,7 +333,7 @@ label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight
 .cal-day-body{display:grid;gap:6px;margin-top:4px}
 .cal-day.cal-pad{min-height:88px;border-color:transparent;background:transparent;pointer-events:none}
 .cal-chip-ath{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--copper2);margin-bottom:2px}
-.coach-toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:50;max-width:min(92vw,420px);padding:12px 16px;border:1px solid rgba(212,165,116,.45);border-radius:12px;background:#12161af0;color:var(--text);font-size:13px;line-height:1.4;box-shadow:var(--shadow);pointer-events:none}
+.coach-toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:60;max-width:min(92vw,420px);padding:12px 16px;border:1px solid rgba(37,99,235,.45);border-radius:12px;background:#111418f0;color:#fff;font-size:13px;line-height:1.4;box-shadow:var(--shadow);pointer-events:none}
 .coach-toast.ok{border-color:rgba(125,186,154,.5)}
 .prog-icon:disabled,.prog-icon[disabled]{display:none}
 .cal-chip{padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);position:relative;font-size:11px;transition:border-color var(--ease)}
@@ -348,22 +355,80 @@ label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight
   .metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
   .metrics.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .feed-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:980px){
-  #coachApp.coach-shell{grid-template-columns:1fr}
-  .coach-side{flex-direction:row;flex-wrap:wrap;min-height:auto;border-right:0;border-bottom:1px solid var(--line)}
-  .coach-side nav{display:flex;flex-wrap:wrap;margin:0}
   .coach-body.has-rail{grid-template-columns:1fr}
   .coach-rail{display:none}
-  .coach-main{padding:18px 16px 40px}
-  .prog-days{grid-template-columns:repeat(7,minmax(96px,1fr))}
-  .rx-grid,.rx-grid.cols-4{grid-template-columns:1fr 1fr}
 }
-@media(max-width:640px){
-  .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .feed-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 8px}
+@media(max-width:900px){
+  :root{--tap:48px}
+  html{font-size:16px}
+  #coachApp.coach-shell{display:flex;flex-direction:column;grid-template-columns:none;min-height:100dvh}
+  .coach-workspace{order:1;flex:1;min-height:0;min-width:0;height:100dvh;padding-bottom:calc(var(--coach-tabbar-h) + env(safe-area-inset-bottom))}
+  .coach-body{flex:1;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch}
+  .coach-side.coach-rail-slim,.coach-side{
+    order:2;position:fixed;left:0;right:0;bottom:0;z-index:40;
+    width:100% !important;min-height:0;height:calc(var(--coach-tabbar-h) + env(safe-area-inset-bottom));
+    flex-direction:row;align-items:stretch;padding:0 2px env(safe-area-inset-bottom);
+    border:0;box-shadow:0 -1px 0 rgba(255,255,255,.08);
+  }
+  .coach-side.coach-rail-slim .coach-brand,
+  .coach-side.coach-rail-slim .coach-nav-rest,
+  .coach-side.coach-rail-slim .coach-side-foot{display:none !important}
+  .coach-side.coach-rail-slim .coach-more-tab{display:grid !important}
+  .coach-side.coach-rail-slim .coach-nav-tabs{
+    display:flex !important;flex:1;width:100%;margin:0;gap:0;align-items:stretch
+  }
+  .coach-side.coach-rail-slim .coach-nav-tabs > button,
+  .coach-side.coach-rail-slim .coach-nav-tabs > .nav-soon,
+  .coach-side.coach-rail-slim .coach-more-tab{
+    position:relative;flex:1 1 0;display:grid;place-items:center;gap:2px;
+    width:auto !important;max-width:none;min-width:0;min-height:var(--coach-tabbar-h);
+    padding:6px 2px 8px;border-radius:0;font-size:10px !important;font-weight:650;
+    letter-spacing:.01em;color:rgba(255,255,255,.55)
+  }
+  .coach-side.coach-rail-slim .coach-nav-tabs > button.on,
+  .coach-side.coach-rail-slim .coach-more-tab.on{background:transparent;color:#fff}
+  .coach-side.coach-rail-slim .coach-nav-tabs > button.on::after,
+  .coach-side.coach-rail-slim .coach-more-tab.on::after{
+    content:"";position:absolute;top:6px;width:18px;height:2px;border-radius:2px;background:var(--th-blue)
+  }
+  .coach-side.coach-rail-slim .coach-nav-tabs .nav-label,
+  .coach-side.coach-rail-slim .coach-more-tab .nav-label{
+    position:static !important;width:auto !important;height:auto !important;overflow:visible !important;
+    clip:unset !important;white-space:nowrap;font-size:10px;line-height:1.1
+  }
+  .coach-header{padding:env(safe-area-inset-top) 12px 0;min-height:calc(48px + env(safe-area-inset-top));gap:8px}
+  .coach-header-title{font-size:16px;font-weight:650}
+  .welcome-h,.coach-header-title .title-dot{display:none}
+  .btn-assist,.coach-header-actions .icon-btn{display:none}
+  .coach-back{display:inline-flex;align-items:center;min-height:44px;padding:0 10px 0 0;border:0;background:transparent;color:#fff;font-size:14px;font-weight:650}
+  .coach-main{padding:14px 14px 28px}
+  .page-intro h1,.coach-main h1,.builder-title,.prog-title{font-size:22px}
+  .metrics,.metrics.cols-4,.feed-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .engine-fields,.rx-grid,.rx-grid.cols-4{grid-template-columns:1fr}
+  .grid7{display:flex;overflow-x:auto;gap:6px;-webkit-overflow-scrolling:touch}
+  .grid7 .cell,.grid7 .wk{min-width:72px;flex:0 0 auto}
+  .prog-days{grid-template-columns:repeat(7,minmax(148px,1fr));-webkit-overflow-scrolling:touch}
   .cal-grid,.cal-dow-row{gap:4px}
-  .cal-day{min-height:72px;padding:4px}
+  .cal-day,.cal-day.cal-pad{min-height:64px;padding:4px}
+  .table-wrap,.roster-table,.th-table,.data-table,.set-table{display:block;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  input,select,textarea{font-size:16px}
+  .coach-toast{bottom:calc(var(--coach-tabbar-h) + 12px + env(safe-area-inset-bottom))}
+  .coach-more-sheet{display:none;position:fixed;inset:0;z-index:50}
+  .coach-more-sheet.open{display:block}
+  .coach-more-backdrop{position:absolute;inset:0;border:0;background:rgba(17,20,24,.46);width:100%;height:100%}
+  .coach-more-panel{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:12px 16px calc(16px + env(safe-area-inset-bottom));
+    border-radius:16px 16px 0 0;background:#fff;color:var(--text);
+    box-shadow:0 -12px 40px rgba(17,20,24,.18);max-height:min(72dvh,560px);overflow:auto
+  }
+  .coach-more-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+  .coach-more-head b{font-size:16px}
+  .coach-more-panel .btn,.coach-more-panel a.btn{
+    display:flex;width:100%;justify-content:center;align-items:center;margin-top:8px;text-decoration:none;color:inherit
+  }
+  .coach-more-panel a.btn{color:var(--text)}
+  .coach-more-head .btn{width:auto;margin:0;min-width:72px;flex:0 0 auto}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition:none !important}
@@ -397,6 +462,7 @@ const ui = {
   calMonth:null, calDay:null, chipMenu:null, libPick:null,
   assignTeamId:null, assignStart:null, nutAthleteId:null,
   exCatalogSearch:'', commentDrawer:null, filterAthlete:'all',
+  moreOpen:false,
 };
 
 const $ = (id) => document.getElementById(id);
@@ -496,6 +562,7 @@ function prog(id){ return (S.programs||[]).find(p => p.id === id); }
 function team(id){ return (S.teams||[]).find(t => t.id === id); }
 
 function go(view, extra){
+  ui.moreOpen = false;
   if (view !== 'session') closeCoachExEdit();
   Object.assign(ui, extra||{}, { view });
   if (view === 'library' && !ui.lib) ui.lib = 'programs';
@@ -649,6 +716,7 @@ function icon(name){
     nutrition:'<path d="M12 3v18"/><path d="M5 8h14"/><path d="M7 8c0 7 5 11 5 11s5-4 5-11"/><path d="M9 4h6"/>',
     chart:'<path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-6"/>',
     gym:'<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 18h.01"/>',
+    more:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',
     support:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 4.8 1 2 2 0 0 0-1 1.8V14"/><path d="M12 17h.01"/>',
     msg:'<path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>',
     bell:'<path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>',
@@ -1604,26 +1672,52 @@ function sessionHtml(){
     ${exercisePickerHtml()}</div>`;
 }
 
+function navBtn(k, l, ic, off){
+  if (off) return `<span class="nav-soon" title="${esc(l)}">${icon(ic)}<span class="nav-label">${esc(l)}</span></span>`;
+  return `<button type="button" class="${navActive(k)?'on':''}" data-nav="${k}" title="${esc(l)}" onclick="go('${k}')">${icon(ic)}<span class="nav-label">${esc(l)}</span></button>`;
+}
+function toggleCoachMore(force){
+  if (force === false) ui.moreOpen = false;
+  else if (force === true) ui.moreOpen = true;
+  else ui.moreOpen = !ui.moreOpen;
+  render();
+}
+function coachBackHtml(){
+  const map = { athlete:'athletes', team:'teams', program:'library', session:'library', assign:'library' };
+  const to = map[ui.view];
+  if (!to) return '';
+  return `<button type="button" class="coach-back" onclick="go('${to}')">Back</button>`;
+}
 function coachChrome(body){
-  const nav = [
-    ['home','Coach Home','home',false],
+  const tabs = [
+    ['home','Home','home',false],
     ['athletes','Athletes','users',false],
     ['teams','Teams','teams',false],
     ['library','Library','library',false],
+  ];
+  const rest = [
     ['nutrition','Nutrition','nutrition',false],
     ['analytics','Analytics','chart',true],
     ['gym','Gym Tools','gym',true],
   ];
-  const navHtml = nav.map(([k,l,ic,off]) => {
-    if (off) return `<span class="nav-soon" title="${esc(l)}">${icon(ic)}<span class="nav-label">${esc(l)}</span></span>`;
-    return `<button type="button" class="${navActive(k)?'on':''}" data-nav="${k}" title="${esc(l)}" onclick="go('${k}')">${icon(ic)}<span class="nav-label">${esc(l)}</span></button>`;
-  }).join('');
+  const moreOn = ui.moreOpen || ui.view === 'nutrition';
   const initials = String(S.coach?.name||'D').slice(0,1).toUpperCase();
   const hasRail = ui.view === 'home';
-  const welcome = S.coach?.name ? `Welcome back, Coach ${esc(S.coach.name)}` : 'Welcome back';
+  const moreActions = `
+      <button type="button" class="btn ${ui.view==='nutrition'?'primary':''}" onclick="go('nutrition')">Nutrition</button>
+      <button type="button" class="btn" disabled>Analytics (soon)</button>
+      <button type="button" class="btn" disabled>Gym tools (soon)</button>
+      <a class="btn" href="https://thehybridsystem.netlify.app/" target="_blank" rel="noopener noreferrer">Open athlete app</a>
+      <button type="button" class="btn" onclick="pushCloudNow()">Push cloud now</button>
+      <button type="button" class="btn" onclick="exportBridgeFile()">Export bridge file</button>
+      <button type="button" class="btn" onclick="resetDemo()">Reset demo</button>
+      <button type="button" class="btn danger" onclick="signOut()">Sign out</button>`;
   return `<aside class="coach-side coach-rail-slim" aria-label="Coach navigation">
     <div class="coach-brand"><div class="mark">H</div><div><b>THE Hybrid</b><div class="sub">hybrid S&C · coach workspace</div></div></div>
-    <nav>${navHtml}</nav>
+    <nav class="coach-nav-tabs">${tabs.map(n => navBtn(...n)).join('')}
+      <button type="button" class="coach-more-tab ${moreOn?'on':''}" title="More" onclick="toggleCoachMore()">${icon('more')}<span class="nav-label">More</span></button>
+    </nav>
+    <nav class="coach-nav-rest" aria-label="More workspace">${rest.map(n => navBtn(...n)).join('')}</nav>
     <div class="coach-side-foot">
       <span class="nav-soon" title="Coming soon">${icon('support')}<span class="nav-label">Support</span></span>
       <a class="btn small block" href="https://thehybridsystem.netlify.app/" target="_blank" rel="noopener noreferrer" title="Open athlete app">Open athlete app</a>
@@ -1635,7 +1729,8 @@ function coachChrome(body){
   </aside>
   <div class="coach-workspace">
     <header class="coach-header">
-      <div class="coach-header-title"><span class="welcome-h">${welcome}</span> · ${esc(headerTitle())}</div>
+      ${coachBackHtml()}
+      <div class="coach-header-title">${esc(headerTitle())}</div>
       <div class="coach-header-actions">
         <button type="button" class="btn-assist" disabled title="Coming soon">Manage Assistants</button>
         <span class="icon-btn" title="Coming soon">${icon('msg')}<span class="badge">·</span></span>
@@ -1646,6 +1741,13 @@ function coachChrome(body){
     <div class="coach-body ${hasRail?'has-rail':''}">
       <main class="coach-main">${body}</main>
       ${hasRail?`<aside class="coach-rail" aria-label="Programming status">${needsHtml()}</aside>`:''}
+    </div>
+  </div>
+  <div class="coach-more-sheet ${ui.moreOpen?'open':''}" ${ui.moreOpen?'':'hidden'} role="dialog" aria-label="More">
+    <button type="button" class="coach-more-backdrop" onclick="toggleCoachMore(false)" aria-label="Close more"></button>
+    <div class="coach-more-panel">
+      <div class="coach-more-head"><b>More</b><button type="button" class="btn small" onclick="toggleCoachMore(false)">Close</button></div>
+      ${moreActions}
     </div>
   </div>`;
 }
@@ -1742,6 +1844,7 @@ window.openCommentDrawer=openCommentDrawer; window.closeCommentDrawer=closeComme
 window.exportBridgeFile=exportBridgeFile;
 window.bindMyCloudIdToAthlete=bindMyCloudIdToAthlete;
 window.pushCloudNow=pushCloudNow;
+window.toggleCoachMore=toggleCoachMore;
 CoachViews.init({ L, S, ui, persist, esc, go, render, $, tpl, prog, ses, athleteBy, team });
 render();
 (async function coachAuthBoot(){

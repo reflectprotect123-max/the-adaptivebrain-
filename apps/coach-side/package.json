@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "THE Hybrid Coach — own GitHub repo (not TRACK, not Engine)",
   "scripts": {
-    "test": "node coach-apk-shell.smoke.mjs && node coach-bridge.smoke.mjs && node coach-capgo.smoke.mjs && node coach-apk-ci.smoke.mjs",
+    "test": "node coach-apk-shell.smoke.mjs && node coach-bridge.smoke.mjs && node coach-capgo.smoke.mjs && node coach-apk-ci.smoke.mjs && node coach-mobile.smoke.mjs",
     "sync:apk": "bash scripts/sync-coach-apk.sh",
     "ship:capgo": "bash capacitor/scripts/ship-capgo.sh"
   }

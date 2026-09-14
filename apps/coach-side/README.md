@@ -14,6 +14,7 @@ node coach-apk-shell.smoke.mjs
 node coach-bridge.smoke.mjs
 node coach-capgo.smoke.mjs
 node coach-apk-ci.smoke.mjs
+node coach-mobile.smoke.mjs
 ```
 
 ## Capgo OTA (Capacitor)
