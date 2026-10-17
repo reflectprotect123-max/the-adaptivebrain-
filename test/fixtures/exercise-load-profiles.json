@@ -1,0 +1,2486 @@
+{
+  "version": 2,
+  "updated": "2026-09-02",
+  "purpose": "Reference: which logger columns each exercise uses. Derived from hybrid-engine-exercise-library-120 plus profile rules. Core S&C engines deleted 2026-09-03 — this fixture is UI/column metadata only.",
+  "sources": [
+    "apps/coach/log-columns.js",
+    "evidence-platform/.../hybrid-engine-exercise-library-120.json",
+    "https://www.strongerbyscience.com/progressive-overload-strategies/",
+    "https://doi.org/10.4172/2324-9080.1000184"
+  ],
+  "engine_metrics": {
+    "load": {
+      "label": "Load",
+      "unit": "kg",
+      "is_load_bearing": true,
+      "when": "External mass on the bar, stack, belt, or carry. Stored on performed_set as load."
+    },
+    "reps": {
+      "label": "Reps",
+      "unit": "rep",
+      "is_load_bearing": false,
+      "when": "Completed repetitions per set."
+    },
+    "rpe": {
+      "label": "RPE",
+      "unit": "rpe",
+      "is_load_bearing": false,
+      "when": "Derived from logger RIR on the last planned set (RPE = 10 − RIR). Drives load progression."
+    },
+    "rir": {
+      "label": "RIR",
+      "unit": "rep",
+      "is_load_bearing": false,
+      "when": "Logger UI field on last set; converted to rpe for engine storage."
+    },
+    "duration": {
+      "label": "Duration",
+      "unit": "s",
+      "is_load_bearing": false,
+      "when": "Cardio intervals, planks, carries — time under work."
+    },
+    "distance": {
+      "label": "Distance",
+      "unit": "m",
+      "is_load_bearing": false,
+      "when": "Rowing, running, carries — metres covered."
+    },
+    "rest": {
+      "label": "Rest",
+      "unit": "s",
+      "is_load_bearing": false,
+      "when": "Prescribed rest between sets (builder), not always logged per set."
+    },
+    "pain": {
+      "label": "Pain",
+      "unit": "flag",
+      "is_load_bearing": false,
+      "when": "Safety flag on exposure; blocks calibration when pain_blocked."
+    },
+    "tempo": {
+      "label": "Tempo",
+      "unit": "s",
+      "when": "Prescription metadata; rarely logged per set today."
+    },
+    "watts": {
+      "label": "Watts",
+      "unit": "W",
+      "when": "Cardio machines (future); not in strength logger yet."
+    },
+    "calories": {
+      "label": "Calories",
+      "unit": "kcal",
+      "when": "Conditioning summary (future)."
+    },
+    "height": {
+      "label": "Height",
+      "unit": "m",
+      "when": "Jump metrics (future)."
+    }
+  },
+  "log_column_kinds": {
+    "reps": {
+      "label": "Reps",
+      "maps_to": [
+        "reps"
+      ],
+      "logger_field": "reps"
+    },
+    "reps_range": {
+      "label": "Reps (min–max)",
+      "maps_to": [
+        "reps"
+      ],
+      "logger_field": "reps"
+    },
+    "weight_kg": {
+      "label": "Weight (kg)",
+      "maps_to": [
+        "load"
+      ],
+      "logger_field": "weight"
+    },
+    "weight_pct_wm": {
+      "label": "Weight % (of WM)",
+      "maps_to": [
+        "load"
+      ],
+      "resolves_via": "working_max"
+    },
+    "weight_lwp": {
+      "label": "Weight (LWP)",
+      "maps_to": [
+        "load"
+      ],
+      "resolves_via": "last_working_prescription"
+    },
+    "time_sec": {
+      "label": "Time (seconds)",
+      "maps_to": [
+        "duration"
+      ],
+      "logger_field": "reps"
+    },
+    "distance_m": {
+      "label": "Distance (metres)",
+      "maps_to": [
+        "distance"
+      ],
+      "logger_field": "reps"
+    }
+  },
+  "tracking_modes": {
+    "reps_load": {
+      "count_in_library": 100,
+      "description": "Strength sets — reps plus optional external load or %WM.",
+      "default_log_columns": [
+        "weight_kg",
+        "reps"
+      ],
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "profile_resolution": "profile_rules.reps_load"
+    },
+    "duration_distance": {
+      "count_in_library": 7,
+      "description": "Cardio — time and/or distance (Assault bike, rower, jump rope).",
+      "default_log_columns": [
+        "time_sec",
+        "distance_m"
+      ],
+      "metrics_per_set": [
+        "duration",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "default_profile": "cardio_duration_distance"
+    },
+    "distance_time_load": {
+      "count_in_library": 7,
+      "description": "Loaded carries — load + distance only (non-timed). Library mode name is legacy; no prescribed time column.",
+      "default_log_columns": [
+        "weight_kg",
+        "distance_m"
+      ],
+      "metrics_per_set": [
+        "load",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "default_profile": "carry_distance_load"
+    },
+    "time_or_reps": {
+      "count_in_library": 4,
+      "description": "Isometrics — hold for time or log reps (planks).",
+      "default_log_columns": [
+        "time_sec"
+      ],
+      "metrics_per_set": [
+        "duration"
+      ],
+      "metrics_last_set": [],
+      "default_profile": "isometric_time_or_reps"
+    },
+    "reps_or_time": {
+      "count_in_library": 2,
+      "description": "Prep / mobility — reps or timed drill.",
+      "default_log_columns": [
+        "reps"
+      ],
+      "metrics_per_set": [
+        "reps",
+        "duration"
+      ],
+      "metrics_last_set": [],
+      "default_profile": "isometric_time_or_reps"
+    }
+  },
+  "profiles": {
+    "main_pct_wm": {
+      "label": "Main lift — % working max",
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ],
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "metrics_progression": [
+        "load",
+        "rpe"
+      ],
+      "progression": "working_max_calibration_then_pct_wm"
+    },
+    "accessory_kg_reps": {
+      "label": "Accessory — kg + reps",
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ],
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "metrics_progression": [
+        "load"
+      ],
+      "progression": "load_hint_double_progression"
+    },
+    "bodyweight_reps": {
+      "label": "Bodyweight — reps only",
+      "log_columns": [
+        "reps"
+      ],
+      "metrics_per_set": [
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "metrics_progression": [
+        "reps"
+      ],
+      "progression": "rep_volume_hint"
+    },
+    "added_load_bw": {
+      "label": "Bodyweight + added load",
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ],
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "metrics_progression": [
+        "load",
+        "reps"
+      ],
+      "progression": "added_load_wm_when_enabled"
+    },
+    "self_scaled_reps": {
+      "label": "Self-scaled — reps + difficulty",
+      "log_columns": [
+        "reps"
+      ],
+      "metrics_per_set": [
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "metrics_progression": [
+        "reps"
+      ],
+      "progression": "rep_volume_hint",
+      "note": "TRX / suspension: resistance from body angle, not kg."
+    },
+    "isometric_time_or_reps": {
+      "label": "Isometric / prep — time or reps",
+      "log_columns": [
+        "time_sec"
+      ],
+      "metrics_per_set": [
+        "duration"
+      ],
+      "metrics_last_set": [],
+      "metrics_progression": [
+        "duration"
+      ],
+      "progression": "rep_or_duration_hint"
+    },
+    "cardio_duration_distance": {
+      "label": "Cardio — duration + distance",
+      "log_columns": [
+        "time_sec",
+        "distance_m"
+      ],
+      "metrics_per_set": [
+        "duration",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "metrics_progression": [
+        "duration",
+        "distance"
+      ],
+      "progression": "cond_engine_not_strength",
+      "note": "Logged via conditioning logger, not strength one-set logger."
+    },
+    "carry_distance_load": {
+      "label": "Carry — load + distance (non-timed)",
+      "log_columns": [
+        "weight_kg",
+        "distance_m"
+      ],
+      "metrics_per_set": [
+        "load",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "metrics_progression": [
+        "load",
+        "distance"
+      ],
+      "progression": "sealed_from_adaptive",
+      "note": "Distance effort only — no prescribed time. Adaptive Open/Next/Close must not touch carries (same seal as timed holds)."
+    }
+  },
+  "profile_rules": {
+    "reps_load": [
+      "If name/equipment matches TRX/suspension → self_scaled_reps",
+      "If bodyweight calisthenic (pull-up, dip, push-up, nordic, …) without external equipment → bodyweight_reps",
+      "If main barbell compound (squat, bench, deadlift, press, oly) → main_pct_wm",
+      "Else → accessory_kg_reps (rows, curls, machines, unilateral work)"
+    ]
+  },
+  "exercises": [
+    {
+      "exercise_id": "core-barbell-curl",
+      "name": "Barbell Curl",
+      "category": "Arms",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-cable-tricep-pushdown",
+      "name": "Cable Tricep Pushdown",
+      "category": "Arms",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-dumbbell-curl",
+      "name": "Dumbbell Curl",
+      "category": "Arms",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-hammer-curl",
+      "name": "Hammer Curl",
+      "category": "Arms",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-overhead-tricep-extension",
+      "name": "Overhead Tricep Extension",
+      "category": "Arms",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-preacher-curl",
+      "name": "Preacher Curl",
+      "category": "Arms",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-skull-crusher",
+      "name": "Skull Crusher",
+      "category": "Arms",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-assault-bike",
+      "name": "Assault Bike",
+      "category": "Cardio",
+      "tracking_mode": "duration_distance",
+      "profile": "cardio_duration_distance",
+      "metrics_per_set": [
+        "duration",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "core-cycling",
+      "name": "Cycling",
+      "category": "Cardio",
+      "tracking_mode": "duration_distance",
+      "profile": "cardio_duration_distance",
+      "metrics_per_set": [
+        "duration",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "core-jump-rope",
+      "name": "Jump Rope",
+      "category": "Cardio",
+      "tracking_mode": "duration_distance",
+      "profile": "cardio_duration_distance",
+      "metrics_per_set": [
+        "duration",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "core-rowing-erg",
+      "name": "Rowing (Erg)",
+      "category": "Cardio",
+      "tracking_mode": "duration_distance",
+      "profile": "cardio_duration_distance",
+      "metrics_per_set": [
+        "duration",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "core-running",
+      "name": "Running",
+      "category": "Cardio",
+      "tracking_mode": "duration_distance",
+      "profile": "cardio_duration_distance",
+      "metrics_per_set": [
+        "duration",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "core-swimming",
+      "name": "Swimming",
+      "category": "Cardio",
+      "tracking_mode": "duration_distance",
+      "profile": "cardio_duration_distance",
+      "metrics_per_set": [
+        "duration",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "core-ab-wheel-rollout",
+      "name": "Ab Wheel Rollout",
+      "category": "Core",
+      "tracking_mode": "reps_load",
+      "profile": "bodyweight_reps",
+      "metrics_per_set": [
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-hanging-leg-raise",
+      "name": "Hanging Leg Raise",
+      "category": "Core",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-pallof-press",
+      "name": "Pallof Press",
+      "category": "Core",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-plank",
+      "name": "Plank",
+      "category": "Core",
+      "tracking_mode": "time_or_reps",
+      "profile": "isometric_time_or_reps",
+      "metrics_per_set": [
+        "duration"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec"
+      ]
+    },
+    {
+      "exercise_id": "core-battle-ropes",
+      "name": "Battle Ropes",
+      "category": "Loaded Carry / Conditioning",
+      "tracking_mode": "distance_time_load",
+      "profile": "carry_distance_load",
+      "metrics_per_set": [
+        "load",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "weight_kg",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "core-farmer-walk",
+      "name": "Farmer Walk",
+      "category": "Loaded Carry / Conditioning",
+      "tracking_mode": "distance_time_load",
+      "profile": "carry_distance_load",
+      "metrics_per_set": [
+        "load",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "weight_kg",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "core-sled-push",
+      "name": "Sled Push",
+      "category": "Loaded Carry / Conditioning",
+      "tracking_mode": "distance_time_load",
+      "profile": "carry_distance_load",
+      "metrics_per_set": [
+        "load",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "weight_kg",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "core-cable-fly",
+      "name": "Cable Fly",
+      "category": "Machine / Isolation",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-calf-raise",
+      "name": "Calf Raise",
+      "category": "Machine / Isolation",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-leg-curl",
+      "name": "Leg Curl",
+      "category": "Machine / Isolation",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-leg-extension",
+      "name": "Leg Extension",
+      "category": "Machine / Isolation",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-pec-deck",
+      "name": "Pec Deck",
+      "category": "Machine / Isolation",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-box-jump",
+      "name": "Box Jump",
+      "category": "Power & Athletic",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-broad-jump",
+      "name": "Broad Jump",
+      "category": "Power & Athletic",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-medicine-ball-slam",
+      "name": "Medicine Ball Slam",
+      "category": "Power & Athletic",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-seated-dynamic-jump",
+      "name": "Seated Dynamic Jump",
+      "category": "Power & Athletic",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-cable-lateral-raise",
+      "name": "Cable Lateral Raise",
+      "category": "Shoulders / Isolation",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-lateral-raise",
+      "name": "Lateral Raise",
+      "category": "Shoulders / Isolation",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-rear-delt-fly",
+      "name": "Rear Delt Fly",
+      "category": "Shoulders / Isolation",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-deadlift",
+      "name": "Deadlift",
+      "category": "Strength — Hinge",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-good-morning",
+      "name": "Good Morning",
+      "category": "Strength — Hinge",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-hip-thrust",
+      "name": "Hip Thrust",
+      "category": "Strength — Hinge",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-nordic-curl",
+      "name": "Nordic Curl",
+      "category": "Strength — Hinge",
+      "tracking_mode": "reps_load",
+      "profile": "bodyweight_reps",
+      "metrics_per_set": [
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-romanian-deadlift",
+      "name": "Romanian Deadlift",
+      "category": "Strength — Hinge",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-sumo-deadlift",
+      "name": "Sumo Deadlift",
+      "category": "Strength — Hinge",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-trap-bar-deadlift",
+      "name": "Trap Bar Deadlift",
+      "category": "Strength — Hinge",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-barbell-row",
+      "name": "Barbell Row",
+      "category": "Strength — Horizontal Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-cable-row",
+      "name": "Cable Row",
+      "category": "Strength — Horizontal Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-chest-supported-row",
+      "name": "Chest-Supported Row",
+      "category": "Strength — Horizontal Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-dumbbell-row",
+      "name": "Dumbbell Row",
+      "category": "Strength — Horizontal Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-face-pull",
+      "name": "Face Pull",
+      "category": "Strength — Horizontal Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-meadows-row",
+      "name": "Meadows Row",
+      "category": "Strength — Horizontal Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-supinated-barbell-row",
+      "name": "Supinated Barbell Row",
+      "category": "Strength — Horizontal Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-t-bar-row",
+      "name": "T-Bar Row",
+      "category": "Strength — Horizontal Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-bench-press",
+      "name": "Bench Press",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-close-grip-bench-press",
+      "name": "Close Grip Bench Press",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-dip",
+      "name": "Dip",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "bodyweight_reps",
+      "metrics_per_set": [
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-dumbbell-bench-press",
+      "name": "Dumbbell Bench Press",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-incline-bench-press",
+      "name": "Incline Bench Press",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-low-incline-db-bench",
+      "name": "Low Incline 1 1/4 Dumbbell Bench Press",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-push-up",
+      "name": "Push Up",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "bodyweight_reps",
+      "metrics_per_set": [
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-strict-bar-dip",
+      "name": "Strict Bar Dip",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "bodyweight_reps",
+      "metrics_per_set": [
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-back-squat",
+      "name": "Back Squat",
+      "category": "Strength — Squat",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-box-squat",
+      "name": "Box Squat",
+      "category": "Strength — Squat",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-front-squat",
+      "name": "Front Squat",
+      "category": "Strength — Squat",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-goblet-squat",
+      "name": "Goblet Squat",
+      "category": "Strength — Squat",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-hack-squat",
+      "name": "Hack Squat",
+      "category": "Strength — Squat",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-leg-press",
+      "name": "Leg Press",
+      "category": "Strength — Squat",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-zercher-squat",
+      "name": "Zercher Squat",
+      "category": "Strength — Squat",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-bulgarian-split-squat",
+      "name": "Bulgarian Split Squat",
+      "category": "Strength — Unilateral",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-reverse-lunge",
+      "name": "Reverse Lunge",
+      "category": "Strength — Unilateral",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-single-leg-rdl",
+      "name": "Single Leg RDL",
+      "category": "Strength — Unilateral",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-step-up",
+      "name": "Step Up",
+      "category": "Strength — Unilateral",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-walking-lunge",
+      "name": "Walking Lunge",
+      "category": "Strength — Unilateral",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-chin-up",
+      "name": "Chin Up",
+      "category": "Strength — Vertical Pull",
+      "tracking_mode": "reps_load",
+      "profile": "bodyweight_reps",
+      "metrics_per_set": [
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-lat-pulldown",
+      "name": "Lat Pulldown",
+      "category": "Strength — Vertical Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-neutral-grip-pulldown",
+      "name": "Neutral Grip Pulldown",
+      "category": "Strength — Vertical Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-pronated-strict-pull-up",
+      "name": "Pronated Strict Pull Up",
+      "category": "Strength — Vertical Pull",
+      "tracking_mode": "reps_load",
+      "profile": "bodyweight_reps",
+      "metrics_per_set": [
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-pull-up",
+      "name": "Pull Up",
+      "category": "Strength — Vertical Pull",
+      "tracking_mode": "reps_load",
+      "profile": "bodyweight_reps",
+      "metrics_per_set": [
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-arnold-press",
+      "name": "Arnold Press",
+      "category": "Strength — Vertical Push",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-landmine-press",
+      "name": "Landmine Press",
+      "category": "Strength — Vertical Push",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-overhead-press",
+      "name": "Overhead Press",
+      "category": "Strength — Vertical Push",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-push-press",
+      "name": "Push Press",
+      "category": "Strength — Vertical Push",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "core-seated-db-overhead-press",
+      "name": "Seated DB Overhead Press",
+      "category": "Strength — Vertical Push",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-incline-db-press",
+      "name": "Incline DB Press",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-dumbbell-press",
+      "name": "Dumbbell Press",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-machine-press",
+      "name": "Machine Press",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-lateral-lunge",
+      "name": "Lateral Lunge",
+      "category": "Strength — Unilateral",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-tempo-bodyweight-squat",
+      "name": "Tempo Bodyweight Squat",
+      "category": "Strength — Squat",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-block-pull",
+      "name": "Block Pull",
+      "category": "Strength — Hinge",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-band-good-morning",
+      "name": "Band Good Morning",
+      "category": "Strength — Hinge",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-db-rdl",
+      "name": "DB RDL",
+      "category": "Strength — Hinge",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-suitcase-carry",
+      "name": "Suitcase Carry",
+      "category": "Loaded Carry / Conditioning",
+      "tracking_mode": "distance_time_load",
+      "profile": "carry_distance_load",
+      "metrics_per_set": [
+        "load",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "weight_kg",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-sandbag-carry",
+      "name": "Sandbag Carry",
+      "category": "Loaded Carry / Conditioning",
+      "tracking_mode": "distance_time_load",
+      "profile": "carry_distance_load",
+      "metrics_per_set": [
+        "load",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "weight_kg",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-bear-crawl",
+      "name": "Bear Crawl",
+      "category": "Loaded Carry / Conditioning",
+      "tracking_mode": "distance_time_load",
+      "profile": "carry_distance_load",
+      "metrics_per_set": [
+        "load",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "weight_kg",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-backpack-carry",
+      "name": "Backpack Carry",
+      "category": "Loaded Carry / Conditioning",
+      "tracking_mode": "distance_time_load",
+      "profile": "carry_distance_load",
+      "metrics_per_set": [
+        "load",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "weight_kg",
+        "distance_m"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-med-ball-throw",
+      "name": "Med-Ball Throw",
+      "category": "Power & Athletic",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-kettlebell-swing",
+      "name": "Kettlebell Swing",
+      "category": "Power & Athletic",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-fast-sit-to-stand",
+      "name": "Fast Sit-to-Stand",
+      "category": "Power & Athletic",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-jump-squat",
+      "name": "Jump Squat",
+      "category": "Power & Athletic",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-scap-push-up",
+      "name": "Scap Push-Up",
+      "category": "Prep / Mobility",
+      "tracking_mode": "reps_or_time",
+      "profile": "isometric_time_or_reps",
+      "metrics_per_set": [
+        "duration"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec"
+      ]
+    },
+    {
+      "exercise_id": "rebuilt-hip-hinge-drill",
+      "name": "Hip Hinge Drill",
+      "category": "Prep / Mobility",
+      "tracking_mode": "reps_or_time",
+      "profile": "isometric_time_or_reps",
+      "metrics_per_set": [
+        "duration"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec"
+      ]
+    },
+    {
+      "exercise_id": "library-assisted-pull-up",
+      "name": "Assisted Pull-Up",
+      "category": "Strength — Vertical Pull",
+      "tracking_mode": "reps_load",
+      "profile": "bodyweight_reps",
+      "metrics_per_set": [
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-inverted-row",
+      "name": "Inverted Row",
+      "category": "Strength — Horizontal Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-seal-row",
+      "name": "Seal Row",
+      "category": "Strength — Horizontal Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-low-cable-row",
+      "name": "Low Cable Row",
+      "category": "Strength — Horizontal Pull",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-dumbbell-floor-press",
+      "name": "Dumbbell Floor Press",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-deficit-push-up",
+      "name": "Deficit Push-Up",
+      "category": "Strength — Horizontal Push",
+      "tracking_mode": "reps_load",
+      "profile": "bodyweight_reps",
+      "metrics_per_set": [
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-z-press",
+      "name": "Z-Press",
+      "category": "Strength — Vertical Push",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-landmine-squat",
+      "name": "Landmine Squat",
+      "category": "Strength — Squat",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-cyclist-squat",
+      "name": "Cyclist Squat",
+      "category": "Strength — Squat",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-cossack-squat",
+      "name": "Cossack Squat",
+      "category": "Strength — Unilateral",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-front-foot-elevated-reverse-lunge",
+      "name": "Front-Foot Elevated Reverse Lunge",
+      "category": "Strength — Unilateral",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-b-stance-romanian-deadlift",
+      "name": "B-Stance Romanian Deadlift",
+      "category": "Strength — Hinge",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-cable-pull-through",
+      "name": "Cable Pull-Through",
+      "category": "Strength — Hinge",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-cable-crunch",
+      "name": "Cable Crunch",
+      "category": "Core",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-dead-bug",
+      "name": "Dead Bug",
+      "category": "Core",
+      "tracking_mode": "time_or_reps",
+      "profile": "isometric_time_or_reps",
+      "metrics_per_set": [
+        "duration"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec"
+      ]
+    },
+    {
+      "exercise_id": "library-side-plank",
+      "name": "Side Plank",
+      "category": "Core",
+      "tracking_mode": "time_or_reps",
+      "profile": "isometric_time_or_reps",
+      "metrics_per_set": [
+        "duration"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec"
+      ]
+    },
+    {
+      "exercise_id": "library-copenhagen-plank",
+      "name": "Copenhagen Plank",
+      "category": "Core",
+      "tracking_mode": "time_or_reps",
+      "profile": "isometric_time_or_reps",
+      "metrics_per_set": [
+        "duration"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec"
+      ]
+    },
+    {
+      "exercise_id": "library-adductor-machine",
+      "name": "Adductor Machine",
+      "category": "Machine / Isolation",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-seated-leg-curl",
+      "name": "Seated Leg Curl",
+      "category": "Machine / Isolation",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-hip-abduction-machine",
+      "name": "Hip Abduction Machine",
+      "category": "Machine / Isolation",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-hang-power-clean",
+      "name": "Hang Power Clean",
+      "category": "Power & Athletic",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-dumbbell-snatch",
+      "name": "Dumbbell Snatch",
+      "category": "Power & Athletic",
+      "tracking_mode": "reps_load",
+      "profile": "main_pct_wm",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_pct_wm",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-lateral-bound",
+      "name": "Lateral Bound",
+      "category": "Power & Athletic",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-medicine-ball-rotational-throw",
+      "name": "Medicine Ball Rotational Throw",
+      "category": "Power & Athletic",
+      "tracking_mode": "reps_load",
+      "profile": "accessory_kg_reps",
+      "metrics_per_set": [
+        "load",
+        "reps"
+      ],
+      "metrics_last_set": [
+        "rir"
+      ],
+      "log_columns": [
+        "weight_kg",
+        "reps"
+      ]
+    },
+    {
+      "exercise_id": "library-skierg",
+      "name": "SkiErg",
+      "category": "Cardio",
+      "tracking_mode": "duration_distance",
+      "profile": "cardio_duration_distance",
+      "metrics_per_set": [
+        "duration",
+        "distance"
+      ],
+      "metrics_last_set": [],
+      "log_columns": [
+        "time_sec",
+        "distance_m"
+      ]
+    }
+  ],
+  "adapter_divergences": [
+    {
+      "exercise_pattern": "curl",
+      "issue": "REP_PROGRESSION_NAME matches curl → misclassified as bodyweight rep on main",
+      "intended_profile": "accessory_kg_reps",
+      "fixed_in": "cursor/engine-session-start-rx-84a0"
+    },
+    {
+      "exercise_pattern": "row|pulldown|leg press|carry",
+      "issue": "Adapter rep-progression regex includes rows/carries; many should log kg",
+      "intended_profile": "accessory_kg_reps or carry_distance_load"
+    },
+    {
+      "exercise_pattern": "Nordic Curl",
+      "issue": "library tracking_mode reps_load but movement is bodyweight-dominant",
+      "intended_profile": "bodyweight_reps"
+    }
+  ],
+  "anti_patterns": [
+    {
+      "mistake": "Use one regex for all reps_load exercises",
+      "correct": "Resolve profile from movement + equipment; map to metrics explicitly"
+    },
+    {
+      "mistake": "Prescribe TRX or suspension work in kg",
+      "correct_profile": "self_scaled_reps",
+      "metrics": [
+        "reps"
+      ]
+    },
+    {
+      "mistake": "Store RIR as rir metric in engine",
+      "correct": "Logger rir → performed measurement rpe (10 − RIR)"
+    }
+  ],
+  "profile_counts": {
+    "accessory_kg_reps": 61,
+    "cardio_duration_distance": 7,
+    "bodyweight_reps": 10,
+    "isometric_time_or_reps": 6,
+    "carry_distance_load": 7,
+    "main_pct_wm": 29
+  },
+  "exercise_count": 120
+}

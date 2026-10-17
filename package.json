@@ -1,0 +1,16 @@
+{
+  "name": "adaptivebrain-workspace",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "check:coach": "node scripts/check-coach.mjs",
+    "check:coach-browser": "playwright test -c checks/coach-browser.config.mjs",
+    "verify:coach": "pnpm run check:coach && pnpm --filter @hybrid/coach-desktop run typecheck && pnpm --filter @hybrid/coach-desktop run check && pnpm run check:coach-browser",
+    "test:brain": "pnpm --dir packages/brain test",
+    "verify": "pnpm run test:brain && pnpm run verify:coach"
+  },
+  "devDependencies": {
+    "playwright": "1.57.0"
+  }
+}

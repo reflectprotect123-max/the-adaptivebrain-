@@ -1,0 +1,7 @@
+node_modules/
+apps/desktop/dist/
+test-results/
+playwright-report/
+.capgo
+.env*
+THE-trainheroic-import.json
