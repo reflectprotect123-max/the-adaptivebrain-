@@ -1078,6 +1078,10 @@
         else delete cur.others;
         if (row.review) cur.review = row.review;
         else delete cur.review;
+        if (row.catalogue) cur.catalogue = row.catalogue;
+        else delete cur.catalogue;
+        if (row.movementCategory) cur.movementCategory = row.movementCategory;
+        else delete cur.movementCategory;
       }
     }
     state.meta = state.meta || {};

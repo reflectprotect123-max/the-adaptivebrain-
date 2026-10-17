@@ -43,6 +43,12 @@ must(cool.some((e) => e.name === 'Couch Stretch' && e.perSide === 'Yes'), 'Couch
 must(warm.some((e) => e.name === 'Horse Stance Pulse') && cool.some((e) => e.name === 'Horse Stance Pulse'), 'shared names stay in both catalogs');
 must(warm.find((e) => e.name === 'Lateral Banded Walk').review.includes('Metres vs steps'), 'unit conflict stays visible');
 must(sandbox.COACH_EXERCISE_CATALOG.filter((e) => e.source === 'THE-core-120').length === 120, 'main library stays 120');
+const catalogue = sandbox.COACH_EXERCISE_CATALOG.filter((e) => e.source === 'supabase-exercise-catalogue');
+must(catalogue.length === 1827, 'supabase catalogue is 1827, got ' + catalogue.length);
+must(catalogue.filter((e) => e.catalogue === 'main').length === 1674, 'main catalogue is 1674');
+must(catalogue.filter((e) => e.catalogue === 'banded').length === 153, 'banded catalogue is 153');
+must(catalogue.some((e) => e.name === '1 1/2 Bench Press' && e.category === 'Horizontal push'), 'catalogue keeps the bench press');
+must(sandbox.ExerciseSearch.search('1 1/2 Bench Press', 5).some((h) => h.name === '1 1/2 Bench Press'), 'search finds the imported bench press');
 const merged = sandbox.CoachLoop.mergeExerciseCatalog({ exercises: [], meta: {} });
 must(merged.exercises.length >= 100, 'mergeExerciseCatalog fills exercises');
 must(merged.exercises.some((e) => e.name === 'Couch Stretch' && e.category === 'Cool-Down' && e.typical), 'merge keeps cool-down prescription');

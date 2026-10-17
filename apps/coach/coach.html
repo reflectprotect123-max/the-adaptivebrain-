@@ -403,6 +403,7 @@ label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight
 <script src="./exercise-search.js"></script>
 <script src="./coach-exercise-catalog.js"></script>
 <script src="./coach-loop.js"></script>
+<script src="./coach-lifts.js"></script>
 <script src="./log-columns.js"></script>
 <script src="./coach-nutrition.js"></script>
 <script src="./coach-bridge.js"></script>
@@ -412,6 +413,11 @@ label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight
 const L = window.CoachLoop;
 const N = window.CoachNutrition;
 let S = L.mergeExerciseCatalog(L.loadState());
+if (window.CoachLifts) {
+  const beforeMemory = JSON.stringify(S.liftMemory || null);
+  CoachLifts.ensureFromSessions(S);
+  if (JSON.stringify(S.liftMemory || null) !== beforeMemory) L.saveState(undefined, S);
+}
 const ui = {
   view:'home', lib:'sessions', athleteId:null, teamId:null, programId:null, templateId:null, sessionId:null,
   expandAll:false, expanded:{}, err:'', exPicker:null, exSearch:'', exEdit:null,
@@ -869,12 +875,14 @@ function exercisesCatalogHtml(){
   const warmCount = all.filter(e => e.category === 'Warm-Up').length;
   const coolCount = all.filter(e => e.category === 'Cool-Down').length;
   const mainCount = all.filter(e => exerciseCatalogBucket(e) === 'main').length;
+  const catalogueCount = all.filter(e => e.source === 'supabase-exercise-catalogue').length;
   const list = all.filter(e => {
     if (section !== 'all' && exerciseCatalogBucket(e) !== section) return false;
     if (!q) return true;
     const blob = [e.name, e.category, e.typical, e.unit, e.review].join(' ').toLowerCase();
     return blob.includes(q);
   }).slice().sort((a, b) => String(a.name).localeCompare(String(b.name)));
+  const shown = list.slice(0, 120);
   const tabs = [
     ['all', `All (${all.length})`],
     ['Warm-Up', `Warm-Up (${warmCount})`],
@@ -882,7 +890,7 @@ function exercisesCatalogHtml(){
     ['main', `Main library (${mainCount})`],
   ];
   const tabHtml = `<div class="lib-tabs" role="tablist" aria-label="Exercise catalogs">${tabs.map(([k, label]) => `<button type="button" role="tab" aria-selected="${section===k?'true':'false'}" class="${section===k?'on':''}" data-catalog-section="${esc(k)}" onclick="setExCatalogSection(this.getAttribute('data-catalog-section'))">${esc(label)}</button>`).join('')}</div>`;
-  const rows = list.map(e => {
+  const rows = shown.map(e => {
     const note = [e.review ? `Needs review: ${e.review}` : '', e.others ? `Also seen: ${e.others}` : ''].filter(Boolean).join(' ');
     return `<tr><td><b>${esc(e.name)}</b>${note ? `<div class="muted">${esc(note)}</div>` : ''}</td><td class="muted">${esc(e.category||'—')}</td><td class="muted">${esc(e.typical||'—')}</td><td class="muted">${esc(e.unit||'—')}</td><td class="muted">${esc(e.perSide||'—')}</td></tr>`;
   }).join('');
@@ -892,8 +900,8 @@ function exercisesCatalogHtml(){
       <button type="button" class="btn primary small" onclick="addCustomExercise()">New exercise</button>
     </div>
     ${tabHtml}
-    <p class="muted" style="margin-bottom:8px">${list.length} shown · ${warmCount} warm-up · ${coolCount} cool-down · starter list, add names as we go</p>
-    ${rows ? `<div class="table-wrap"><table class="th-table data-table"><thead><tr><th>Title</th><th>Catalog</th><th>Typical</th><th>Unit</th><th>Per side</th></tr></thead><tbody>${rows}</tbody></table></div><div class="table-foot"><span>${list.length} exercise${list.length===1?'':'s'}</span></div>` : '<div class="empty-panel"><div class="eyebrow">Exercises</div><h2>No matches</h2><p class="muted">Try another search, switch catalog, or add a custom exercise.</p></div>'}`;
+    <p class="muted" style="margin-bottom:8px">${shown.length} of ${list.length} shown · ${warmCount} warm-up · ${coolCount} cool-down · ${catalogueCount} from the exercise catalogue</p>
+    ${rows ? `<div class="table-wrap"><table class="th-table data-table"><thead><tr><th>Title</th><th>Catalog</th><th>Typical</th><th>Unit</th><th>Per side</th></tr></thead><tbody>${rows}</tbody></table></div><div class="table-foot"><span>${shown.length} of ${list.length}</span></div>` : '<div class="empty-panel"><div class="eyebrow">Exercises</div><h2>No matches</h2><p class="muted">Try another search, switch catalog, or add a custom exercise.</p></div>'}`;
 }
 
 function setExCatalogSection(section){

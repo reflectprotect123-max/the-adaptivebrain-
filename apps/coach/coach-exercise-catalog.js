@@ -2916,7 +2916,16450 @@
     "typical": "30 sec",
     "others": "",
     "review": ""
+  },
+  {
+    "id": "exercise_6ec38a5f580f95a0",
+    "name": "1 1/2 Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_4816b1ee7185247d",
+    "name": "1 1/2 Front Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_56d672a0b48c2544",
+    "name": "1 1/4 Back Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_521b677580082969",
+    "name": "1 1/4 Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_da4b5e97ad87b269",
+    "name": "1 1/4 Biceps Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8d5b0b34795c9b93",
+    "name": "1 1/4 Cyclist Front Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_3ff86b24d1b59019",
+    "name": "1 1/4 Defict Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_bcd882807ebf35b2",
+    "name": "1 1/4 Front Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_e78d793b7b31937a",
+    "name": "1 1/4 Glute Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_c92ba86f05f7220c",
+    "name": "1 1/4 Hamburger Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_514d17cdc10bdaf7",
+    "name": "1 1/4 Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_300924591d2c10e7",
+    "name": "1 1/4 Hip Thrust Machine",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_0e87b266364e1e19",
+    "name": "1 1/4 Landmine Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_8749821f94689ba1",
+    "name": "1 Couch Stretch Tyw",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_60f454b763e8370a",
+    "name": "1 Mile With Sandbag (Or Dball) (100/70)",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_d531931d512827be",
+    "name": "1 Pigeon Pose Tyw",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_3126b2b1552e2d8a",
+    "name": "1 Step Box Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_f6c9eb6dcf8cb161",
+    "name": "1 Up / 1 Down Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_3433445bd853c033",
+    "name": "1.5 Mile Run",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_1322959ff5da3139",
+    "name": "1/1/4 Sumo Stance Goblet Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_06eece97c9695167",
+    "name": "1/2 Kneeling Arnold Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_f76314bda58dbdef",
+    "name": "10K Run",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_cd4b9cd29579f9ad",
+    "name": "2 1 Eccentric Leg Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_144b4edc531ca53c",
+    "name": "2 Plate Plyo Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_bd6542babe266537",
+    "name": "2 Point Dumbbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_4cc0871c49f0baa4",
+    "name": "2 Step Lateral Shuffle",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_da9f0c4dc86a1462",
+    "name": "2\" Deficit Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_20eb01594cd12a34",
+    "name": "20 Minutes Of Aerobic Activity",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_b20e557b78978979",
+    "name": "3 5 Breathing",
+    "category": "Preparation / recovery",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "preparation_recovery"
+  },
+  {
+    "id": "exercise_9b619e5527b918ed",
+    "name": "3 Position Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_9eb64af89e0e1311",
+    "name": "3 Way Shoulder Shocker",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_74d4733f1d38b4ae",
+    "name": "30 Degree Incline Dumbbell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_6aacdccdc20cd26b",
+    "name": "3D Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_f46427530a576f00",
+    "name": "3D Pull-Apart",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_e4a9e15021cf3224",
+    "name": "4 Way Shoulders",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9f8723f9184cff3a",
+    "name": "400 M Repeats",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_c9b053cd91b8d8ca",
+    "name": "400 Meter Sled Drag @15% Of 1Rm Deadlift Holding Dball (100/70)",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_679196096d9df675",
+    "name": "45 Degree Back Extension",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_f24943cf6889d2ba",
+    "name": "45 Degree Back Raise",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_c48d2565b3de402c",
+    "name": "45 Degree Back Raise (Glute Bias)",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_b7fd9b8ca7680b37",
+    "name": "45 Degree Hip/Back Extension",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_25925d577b1e8cf7",
+    "name": "45Deg Hip Extension",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_fdb0f2c0f85c3074",
+    "name": "5 10 5 Drill",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_f8d6af8f355f2a6c",
+    "name": "90/90 Hip Flip Sp",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_fe3b56a1e6dee740",
+    "name": "90/90 Hip Switches",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_2ab366fcabccf6d2",
+    "name": "A Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_94e4b3c8b0846f26",
+    "name": "A March",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_70e90073e7297a10",
+    "name": "A Switch Elevated Box",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_e57c9847b3ceee4b",
+    "name": "A Switch – Drop (Box)",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_126dd8b85c813123",
+    "name": "Ab Wheel",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_34138951f70a920d",
+    "name": "Ab Wheel Iso Hold",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_1f5a3d2e77ae009d",
+    "name": "Adductor Machine",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_fbf73f93588e0d25",
+    "name": "Adductor Rock Back With Thoracic Rotation",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_15c325dcffd6ad93",
+    "name": "Adductor T Spine",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_12c705d5b58d9047",
+    "name": "Aerobic Conditioining",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_36224729147a78d7",
+    "name": "Aerobic Warm Up",
+    "category": "Preparation / recovery",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "preparation_recovery"
+  },
+  {
+    "id": "exercise_ba0c84900bde5250",
+    "name": "Air Bike",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_f7378edff52ddc1e",
+    "name": "Air Bike Sprint",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_8e4b7cbc40ba74cc",
+    "name": "Air Box Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_138aa828a245da16",
+    "name": "Air Runner",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_67a3fbda0c28b76e",
+    "name": "Air Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_29fa6144ca511c2b",
+    "name": "Airdyne",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_dd65c0a5992226c2",
+    "name": "Alternating Dumbbell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_b3a0e6cca055d2e1",
+    "name": "Alternating Dumbbell Bench Press (Top Down)",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_66d635b50bc4f84e",
+    "name": "Alternating Dumbbell Bench Press Pronated Grip",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_82975680165990f2",
+    "name": "Alternating Dumbbell Bent Over Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_7fe9b2844c6c9964",
+    "name": "Alternating Dumbbell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_0947d4755f7315c5",
+    "name": "Alternating Dumbbell Floor Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_d024df3f805f42bd",
+    "name": "Alternating Dumbbell Front Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d76c13b8b16cc064",
+    "name": "Alternating Dumbbell Hammer Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_5c117b986c870af8",
+    "name": "Alternating Dumbbell Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_9ba7708202c800c8",
+    "name": "Alternating Glute Bridge Floor Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_1a3d2619c8302dfe",
+    "name": "Alternating Hammer Curl With Slow Eccentric",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_7587611f2ba7a4e1",
+    "name": "Alternating Kettlebell Floor Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_0dc4329c3af706ca",
+    "name": "Alternating Kettlebell Lateral Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_1c43b9a458b4385a",
+    "name": "Alternating Kettlebell Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_52b333fc8b92d650",
+    "name": "Alternating Kettlebell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_63fdbf24bbf72922",
+    "name": "Alternating Kettlebell Swing",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_4cefcdb478f92f9c",
+    "name": "Alternating Lateral Kettlebell Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_0cbc9074c62ef2de",
+    "name": "Alternating Leg Bounding",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_3a4d82732289679a",
+    "name": "Alternating Legs Posterior Bridge",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_f963a648dda0bd98",
+    "name": "Alternating Single Arm Dumbbell Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_de6f40b8f736014e",
+    "name": "Alternating Zercher Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_63b64f593ba57d51",
+    "name": "Altitude Split Squat Landing",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_6637c85d548ef652",
+    "name": "American Kettlebell Swing",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_806b9a7082b74a8c",
+    "name": "Anchored Single Leg Lowering",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_a476cd1a19889185",
+    "name": "Anderson Front Squat Pins Set At Parallel",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_3ad79ee9ae8b56bf",
+    "name": "Anderson Overhead Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_f1b2287dfe7ad2d0",
+    "name": "Anderson Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_55a407f251dba93a",
+    "name": "Angles Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_448e5873eb25dd5b",
+    "name": "Anterior Loaded Barbell Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_e910a1c0b80dda78",
+    "name": "Arrow Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_fb290c021dce6f28",
+    "name": "Assault Bike",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_f747996b3e86d304",
+    "name": "Assisted Cossack",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_a038f028ed9f876f",
+    "name": "Assisted Ring Pull-Up Sp",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_7df3eb09bd63d0ed",
+    "name": "Atp Air Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_00adf9464fa547cd",
+    "name": "B-Stance Barbell Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_615d6531c838eb29",
+    "name": "B-Stance Barbell Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_287a9db12ba77885",
+    "name": "B-Stance Dumbbell Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_7960c064ba943c80",
+    "name": "B-Stance Goblet Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_28368eff1ed735a2",
+    "name": "B-Stance Landmine Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_889584fe8cc0ee37",
+    "name": "B-Stance Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_7e0f7fbfd8d6e0de",
+    "name": "B-Stance Rotational Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_5547a29d6496eee9",
+    "name": "B-Stance Trap Bar Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_9ed72c6d9b17c528",
+    "name": "Back Extension",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_2f740f4d07dd14d4",
+    "name": "Back Loaded Barbell Side Bends 100 Per Side",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_6631430460fd894c",
+    "name": "Back Rack Cossack Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_b3fdc0cb4761e152",
+    "name": "Back Rack Poliquin Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_aee1d589592c57eb",
+    "name": "Back Rack Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_682cd539ab27e537",
+    "name": "Back Rack Rfess",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_2e0a76e4eea20275",
+    "name": "Back Rack Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_1ac603ef245264c6",
+    "name": "Back Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_4ae2cbe89991525a",
+    "name": "Back Squat Warm Up",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_028d626b91ca5669",
+    "name": "Back Squat With Chains",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_9282354b30fa6711",
+    "name": "Back Supported Seated Dumbbell Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_6796c269a5a750e1",
+    "name": "Backward Sled Drag",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_ff87da49d1c7bbe7",
+    "name": "Backwards Sled Iso Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_8b91ee327b428e45",
+    "name": "Ball Slam",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_9cea033e367232f1",
+    "name": "Bamboo Bar Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_2355f8fc98697156",
+    "name": "Bamboo Bar Bradford Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_47d07dbc6dcea621",
+    "name": "Bar Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_51fba3939f353679",
+    "name": "Bar Muscle Up",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_4b3ba048a26b1e9a",
+    "name": "Barbell Ab Rollout",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_600096d08957b2dc",
+    "name": "Barbell Back Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_de54ef2475a0c92c",
+    "name": "Barbell Behind The Neck Snatch Grip Push Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_3d18d6eed29e8dfb",
+    "name": "Barbell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_5f82879e6867fdb3",
+    "name": "Barbell Bench Press (With Explanation)",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_90c699f5836f83ce",
+    "name": "Barbell Biceps Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_e42497fca94b567d",
+    "name": "Barbell Box Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_c0a20877131afa38",
+    "name": "Barbell Bulgarian Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_6afa43870429d1fe",
+    "name": "Barbell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_3b42ea33fa3563c4",
+    "name": "Barbell Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_83a99009fa9d7af3",
+    "name": "Barbell Deadlift (With Explanation)",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_34a2ba7f5e75f3dc",
+    "name": "Barbell Drop Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_a791e3da806c118b",
+    "name": "Barbell Flexion Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_33de7b1b9132b819",
+    "name": "Barbell Floor Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_8c712ced1aee9661",
+    "name": "Barbell Glute Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_11fb71a0c3970cfc",
+    "name": "Barbell Goodmorning",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_b071111cd6c82a87",
+    "name": "Barbell Hang Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_61a6527dbddaf77d",
+    "name": "Barbell Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_b29241ffa29ead94",
+    "name": "Barbell Hip Thrust Pyramid Drop Set",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_07f02b568eeaef53",
+    "name": "Barbell Hip Thrust With Pause",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_8689f979a68bfaa1",
+    "name": "Barbell Incline Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_38fe87198d63cdc8",
+    "name": "Barbell Jm Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8aae05e7258981c5",
+    "name": "Barbell Jump Squat",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_6fca57f2cf253932",
+    "name": "Barbell Jumping Lunge",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_58771f2d5c31277d",
+    "name": "Barbell Lat Pullover W/Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_49879d746ddaaefd",
+    "name": "Barbell Lateral Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_54a0943c94882680",
+    "name": "Barbell Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_0bfebb11d0f95826",
+    "name": "Barbell Overhead Press Ohp",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_4c7da64bc2f7aa0c",
+    "name": "Barbell Reverse Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_7628269f9aacec1a",
+    "name": "Barbell Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_8da4523e645ac1f1",
+    "name": "Barbell Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_6bc1d7c9abdd4d4c",
+    "name": "Barbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_f97d64ed5c5c7604",
+    "name": "Barbell See Saw Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_3fd99145f9382d5b",
+    "name": "Barbell Shoulder Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_d8de53abf6672a67",
+    "name": "Barbell Shrugs",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6f9d556b58d19476",
+    "name": "Barbell Sldl",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_fb211a0946131ede",
+    "name": "Barbell Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_01034bf880b99c1d",
+    "name": "Barbell Split Stance Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_20a4594d3e51cc52",
+    "name": "Barbell Squat Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_0ca9822a6d66c4da",
+    "name": "Barbell Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_9a53dc0936455ee1",
+    "name": "Barbell Stiff Legged Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_2e8b04d6544dde6c",
+    "name": "Barbell Upright Row",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ec66cf9ba7fde2ba",
+    "name": "Barbell Wrist Roller",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_46e1d2db72becf8c",
+    "name": "Barbell Z Pin Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_1bf9de3e891aeb77",
+    "name": "Barbell Z-Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_cd7896d8b336887b",
+    "name": "Battle Rope Alternating Waves",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_1dfd33bb9347a819",
+    "name": "Battle Rope Power Slam",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_51549be77b29ed76",
+    "name": "Battle Ropes",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_860a161a0784c7ca",
+    "name": "Batwing Ts (With Chest Elevated)",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9a7a44af7455d3ed",
+    "name": "Bc Hamstring Slides",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_2731ce11180f8652",
+    "name": "Bear Crawl Kettlebell Lateral Pull Through",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_49f63e01c8d94089",
+    "name": "Bear Crawls",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_b023d11693808efd",
+    "name": "Behind The Neck Lat Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_c535699fb64ce53b",
+    "name": "Below The Knee Hang Power Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_91d4cea1a3b5099a",
+    "name": "Bench Assisted Dumbbell Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_5b0bc17fd0344e20",
+    "name": "Bench Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_cd65829835dee880",
+    "name": "Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_aaa9f6997ce10ba5",
+    "name": "Bench Press Barbell",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_4f50b782a161f28c",
+    "name": "Bench Press Fsl",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_029b79274d492f74",
+    "name": "Bench Press Sp",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_4d2c4305020d8377",
+    "name": "Bench Press Tips With Gbrs",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_d9e288abc6b796a4",
+    "name": "Bench Press Warm Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_e53c3110edcebe9f",
+    "name": "Bench Press With Chains",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_4b7ce148e38f2d93",
+    "name": "Bench Support Landmine Meadow Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_445f012d78e4344f",
+    "name": "Bench Supported Ys Ts As",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_7e4cb15360960be4",
+    "name": "Bent Hollow Hold",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_e3d65c708b077a4b",
+    "name": "Bent Knee Copenhagen Iso Hold",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_2ffe36ecc73f77e5",
+    "name": "Bent Over Cable Rotation",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_fac817cf5c8c87c6",
+    "name": "Bent Over Dumbbell (2) Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_91ac90553afbf399",
+    "name": "Bent Over Dumbbell Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_02e83fdb97bcc388",
+    "name": "Bent Over Dumbbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_bbeb47f60f8c4b81",
+    "name": "Bent Over Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_66dc3f9cd28f58c0",
+    "name": "Biceps Curl Barbell",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_4c6d73bb2273ab8a",
+    "name": "Biceps Curl To Shoulder Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_0315c8c1d63def3d",
+    "name": "Bicycle Sit Ups",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_163c18e0068f0a59",
+    "name": "Bike",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_7a126a9c917159bc",
+    "name": "Bikeerg",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_9e0a51de23e0d603",
+    "name": "Bilateral Bounds",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_e00f9c0d4610f536",
+    "name": "Bilateral Stick T Spine Rotation",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_00935347da473bc2",
+    "name": "Bird Dog Row",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_2c11770e80de460c",
+    "name": "Bird Dogs",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_c99f333d54430e75",
+    "name": "Birddog To Gecko",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_85d779643e02146d",
+    "name": "Bodyweight Box Or Bench Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_b53ad5aa25d6fc47",
+    "name": "Bodyweight Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_a0a9f4e3498a4866",
+    "name": "Bodyweight Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_cbf08bd63e9671f7",
+    "name": "Bodyweight Seated Box Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_a18218d42d557d49",
+    "name": "Bodyweight Supinated Grip Strict Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_386e9325da76552f",
+    "name": "Bottoms Up Overhead Dual Kettlebell Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_6ba9234898ef38b8",
+    "name": "Bounds",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_5a0058dc555e6cf6",
+    "name": "Box Breathing",
+    "category": "Preparation / recovery",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "preparation_recovery"
+  },
+  {
+    "id": "exercise_595948338d703c7b",
+    "name": "Box Drop Landing",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_a87165bf8c93aab4",
+    "name": "Box Get Overs With Floor Touch",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_27936c26a96dc692",
+    "name": "Box Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_84524695f90563b8",
+    "name": "Box Jump Over",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_06a2b071e3afaee4",
+    "name": "Box Jump Sp",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_d13e59f47e8e13cb",
+    "name": "Box Jump Straight Leg",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_331f333b33b995f5",
+    "name": "Box Pike Handstand Shoulder Tap",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_09fd3f4d655a0c29",
+    "name": "Box Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_0f21b8d265d483d2",
+    "name": "Box Squat Back Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_6b2d43b152d69c17",
+    "name": "Box Squat Warm Up",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_569b362239f40976",
+    "name": "Box Squat With Chains",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_f3aa884aca1c2ca2",
+    "name": "Box Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_431dd6af7c6b71c5",
+    "name": "Bradford Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_d42cd71dc05df4c7",
+    "name": "Bretzel",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_894869a91fb5f92e",
+    "name": "Broad Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_51b7c20a5edecfbf",
+    "name": "Broad Jump Challenge",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_f1704dbc9a563f08",
+    "name": "Bulgarian Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_4039e8d8c6b27d3b",
+    "name": "Bulgarian Split Squat Iso Hold",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_de39dbfcfc2fe1f5",
+    "name": "Bulgarian Split Squat Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_866cce6b2d0051d0",
+    "name": "Burpee",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_20845257acf3dbbd",
+    "name": "Burpee Box Jump",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_fffe9b04ea15dc5b",
+    "name": "Burpee Box Jump Over",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_0290b417e659f886",
+    "name": "Burpee Box Step-Up",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_a28b19ec5212033d",
+    "name": "Burpee Broad Jump",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_4cad462a4128bd41",
+    "name": "Burpee Over Dumbbell",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_fc65c0786667775b",
+    "name": "Burpee Pull-Up",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_816a9a6e81c3632f",
+    "name": "Butcher Block Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_3de7ee5e560c9012",
+    "name": "Butterfly Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_1c8ae6a490ee3784",
+    "name": "C2 Bike",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_8ac42148eee9a91f",
+    "name": "Cable Chest Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9c4315838a67d649",
+    "name": "Cable Cross Lateral Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_4a8d6af18ac6b0d8",
+    "name": "Cable Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_42d956009feb9945",
+    "name": "Cable Face Pull",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_a9fc50498022c4e1",
+    "name": "Cable Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6c59a2143b9651ea",
+    "name": "Cable Katana Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f7ad0a3ab98035de",
+    "name": "Cable Lateral Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_10b42a7e14cebadc",
+    "name": "Cable Pull Through",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_dd1d532cefd1f081",
+    "name": "Cable Rope Face Pull",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d2c90e7e394699d9",
+    "name": "Cable Rope Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_42e9ce9f3ef21cfb",
+    "name": "Cable Rotation",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_499b0b2e0df5457e",
+    "name": "Cable Row Machine Close Grip",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_63239541fb14e77a",
+    "name": "Cable Single Arm Lat Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_09db8e515ca5c01b",
+    "name": "Cable Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_55c5dd6edcc46c43",
+    "name": "Cable Triceps Pushdown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_44d131c8a35178d6",
+    "name": "Cable Vertical Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_d1e317612d38b8e2",
+    "name": "Cable Y Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_2d28e2a7dace35b3",
+    "name": "Calf Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8be246012551ecaf",
+    "name": "Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6296827a596392ad",
+    "name": "Cardio",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_a9464807775bbc5a",
+    "name": "Cardio Choice",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_4f3e1777b3893b5d",
+    "name": "Chest Supported Dumbbell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9254aa16a11e8708",
+    "name": "Chest Supported Dumbbell Lateral Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_1764007ac05fce68",
+    "name": "Chest Supported Dumbbell Reverse Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_a4369d0c8a78fba0",
+    "name": "Chest Supported Dumbbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_b7d892f1d2047625",
+    "name": "Chest Supported Dumbbell Row Pronated",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_4835175590b16a3a",
+    "name": "Chest Supported Dumbbell Row With Pause",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_dbdd4a5c43488002",
+    "name": "Chest Supported Elbowing Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_e0f22a81c89b83fb",
+    "name": "Chest Supported Iso Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_5f00ba4f2887e21b",
+    "name": "Chest Supported Kettlebell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_8fc452bcdb2d868a",
+    "name": "Chest Supported Lat Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_7c7ba5083bde1235",
+    "name": "Chest Supported Lateral Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_035dabc50c8c5407",
+    "name": "Chest Supported Lateral Raise (In Scapular Plane)",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_5a1e7e24789f5174",
+    "name": "Chest Supported Machine Low Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_ae00f6ae59a70b4c",
+    "name": "Chest Supported Machine Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_57edcc42f20f9ebb",
+    "name": "Chest Supported Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_5afb3edef3d8cc2a",
+    "name": "Chest Supported T Bar Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_849203e89c67a3d1",
+    "name": "Chest To Bar Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_156290737712009b",
+    "name": "Childs Pose",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_f411c5f3f28bdd39",
+    "name": "Childs Pose To Spinal Roll",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_b0130b8a137e6bc3",
+    "name": "Chin-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_9db4226b9112d8f5",
+    "name": "Chin-Up Iso Hold",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_7753eec38924ae4a",
+    "name": "Chin-Up Wide Grip",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_3b066804f6d1d077",
+    "name": "Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_b765f5b7359aec85",
+    "name": "Clean And Jerk",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_4b8c754a04ea78dd",
+    "name": "Clean Complex",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_ae3471131340e55b",
+    "name": "Clean Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_d03ddf406cbc5622",
+    "name": "Clean High Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_ddfadd2597d2bfed",
+    "name": "Clean Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_c78bedd7aec532e9",
+    "name": "Close Chain Straight Arm Shoulder Rotation",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_e9d94784aafd8741",
+    "name": "Close Grip Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_0d64db86275184ee",
+    "name": "Close Grip Bench Press (Football Bar)",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_a38944a53f095d10",
+    "name": "Close Grip Bench Press With Chains",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_d7d524a6db8eee34",
+    "name": "Close Grip Board Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_228c2eb7b60fb3c8",
+    "name": "Close Grip Chest To Bar Chin-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_d9d2d66182004f83",
+    "name": "Close Grip Chin-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_e0cb5be8f8dc4fdb",
+    "name": "Close Grip Floor Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_109d635db3f53270",
+    "name": "Close Grip Hammer Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_68e73667f7309679",
+    "name": "Close Grip Incline Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_03b7f05cafc9079c",
+    "name": "Close Grip Incline Board Press With Chains",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_b5ccdf30d46a8357",
+    "name": "Close Grip Pin Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_7543f559d9b6e65c",
+    "name": "Close Grip Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_507fdb0eef1e57db",
+    "name": "Close Grip Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_6c194f8851ab5583",
+    "name": "Close Grip Spoto Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_f546b2674c90cca9",
+    "name": "Cobra Pose",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_39637db20fbfdedb",
+    "name": "Cod Sprint",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_e87427c14615d429",
+    "name": "Concept2 Bike Erg",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_91fde87849935f19",
+    "name": "Conditioning",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_13e3304cffa7a1f5",
+    "name": "Conditioning Cooldown",
+    "category": "Preparation / recovery",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "preparation_recovery"
+  },
+  {
+    "id": "exercise_d9409bf1984776a3",
+    "name": "Conditioning Finisher",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_aacc1501f1136b53",
+    "name": "Conditioning Warm Up",
+    "category": "Preparation / recovery",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "preparation_recovery"
+  },
+  {
+    "id": "exercise_3a0b57dfcbb3701e",
+    "name": "Consecutive Broad Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_d8f5b25d79cd7525",
+    "name": "Contralateral Loading Dumbbell Box Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_eaf28dadbb21b700",
+    "name": "Conventional Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_adae7f43b91f118a",
+    "name": "Conventional Deadlift Against Pins (Set At Below Knee Cap) Static Hold For 3 Seconds Per Rep Against Pins @40% Of Dl 1Rm",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_3b6ab4311bfb9b04",
+    "name": "Cool Down Run",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_dae167b65539d6a2",
+    "name": "Copehagen Side Plank",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_70d2a3bf23644f38",
+    "name": "Copenhagen Plank",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_4d11b0a58561c368",
+    "name": "Copenhagens Long Lever",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_81e97bb2f1c559ef",
+    "name": "Cossack Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_258141cffc7667a5",
+    "name": "Couch Stretch E/Side",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_83b680d1ba8d383e",
+    "name": "Crawl Position To Acceleration",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_0f3aa4e850fc07ff",
+    "name": "Cross Body Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_3ce647d8a2e57ec2",
+    "name": "Crossbody B-Stance Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_82291c611a99e627",
+    "name": "Crossbody Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_9bc3ea88b3d6389d",
+    "name": "Crossbody Farmer Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_e2a22ab898cef528",
+    "name": "Crossbody Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_d8cc29e3503f7a3a",
+    "name": "Crossover Single Under",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_b12a020b7fdd5754",
+    "name": "Crunch",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_97b5de3d5c60c791",
+    "name": "Crush Grip Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_4d88c60bff6cb297",
+    "name": "Cuban Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_2da4b92618d8811a",
+    "name": "Cuban Press Sp",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9137074ad7c8c3ec",
+    "name": "Curtsy Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_8fc7653c86f1bb9d",
+    "name": "Cyclist Back Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_cbe3bf7526684108",
+    "name": "Cyclist Front Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_9b1e19d57d944fe0",
+    "name": "Cyclist Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_7fd57a705b3b43a8",
+    "name": "Cyclist Squat Back Rack",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_5870523a3d3a118f",
+    "name": "Dead Bug",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_eb71a5198a66206d",
+    "name": "Dead Hang",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_68d3a767938dc47e",
+    "name": "Dead Stop Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_56e865bda68e056f",
+    "name": "Dead Stop Dumbbell Alternating Floor Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_ce555cdfe1f5fefa",
+    "name": "Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_4a2bc6bdbbc22d36",
+    "name": "Deadlift Block Pull",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_2597a736d65deacd",
+    "name": "Deadlift Warm Up",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_c334205691b1e57a",
+    "name": "Deceleration Step Down",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_271a4103b1a0ed58",
+    "name": "Deck Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_506afbeb55c3c308",
+    "name": "Decline Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_9bc56b1893cb4c7b",
+    "name": "Decline Close Grip Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_32b3add5f1482fb2",
+    "name": "Decline Dumbbell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_e675efbcf287f59b",
+    "name": "Decline Front Loaded SSB Sit Ups 8Rm",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_d1ff582b11c15172",
+    "name": "Decline Reverse Crunch",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_c48f2cbafa074c35",
+    "name": "Decline Single Arm Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_3eec75b6c45ac731",
+    "name": "Decline Single Arm Row (Slight Decline)",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_4593ebfd340a71fa",
+    "name": "Decline Sit Up",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_3f3c7669ba137e53",
+    "name": "Deep Lunge Hop",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_43cfc580b4b781c1",
+    "name": "Deep Sq Mob",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_af432e159c0f0da2",
+    "name": "Deep Sq Rot",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_e8d33a9614738605",
+    "name": "Deep Tier Squat Hop",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_c073ead35ce5626c",
+    "name": "Deficit Barbell Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_6dabe223607fc270",
+    "name": "Deficit Calf Raise – 2 Up 1 Down",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_13897b6a621aa45c",
+    "name": "Deficit Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_0aae5c3722f088a8",
+    "name": "Deficit Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_8d33888a942c7964",
+    "name": "Deficit Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_1a84b4c24d8214c6",
+    "name": "Deficit Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_6401f463c4506f1e",
+    "name": "Deficit Reverse Lunge Dumbbell",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_9ec3ab3c95d93219",
+    "name": "Deficit Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_d65b97a95651b15d",
+    "name": "Deficit Shoulder Plank Taps",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_d52019b17572f165",
+    "name": "Deficit Single Leg Side Plank Dip",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_be46ec4433cc30f9",
+    "name": "Deficit Snatch Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_207a287aafd4a30d",
+    "name": "Deficit Stiff Leg Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_bcc2948ddbef1285",
+    "name": "Defict Jumping Lunge",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_a6de8d31bfae095d",
+    "name": "Defict Suitcase Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_780937d04d234867",
+    "name": "Depth Drop To Broad Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_cbe7c71501571ba3",
+    "name": "Depth Drop To Double Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_3bdc942527c0b40f",
+    "name": "Depth Jump To Vertical Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_6dc8531c049504ff",
+    "name": "Devil Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_4fba59153dd16e63",
+    "name": "Diamond Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_389f473a0d04d1a5",
+    "name": "Dimel Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_9e420c97fff4f490",
+    "name": "Dimel Deadlift @30% Of Dl 1Rm",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_b6813f3af2d45fbf",
+    "name": "Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_92c2623d0d5bfce6",
+    "name": "Dip Bar Triceps",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_efa9910eb1dda83e",
+    "name": "Dip Belt Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_4e6c44445ac0f240",
+    "name": "Dip Lockout",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_653bf621fc6564cb",
+    "name": "Dive Bomber",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_cb1e9f43fe84af34",
+    "name": "Dive Bomber Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_e2b5f51ae165db31",
+    "name": "Donkey Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ac9926d1c91f529a",
+    "name": "Double Dead Bug",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_66cf5d657b563f18",
+    "name": "Double Dumbbell Hang Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_0342d24f2c54ea56",
+    "name": "Double Kettlebell Clean And Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_e82c39c3b315df92",
+    "name": "Double Kettlebell Clean And Push Jerk",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_560e50ef24ed0b0d",
+    "name": "Double Kettlebell Clean And Push Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_9c544528badd23e1",
+    "name": "Double Kettlebell Front Rack Walk",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_461686703011c514",
+    "name": "Double Kettlebell Front Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_2d448fcb73777832",
+    "name": "Double Kettlebell Lateral Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_aa3813769f17ce16",
+    "name": "Double Kettlebell Overhead Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_0b50a02f919ad6cd",
+    "name": "Double Kettlebell Overhead Walking Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_674ac9ef63d7649c",
+    "name": "Double Kettlebell Push Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_27aaf48fd30c306e",
+    "name": "Double Kettlebell Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_faacc7c37a935098",
+    "name": "Double Kettlebell Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_76a0e590a914fb66",
+    "name": "Double Kettlebell Sumo Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_c518726e534bcaab",
+    "name": "Double Under",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_71c002b973cf2f29",
+    "name": "Dragon Flag",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_e015143fea7c64a4",
+    "name": "Dragon Fly",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_62ee614345a64d00",
+    "name": "Drop Back Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_c762a36efabb58df",
+    "name": "Drop Jump To Reactive Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_6706509172c538b6",
+    "name": "Drop Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_860c61411ed0531b",
+    "name": "Drop Squat",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_3393989cc1a9d860",
+    "name": "Dual Dumbbell Jumping Squat",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_c89168e1f4dc17e7",
+    "name": "Dual Dumbbell Muscle Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_92e5f919b81f398e",
+    "name": "Dual Dumbbell Strict Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_b8f59639c455d455",
+    "name": "Dual Kettlebell Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_26e7c241badd4f03",
+    "name": "Dumbbell 3 Way Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ae992d90ad87b1a6",
+    "name": "Dumbbell Arnold Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_f9e1f8613a4d1877",
+    "name": "Dumbbell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_8b27a28b54ba1b4a",
+    "name": "Dumbbell Bench Pull Over",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_e1f17365fa97eb25",
+    "name": "Dumbbell Bent Over Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_de7bd210c6a6908e",
+    "name": "Dumbbell Biceps Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8aff400a29fa3aa3",
+    "name": "Dumbbell Bird Dog Row",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_fb7469cc6f0ab054",
+    "name": "Dumbbell Box Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_afb300479d6150c5",
+    "name": "Dumbbell Bulgarian Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_2b3bcdf97b764f65",
+    "name": "Dumbbell California Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_dfb26bcbf94a25b0",
+    "name": "Dumbbell Chest Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_e2522e5ecf0ec205",
+    "name": "Dumbbell Chest Supported Incline Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_21bc9f567e2d9c65",
+    "name": "Dumbbell Chest Supported Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_604a52293134e66e",
+    "name": "Dumbbell Clean And Jerk",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_f59a57b992a89a3d",
+    "name": "Dumbbell Clean Into Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_3039e62e1f92a7b5",
+    "name": "Dumbbell Crossbody Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_71f0dc2bf70e669c",
+    "name": "Dumbbell Crunch",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_9f6b16926cec2c98",
+    "name": "Dumbbell Crunch And Twist",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_f668bca438b12a3c",
+    "name": "Dumbbell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_843b48594e7a5d50",
+    "name": "Dumbbell Drag Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_b95c70076c238a49",
+    "name": "Dumbbell Drop Box Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_e1fdc4cee601b5a4",
+    "name": "Dumbbell Elbowing Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_1e4235a85d041b9d",
+    "name": "Dumbbell Farmer Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_c9def130110f502c",
+    "name": "Dumbbell Farmers Walk",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_788fa7e5f9f3bff4",
+    "name": "Dumbbell Flat Bench",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_e35c6d29d24748fb",
+    "name": "Dumbbell Flat Bench Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_43934973c028358e",
+    "name": "Dumbbell Floor Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_872dff1cf9606872",
+    "name": "Dumbbell Floor Press Neutral Grip",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_4721ea1d04ecc46d",
+    "name": "Dumbbell Floor Press Pronated Grip",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_33feca6c7d8e9a01",
+    "name": "Dumbbell Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_47641632d969e5af",
+    "name": "Dumbbell Forward + Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_251b7f72d2448168",
+    "name": "Dumbbell Frog Pumps",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_c7646b0f675a865c",
+    "name": "Dumbbell Front Rack Walking Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_735ef0cd2298709c",
+    "name": "Dumbbell Full Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_055d810d1419d8ca",
+    "name": "Dumbbell Glute Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_b6e227678e530a6d",
+    "name": "Dumbbell Goblet Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_c31c8402f2c9c537",
+    "name": "Dumbbell Goblet Squat Heel Elevated 1 + 1/4",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_c3ebee75f3075d4d",
+    "name": "Dumbbell Good Morning",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_438ad35892ce06f1",
+    "name": "Dumbbell Hammer Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_cfd77eb18b68bce1",
+    "name": "Dumbbell Hammer Curl With Fat Gripz",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_2dfbfd65f86ee17c",
+    "name": "Dumbbell Hang Power Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_c2910361fa4d4c45",
+    "name": "Dumbbell Hang Power Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_267f9b7b9b65ca8c",
+    "name": "Dumbbell Incline Bench Sp",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_62e348871b917ac6",
+    "name": "Dumbbell Incline Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_4c55ef330ba601b5",
+    "name": "Dumbbell Incline Rear Delt Swing",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_18ab571085498f0a",
+    "name": "Dumbbell Incline Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_33cae040335127f1",
+    "name": "Dumbbell Incline Row Pronated Grip",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_1197053699e462fa",
+    "name": "Dumbbell Incline Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f105007f16a599d4",
+    "name": "Dumbbell Jump Squat",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_797678c6e8f2601c",
+    "name": "Dumbbell Jump To Bodyweight",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_d6b0cdf3cbf88327",
+    "name": "Dumbbell Knees Over Toes Split Squat Contralateral",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_6f1cc4cd62a63c56",
+    "name": "Dumbbell Lat Pullover",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_aa83df1596b41e99",
+    "name": "Dumbbell Lateral Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_3e344b2588a75bfe",
+    "name": "Dumbbell Lateral Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_5a877a778071a12d",
+    "name": "Dumbbell Leaning Side Delt Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_4fe043ebf54bcd18",
+    "name": "Dumbbell Low Incline Bench",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_e84979cd2296efbd",
+    "name": "Dumbbell Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_64b8a2517e15cda4",
+    "name": "Dumbbell Meadows Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_23f8de81733e5877",
+    "name": "Dumbbell Narrow Grip Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_7be691d044a1f306",
+    "name": "Dumbbell Or Barbell Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_88cee875e2f7ca9b",
+    "name": "Dumbbell Or Kettlebell Skull Crusher",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d51debc9b427a814",
+    "name": "Dumbbell Overhead Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_4231826dedd6b044",
+    "name": "Dumbbell Overhead Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_451f347b521331d4",
+    "name": "Dumbbell Posterior Fly Drop Set",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_aebe47655968c495",
+    "name": "Dumbbell Press Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f41cde4242bf11dc",
+    "name": "Dumbbell Pull Through",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_8c427cda523fd342",
+    "name": "Dumbbell Pullover",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8cce176ad8e5fd97",
+    "name": "Dumbbell Push Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_64b5e13d7d2fb103",
+    "name": "Dumbbell Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_b8b08e9fd7db9d43",
+    "name": "Dumbbell Renegade Row",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_f9a49729da4ba266",
+    "name": "Dumbbell Renegade Row With Push-Up",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_c771721f2068ccf0",
+    "name": "Dumbbell Reverse Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_0e04e3dec58c87b5",
+    "name": "Dumbbell Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_93e51f6aa8005b9b",
+    "name": "Dumbbell Reverse Lunge (Front Foot Elevated)",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_0c410312ec7cb9ea",
+    "name": "Dumbbell Roll Back",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_674f5f395efaad10",
+    "name": "Dumbbell Rollback Extension (Floor)",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6307839c17a0ebab",
+    "name": "Dumbbell Rollbacks On Floor",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_594ecd24795137cc",
+    "name": "Dumbbell Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_0a156e44e9db4c09",
+    "name": "Dumbbell Romanian Deadlift With A Pause",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_08639adda16e0adb",
+    "name": "Dumbbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_dadbf327255d8bf0",
+    "name": "Dumbbell Row To Chest",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_1931020704e55640",
+    "name": "Dumbbell Russian Twist",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_9761b6f820a9206a",
+    "name": "Dumbbell Scaption",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ef4447fa080c0d34",
+    "name": "Dumbbell Seal Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_34b50cc58063afc0",
+    "name": "Dumbbell Seated Single Leg Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_72e54cddc9484f28",
+    "name": "Dumbbell Segmented Shrugs",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_77e633dcb8c1387d",
+    "name": "Dumbbell Shoulder Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_55d92c09ee674c92",
+    "name": "Dumbbell Shoulder Press 2 1 1",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_c6a5bcd88da06512",
+    "name": "Dumbbell Shoulder Raise + Iso",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_979e8f95586fd55d",
+    "name": "Dumbbell Shrugs",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_02e24a632e073162",
+    "name": "Dumbbell Side Bend",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_f2e9e1ae30fdae32",
+    "name": "Dumbbell Single Arm Push Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_1533da75413278a7",
+    "name": "Dumbbell Single Leg Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_f6c0d7bbb2dda355",
+    "name": "Dumbbell Single Leg Hip Thrust Hold",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_a11962ad6c33a166",
+    "name": "Dumbbell Skier Swing",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_58e34d0f93613c6e",
+    "name": "Dumbbell Skull Crusher",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9659c3890b823858",
+    "name": "Dumbbell Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_ddb3d38ac98babe9",
+    "name": "Dumbbell Snow Angel Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_21f679675e197c76",
+    "name": "Dumbbell Spider Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_e39dbf2109f3674f",
+    "name": "Dumbbell Split Jerk",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_f52ab0715e00591d",
+    "name": "Dumbbell Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_b2a2e4a0033a36d4",
+    "name": "Dumbbell Squat Jump (Plyos)",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_873dad6f5e4e9bbb",
+    "name": "Dumbbell Squat Jump + Box Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_ba4aa3fde99eca8c",
+    "name": "Dumbbell Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_c4ff206cabd914ae",
+    "name": "Dumbbell Strict Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_2d93e7a53b494a6b",
+    "name": "Dumbbell T Bar Row Pronated Grip",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_b54cb63dd5212dbb",
+    "name": "Dumbbell Thruster",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_b640bd8a45fb0154",
+    "name": "Dumbbell Thruster 15Rm (Within 4 Sets)",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_8ae0bac37f969faf",
+    "name": "Dumbbell Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_3855f73716deb771",
+    "name": "Dumbbell Triceps Kickback",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_b285815051b9ed61",
+    "name": "Dumbbell Upright Row",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f24a94358a917d0b",
+    "name": "Dumbbell W Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_7f6bcfde293f0539",
+    "name": "Dumbbell Walking Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_102529e6c0d374e9",
+    "name": "Dumbbell Windmill",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_a39b5ce4edbaf5b9",
+    "name": "Dumbbell Wrist Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_baa084d9e414c89d",
+    "name": "Dumbbell Wrist Extension (Grip)",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_7af9231f46285def",
+    "name": "Dumbbell Y Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_948e7dce7449c4d6",
+    "name": "Dumbbell Z-Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_5967de02a6d5fdc4",
+    "name": "Dynaball Rotational Slam",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_bdfaf5a6c093537b",
+    "name": "Dynamic Abduction Side Plank",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_76ce66057cca80d4",
+    "name": "Dynamic Groin Drift",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_6a28363035e13221",
+    "name": "Dynamic Warmup",
+    "category": "Preparation / recovery",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "preparation_recovery"
+  },
+  {
+    "id": "exercise_19a5fb59a22f9ce2",
+    "name": "Eccentric Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_1153e5a93901a826",
+    "name": "Echo Bike",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_f8785409c6a0b932",
+    "name": "Elevated Arm Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_9341b32bb6333d96",
+    "name": "Elevated Pigeon Pails And Rails",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_3c515b8b6429591b",
+    "name": "Elevated Single Leg Body Weight Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_cd8221edb41c040a",
+    "name": "Endurance Jump Series",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_64c32129381d2839",
+    "name": "Explosive Plyo Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_cdf9485a369b5715",
+    "name": "Explosive Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_ed38dc48ebda9dcf",
+    "name": "Explosive Switch Grip Inverted Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_abe3f2e213ba43f3",
+    "name": "Explosive Trap Bar Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_6476304bfea7952b",
+    "name": "Extensive Pogos",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_792c82f2576d9ed6",
+    "name": "Ez Bar Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6d2bfb1660aef574",
+    "name": "Ez Bar Lying Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6ea2b273ee10a0f6",
+    "name": "Ez Bar Overhead Triceps",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_81871338660f06f0",
+    "name": "Ez Bar Skull Crusher",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_13f4748e651ad312",
+    "name": "Facing Wall Hip Airplane",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_b7dd05e72e826a70",
+    "name": "Facing Wall Hip Circle Rotation",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_cb5858524fa74946",
+    "name": "Fallout",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_452394aede69d44e",
+    "name": "Fan Bike",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_b80028b27f183c59",
+    "name": "Fan Bike Intervals",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_25706a027ac565e5",
+    "name": "Farmer Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_943c91dab311ab36",
+    "name": "Fat Bar Behind The Neck Shoulder Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_8345a14944fa336c",
+    "name": "Fat Bar Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_1375e573adbc6523",
+    "name": "Fat Bar Push Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_1a1247681366ce52",
+    "name": "Feet Elevated Chin-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_700e29a7c51c541f",
+    "name": "Feet Elevated Inverted Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_08cd32d762996b75",
+    "name": "Feet Elevated Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_7ff1135f51b453d4",
+    "name": "Feet Elevated Ring Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_935dfdc845597cfb",
+    "name": "Feet Elevated Stir The Pot",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_410ff5cf7dc0a335",
+    "name": "Filly Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_5a880a0702dbe972",
+    "name": "Find Max Height Box Jump Starting From Seated Position (At Or Below Parallel) Wearing 5Lb Ankle Weights",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_c488cd68aebf713a",
+    "name": "Find Max Height Standing Box Jump (No Drop Step) With 10/5 Lb Ankle Weights",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_474b0ff892097c5a",
+    "name": "Flat Dumbbell Bench",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_1e3ae562c3372a53",
+    "name": "Flat Dumbbell Press 8Rm",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_cf27f74525fb57de",
+    "name": "Flat Dumbbell Press @60% Of Last Weeks 8Rm *2 Minute Rest Periods",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_7419ae58759e72e0",
+    "name": "Floating Dumbbell Rollbacks",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ffe3657cc175d985",
+    "name": "Floating Heel Bulgarian Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_4139ce3754f7af32",
+    "name": "Floating Heel Iso Split Squat Holding Dumbbells",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_84bf9d02e5b24b76",
+    "name": "Floating Heel Landmine Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_9dd1c991fd4e55ac",
+    "name": "Floating Lunge Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_4d86fa15753783bf",
+    "name": "Floor Int/Ext Rotation",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_646fa2e713aba448",
+    "name": "Floor Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_1cc17cef5903e11d",
+    "name": "Floor Press 1 + 1/4 Dumbbell",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_0356f78742142ee0",
+    "name": "Floor Press @50% Against 25% Chains",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_7a15f1eb4c44337a",
+    "name": "Floor Press @55% Against 25% Chains",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_3335a059ba70a93b",
+    "name": "Floor Press With Chains",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_0ac76450a17bbeda",
+    "name": "Fly Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_779dd3a97a5daea9",
+    "name": "Foam Roll Lats",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_9b3a0c444385812b",
+    "name": "Foam Roll Quads",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_341dc30758b9534d",
+    "name": "Foam Roller Bodysaw",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_b20f420971421c89",
+    "name": "Foam Roller Plank Rollout",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_2f2f343f4dabcaae",
+    "name": "Foam Roller Snow Angels",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_e3b7978b49bd5413",
+    "name": "Foam Roller Walk Out",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_790eeed0ea2da05a",
+    "name": "Foam Rolling Thoracic Spine",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_6ed438f39aa5b1b9",
+    "name": "Focused Lat Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_69afbb524f5506c4",
+    "name": "Football Bar Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_a553c2d0db865358",
+    "name": "Football Bar Floor Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_1be57c3194f3227e",
+    "name": "Forearm Supported Wrist Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_b0707c7a95db21bd",
+    "name": "Forward + Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_c6c7f70ed1dd1af4",
+    "name": "Forward Bounds",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_9224ebb544d5e57b",
+    "name": "Forward Hurdle Hop",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_8262845721c0d07e",
+    "name": "Forward Sled Drag",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_ca12dcfdd941eeab",
+    "name": "Forward To Lateral Two Foot Hurdle Hop",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_2c0415dabf40236b",
+    "name": "French Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_fcf482f912db7d72",
+    "name": "Frog Pumps",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_6bfb727c8bc7eaf0",
+    "name": "Frog Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_4030ae5158df935c",
+    "name": "Front Box Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_01ebe47d3e6365bc",
+    "name": "Front Box Squat With Chains",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_1aa0e17caad3928c",
+    "name": "Front Foot Elevated Dumbbell Revere Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_d29469aea5c61ed8",
+    "name": "Front Foot Elevated Kettlebell Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_cc94ce4aaa0d40a4",
+    "name": "Front Foot Elevated Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_63ae541c8eaae55c",
+    "name": "Front Kettlebell Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_fcc87f694fe3ce7f",
+    "name": "Front Plate Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8df13b12b5203bd2",
+    "name": "Front Rack Barbell Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_187e06c3e43f0797",
+    "name": "Front Rack Barbell Rfess",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_c0db34070c5fe61a",
+    "name": "Front Rack Barbell Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_914530197e53a99e",
+    "name": "Front Rack Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_43b05a81b3fb4e64",
+    "name": "Front Rack Kettlebell Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_3d3614eea9342d11",
+    "name": "Front Rack Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_2833a7164be3a4cc",
+    "name": "Front Rack Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_9489fbda0bffb4e0",
+    "name": "Front Rack Sandbag Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_838b3b512842e4db",
+    "name": "Front Rack Walking Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_e41a586ae707d52b",
+    "name": "Front Split Mobility",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_508dd0dfaa7e97ca",
+    "name": "Front Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_d4f2b83600d896f2",
+    "name": "Front Squat @55% Against 25% Hanging Chains No Box",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_990c1ebd2580ef78",
+    "name": "Front Squat @60% Against 25% Hanging Chains No Box",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_4a6c9cc66fda9308",
+    "name": "Front Squat To Pins",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_c582ac549babfcec",
+    "name": "Front Squat Warm Up",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_206526a0b8505dba",
+    "name": "Front Squat+Back Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_4ad492c9dafa4ce2",
+    "name": "Full Body Warm Up",
+    "category": "Preparation / recovery",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "preparation_recovery"
+  },
+  {
+    "id": "exercise_f31e5d9744f80c47",
+    "name": "Garhammer Raise",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_353935025cc9a2d7",
+    "name": "Ghd (Face Up) Side Bends 4X20 Per Side",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_5442817c57178ecb",
+    "name": "Ghd (Or 45 Degree) Kettlebell Oblique Crunch",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_df01c9837977e0ee",
+    "name": "Ghd Back Extension (Glute Bias)",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_1c904c8b90fd3107",
+    "name": "Ghd Bosch Hold + Plate Press",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_33c30936da9eabe0",
+    "name": "Ghd Garhammer Raise",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_2baa9ebc5cc3910a",
+    "name": "Ghd Hip Extension",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_c9904fb0e701c1d8",
+    "name": "Ghd Lateral Flexion",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_8e3663b8a187e852",
+    "name": "Ghd Or Decline Back Loaded Barbell Sit Ups 8Rm",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_24d2350f8be29bf4",
+    "name": "Ghd Reverse Sit Up",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_77e1488d10e4a61a",
+    "name": "Ghd Side Plank Pallof Press",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_5ff2c32218b08867",
+    "name": "Ghd Sit Up",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_46127139d926482d",
+    "name": "Ghd Snatch Grip Barbell Back Extension",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_1710c88e028023bf",
+    "name": "Ghd SSB Back Loaded Back Extension",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_c94de413bbc56658",
+    "name": "Glute Bridge",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_8bba4959833775a9",
+    "name": "Glute Bridge Dumbbell Bench Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_6f74cfdbb7b3c870",
+    "name": "Glute Bridge Dumbbell Floor Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_b82b5c16888a987f",
+    "name": "Glute Bridge Hamstring Walk Out",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_74bd203ff296ce73",
+    "name": "Glute Bridge Hold With Hip Abduction",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_f56bd74abc2a0d28",
+    "name": "Glute Bridge March",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_17406e7e110637f2",
+    "name": "Glute Drive Machine",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_881e8fbc2a744188",
+    "name": "Glute Ham Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_508c2801a46cc19d",
+    "name": "Glute Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_8062b102c1620893",
+    "name": "Glute March",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_4f2a6e1b93440ae8",
+    "name": "Glute Supermans",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_4cd7b9cc3d7625c6",
+    "name": "Go For A 20 Min Walk",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_730226ff8cea3511",
+    "name": "Goblet Alternating Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_02734f5da32d3ec2",
+    "name": "Goblet Box Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_bc82867bfc29a3c5",
+    "name": "Goblet Cossack Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_77c695dcd625f95c",
+    "name": "Goblet Curtsy Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_e4c699e5bd40f9fa",
+    "name": "Goblet Lateral Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_8dfcd07224264af8",
+    "name": "Goblet Lateral Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_a575ccc18591459e",
+    "name": "Goblet Pulse Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_571bdcd5c6d65d71",
+    "name": "Goblet Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_766238991861f74b",
+    "name": "Goblet Rfess",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_79016c22d33cb661",
+    "name": "Goblet Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_03a22e9f23d89cee",
+    "name": "Goblet Sq Sp",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_ede77da13c8fe14c",
+    "name": "Goblet Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_b69cf5f0d24fa305",
+    "name": "Goblet Squat W/ Prying",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_f092d952162ae7b9",
+    "name": "Goblet Tall Kneeling To Standing",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_cdf71dea7d7741a2",
+    "name": "Good Morning",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_5d95738a258fae51",
+    "name": "Gorilla Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_6de5e761a5a1cbe0",
+    "name": "Gorilla Sits",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_c2e8858b7c2927fa",
+    "name": "Gpp",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_e87c871103267a00",
+    "name": "Grip Roller",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_3f065480810b8d41",
+    "name": "Groin Squeeze",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_a3fe27139116fda1",
+    "name": "Half Front Split Stretch E/Side",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_42e3f16004966184",
+    "name": "Half Kneel Chop",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_953a70b39ebcf25b",
+    "name": "Half Kneeling Arnold Shoulder Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_d693809714e7c010",
+    "name": "Half Kneeling Bottoms Up Kettlebell Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_a7678e18483aca06",
+    "name": "Half Kneeling Cable Face Pull",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_834a1273d5ddea14",
+    "name": "Half Kneeling Cable Pallof Press",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_28da29ff58ede978",
+    "name": "Half Kneeling Dumbbell Arnold Shoulder Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_0f5ca0e0c5a572ed",
+    "name": "Half Kneeling Dumbbell Shoulder Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_e20ff6049f7e404b",
+    "name": "Half Kneeling External Rotation To Overhead Press With Dumbbell",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_8b63f302ed875f25",
+    "name": "Half Kneeling Hip Cars",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_f13c1966dc242fe7",
+    "name": "Half Kneeling Kettlebell Windmill",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_3307e12092055d9f",
+    "name": "Half Kneeling Landmine Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_449a5320fd667d91",
+    "name": "Half Kneeling Pitcher Slam",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_bf524590fa193832",
+    "name": "Half Kneeling Rotational Medicine Ball Slam",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_37141c5efc97f4b1",
+    "name": "Half Kneeling Shoulder Cars Against Wall",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_042b6f3689a710b4",
+    "name": "Half Kneeling Single Arm Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_2af1a98c20d43053",
+    "name": "Half Kneeling Wall Book Openers",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_be57fb46f320309c",
+    "name": "Hamburger Sauat (Heel Elevated Goblet)",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_6433fb7919eb73f6",
+    "name": "Hamburger Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_6ae5b4dec1ff373d",
+    "name": "Hammer Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_896a06b069177bb3",
+    "name": "Hamstring March",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_51c0e74323b01b45",
+    "name": "Hamstring Rollout",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_329ca8d759d71457",
+    "name": "Hamstring Slides On Rings",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_30c3ddd41eb02a8a",
+    "name": "Hand Release Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_dd08dbb90f05e5b9",
+    "name": "Hand Supported Bulgarian Split Squat (With Ipsilateral Load)",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_8b4f656f176023ec",
+    "name": "Hand Supported Curtsy Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_76e42a31ef3ac34b",
+    "name": "Hand Supported Dumbbell Box Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_f8ef00f22b20f56a",
+    "name": "Hand Supported Dumbbell Suitcase Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_eb5f5bfaaf8f943b",
+    "name": "Hand Supported Single Leg Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_1b38987edf0aaf28",
+    "name": "Hand Supported Single Leg Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_401f339c18f16a32",
+    "name": "Hand Supported Sldl Loaded",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_3aa3e8a308ff16d0",
+    "name": "Hand Supported Suitcase Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f4d6673874463027",
+    "name": "Handstand Push-Up",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_98cfffc116c7894d",
+    "name": "Handstand Wall Walk",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_6a6cdb34e4359ae6",
+    "name": "Hang Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_c7fbede902d7dfa8",
+    "name": "Hang Clean High Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_fc9a05a07005d677",
+    "name": "Hang Clean Pull Barbell",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_9acafeaa2ec4a111",
+    "name": "Hang Power Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_f71ca14e634c5141",
+    "name": "Hang Power Clean From Mid Thigh",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_dc4fc3c858e77c15",
+    "name": "Hang Power Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_0ef88519c30a4e28",
+    "name": "Hang Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_ebc8c727e9627a98",
+    "name": "Hang Snatch High Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_28f96a1b0b0de825",
+    "name": "Hang Squat Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_b59a5d5812636740",
+    "name": "Hanging Knee Raise",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_c59087c78e61356f",
+    "name": "Hanging Leg Lifts",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_dfb093a8657fe0ca",
+    "name": "Hanging Leg Raise",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_99be9e80a49e6a1d",
+    "name": "Hanging Medicine Ball Knee Raise",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_e606d5de9792941f",
+    "name": "Hanging Straight Leg Raise",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_6e2e105d3cf614c1",
+    "name": "Head Supported Pronated Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_14ba0df822024ee8",
+    "name": "Head Supported Row Pronated",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_ab830d0bceb305f7",
+    "name": "Heavy Reverse Hyper",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_af0aa9847be7e649",
+    "name": "Heel Taps",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_82ac0c7cf5455615",
+    "name": "Heels Elevated Goblet Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_afd22142573e4a70",
+    "name": "Heels Elevated Hamburger Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_455de3b96f45a1b3",
+    "name": "Heels Elevated Landmine Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_d17fac6c408b4abd",
+    "name": "Heels Floating Landmine Goblet Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_4bdd72be894bcc15",
+    "name": "Heidens Lateral Jump (Plyos)",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_97fd7d327b516854",
+    "name": "High Hang Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_1b625c0ebb5b9cd5",
+    "name": "High Hang Power Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_cb3dcac75c3bda0e",
+    "name": "High Hang Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_4be15ce2c753022b",
+    "name": "High Hang Snatch Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_812c97833f185fa4",
+    "name": "High Incline Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_ec61b9d606d86edb",
+    "name": "High Incline Dumbbell Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_4dc3dd6c9ecdeca2",
+    "name": "High Incline Dumbbell Press Neutral Grip",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_e497f525105a9a04",
+    "name": "High Incline Dumbbell Press Pronated",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_e07c495781140fe3",
+    "name": "High Incline Lateral Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_0e4e2fba3046eada",
+    "name": "High Pin Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_1ec6d516b40d6572",
+    "name": "High Pin Rack Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_6f97e15615792e15",
+    "name": "High Pin Rack Pull",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_076b3b98625676b1",
+    "name": "Hill Sprint",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_9f68e9f320ad8302",
+    "name": "Hip Abduction Machine (Extra Range)",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_0c17a0626daec84b",
+    "name": "Hip Adduction Machine",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_74a143cff8055fd3",
+    "name": "Hip Airplane",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_7eb6cde5af1029b2",
+    "name": "Hip Airplane Sp",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_883237f8c92437ca",
+    "name": "Hip Extension + Glute Ham Raise (2 Second Pause Between The Hip Extension And Glute Ham Raises) Weighted",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_d6b1cc0eb8efb118",
+    "name": "Hip Extension Hold",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_67a8389425578ce5",
+    "name": "Hip Rocker Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_2875bc848de83f2e",
+    "name": "Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_88f236ccd7c36d1d",
+    "name": "Hip Thrust B-Stance",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_be5a915691d50495",
+    "name": "Hip Thrust Machine",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_854ae1f3d1e57e7a",
+    "name": "Hips Elevated Goblet Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_087a6ccc24f0199a",
+    "name": "Hollow Flutter Kicks",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_500e68f18368e2b2",
+    "name": "Hollow Hold",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_3154f288a4573066",
+    "name": "Hollow Hold + Alternating Legs",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_54cfe1cda9cbf711",
+    "name": "Hollow Hold To Bicycle",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_24506a4380292668",
+    "name": "Hollow Rock",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_72237dfadbdc01d4",
+    "name": "Hurdle To Broad Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_80d731916fa3acbe",
+    "name": "Hurdler Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_381f2962a01125d5",
+    "name": "Hybrid Stance Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_1c04af9dd1bccc69",
+    "name": "Hybrid Stance Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_5f3b5b2f06a67afa",
+    "name": "Hybrid Stance Speed Deadlift With Chains",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_5f12aa94ccf997c4",
+    "name": "Inch Worms",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_e84f2b889eec3010",
+    "name": "Incline 1.5 Rep Incline Dumbbell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_bdae9f5759ecf507",
+    "name": "Incline 2\" Board Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_c47930650eb28c78",
+    "name": "Incline Bench Dumbbell Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9f23e3aec03589b6",
+    "name": "Incline Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_5b9b6f337da85baf",
+    "name": "Incline Bench Press Barbell",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_b0168d1cf5caf26e",
+    "name": "Incline Bench Reverse Crunch",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_fdd0a68e2da7624f",
+    "name": "Incline Chest Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9d9fabd8ad094ef1",
+    "name": "Incline Chest Supported Row Pronated Grip",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_5b4253f828d71c8c",
+    "name": "Incline Close Grip Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_9a31f41d7887c9e2",
+    "name": "Incline Dumbbell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_d43d4e520fa414bd",
+    "name": "Incline Dumbbell Biceps Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_e90133bdf2d7ee32",
+    "name": "Incline Dumbbell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_64d953ab58f45a3c",
+    "name": "Incline Dumbbell External Rotation",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6f3f701e0a98ff28",
+    "name": "Incline Dumbbell Fly Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_37cb56947be86800",
+    "name": "Incline Dumbbell Prone Reverse Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_c96178e22cebab5c",
+    "name": "Incline Dumbbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_80b0c56cad6286c5",
+    "name": "Incline Dumbbell Skull Crusher",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_1a21ac9109bb01a9",
+    "name": "Incline Dumbbell Tate Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f3a65fd90109e2ad",
+    "name": "Incline Face Down Reverse Dumbbell Flys",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_0d13c565d38911de",
+    "name": "Incline Hammer Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6b1ba838336224d1",
+    "name": "Incline Kettlebell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_65a4bd2659e47f79",
+    "name": "Incline Lateral Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_626aeeaaf0099021",
+    "name": "Incline Narrow Grip Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_ffd9022311523084",
+    "name": "Incline Pigeon Rotation",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_3eb683abaef4f003",
+    "name": "Incline Pin Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_ce9917f069aa25cd",
+    "name": "Incline Powell Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_a75c0f483ec03369",
+    "name": "Incline Rotator Drop Catch",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_da4bbd0aa49ace3d",
+    "name": "Incline Skull Crusher",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_757600c14fdea8c8",
+    "name": "Incline Tate Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d5f76890635366f5",
+    "name": "Interval Run",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_55adf09b9138bc63",
+    "name": "Inverted Bodyweight Leg Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_37a2ef06cf1f0967",
+    "name": "Inverted Ring Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_a3c5282e0b5ba84b",
+    "name": "Inverted Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_31151906dfd64c10",
+    "name": "Inverted Row Isometric",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_a18cfb4af649ff61",
+    "name": "Inverted Row With Bar",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_26a96b47ec2691bd",
+    "name": "Inverted Skull Crusher",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_5152cfb56a96f657",
+    "name": "Iso Dynamic Chest Supported Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_ac6cd27479499a81",
+    "name": "Jefferson Curl",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_c7cd4963c2d8fa44",
+    "name": "Jettison Dumbbell Neutral Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_1e0911262b1d8fe8",
+    "name": "Jm Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_3b7902f30296ee7e",
+    "name": "Jm Press W/Eccentric Focus",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_bd3c33a5ae90895d",
+    "name": "Jump Loaded To Unloaded",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_d4ce7597e7995fd6",
+    "name": "Jump Lunge",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_67c6b46e2cc49f9b",
+    "name": "Jump Squat",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_4a1ad499a95fde23",
+    "name": "Jumping Rope",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_7fd0e13375845425",
+    "name": "Katana Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_93858b17568a6023",
+    "name": "Kelso Reverse Incline Shrugs",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_c8f68794e4b920aa",
+    "name": "Kettle Bell Squays",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_78b2482924de84dc",
+    "name": "Kettlebell Alternating Gorilla Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_79078bb59c3e7c21",
+    "name": "Kettlebell Arm Bar",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_8c505940ffcbb802",
+    "name": "Kettlebell Arm Bar With Thoracic Rotation",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_74559cc7537e60e9",
+    "name": "Kettlebell Bent Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_6ac591ac7441ac74",
+    "name": "Kettlebell Bottoms Up Waiters Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_1862e4ea36f68e62",
+    "name": "Kettlebell Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_7b67c6990c91766d",
+    "name": "Kettlebell Clean + Squat + Push Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_9b386c8ac1d3ed78",
+    "name": "Kettlebell Clean And Push Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_730d23475139a56b",
+    "name": "Kettlebell Complex Clean + Lunge + Alternating Press + High Pull",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_a97ef6c26d15d7c4",
+    "name": "Kettlebell Complex Clean + Press + Press + Carry",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_c94d1aea3507507d",
+    "name": "Kettlebell Complex Clean + Squat Into Rotational Press + Windmill",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_87d87ccb8d8297ab",
+    "name": "Kettlebell Complex Gorilla Row + Snatch + Alternating Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_38939b8270381c6c",
+    "name": "Kettlebell Complex Of Row + Clean + Squat + Push Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_45bd4718a30ee746",
+    "name": "Kettlebell Complex Of Row + Swing + Clean + Squat + Push Press + March (Or Carry)",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_896c3b5697079f52",
+    "name": "Kettlebell Complex Row + Clean + Thruster + Tall Kneeling Press + Tall Kneeling To Standing",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_3fb4f87a0fa2c2c5",
+    "name": "Kettlebell Complex Single Arm Swing + Clean + Squat Clean + Squat Clean Thruster",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_c167dce22bc6e742",
+    "name": "Kettlebell Crush Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f6e05362258e6a58",
+    "name": "Kettlebell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f1d467f5d276f223",
+    "name": "Kettlebell Drag Through",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_af8cbac1fd64096f",
+    "name": "Kettlebell Farmer Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_c6cc867062d13957",
+    "name": "Kettlebell Farmers Walk",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_2ab717088348e8b6",
+    "name": "Kettlebell Flow Alternating Row + Alternating Swing + Alternating Clean + Reverse Lunge + Single Arm Squat + Snatch",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_46c4d9ba85966627",
+    "name": "Kettlebell Front Rack March",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_0226804594c13dfc",
+    "name": "Kettlebell Glute Bridge Floor Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_51045a3c4d862ed9",
+    "name": "Kettlebell Goblet Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_26140b0e7fa38a5e",
+    "name": "Kettlebell Halo",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_9c9b0a951b66be77",
+    "name": "Kettlebell Hammer Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f2678111516cd56e",
+    "name": "Kettlebell High Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_8693a512e870a159",
+    "name": "Kettlebell Hip Flex Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8d0ae971dfbfafb5",
+    "name": "Kettlebell Hold Feet Elevated Glute Bridge Psoas March",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_5d0f76c489e199cc",
+    "name": "Kettlebell L Tuck",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_8fb217699b3125f0",
+    "name": "Kettlebell Lateral Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_272cf78230746d49",
+    "name": "Kettlebell March",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_461be18c18e7405b",
+    "name": "Kettlebell Marching Farmers Walk",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_9e8d4c03eecf3be4",
+    "name": "Kettlebell Overhead Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_d176bcfb390636f2",
+    "name": "Kettlebell Plank Pull Through",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_654e7ba38c7aa495",
+    "name": "Kettlebell Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_ce9d0b7474d73700",
+    "name": "Kettlebell Press Wind Mill",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_37c10bbf51e9a66f",
+    "name": "Kettlebell Push Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_7ddcfa5310042376",
+    "name": "Kettlebell Push-Up To Renegade Row",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_118a769babcd3455",
+    "name": "Kettlebell Rack/Farmer Carry Combo",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_b850935450a4d314",
+    "name": "Kettlebell Rotational Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_d094a0fbaa63c57e",
+    "name": "Kettlebell Single Arm Push Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_dbeceb2ebe3da583",
+    "name": "Kettlebell Skier Swing",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_00c2c84824552506",
+    "name": "Kettlebell Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_5b52d9d7100bffe5",
+    "name": "Kettlebell Squat Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_f5b52a0daf2da4c0",
+    "name": "Kettlebell Squat Clean Thruster",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_61bdb07800e0324d",
+    "name": "Kettlebell Squat Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_66a9ee2c0f01f311",
+    "name": "Kettlebell Sumo Deadlift High Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_350c19bfc69cf7ac",
+    "name": "Kettlebell Swing",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_cf7f5c5fe6658482",
+    "name": "Kettlebell Swing To Broad Jump",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_5d7ab0d27911422c",
+    "name": "Kettlebell Swing Upright Row",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_9e376c1c2aaced41",
+    "name": "Kettlebell Thruster",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_805576f4e6b81313",
+    "name": "Kettlebell Upright Row",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_cf6d4a33370c39b8",
+    "name": "Kettlebell Windmill",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_d677032088203657",
+    "name": "Kettlebell Z-Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_cef4e8bcea48ebcd",
+    "name": "Kipping Swing",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_4b8ab90e8d9dfe0e",
+    "name": "Knee Supported Foam Roller Windmill",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_93f42d4b92d6cb50",
+    "name": "Knee Terminal Extension Tke",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9a1e7864bbf8801b",
+    "name": "Kneeling Dumbbell Diagonal Chop",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_21457e1c837dbd74",
+    "name": "Kneeling Medicine Ball Throw",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_88e078b1d629463c",
+    "name": "Kneeling T Spine With Shoulder Opener",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_bd21c12de442fc14",
+    "name": "Knees Over Toes Split Squat With Floating Heel",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_1eb263674ec620b8",
+    "name": "Knees To Elbows",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_3623347b2b5cfe45",
+    "name": "Kot Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_acd7a50a65986bc0",
+    "name": "L Chin-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_868cb6f9f7c559a8",
+    "name": "L Sit",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_cad88465518ae24e",
+    "name": "L Sit Hold",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_d16d8942aa76235a",
+    "name": "Lacrosse Ball Pec Smash Per Side",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_858629fd14e733f1",
+    "name": "Landmine Anti Rotation",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_932d83e56556534a",
+    "name": "Landmine Cossack Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_cac32fadd6713f4b",
+    "name": "Landmine Glute Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_89c4a2806fa2ae3c",
+    "name": "Landmine Hack Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_c22248b64fb0317d",
+    "name": "Landmine Kneeling Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_bb9b21701ee6f985",
+    "name": "Landmine Lateral Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_f36bec7e9c2ba1c6",
+    "name": "Landmine Lateral Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_4d1d3680cb1709ba",
+    "name": "Landmine Low Cossack Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_9ad8a42ac380a252",
+    "name": "Landmine Low Handle Cossack Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_8718356eab8c55f6",
+    "name": "Landmine Meadows Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_0fa55335fe248243",
+    "name": "Landmine Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_548689800c63f368",
+    "name": "Landmine Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_0b61e352eb4ffdf1",
+    "name": "Landmine Rotating Press From Ground",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_07bf85cf40f24954",
+    "name": "Landmine Rotation",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_90f7b357394cf7fd",
+    "name": "Landmine Rotation From Squat",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_daf0c645cd103db8",
+    "name": "Landmine Rotation To Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_5ff32c4d63b99373",
+    "name": "Landmine Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_c5b3ba399432e72c",
+    "name": "Landmine Sissy Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_235d064699cdf13a",
+    "name": "Landmine Sit Up",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_fa3b78a1e2f66644",
+    "name": "Landmine Squat + Side Step",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_b3097a1a6e2fe337",
+    "name": "Landmine T Bar Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_e5c853840da62fb0",
+    "name": "Landmine Thruster",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_e49402c830396704",
+    "name": "Landmine Zercher Reverse Lunge + Knee Lift",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_003d4c07328123ea",
+    "name": "Lat Prayer Cable",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_a63933068aed254d",
+    "name": "Lat Prayer Cable Pulldown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_de2896118f44874e",
+    "name": "Lat Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_af818461eca86573",
+    "name": "Lat Pulldown Pronated",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_a270bb1d71138739",
+    "name": "Lat Pulldown Pronated Grip",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_80148a2ef03c2e0f",
+    "name": "Lat Pulldown Supinated Grip",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_7b1b94f1c095f6fe",
+    "name": "Lat Sweep",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_1f520386094c2641",
+    "name": "Lateral Bound",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_fadc7f62c034f438",
+    "name": "Lateral Bound To Box Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_3f3b6dd3d117a3dc",
+    "name": "Lateral Box Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_7ca046b905345dbd",
+    "name": "Lateral Cable Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_215bf2a4381e245e",
+    "name": "Lateral High Knees",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_09d73f14086cdb23",
+    "name": "Lateral Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_cb2c27534863e87a",
+    "name": "Lateral Lunge Sp",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_7593fe52f20ed065",
+    "name": "Lateral Neck Flexion Off Bench",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ce6709936ea10839",
+    "name": "Lateral Pogos",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_5bbe8b234f81f13b",
+    "name": "Lateral Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_0085307f83659389",
+    "name": "Lateral Short Run",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_f49e4017f4bc846a",
+    "name": "Lateral Short Shuffle",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_64a32f78750b0a6e",
+    "name": "Lateral Sled Drag (Moderate)",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_68cf706e23ce75b3",
+    "name": "Lateral Sled Drags",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_85234cf842da7e23",
+    "name": "Lateral Slides",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_3c69a62bae5aaef7",
+    "name": "Lateral Squat With T Spine Flow",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_db0f9b55cb759a54",
+    "name": "Lateral Step Down + Hip Hike",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_af35995b9088e23e",
+    "name": "Lean Away Lateral Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6273a71f2b271273",
+    "name": "Leg Curl Machine",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ca2bcb6b4d696f82",
+    "name": "Leg Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_86eab03c08f38115",
+    "name": "Leg Extension Unilateral",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_4b8ea6d1222eeb4e",
+    "name": "Leg Press",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_1a010fdda7b44296",
+    "name": "Leg Press Machine (Quad Focus)",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_b5550db0d1277770",
+    "name": "Leg Press Or Heavy Dumbbell Goblet Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_7f9ee21ce058fd0a",
+    "name": "Leg Swing",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_a4d9943d9c6314cb",
+    "name": "Legs Up The Wall + Breathing",
+    "category": "Preparation / recovery",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "preparation_recovery"
+  },
+  {
+    "id": "exercise_3a4d0090ee8aad34",
+    "name": "Lizard Stretch E/Side",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_9a8bc70885eb85f4",
+    "name": "Loaded Glute Ham Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_0c8c314bc09b673b",
+    "name": "Low Bar Muscle Ups",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_5e86a6b06523037c",
+    "name": "Low Bar Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_2e7b8f6f7ba27e34",
+    "name": "Low Cable Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_100e9a0d83b42b2b",
+    "name": "Low Handle Sled Push",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_195d338eefd95727",
+    "name": "Low Incline 1 1/4 Dumbbell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_07d9f3d18cc07a42",
+    "name": "Low Incline Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_cfb633a20f187689",
+    "name": "Low Incline Dumbbell Flye",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_219bebf9d757e707",
+    "name": "Low Incline Dumbbell Triceps Kickbacks",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ce657a96edbcbf0a",
+    "name": "Low Pogo Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_e3aff966175630ac",
+    "name": "Lu Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_b451d79c0bd82fb5",
+    "name": "Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_0731eb71ffebe1e0",
+    "name": "Lunge Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_7acc297e81f7b519",
+    "name": "Lunge Lateral Reach",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_5d2bea2914387c90",
+    "name": "Lunge Matrix",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_b791e40df3fcbe47",
+    "name": "Lunge Rhythm Hop",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_1e4ead63c37f6e83",
+    "name": "Lunge Walk",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_5c83355ebad62488",
+    "name": "Lunge Walking + Rhythm",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_0e046373566ac9a3",
+    "name": "Lunge With Rotation",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_37ebe01305dbe4b6",
+    "name": "Lunge With T Spine",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_09acd33c46d1d834",
+    "name": "Lying Hamstring Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_7dee0d6687e1273f",
+    "name": "Lying Leg Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_41c2fb9e9d4cd09f",
+    "name": "Lying Leg Raise On Bench",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_bd838e60f3f857b8",
+    "name": "Machine Assisted Bar Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_5b1b53f0a2805af8",
+    "name": "Machine Assisted Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_c1e6db4193e3f58d",
+    "name": "Manmaker",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_27ea3212cbe0849f",
+    "name": "Manual Ankle Dorsiflexion Mobilization",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_c66e007505023c89",
+    "name": "Max Distance Bounds",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_0c462a8bd9c1a8a4",
+    "name": "Max Effort Vertical Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_7f981f7fc4ea37ff",
+    "name": "Meadows Landmine Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_1ca300bc0eb51405",
+    "name": "Meadows Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_67cd09c7ab0fb4fe",
+    "name": "Meadows Row Landmine",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_98f636658b58145b",
+    "name": "Medial Delt Massacre 3.0",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_13ce26e3562b5a29",
+    "name": "Medicine Ball Carry (Or Odd Object)",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_633028497d4f14d4",
+    "name": "Medicine Ball Chest Pass",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_febbd62a56fc89e6",
+    "name": "Medicine Ball Chest Passes (Throws)",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_07d020f0240be3e7",
+    "name": "Medicine Ball Jumping Chest Pass",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_d4d0c128b62ff0fd",
+    "name": "Medicine Ball Knee Lifts",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_43e8aefd763fee58",
+    "name": "Medicine Ball Loaded Glute Ham Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f55bd603c9a1e876",
+    "name": "Medicine Ball Rainbow Throw",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_c6354cc78cb894dc",
+    "name": "Medicine Ball Rotation Throw",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_927df2aeefa46e7d",
+    "name": "Medicine Ball Rotational Throw",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_afde1cfa4e5a365a",
+    "name": "Medicine Ball Skater Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_2bcee3cbdd140f2a",
+    "name": "Medicine Ball Slam",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_8b2ef1e42503cdd5",
+    "name": "Medicine Ball Slam Sp",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_8d19ecc84fb880e3",
+    "name": "Medicine Ball Sq Throw",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_cb7d659fc3f054dd",
+    "name": "Medicine Ball Throw From Bench",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_09b54bafe0152aac",
+    "name": "Medicine Ball Twist",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_8799a3900c8d7b76",
+    "name": "Medium Grip Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_0867bde0a1837a64",
+    "name": "Medium Grip Floor Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_c6265435d2f60d07",
+    "name": "Metcon",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_31501d878853975d",
+    "name": "Mid Thigh Iso Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_ea44bd03da6a31cf",
+    "name": "Military Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_a3e1d55936958b2d",
+    "name": "Mixed Grip Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_c6be732c39e06660",
+    "name": "Mobilitywod Fire Up The Upper Back",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_d0ba1f8722560e9e",
+    "name": "Mobilitywod Game Changer",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_3310d7cbde28f6a0",
+    "name": "Mobilitywod Knee Pain Fix",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_97d73744f7505ef3",
+    "name": "Mobilitywod Low Back Relief",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_5380e802d77a203a",
+    "name": "Mobilitywod Unlock Your Ankles",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_cf6f05f00e795194",
+    "name": "Modified Scorpion Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_67617d4ef852584e",
+    "name": "Monster Walks",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_c4863ffc4d2923d4",
+    "name": "Mountain Climbers",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_59693b3e75fbb8e9",
+    "name": "Multi Direction Ab Wheel",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_4fb9d44dfbf9f01f",
+    "name": "Multiple Pause Front Squat (Chains Optional)",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_72829726f7150098",
+    "name": "Muscle Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_cbb084ba2d7ed500",
+    "name": "Muscle Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_9f498ad468165f57",
+    "name": "Narrow Grip Lat Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_6fbe82bb810a6af6",
+    "name": "Narrow Grip Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_8d38afa310131b4e",
+    "name": "Narrow Stance Elevated Heel Goblet Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_e7161ec2dd46b3bd",
+    "name": "Neck Bridge On Bench",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_1146cfd0d6746f25",
+    "name": "Neck Rotation",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_0d6b0d2f1f947d70",
+    "name": "Negative Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_5c494e24da249b1c",
+    "name": "Neutral Chest To Bar Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_11c45e17e5b818fb",
+    "name": "Neutral Grip (Palms Facing Inward) Dumbbell Floor Press 8Rm",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_5791e6284b0e2275",
+    "name": "Neutral Grip Dumbbell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_057c64ddc77bff88",
+    "name": "Neutral Grip Lat Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_e5f291fc3b439c89",
+    "name": "Neutral Grip Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_71cdbed895d1ab44",
+    "name": "Neutral Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_247d0317e6c14911",
+    "name": "No Cheat Dumbbell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f8ebf774f4eafcbf",
+    "name": "No Lockout Front Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_8073765d1dc842c4",
+    "name": "No Push-Up Burpees",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_ceb266576a3473b5",
+    "name": "Nordic Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_c96890b46d6e1faa",
+    "name": "Off Set Cat Camel",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_94ae9affdd971282",
+    "name": "Offset Farmer Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_04febd52747ea396",
+    "name": "Offset Kettlebell Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_f4e88b26f5d04eb4",
+    "name": "Offset Kettlebell Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_a4fa393df1728316",
+    "name": "Oh Kettlebell Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_7db9f90a43849a06",
+    "name": "Oh Kettlebell Sit Ups",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_f12502049dd65aae",
+    "name": "Old School Audinwood Core Circuit (Core)",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_06803b0889e1bd97",
+    "name": "Overcoming Calf Raiser March",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_5e32593975efa8ba",
+    "name": "Overcoming Iso Barbell Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_add4554b05390430",
+    "name": "Overcoming Isometric Single Leg Calf Raise Hold",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_bc44ecd81fb12aba",
+    "name": "Overhead + Front Rack Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_adac52da1807e4ce",
+    "name": "Overhead Carry/Front Rack Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_dcfcacd3e9d1bf50",
+    "name": "Overhead Dumbbell Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_70762c25bcda5d71",
+    "name": "Overhead March",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_742ccae895f8ca0d",
+    "name": "Overhead Mobility",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_e8b1a3bed452ce40",
+    "name": "Overhead Press Warm Up",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_cdfee85e2c3d783c",
+    "name": "Overhead Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_86314e077618ef27",
+    "name": "Overhead Triceps Rope Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d8d60416c347ef76",
+    "name": "Overhead Walking Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_f6d63653fe157561",
+    "name": "Parallette L Sit Hold",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_f5dae15f5085ef7e",
+    "name": "Parallette L Sit Holds Feet Above 3 45Lb Bumper Plates 2 Minutes Total Time",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_0cce5c1e0d5bb772",
+    "name": "Parallette Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_db3531fec8e771b9",
+    "name": "Parasympathetic Breathing",
+    "category": "Preparation / recovery",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "preparation_recovery"
+  },
+  {
+    "id": "exercise_4efc95b7d2883805",
+    "name": "Passive Hang",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_df1d0edce1e6ef07",
+    "name": "Pause At The Knee Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_c5ef999fa3dd5b94",
+    "name": "Pause Back Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_6d73a5d7b339eb15",
+    "name": "Pause Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_eec8d7c3e2c2c8d6",
+    "name": "Pause Front Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_363f9e595456de50",
+    "name": "Pause Front Squat Against 25% Hanging Chains",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_acb18746c41876ed",
+    "name": "Pdl Mobility Protocol",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_c05cb9adb8d1e865",
+    "name": "Pdl Plyometrics Protocol",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_3bc3d2ac57b9dc61",
+    "name": "Pec Deck",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_fce2ead4704e52ee",
+    "name": "Pec Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_a318fab5a1c4d163",
+    "name": "Pec Stretch Against Wall",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_be778ec95a41d5c4",
+    "name": "Pelvic Tilt From Plank",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_3726e4008c50c1a1",
+    "name": "Pendlay Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_4ecd5c6cfaaa3ef2",
+    "name": "Pendlay Row + Drop",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_8840ae0bbe532fce",
+    "name": "Physioball Crunch",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_8725553b9495b0fc",
+    "name": "Pick Your Poison Intervals",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_6c08f32e73a5ed67",
+    "name": "Pigeon Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_792fd11b647357ad",
+    "name": "Pike Handstand Push-Up",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_9a508d714c315ea3",
+    "name": "Pike Leg Lift Over",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_5cd91ba18c75289a",
+    "name": "Pike Push-Up",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_c80bf876dd9ec503",
+    "name": "Plank",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_ba2cca7edeb8686a",
+    "name": "Plank Jack Push-Up",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_ab6ce182f2442e63",
+    "name": "Plank Pull Through",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_781ceeb4eee3e411",
+    "name": "Plank Row",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_3f10cf67e788cf6b",
+    "name": "Plank Shoulder Taps",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_582795dc451774f3",
+    "name": "Plank To Reverse Shuttle",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_a09d2f797f88bfa6",
+    "name": "Plank Weighted Plate",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_6fa3cf1ed84171f0",
+    "name": "Plate Deficit Lunge Dumbbell",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_303f80454e7d9419",
+    "name": "Plate Front Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_da0d31328ccf36ae",
+    "name": "Plate Pinch Around The World",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_fa67c86536d5707c",
+    "name": "Plate Pinch Grip Hold",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8496939da5190f4a",
+    "name": "Plate Pinches With Max Weight *Use Either Bumper Plates Or Smooth Sides Of Metal Plates (2 Per Hand Facing Inward)",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_47c7dbb0d22f342f",
+    "name": "Plate Wrist Curl (Grip)",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_18e8cce76aa133e7",
+    "name": "Platz 1.5X Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_2ba03ed53ec5c4af",
+    "name": "Plyo Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_c01e7a171a036ddc",
+    "name": "Plyo Push-Up To Bench",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_d96b65a072750cbd",
+    "name": "Pogo 2 Forward 1 Back",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_fe53775cf17d3c1d",
+    "name": "Pogo Hip Switch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_32765b5939be43e1",
+    "name": "Pogo Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_bd7ce3171dd3523d",
+    "name": "Pogo Jump (Plyos)",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_c44ede211bf42ef7",
+    "name": "Pogo To Vertical Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_500edd20ab51a482",
+    "name": "Pogos",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_44a8ef7376d25921",
+    "name": "Poliquin Lateral Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_61cda339a0a36c53",
+    "name": "Poliquin Lateral Raise Dumbbell",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_28e889b5238f5ada",
+    "name": "Poliquin Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_1967a94dc3f6283d",
+    "name": "Posterior Hip Capsule Mobilizations",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_2cd4e1619250ead7",
+    "name": "Powell Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_69c8345dd0461efa",
+    "name": "Power Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_1c1fe6f7f5173371",
+    "name": "Power Clean + Power Jerk",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_17eee3946f9d86a0",
+    "name": "Power Clean + Push Jerk",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_6a44eddc28dfd75d",
+    "name": "Power Clean And Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_fa34a42cef25b4e5",
+    "name": "Power Skips",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_f717f6a6322ea53f",
+    "name": "Power Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_e213578fdb80bd1c",
+    "name": "Power Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_8b0b8a9c66b8314b",
+    "name": "Preacher Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_460e5fd72e1ff84c",
+    "name": "Preacher Hammer Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d153b8c62ace7ddb",
+    "name": "Pronated Chin-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_63a17eeb19838c76",
+    "name": "Pronated Grip Barbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_85b10ca32c3a806f",
+    "name": "Pronated Grip Inverted Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_9f7aa53b3e55df61",
+    "name": "Pronated Grip Ring Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_49e48d31db3b73f7",
+    "name": "Pronated Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_879146f81310c009",
+    "name": "Pronated Strict Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_067b116d1dee9c7e",
+    "name": "Prone (2 Up 1 Down) Hamstring Curl Machine",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_5cc172a781853bd4",
+    "name": "Prone Dumbbell Iso Alternating Posterior Flyes",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_c653b65f7d6ddc93",
+    "name": "Prone Dumbbell Posterior Flyes",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_b18ceb642c3ea44b",
+    "name": "Prone Lateral Raise Triset",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6e35acf96c37bab9",
+    "name": "Prone Machine Hamstring Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_87f70a71c12295d5",
+    "name": "Prone Rear Lateral Raise Pronated Grip",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_59cc743c353386d1",
+    "name": "Prone Scarecrow Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9d010ed94f7da787",
+    "name": "Prone Trap Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8ae4be4b14fd3479",
+    "name": "Pull Through",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_cbcd1dde3d8b0ecc",
+    "name": "Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_b02bb495f8080a30",
+    "name": "Pull-Up Bar Dead Hang",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_ce8f5bebca21b565",
+    "name": "Pull-Up Cluster",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_82a49d688633537e",
+    "name": "Pull-Up Isometric",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_41d354b4f5996b67",
+    "name": "Pull-Up Or Inverted Row",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_28dc7671da5b569f",
+    "name": "Pull-Up Supinated",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_5d2b863263fcbbad",
+    "name": "Pull-Up Warm Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_49a4f758449dd7e0",
+    "name": "Push Back Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_7b7319da646951ee",
+    "name": "Push Jerk",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_c645f0f4028c01fa",
+    "name": "Push Jerk Barbell",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_92a34e89076c048e",
+    "name": "Push Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_21c53de948dfd33d",
+    "name": "Push Press Barbell",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_3d01b2aad3491eb6",
+    "name": "Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_e26fcc883a5b7785",
+    "name": "Push-Up + Renegade Row",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_1304572dfa4d3529",
+    "name": "Push-Up Iso Hold",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_284897095a763c40",
+    "name": "Push-Up On Kettlebells",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_f5a01c6d1595d7dd",
+    "name": "Push-Up Plank To Elbow Plank",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_48279cc4e6f12c80",
+    "name": "Push-Up Slider",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_657eb4178ce59b52",
+    "name": "Push-Up To 2 Board (Or Board That Is 1/2 Rom)",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_96c004662222a508",
+    "name": "Push-Up To Single Arm Support",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_183c58f756da049e",
+    "name": "Pvc Arm Circles",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_9cffb0f1023417f7",
+    "name": "Pvc Back Rack Rotation",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_1f7b5fb69a802254",
+    "name": "Ql Extension",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_1a23b5005b8d127d",
+    "name": "Quad Side To Side Ql Reach",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_b58e450b413bb59f",
+    "name": "Quadruped Plank Shoulder Tap",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_e3cbfcb6b1814b9c",
+    "name": "Quick Full Body Warm Up",
+    "category": "Preparation / recovery",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "preparation_recovery"
+  },
+  {
+    "id": "exercise_9111896a7c5b5511",
+    "name": "Rack Neck Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_509202a255f64ef7",
+    "name": "Rack Skullcrusher",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_0320b99634ea15d0",
+    "name": "Reaching Dead Bug",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_17b5eb237bc01d5f",
+    "name": "Reactive Medicine Ball Chest Pass Into Floor",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_2164c4702d765c78",
+    "name": "Rear Delt Flyes",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f7881b16504907a6",
+    "name": "Rear Foot Elevated Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_59dee84c290e645d",
+    "name": "Rear Foot Elevated Split Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_6e52a45c5cbc49b3",
+    "name": "Rear Foot Supported Single Leg Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_4b245f9799dcfad8",
+    "name": "Rear Rack Walking Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_5913881ba7d9571d",
+    "name": "Rebound Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_2e09d5210db84177",
+    "name": "Rest",
+    "category": "Preparation / recovery",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "preparation_recovery"
+  },
+  {
+    "id": "exercise_88e6a6ee47e2474b",
+    "name": "Rest Pause Incline Dumbbell Bench (With Explanation)",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_75840568cf30ae7a",
+    "name": "Reverse Barbell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6999a416526e3a4e",
+    "name": "Reverse Cable Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f8b83a6887ac3048",
+    "name": "Reverse Crunch",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_0ecca46443ec0cf7",
+    "name": "Reverse Crunch + Dead Bug",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_185b430a85546fd9",
+    "name": "Reverse Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_580917a1c41b25c8",
+    "name": "Reverse Flys",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_fb96142b09ecc3ef",
+    "name": "Reverse Hyper",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_58e07ab89a327115",
+    "name": "Reverse Hyper @70% Of Your 1Rm Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_6dab9dd92a4f6d30",
+    "name": "Reverse Hyper Leg Curl",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_30870bdfeb41b882",
+    "name": "Reverse Hyperextension",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_a1388d64284972e1",
+    "name": "Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_cd6253f5f091eec1",
+    "name": "Reverse Lunge From Pins",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_ac0b5550630c3040",
+    "name": "Reverse Lunge Rotation",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_f1df196046b3094d",
+    "name": "Reverse Medicine Ball Throw",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_1326a699a150aecc",
+    "name": "Reverse V Ups On Rower (Seat)",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_e29c3ce6320d64f0",
+    "name": "Reverse Zottman Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_06dfa05ef338a0c4",
+    "name": "Rfess Foot Strike",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_a5f60353caf09bd7",
+    "name": "Ring Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_420951cc62ee6556",
+    "name": "Ring Face Pull",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_05e6e1a6a54ad5c2",
+    "name": "Ring Plank",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_e76e650d6678bc42",
+    "name": "Ring Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_8f60cd18b0a579bb",
+    "name": "Ring Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_2cf3724b68b39fa0",
+    "name": "Ring Reverse Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_aa24291dc64a59de",
+    "name": "Ring Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_75bb9fe11de474e8",
+    "name": "Ring Row Isometric Hold",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_55e809ad6643c0b6",
+    "name": "Ring Row With Rotation",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_1085d13be641a23a",
+    "name": "Ring Support Hold",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_9e33b0d7bdb64b18",
+    "name": "RNT Single Leg Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_b45539f7a410911f",
+    "name": "Rollback Triceps",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_47247493b41663e9",
+    "name": "Rolling Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_bfaf7f13723533bb",
+    "name": "Roman Chair Leg Raise",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_fe30370dca93f326",
+    "name": "Roman Chair Side Bend",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_5f238ccaee1b13a4",
+    "name": "Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_1e7f4bde907d5aaa",
+    "name": "Rope Climb",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_e2b1064a918919ce",
+    "name": "Rope Hammer Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d698ae653bf36cd4",
+    "name": "Rope Inverted Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_1ee3bc37c58ec8eb",
+    "name": "Rope Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_5e6c1da7a3e14d86",
+    "name": "Rope Pushdown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_874c1a2d106a03b4",
+    "name": "Rope Triceps",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_7fccee825b601bf5",
+    "name": "Rotated Shin Box Iso With Tennis Ball",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_ec5662e38d7483f0",
+    "name": "Rotating Pike Twist To Cobra Flow",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_369161665130daf7",
+    "name": "Rotating Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_35d8ab2a10d30090",
+    "name": "Rotational Ball Slam",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_3933b8ec347c4287",
+    "name": "Rotational Kettlebell Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_c4e1e4af76473ece",
+    "name": "Rotational Kettlebell Clean From Floor",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_d20d5c450612af51",
+    "name": "Rotational Lateral Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_2f40736550d7d418",
+    "name": "Rotational Rfess",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_62345a398bd8d06b",
+    "name": "Row Erg",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_22f1d31ca19e294c",
+    "name": "Row Pendlay",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_4bfa5e819e637fe1",
+    "name": "Row To Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_98178edd430f2dd8",
+    "name": "Rower",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_27f8d2066a68086e",
+    "name": "Rower Hamstring Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_bec178298ae0fe56",
+    "name": "Rowing",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_7f2e3ae15931c9fb",
+    "name": "Rowing 2K Time Trial",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_8b6fd162f81b869a",
+    "name": "Ruck March",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_1b64ffcca6820666",
+    "name": "Rucking",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_acba25512100f80b",
+    "name": "Run",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_c071cf5f5ed6f884",
+    "name": "Running",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_1177a97c5f191d81",
+    "name": "Russian Dip With Weight Vest Complete 60 Reps In As Few Sets As Possible",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_2080c0f2ea5a12dd",
+    "name": "Russian Kettlebell Swing",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_2588800a7aa02583",
+    "name": "Russian Twist",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_9f4265cfdce7af13",
+    "name": "Safety Bar Good Morning",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_b7a9eb90cdd84322",
+    "name": "Safety Bar Supported Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_9f022b983144a026",
+    "name": "Safety Squat Bar Box Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_b9da6a5d0645e4e3",
+    "name": "Sagittal Plane Dumbbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_2c98483ff3808a0c",
+    "name": "Sandbag Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_e2e90787a044fb33",
+    "name": "Saxon Side Bends",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_747bd1b5e74c635e",
+    "name": "Scap Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_1fb082e2dd4ef23a",
+    "name": "Scorpion Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_7cad03576de0f1e8",
+    "name": "Seal Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_7a49038ac8684d33",
+    "name": "Seated Arnold Dumbbell Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_3280aadd3b4ded06",
+    "name": "Seated Barbell Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_87b8442876ed60a6",
+    "name": "Seated Bent Over Rear Delt Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_7c09f1bd64ea031b",
+    "name": "Seated Box Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_42e47dbc0deb2573",
+    "name": "Seated Cable Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_87084109398df2fe",
+    "name": "Seated Calf Raise Machine",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_28ae64893369ee6c",
+    "name": "Seated Dumbbell Arnold Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_ee09daf866a9f8e9",
+    "name": "Seated Dumbbell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_646e2e7d6e4cb2ee",
+    "name": "Seated Dumbbell Good Morning",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_75a7e8abe8f7035e",
+    "name": "Seated Dumbbell Power Clean",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ea7eda424ff5b7b3",
+    "name": "Seated Dumbbell Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_52c05b3808f8f9f2",
+    "name": "Seated Dumbbell Shoulder Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_2da95fe0bd14b3c4",
+    "name": "Seated Dynamic Box Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_4718757015c4aae1",
+    "name": "Seated Dynamic Box Jump With A Vest",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_e855fdd695fb4e09",
+    "name": "Seated Dynamic Medicine Ball Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_5918e9c1bdda1447",
+    "name": "Seated External Rotation",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_544f288804860b91",
+    "name": "Seated Forward Fold",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_ed443858b861acff",
+    "name": "Seated Hamstring Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_163da041594610d0",
+    "name": "Seated Incline Dumbbell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_99d18e56b9955f05",
+    "name": "Seated Leg Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d543867c70c2d704",
+    "name": "Seated Military Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_5c2a5fdef4fec8ef",
+    "name": "Seated Overhead Dumbbell Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_71c61086a7b3a048",
+    "name": "Seated Saddle Pose",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_b21926006e11847f",
+    "name": "Seated SSB Good Morning",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_eebaf32de06181c0",
+    "name": "Seated Straddle Pose",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_a3eef844808abf31",
+    "name": "Seated Straddle Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_5e4735f7744edb9a",
+    "name": "Seesaw Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_a872e51a3d1dfc02",
+    "name": "Segmented Power Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_952f5a009ba66cdc",
+    "name": "Serratus Crunch",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_d40772936c6e7009",
+    "name": "Serratus Iso Hold",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_52fe6ed90ead494a",
+    "name": "Shin Box",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_97f24106eb88f82d",
+    "name": "Shin Box Fold With Ir Liftoff",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_cf39c4794a192f0d",
+    "name": "Shin Box Reach And Row",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_554050600ca092c9",
+    "name": "Shoulder Angels",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_cbe3facc4efb40c1",
+    "name": "Shoulder Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_f52dfc293c5dda52",
+    "name": "Shoulder Press Dumbbell (Seated)",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_fdcfa0b0826606f0",
+    "name": "Shoulder Press Off High Pins",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_8a4ae5233a883c5e",
+    "name": "Shoulder Prone Isos",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ca867df422c99037",
+    "name": "Shoulder Supported Sl Opposite Hold Glute Bridge",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_d0a3ef90c9ccccda",
+    "name": "Shoulder Taps",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_b40e97064b93731a",
+    "name": "Shuttle Sprints",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_6d7e9c4acc1d6cdd",
+    "name": "Side Lunge Low Glide",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_a8df3cc1e7b5da25",
+    "name": "Side Lying Abduction",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_11381c867b7a9ceb",
+    "name": "Side Plank",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_31d04ecaea227e01",
+    "name": "Side Plank Clamshells",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_a4ef87358ed7d425",
+    "name": "Side Plank Hip Lift",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_11788ba29e81a54e",
+    "name": "Side Plank Hip Tap",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_12f7fe7547c1b4dc",
+    "name": "Side Plank Hip Thrust",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_54869aab17299dd3",
+    "name": "Side Plank Rotation",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_e1c2a3923d28eec1",
+    "name": "Side Plank Row",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_5bc898657575e34c",
+    "name": "Side Plank Straight Arm",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_c7ca0c4848a08d91",
+    "name": "Side Plank W/ Hip Abduction",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_453690b6123c1f6f",
+    "name": "Side Step Kettlebell Swing",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_0dfda05685e0282f",
+    "name": "Side To Side Landmine Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_3ff5a4c81aae5288",
+    "name": "Side To Side Medicine Ball Slam",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_ae3213e71e4fe95d",
+    "name": "Single Arm Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_1f4804f42d6a950e",
+    "name": "Single Arm Dumbbell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_04ee72bf13670634",
+    "name": "Single Arm Dumbbell Neutral Grip Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_437be5b4ea4a8cf1",
+    "name": "Single Arm Dumbbell Overhead Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_f2eff26f45f3926b",
+    "name": "Single Arm Dumbbell Overhead Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_3b0a9276f756f23c",
+    "name": "Single Arm Dumbbell Push Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_554dd0123e6f9d45",
+    "name": "Single Arm Dumbbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_e14d856ed6d50053",
+    "name": "Single Arm Dumbbell Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_0f43018a7426e5a4",
+    "name": "Single Arm Dumbbell Upright Row",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6fe982afad597f84",
+    "name": "Single Arm Farmer Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_5bdcda8bbae8827a",
+    "name": "Single Arm Farmer Walk",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_9942f71a1c64b4e2",
+    "name": "Single Arm Front Rack Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_b1308002ec541cfc",
+    "name": "Single Arm Front Rack Curtsy Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_f3f697c265ec60cb",
+    "name": "Single Arm Kettlebell Clean + Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_9e3954280988e70b",
+    "name": "Single Arm Kettlebell High Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_363deb10f4ce7bd0",
+    "name": "Single Arm Kettlebell Push Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_2c6cad289732d232",
+    "name": "Single Arm Kettlebell Row With Rotation",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_d387351dc772be56",
+    "name": "Single Arm Kettlebell Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_436feffe1ef91183",
+    "name": "Single Arm Kettlebell Swing",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_4e6aecf2c693f94d",
+    "name": "Single Arm Kettlebell Thruster",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_23cc3ad900b846d8",
+    "name": "Single Arm Medicine Ball Toss",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_184e3a002df38866",
+    "name": "Single Arm Oh Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_8082c0b4d6476674",
+    "name": "Single Arm Overhead Box Opener",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_889d37e10d45a056",
+    "name": "Single Arm Overhead Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_74d501d0cf43d9a8",
+    "name": "Single Arm Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_d0ebb31ee5bb4b23",
+    "name": "Single Arm Ring Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_049c7a201d75d5d0",
+    "name": "Single Arm Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_bf1ee5d92d065b8f",
+    "name": "Single Arm Suitcase Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_fe0b43d821749bd8",
+    "name": "Single Arm Supported Dumbbell Row/W Rotation",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_37d3aef73510c774",
+    "name": "Single Dumbbell Goblet Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_bb16a154cb547a50",
+    "name": "Single Hinge To Hip Flexor Flow From Elevated Surface",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_42e525a42c01498f",
+    "name": "Single Leg Assisted Pendulum Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_669a377f39280fa5",
+    "name": "Single Leg Barbell Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_6a1db6d8c0d0dd39",
+    "name": "Single Leg Barbell Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_89c056afe46b179a",
+    "name": "Single Leg Bounds",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_dfb5c9596a27d057",
+    "name": "Single Leg Broad Jump Rebounding",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_15ca2da273851fd3",
+    "name": "Single Leg Cable Hip Abduction",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_5df918ea48814ac7",
+    "name": "Single Leg Depth Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_4a8bb736e0c994fc",
+    "name": "Single Leg Donkey Kicks",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_b770c9bc132d5fa7",
+    "name": "Single Leg Dumbbell Deficit Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_4e8fedb5e7914354",
+    "name": "Single Leg Forward Fold E/Side",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_4d036d08810224f2",
+    "name": "Single Leg Glute Bridge",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_37b90359c77ac242",
+    "name": "Single Leg Glute Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_53516a6b9af7466f",
+    "name": "Single Leg Hamstring Bridge On Foam Roller",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_051bec7d7fb3c39f",
+    "name": "Single Leg Hip Flexor Sit Up",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_c4c23efff77d39f1",
+    "name": "Single Leg Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_da95ab333d8e3ab5",
+    "name": "Single Leg Hop",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_4cb0805a5e8ab457",
+    "name": "Single Leg Hop Low Hurdle",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_ad4783edac3bbf74",
+    "name": "Single Leg Hop To Box",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_afba9db4df9912c7",
+    "name": "Single Leg Isometric Quad Extension At 90 Degrees",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d6cf999060a735cb",
+    "name": "Single Leg Kettlebell Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_3da47bdca554444d",
+    "name": "Single Leg Kettlebell Romanian Deadlift + Row",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_9b8087266336b596",
+    "name": "Single Leg Landmine Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_2add2e456e7793b3",
+    "name": "Single Leg Lateral Box Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_83505a4e486646b3",
+    "name": "Single Leg Leg Press",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_3db9f1bba571bc9a",
+    "name": "Single Leg Multi Directional Plate Hop",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_c512dcedffcaada3",
+    "name": "Single Leg Offset Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_ed0768a4c261da9e",
+    "name": "Single Leg Pallof Press",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_cbbe75bbe828eece",
+    "name": "Single Leg Plank",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_9dba20e5b052b89c",
+    "name": "Single Leg Pogo Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_07f62b6f33d9bf09",
+    "name": "Single Leg Reverse Hyper",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_294d7f6ff6b73aea",
+    "name": "Single Leg Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_9dcb38407e84896b",
+    "name": "Single Leg Romanian Deadlift (Two Dbs)",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_d8505f78f659b0d1",
+    "name": "Single Leg Skater Lateral Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_45cd05cb3b168e0c",
+    "name": "Single Leg Skater Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_414a24af93f66bf4",
+    "name": "Single Leg Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_0b424548c8570411",
+    "name": "Single Leg Standing Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_49719bd4f89e3b68",
+    "name": "Single Straight Leg Raise (Weighted)",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_0373db4cca3e9679",
+    "name": "Single Under",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_d8f92e1ec50d9810",
+    "name": "Single Under Skipping",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_9806598025dcf0a8",
+    "name": "Sit Up",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_dba83a4a9e1d9534",
+    "name": "Skater Hop Sp",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_44811247103de3c6",
+    "name": "Ski Erg",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_42e93b9bb77d8a73",
+    "name": "Skip",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_4d02dec74400504c",
+    "name": "Skull Crusher",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6c58ed572e16fcae",
+    "name": "Sl Bound To Broad Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_de246a848ff6ec06",
+    "name": "Sl Hurdle Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_a4f30ce711836bf3",
+    "name": "Sl Romanian Deadlift Plate Switch To Overhead",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_a4fd8ad0d63d0dc7",
+    "name": "Sl Swing",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_659a8b0cdd4914fb",
+    "name": "Slant Board Suitcase Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_c64b49c4a9edfd6d",
+    "name": "Sled Advance",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_8669abc033668641",
+    "name": "Sled Backpedal Iso Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_e5924c41ef7bb874",
+    "name": "Sled Drag",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_e94d27bcf236cd62",
+    "name": "Sled Drag 400 Meters Backwards (@25% Of Dl 1Rm) Holding 20/30Lb Wall Ball In Front Rack",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_aea32f16d4fa6f67",
+    "name": "Sled Face Pull",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_d976fcd24d07b9ed",
+    "name": "Sled Oh Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ef726b4c4fbf8076",
+    "name": "Sled Push",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_532fe6488827b318",
+    "name": "Sled Push Powerwalk",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_9cb7fd6f648ec5f8",
+    "name": "Sled Push Sprint",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_5c47a279232e3bf1",
+    "name": "Sled Rope Face Pull",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_5ff00d9cb6cc43de",
+    "name": "Sled Rope Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_4d142cf4cf8d060c",
+    "name": "Sled Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_79bfeab3c2446258",
+    "name": "Sled Sprints",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_a0c20e516b78f7e4",
+    "name": "Sledpull Farmer Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_6d41a34330a651f1",
+    "name": "Sleeper Stretch Isometric",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_8066e3f4d3c333fe",
+    "name": "Slider Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_c62c74b98aca22d7",
+    "name": "Slight Decline Dumbbell Bench Neutral",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_a5ccd9bc7c454090",
+    "name": "Slight Incline Barbell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_1f692cf89271931c",
+    "name": "Slight Incline Dumbbell Neutral Bench",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_555626f09072fb37",
+    "name": "Slight Incline Football Bar Bench With Chains",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_24b79eb81d87c80e",
+    "name": "Slight Incline Pronated Dumbbell Bench",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_7e7293062f011512",
+    "name": "Slight Pause Front Squat With Chains",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_ee723752e5de69e6",
+    "name": "Small Box Rebound Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_283743b43fcda698",
+    "name": "Smith Jm Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_c18503641301a8cc",
+    "name": "Smith Machine Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_b227785f1210185c",
+    "name": "Smith Machine Shrugs",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_e2573f492189bb08",
+    "name": "Smr Pecs Lats Triceps",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_23c504571a809899",
+    "name": "Snake Sprints",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_6cd512a819ae26ee",
+    "name": "Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_9456c17f7a9d63dc",
+    "name": "Snatch Balance",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_c2a539b8907e79a3",
+    "name": "Snatch Grip Barbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_7f04153068640008",
+    "name": "Snatch Grip Behind Neck Push Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_5d67277a7911d190",
+    "name": "Snatch Grip Behind The Neck Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_5a155697f7d64b61",
+    "name": "Snatch Grip Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_014c08957393bf78",
+    "name": "Snatch Grip High Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_4b8881a61fd56c89",
+    "name": "Snatch Grip Jefferson Back Extension",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_00059fe891ff6efa",
+    "name": "Snatch Grip Rack Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_db375e83e8df61ca",
+    "name": "Snatch Grip Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_df6a29789c4ab225",
+    "name": "Snatch Grip Shrug",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_1669eb6d06105fbb",
+    "name": "Snatch High Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_bdc06ff739912304",
+    "name": "Snatch Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_b6a025385cc968b4",
+    "name": "Snatch Pull + Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_6e4d09ebc7736605",
+    "name": "Sorensen Hold",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_17686e2abf79b302",
+    "name": "Spanish Squat Isometric Hold With Kettlebell In Goblet Position",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_221a114fd552e209",
+    "name": "Speed Bench",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_4bd4bb485f9de050",
+    "name": "Speed Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_b2fe0cbcff76640f",
+    "name": "Speed Bench Press With Chains",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_6df202cd88672d91",
+    "name": "Speed Conventional Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_d358d185d7ce55a0",
+    "name": "Speed Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8873f1cef1e5a27f",
+    "name": "Speed Lat Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_78f7d182b45382df",
+    "name": "Speed Push Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_7703ff097122dd1e",
+    "name": "Speed Trap Bar High Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_5fe78b38d196e023",
+    "name": "Spider Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6d2d6e7e331d4bfc",
+    "name": "Spiderman Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_46ab67fde155b2a3",
+    "name": "Spiderman W/ Oh Reach",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_66bbeb0efa724e17",
+    "name": "Split Jerk",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_a89b15be9de98da0",
+    "name": "Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_a6796eeea9cde96e",
+    "name": "Split Squat Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_2a22cce78cd38c04",
+    "name": "Split Squat Pin Pull Isometric",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_fec5f47047129e77",
+    "name": "Split Squat Rotational Medicine Ball Slam",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_b67efd971028b77a",
+    "name": "Split Stance Cable Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_5a6704fb136cfb32",
+    "name": "Split Stance Dumbbell Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_a6c66b5f068e9c71",
+    "name": "Split Stance Landmine Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_dbdf8bef13aeb502",
+    "name": "Split Stance Landmine Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_20c215b01f72d1ae",
+    "name": "Split Stance Pallof Iso Hold",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_eef686699281c949",
+    "name": "Spoto Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_187223f396c297f2",
+    "name": "Sprint Build Up",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_521dfd9836561aa1",
+    "name": "Sprint Prep Alternating Switch",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_9c4a535033d89a73",
+    "name": "Sprints",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_c3b08747e3d9ee23",
+    "name": "Squat Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_43cad5f638db78df",
+    "name": "Squat Clean + Squat Clean + Front Squat",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_82790ab8e8882a0c",
+    "name": "Squat Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_cdc62a8e2f442423",
+    "name": "Squat Snatch",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_31efb85aa5163a06",
+    "name": "Squat Snatch + Ohs",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_58342c2b3d20b83e",
+    "name": "Squat To Stand",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_72f4f3221b018a30",
+    "name": "SSB (Or Barbell) Back Loaded Walking Lunge/Good Morning",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_e183b32d7232cfa0",
+    "name": "SSB Box Squat + Chains",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_33605b21ac56c9c4",
+    "name": "SSB Box Squat With Chains To 16” Box",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_8878dc356a7049e1",
+    "name": "SSB Good Morning",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_5a28589c8c28f40d",
+    "name": "SSB Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_84439c524ae373d8",
+    "name": "SSB Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_9bfae96b49802c7c",
+    "name": "SSB Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_e79ab6d2c051274f",
+    "name": "Stability Ball Hamstring Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f78a6ff4d8be0d90",
+    "name": "Staggered Medicine Ball Wall Throw",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_d70df700a85f7d3f",
+    "name": "Staggered Stance Kettlebell Swing",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_0eeea780b063634b",
+    "name": "Stairs",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_26ed34337fa38dac",
+    "name": "Standing Arnold Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_be4b9d532e5a12b3",
+    "name": "Standing Bar Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_0802600230a87628",
+    "name": "Standing Biceps Curl Cable Machine",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_a1d2a1b7536b6c98",
+    "name": "Standing Bradford Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_3f9e704d0b03b451",
+    "name": "Standing Cable Abs",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_1d6675a774883bac",
+    "name": "Standing Calf Machine Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f0bedc5c7f1bf035",
+    "name": "Standing Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_b8fe9c500bbc32ff",
+    "name": "Standing Calf Stretch E/Side",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_8763d6dddc926254",
+    "name": "Standing Curl + Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_314475345452ba1c",
+    "name": "Standing Dumbbell Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_3908f0452ba2fbab",
+    "name": "Standing Dumbbell Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_25545fe13e1da085",
+    "name": "Standing Dumbbell Reverse Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_fd80e186b5376d80",
+    "name": "Standing Landmine Rotation",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_fd74cd6dc8133a21",
+    "name": "Standing Overhead Dumbbell Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_73e44247a4880994",
+    "name": "Standing Overhead Triceps Extension – Cable Machine",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d35b1ce8b612aed4",
+    "name": "Standing Straddle Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_d599e00f70be7664",
+    "name": "Standing Weighted Hip Abduction",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_5119cf796349e693",
+    "name": "Star Plank",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_9722a4c8bb09e94c",
+    "name": "Stationary Bike",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_aeadaae4c8ec3092",
+    "name": "Step Down",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_51eb7d034a098cc0",
+    "name": "Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_0f21783bd56854f7",
+    "name": "Step-Up + Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_5a95bc0ae3e7c528",
+    "name": "Step-Up With Max Dumbbells 3X10 Per Leg 20\"/24\"",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_469fc64d47e4b6d5",
+    "name": "Stiff Leg Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_ab732155a64041f3",
+    "name": "Stir The Pot",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_17a2cb8ab04a4cfe",
+    "name": "Stir The Pot Complex",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_fe7510f2357f5571",
+    "name": "Stop And Go Farmers Walks",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_3868d5a18c53d8a4",
+    "name": "Straight Arm Lat Pulldown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_514ce3a541aaa1a9",
+    "name": "Straight Arm Pulldown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_a5d1b999f6a4e45f",
+    "name": "Straight Bar Box Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_9d3654cc53ada9df",
+    "name": "Straight Leg Bound",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_9f6eb994ef760531",
+    "name": "Straight Leg Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_dd43e238587b6e72",
+    "name": "Straight Leg Raise",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_1219929bd7c1c9f4",
+    "name": "Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_40612267ecd136e7",
+    "name": "Strict Bar Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_3b038d12381957ba",
+    "name": "Strict Bodyweight Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_557d4a6597dd93d4",
+    "name": "Strict Chin-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_bfa7937272a13fe8",
+    "name": "Strict Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_26909101823fbfc1",
+    "name": "Strict Dip (Matador) Weighted",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_340252f118c57650",
+    "name": "Strict Handstand Push-Up",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_f1d0dfb093a7eb4a",
+    "name": "Strict L Pull-Up 25 Reps In As Few Sets As Possible",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_4851fb3937b1c299",
+    "name": "Strict Lower Hanging Leg Lifts",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_37e411426c3c6c3a",
+    "name": "Strict Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_6e656af0baeb5b27",
+    "name": "Strict Pull-Up Weighted",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_da733efb303a20d1",
+    "name": "Strict Ring Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_d619ae3eb5103efe",
+    "name": "Strict Static Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_5f6c9e828919da51",
+    "name": "Suitcase Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_b0dbf50e1fc08c20",
+    "name": "Suitcase Carry March",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_124680e3be14607d",
+    "name": "Suitcase Curtsy Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_dce57c58dc0b8622",
+    "name": "Suitcase Knees Over Toes Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_b02412a22a357b96",
+    "name": "Suitcase Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_5ba4742052417f49",
+    "name": "Suitcase Walking Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_4849b04fccc40f8e",
+    "name": "Sumo Box Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_9f78a42b33892f28",
+    "name": "Sumo Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_e921763902703cc2",
+    "name": "Sumo Deadlift Against 20% Chains",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_8d7adf54f1a32049",
+    "name": "Sumo Deadlift High Pull",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_26503f418a3466fd",
+    "name": "Sumo Deadlift Warm Up",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_c6bf5aa27d1d5fc5",
+    "name": "Sumo Deadlift With Chains",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_38a5ab45bd8c23db",
+    "name": "Superman Hold",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_78f53a51e38c8a99",
+    "name": "Supinated Barbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_5e39040032830b32",
+    "name": "Supinated Bent Over Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_d57698d2594247fb",
+    "name": "Supinated Cable Triceps Pushdown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9962a29eb310fa75",
+    "name": "Supinated Chin-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_114394e7917ab79a",
+    "name": "Supinated Dumbbell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_ab4b141a0cf8e0f4",
+    "name": "Supinated Grip Barbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_b114932c677687c0",
+    "name": "Supinated Grip Inverted Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_f07feecb30b1376d",
+    "name": "Supinated Lat Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_4a8f95e79f4b8c73",
+    "name": "Supinated Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_f9fed77a790e0068",
+    "name": "Supinating Ring Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_a28f94967b6debf8",
+    "name": "Supine Bridge With Reach",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_5cc0031919b6af03",
+    "name": "Supine Grip Lat Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_d610a9214607fceb",
+    "name": "Supine Lower Back Rotation E/Side",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_687997b714835072",
+    "name": "Supported Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_42312767d0f28741",
+    "name": "Supported Single Arm Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_ab6a26e66abf28e5",
+    "name": "Supported Single Arm Row With Rotation",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_694187af078eb352",
+    "name": "Supported Single Leg Kettlebell Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_6f62763662c8bd7f",
+    "name": "Supported Single Leg Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_7f7dcb28fb0f8b3a",
+    "name": "Swimmer Kicks",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_2e127dd6bd336438",
+    "name": "Symmetrical Stance Dumbbell Row Neutral Grip",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_119ad8c84159c4e5",
+    "name": "Symmetrical Stance Dumbbell Row Pronated Grip",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_576874620bd1c568",
+    "name": "T Bar Landmine Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_cd2c8a98ce321dcf",
+    "name": "T Bar Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_983959e7620e4060",
+    "name": "T Bar Row (Pronated)",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_df05bd3b7a7d16a3",
+    "name": "T Bar Row Pronated Grip",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_1bbc8bc04475c67d",
+    "name": "T Bar Row/Kelso Shrug",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_ac2ae4b5abbedab2",
+    "name": "T Spine Hip Flow From Elevated Surface",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_0e20107868b050c7",
+    "name": "T Spine Rotation Sp",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_501e102d2a59ce9b",
+    "name": "T Spine Wall Contour",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_3262ffeffa1f934d",
+    "name": "Tabata",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_999e05802bd96aed",
+    "name": "Table Top + Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_829f8f0eeed35a8d",
+    "name": "Tactical Frog W/ Oh Reach",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_c9a3faa0aee5437a",
+    "name": "Tall Kneeling Alternating Kettlebell Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_f6c95f208c70b7a2",
+    "name": "Tall Kneeling Kettlebell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_260d93ff08d75644",
+    "name": "Tall Kneeling Kettlebell Halo",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_eeae866d90024455",
+    "name": "Tall Kneeling Kettlebell Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_f034b4dce8b90bed",
+    "name": "Tall Kneeling Kettlebell Seesaw Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_3a04964d576dd1f8",
+    "name": "Tall Kneeling Single Arm Dumbbell Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_ada80491930ff6e8",
+    "name": "Tall Kneeling To Standing",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_36de692cfaf318a8",
+    "name": "Tall Landing Box Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_26b40a9651e273ff",
+    "name": "Tall Plank Hold",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_23755ee2cb987fde",
+    "name": "Tall Plank Shoulder Taps",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_c01f6ab59b83b4c7",
+    "name": "Tall Plank Walk Out",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_2c693ef637bc4415",
+    "name": "Tate Press",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8ba394908e136323",
+    "name": "Tempo Front Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_9cea5507849adcaa",
+    "name": "Tempo Goblet Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_d675b2a2e3dae6cb",
+    "name": "Tempo Kettlebell Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_cc6a9afbfc366ce1",
+    "name": "Tempo Run",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_780f87b87c3118e4",
+    "name": "Terminal Knee Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_0e6bf2ae37e32447",
+    "name": "Test Vertical Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_62c451a02d8dd38b",
+    "name": "The Warm Up",
+    "category": "Preparation / recovery",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "preparation_recovery"
+  },
+  {
+    "id": "exercise_7eb1c0b312281e6b",
+    "name": "Thoracic Spine Foam Rolling",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_b5cbd55435f3225c",
+    "name": "Thread The Needle",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_80df131c1655c7f7",
+    "name": "Thread The Needle Stretch E/Side",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_a757a78ae593367e",
+    "name": "Thread The Needle With Foam Roller",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_73f4aad17cfef7f8",
+    "name": "Thruster",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_2b2697f64c966dbd",
+    "name": "Tib Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ca03bfec873e8b64",
+    "name": "Tibial Internal Rotation Mobilization",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_71154cc10ee9eddb",
+    "name": "Toes To Bar",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_7880048d8f593051",
+    "name": "Top Bench Cable Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d19d6565555436b2",
+    "name": "Top Down Snatch 4 Part",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_5c7cec367b0c8f0b",
+    "name": "Touch And Go Trap Bar Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_cba920b92921f85e",
+    "name": "Trap Bar Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_61714910ccc74ac3",
+    "name": "Trap Bar Carry Sp",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_65d05a54efe0e720",
+    "name": "Trap Bar Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_7efa1059c078de4b",
+    "name": "Trap Bar Deadlift Warm Up",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_5678884e90d92a94",
+    "name": "Trap Bar Dl",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_10d3184161d3873b",
+    "name": "Trap Bar Farmer Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_53d69f188aed4c81",
+    "name": "Trap Bar Rack Pull",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_e4e0225030d082c4",
+    "name": "Trap Bar Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_c3185b23509e82cc",
+    "name": "Trap Bar Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_7c04ebdeef40e8c3",
+    "name": "Trap Bar Shrugs",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8f3febdbb3754241",
+    "name": "Treadmill Work",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_2758709e7ef838f2",
+    "name": "Triceps Bench Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_5246948ffe8d5cfd",
+    "name": "Triceps Kick Back",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6ae71939bb3e2450",
+    "name": "Triceps Pushdown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_edbb9673b98dc257",
+    "name": "Triceps Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_8e72a2b5bd239f68",
+    "name": "Triceps Rope Pulldown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_51c2b234c42ff1be",
+    "name": "Triple Bounce Pulse At Depth Jumping Lunge",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_41459f1e23ba1252",
+    "name": "Triple Broad Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_743bcf854898a83e",
+    "name": "TRX Biceps Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_5cd361abef217c1b",
+    "name": "TRX Face Pull",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_65172da415306f45",
+    "name": "TRX Face Pull To Y",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_b341b03fcd69fb85",
+    "name": "TRX Fallouts",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_e08406c38a329c30",
+    "name": "TRX Hamstring Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_fa368a65173302df",
+    "name": "TRX High Elbow Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_575893cf7febcfc3",
+    "name": "TRX Inverted Row With Rotation",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_d93756c3de54f8e5",
+    "name": "TRX Reach + Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_31382318f7487cd4",
+    "name": "TRX Reverse Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f542e3a28409338e",
+    "name": "TRX Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_269dcb3a6eaac62a",
+    "name": "TRX Standing Torso Rotation",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_31c521a90d0d4dea",
+    "name": "TRX Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_dd55e0798f39528c",
+    "name": "TRX/Ring Pistol Squat – (Bw)",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_59dde2f08b32005b",
+    "name": "Tuck Crunch",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_dc9baaabcd4fc5ae",
+    "name": "Tuck Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_15b0e1978f1962f7",
+    "name": "Tuck L Sit",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_5b6e2ec2d58f5103",
+    "name": "Tuck Ups",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_45fec2720b8e0300",
+    "name": "Tuck Ups In Dip Support",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_7ce9785b8b96f23b",
+    "name": "Turkish Get-Up",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_3c18e0f37ca32c4c",
+    "name": "Turkish Weight Plate Sit Up",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_73aff0acb308fbef",
+    "name": "Twisted Cross Stretch E/Side",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_8a4bcdd42f82ad8c",
+    "name": "Two Arm Kettlebell Clean",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_4cfdfa7b177d453b",
+    "name": "Underhand Bent Over Barbell Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_0fac768f8c90351e",
+    "name": "Unilateral Chest Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_37b25134af796f71",
+    "name": "Unilateral Leg Press",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_f6eebbe58763aae1",
+    "name": "V Bar Pushdown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_52063a526bf3ee50",
+    "name": "V Handle Landmine Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_9a3d3817f4c8d22b",
+    "name": "V Ups",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_7a6c4fac6c5cd720",
+    "name": "Walk",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_37ff20583960759d",
+    "name": "Walking",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_322eb1a71a5884d1",
+    "name": "Walking Bodyweight Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_f657e2918cec66fd",
+    "name": "Walking Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_d67a1bad7544953f",
+    "name": "Walking Lunge With Dumbbells",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_84582cf68ba3c6f0",
+    "name": "Walking Single Leg Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_2d672efb39843d04",
+    "name": "Wall Assisted Hip Internal Rotation Airplanes",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_aac7a965ea81828d",
+    "name": "Wall Balls",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_bff551ee8a06dd54",
+    "name": "Wall Hinge",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_d266079c79b230c9",
+    "name": "Wall Leaning Calf Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_aaf46b1da1057b4c",
+    "name": "Wall Posted Single Leg Romanian Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_4780481cfd9a6c07",
+    "name": "Wall Sit",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_776c19963b958ec4",
+    "name": "Wall Supported Hip Airplane",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_3835dec9140d513e",
+    "name": "Wall Supported Triple Switches",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_4adf87b95f30f045",
+    "name": "Wall Walk",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_19e004e3f24368e1",
+    "name": "Weighed (Or Unweighted) Hollow Hold",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_94785f18c5cc7161",
+    "name": "Weight Plate Hip Abduction",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_272846b7cf5ae17b",
+    "name": "Weight Squat Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_e97027e00f6c7032",
+    "name": "Weighted Anchored Sit Up",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_fb46fa1452f16aed",
+    "name": "Weighted Bar Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_ed1afe90b7c8435d",
+    "name": "Weighted Chin-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_3c35eacd21b011be",
+    "name": "Weighted Deficit Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_f59dd1af38fe4aab",
+    "name": "Weighted Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_71c0199188b8043f",
+    "name": "Weighted Hollow Rock",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_8aaecbe35619daf9",
+    "name": "Weighted Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_26e65f6c6127ecb8",
+    "name": "Weighted Neutral Grip Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_cb49f32606c79564",
+    "name": "Weighted Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_63be88d69d433bad",
+    "name": "Weighted Sit Up",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_33bdcac488caf050",
+    "name": "Weighted Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_e19e1df7a1236c56",
+    "name": "Weighted Strict Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_435e93cc31d3831b",
+    "name": "Weighted Strict Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_e1dc9f380f94ff05",
+    "name": "Weighted Supinated Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_f7f50a48c3c98ab7",
+    "name": "Wheelbarrow",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_a077aa143238aa4d",
+    "name": "Wide Grip Barbell Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_653d8e8a9fadb8c3",
+    "name": "Wide Grip Barbell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9046c03ab57a7262",
+    "name": "Wide Grip Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_ac1bbc69f9b0ea24",
+    "name": "Wide Grip Lat Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_6c0f759b1cf97140",
+    "name": "Wide Grip Neutral Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_6a032a2a56f00651",
+    "name": "Wide Grip Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_596fe6e3c000482c",
+    "name": "Wide Grip Pull-Up",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_617b584c26b15ab3",
+    "name": "Wide Grip Pull-Up + Narrow Grip Pull-Up + Chin-Up Cluster",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_8f32c41cab3d9349",
+    "name": "Wide Grip Standing Barbell Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_7ebd87d0733177da",
+    "name": "Wide Stance Box Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_03d3c4c30c25e8f0",
+    "name": "Wide Stance Box Squat For Speed",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_9b2d026e8240f98f",
+    "name": "Wood Chop",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_89e8e6c4b2908c0e",
+    "name": "Worlds Greatest Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_6ad163d38308bda7",
+    "name": "Worlds Greatest Stretch E/Side",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_48cf4989c97fc5e1",
+    "name": "Y Handcuffs",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_835b7ce749da4d78",
+    "name": "Yates Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_68d1bb1ee18b3927",
+    "name": "Yoga Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_a6c3009dd28b2abe",
+    "name": "Yoga Push-Up / Reach",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_fa2faf16438e8502",
+    "name": "YTW",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_0c02e9ab1327605a",
+    "name": "Z-Press",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_bba4a3be5c75a509",
+    "name": "Z-Press @60% Of Last Weeks 8Rm *2 Minute Rest Periods",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_81d4204c4f25a81f",
+    "name": "Zercher Box Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_568bd59e761901f3",
+    "name": "Zercher Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_2e3a2ff7446e460b",
+    "name": "Zercher Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_78791e1299a38db5",
+    "name": "Zercher Reverse Lunge",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_c2cd32045b08e0aa",
+    "name": "Zercher Rfess (From Pins)",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_100c63d6e5ea3fe0",
+    "name": "Zercher Split Squat",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_6f7c4dbabab3a105",
+    "name": "Zercher Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_10734d73d9786d6f",
+    "name": "Zercher Step-Up",
+    "category": "Lunge / step",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "lunge_step"
+  },
+  {
+    "id": "exercise_8096f080d3b238da",
+    "name": "Zig Zag Farmer Carry",
+    "category": "Carry / loaded march",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "carry"
+  },
+  {
+    "id": "exercise_ef6776cf29184cae",
+    "name": "Zombie Front Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_113cc50fec2cb970",
+    "name": "Zottman Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_c8d2a4d48b71807b",
+    "name": "“Fly Away” Constant Tension Lateral Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "main",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_00cffb5cedd54cd8",
+    "name": "1 1/4 Banded Glute Hip Thrust",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_e3bb7e0c82dc0999",
+    "name": "1.5 Stance Romanian Deadlift With Band",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_d4b472e371362cbe",
+    "name": "20 Per Arm Seated Single Arm Banded Low Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_734f3abd5496b807",
+    "name": "3 Way Band Pull-Apart",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_3f100d40f5a65fd4",
+    "name": "3D Banded Pull-Apart",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_93338c6349c40a3a",
+    "name": "Acceleration Banded Range Finder",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_ebccb643eb1c2ca2",
+    "name": "Band Assisted Cmj Split",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_320a6b89b593e776",
+    "name": "Band Assisted Jump (Plyos)",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_d1920fe9a3aa7be3",
+    "name": "Band Assisted Nordic Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_545b5586ede07fd6",
+    "name": "Band Assisted Plyo Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_9ad4e69fe5f30436",
+    "name": "Band Assisted Pogo Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_706c588bbd681f9e",
+    "name": "Band Assisted Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_abd62aa9cdfb41c3",
+    "name": "Band Assisted Split Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_3fd6569cf787fdfb",
+    "name": "Band Assisted Split Squat Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_dbfb5ba5ee2737ed",
+    "name": "Band Assisted Strict Dip",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_f7b5cf03e3be44a3",
+    "name": "Band Glute Pull Through",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_98acbe8eac6c2b9e",
+    "name": "Band Overhead Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_96c3483491ea96ae",
+    "name": "Band Plyo Push-Up",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_397d808b17a17857",
+    "name": "Band Pull-Apart",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_3fe6361fb7feaa8b",
+    "name": "Band Pull-Apart Sp",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_753c3156c5c1fc0d",
+    "name": "Band Resisted Body Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_cb0f4af85257366b",
+    "name": "Band Resisted Kettlebell Swing",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_22e6f6581d2751f5",
+    "name": "Band Resisted Side Plank Row",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_af1fff94990f02e1",
+    "name": "Band Rotation",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_a5f26d81a4512c13",
+    "name": "Band Row + Press",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_297237abee5328a9",
+    "name": "Band Row + Reverse Lunge",
+    "category": "Mixed movements",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mixed"
+  },
+  {
+    "id": "exercise_8d6a41af43bbc98d",
+    "name": "Band Triceps Pushdown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_eb1eef060887f563",
+    "name": "Banded Ankle Distraction Mobilization",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_a0ea541cf3ffd712",
+    "name": "Banded Biceps Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_7f4c15f20138ea39",
+    "name": "Banded Broad Jump",
+    "category": "Jump / throw / Olympic lift",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "power"
+  },
+  {
+    "id": "exercise_3045f40362f604cc",
+    "name": "Banded Bully Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_34c8257fefd67fbd",
+    "name": "Banded Chest To Bar",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_8a17e561155fc790",
+    "name": "Banded Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f98a3815b9c9a746",
+    "name": "Banded Dumbbell Grip Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_f460c21024e963c2",
+    "name": "Banded Face Pull",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_4b07f494b9aa3df1",
+    "name": "Banded Face Pull Aparts",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6620fed810a317cc",
+    "name": "Banded Face Pull Iso Hold",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d5152dd8bb464e40",
+    "name": "Banded Front Rack Stretch E/Side",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_5fe701adb287dd95",
+    "name": "Banded Glute Bridge",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_af0ff1a4ac76925d",
+    "name": "Banded Good Morning",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_7c4ffcfc4d819727",
+    "name": "Banded Half Kneeling Pallof Press",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_a476cfbaeeb9e330",
+    "name": "Banded Hammer Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_e706cebdc7441a5e",
+    "name": "Banded Hamstring Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_23b5a0c25e4c04b3",
+    "name": "Banded Hip Flexor Pull",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_2cb7b83f5324103d",
+    "name": "Banded Incline Pigeon Rotation",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_304162cac8e37540",
+    "name": "Banded Kettlebell Swing",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_2489be7b90efff8e",
+    "name": "Banded Lat Distraction E/Side",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_a5654a909283d3ad",
+    "name": "Banded Lat Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_b8b5ba47233cac7a",
+    "name": "Banded Lat Squeeze",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_2601bf665e5554c0",
+    "name": "Banded Lat Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_c28d06f48e71326c",
+    "name": "Banded Lateral Raise",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_b885407ed30a5703",
+    "name": "Banded Leg Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_adf0e70ff99920e2",
+    "name": "Banded Leg Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_de577f571e0c2cf7",
+    "name": "Banded Low To High Chop",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_37710e6a7c5464d2",
+    "name": "Banded Oh Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_4577ab3ca791db40",
+    "name": "Banded Overhead Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_61a7ccdb030e4c50",
+    "name": "Banded Overhead Triceps",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_cddd6cfc7951ef1c",
+    "name": "Banded Overhead Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_d999f5034de55ca6",
+    "name": "Banded Pallof Press",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_a15a3bf7f0c1fea0",
+    "name": "Banded Pendlay Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_33a6e9cb0998cbe1",
+    "name": "Banded Plank Abs",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_1a6c5650c03dff36",
+    "name": "Banded Plank Row",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_143594887fcebe2c",
+    "name": "Banded Pull Through",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_9c5c2d62b1daf6ad",
+    "name": "Banded Pull-Apart",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_bee1b8aa0c2feb0a",
+    "name": "Banded Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_833e9ea2d7f4e756",
+    "name": "Banded Pushdown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_40bbb764c5c1a44d",
+    "name": "Banded Quad Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_266bdaddb40f5e63",
+    "name": "Banded Reverse Fly",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_31b213efae24ed68",
+    "name": "Banded Russian Kettlebell Swing (70/53 + Max Band)",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_0bd46ba27e69f2d9",
+    "name": "Banded Speed Bench Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_488a6c1e0df64231",
+    "name": "Banded Speed Row",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_c4c23f363a1d9269",
+    "name": "Banded Sprinter Hold",
+    "category": "Locomotion / conditioning",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "locomotion_conditioning"
+  },
+  {
+    "id": "exercise_8ca51897953f447d",
+    "name": "Banded T Spine From Split Squat",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_7daf5591337cce46",
+    "name": "Banded Tall Side Plank Row",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_53fbe8588448c341",
+    "name": "Banded Trap Bar Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_59a8e046c486900c",
+    "name": "Banded Triceps",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_2475025329aee5dc",
+    "name": "Banded Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f41bbe93638856df",
+    "name": "Banded Triceps Pulldown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_3172ba3c41c115eb",
+    "name": "Banded Triceps Pushdown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_7f890463a4a54127",
+    "name": "Banded Triceps Stretch",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_5861443e557f1f8a",
+    "name": "Banded YTW",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_e262a5da71f87bec",
+    "name": "Close Grip Bench Press Dead Press (2\" Above Chest) Against Max Band Tension Only",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_6fb6e3ad127068a6",
+    "name": "Close Grip Bench Press With Reverse Mini Bands",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_ac6ae49b1fd7ccba",
+    "name": "Conventional Deadlift Against A Band",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_c22cec2c787c0c86",
+    "name": "Conventional Rack Deadlift Bands Optional",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_ce0a21960e884a8c",
+    "name": "Dead Bug Banded Upper Body",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_6618bc170ef1ba91",
+    "name": "Dead Bug With Mini Bands",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_a4a1186ea34b4af5",
+    "name": "Double Band Pushdown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_42dba2fa2fd1a217",
+    "name": "Double Leg Banded Hamstring Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_59121deb5cfec29e",
+    "name": "Double Leg Banded Leg Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_839e3308ed8ef5b2",
+    "name": "Feet Elevated Hip Thrust + Band",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_6fb3f6db6827283b",
+    "name": "Football Bar Pin Press Against Bands",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_6a0613d6256d7a9a",
+    "name": "Front Box Squat Against Bands",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_308a86e46ff0ca33",
+    "name": "Ghd Sit Up Against Band",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_a61c54d209c34696",
+    "name": "Ghd Sit Ups (To Parallel And Up) Against Max Band",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_b39710a8ec1c708c",
+    "name": "Ghr Against Bands",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_b62702a8b3177478",
+    "name": "Glute Ham Raise With Band",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_e950a1bab5dacb36",
+    "name": "Goblet Squat Band Over Knees",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_48f902645d76724e",
+    "name": "Hack Squat Reverse Banded",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_f46c4b87ee1df819",
+    "name": "Half Kneeling Banded High To Low Chop",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_0196cdf1473c7b6a",
+    "name": "Heavy Banded (Or Cable) Standing Static Hold In Ab/Crunch Position 3 Sets 1 Minute Middle 30 Seconds Per Side (Obliques)",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_91473ef879df30c9",
+    "name": "Incline Dumbbell Tate Press (Pause Each Rep On Chest) + Mini Or Monster Mini Bands",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_4fa211292d7d618d",
+    "name": "Kneeling Squat (Against Band)",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_74058196cf583db6",
+    "name": "Lateral Band Side Step",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_ead1a4d5f7153030",
+    "name": "Lying (Face Up) Banded Reverse Flys",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_cd1eb9e303b014a4",
+    "name": "Mid Band Anti Rotation",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_bd9b30bb44e57cc5",
+    "name": "Mobilitywod Banded Lower Body Unlock",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_442f2e22ae05743d",
+    "name": "Monster Band Kick Back",
+    "category": "Bridge / hip thrust",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hip_extension"
+  },
+  {
+    "id": "exercise_1b4a6a10ad1fdfc6",
+    "name": "Overhead Banded Triceps",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_6d948c571516b02c",
+    "name": "Pallof Press (Band Or Cable)",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_ca9fe8746135a5fb",
+    "name": "Plank Against Max Band 3X2 Minutes",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_1704e60189031636",
+    "name": "Push Press @50% Against Singled Micro Mini (Under 225 Max) Or Mini Bands",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_daef8e2564372553",
+    "name": "Push Press Against Singled Micro Mini Or Mini Bands *Under 225 Max Micro Mini Bands",
+    "category": "Vertical / angled push and dip",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "vertical_push"
+  },
+  {
+    "id": "exercise_575eaba9390f36d9",
+    "name": "Rear Delt Band Pull",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_3eb725a5f88a1f62",
+    "name": "Reverse Band Football Bar Floor Press",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_75e610abe94bdb9a",
+    "name": "Reverse Band Front Squat",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_33826a8de02c4fae",
+    "name": "Reverse Band Sumo Stance Rack Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_75427a17e98ef75e",
+    "name": "Reverse Doubled Mini Band Conventional Deadlift",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_460d9b3a939522f1",
+    "name": "Reverse Pec Dec (Or Standing Banded Reverse Flys)",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_fd0ab8545ba656a5",
+    "name": "Ring Push-Up Against Max Band",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_84be5f94e4b5bb53",
+    "name": "Rope (Cable Attachment) Or Kneeling Heavy Band Crunch",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_82c7a4ca1dd43c3d",
+    "name": "Seated Band Abduction",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9c7c649f6d6ee220",
+    "name": "Seated Banded Leg Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_de6877206095b701",
+    "name": "Seated Banded Low Row *Seated Pvc Suspended Inside 2 Bands Choked From In Front",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_b9f506e316e7b648",
+    "name": "Seated Overhead Band Triceps Extension",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_fd3d1b33740ff0e3",
+    "name": "Single Arm Banded Pushdown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_f0549adcabd5dcaf",
+    "name": "Single Arm Dumbbell Row + Band From The Front 3X10 Per Arm",
+    "category": "Horizontal pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_pull"
+  },
+  {
+    "id": "exercise_0c7dc58e4841d0b9",
+    "name": "Single Leg Banded Hamstring Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_53a119e91fd29e0f",
+    "name": "Single Leg Banded Leg Curl",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_7795ec35b17c01bd",
+    "name": "Sl Banded Good Morning",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_55ac42db42735d70",
+    "name": "Smr Glutes Hamstrings It Band Adductors",
+    "category": "Mobility",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "mobility"
+  },
+  {
+    "id": "exercise_5a990448f82c2c3b",
+    "name": "Speed Banded Lat Pulldown",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_e23939d45b6f5d86",
+    "name": "Speed Bench Press Against Bands",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_8928a2bca18f308c",
+    "name": "Speed Bench Press Against Bands To Pins",
+    "category": "Horizontal push",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "horizontal_push"
+  },
+  {
+    "id": "exercise_b588ce49457a6ad8",
+    "name": "Speed Pull Conventional Deadlift @50% Against 30% Band Tension",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_ef4a5d1b41cdbe41",
+    "name": "Speed Pull Conventional Deadlift @55% Against 30% Band Tension",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_833a4c4b299c6c98",
+    "name": "Speed Pull Deadlift Against Bands",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_ade13387abfa4c74",
+    "name": "Speed Pull Sumo Deadlift @55% Against 30% Band Tension",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_1b60fa12890a316d",
+    "name": "Speed Trap Bar Deadlift Vs Bands",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_2a9fb44b5ae9ef89",
+    "name": "Standing Banded Abs",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_c9a7521b1e139105",
+    "name": "Standing Banded Er/Ir",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_86d66e661c8c1a16",
+    "name": "Standing Heavy Band Crunch",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_84c198fe5aa06439",
+    "name": "Standing High To Low Banded Rotation",
+    "category": "Core / trunk control",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "core"
+  },
+  {
+    "id": "exercise_a9519f6a7e9a6e42",
+    "name": "Straight Bar Box Squat W/ Bands",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_de4e08e9cec7b6c9",
+    "name": "Strict Ring Pull-Up Against Max Band From The Bottom",
+    "category": "Vertical pull",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "vertical_pull"
+  },
+  {
+    "id": "exercise_d2dbe40b8f4fffd9",
+    "name": "Supported Single Leg Romanian Deadlift With Band",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_ced58bba888b9adb",
+    "name": "Theraband Monster Walks",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_9a9a3a8ca09dc066",
+    "name": "Touch And Go Trap Bar Deadlift Against A Band",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_fe8171eef3b81374",
+    "name": "Trap Bar Deadlift Against A Band",
+    "category": "Hinge",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "hinge"
+  },
+  {
+    "id": "exercise_c942b3e1777d8494",
+    "name": "Unilateral Banded Triceps Pushowns",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_34730d52c7c2f392",
+    "name": "V Handle Banded Triceps Pushdown",
+    "category": "Isolation / accessory",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "isolation"
+  },
+  {
+    "id": "exercise_8573abc418d16c56",
+    "name": "Wide Stance Box Squat With Straight Bar @50% Against 25% Band Tension",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "squat"
+  },
+  {
+    "id": "exercise_d3783ac5f664f20a",
+    "name": "Wide Stance SSB Box Squat With Bands",
+    "category": "Squat",
+    "builtIn": true,
+    "source": "supabase-exercise-catalogue",
+    "catalogue": "banded",
+    "movementCategory": "squat"
   }
 ];
-  global.COACH_EXERCISE_CATALOG_VERSION = "core-120-v1+fbb-wu-cd-2026-10-16";
+  global.COACH_EXERCISE_CATALOG_VERSION = "core-120-v1+fbb-wu-cd-2026-10-16+sb-cat-2026-10-17";
 })(typeof window !== "undefined" ? window : global);
