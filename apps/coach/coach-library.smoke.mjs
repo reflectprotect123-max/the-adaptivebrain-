@@ -49,7 +49,9 @@ must(merged.exercises.some((e) => e.name === 'Couch Stretch' && e.category === '
 must(sandbox.ExerciseSearch.search('deadlift', 5).length > 0, 'deadlift search works');
 const horse = sandbox.ExerciseSearch.search('Horse Stance Pulse', 5);
 must(horse.filter((h) => h.name === 'Horse Stance Pulse').length === 2, 'search returns both sections for a shared name');
-must(html.includes('Warm-Up'), 'coach library exposes the warm-up catalog');
-must(html.includes('Cool-Down'), 'coach library exposes the cool-down catalog');
+must(html.includes('setExCatalogSection'), 'catalog tabs call setExCatalogSection');
+must(!html.includes('onclick="ui.exCatalogSection='), 'catalog tab click is not broken by nested quotes');
+must(html.includes('id="exPickerSearch"'), 'exercise picker search keeps an id so typing can stay focused');
+must(html.includes('restoreTypingFocus'), 'render restores the search caret');
 
 console.log('coach-library.smoke: ok');

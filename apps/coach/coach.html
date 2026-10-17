@@ -856,19 +856,25 @@ function exercisesCatalogHtml(){
     ['Cool-Down', `Cool-Down (${coolCount})`],
     ['main', `Main library (${mainCount})`],
   ];
-  const tabHtml = `<div class="lib-tabs" role="tablist" aria-label="Exercise catalogs">${tabs.map(([k, label]) => `<button type="button" role="tab" aria-selected="${section===k?'true':'false'}" class="${section===k?'on':''}" onclick="ui.exCatalogSection=${JSON.stringify(k)};render()">${label}</button>`).join('')}</div>`;
+  const tabHtml = `<div class="lib-tabs" role="tablist" aria-label="Exercise catalogs">${tabs.map(([k, label]) => `<button type="button" role="tab" aria-selected="${section===k?'true':'false'}" class="${section===k?'on':''}" data-catalog-section="${esc(k)}" onclick="setExCatalogSection(this.getAttribute('data-catalog-section'))">${esc(label)}</button>`).join('')}</div>`;
   const rows = list.map(e => {
     const note = [e.review ? `Needs review: ${e.review}` : '', e.others ? `Also seen: ${e.others}` : ''].filter(Boolean).join(' ');
     return `<tr><td><b>${esc(e.name)}</b>${note ? `<div class="muted">${esc(note)}</div>` : ''}</td><td class="muted">${esc(e.category||'—')}</td><td class="muted">${esc(e.typical||'—')}</td><td class="muted">${esc(e.unit||'—')}</td><td class="muted">${esc(e.perSide||'—')}</td></tr>`;
   }).join('');
   return `<div class="toolbar-row">
       <div class="field"><label>Search exercises</label>
-        <input value="${esc(ui.exCatalogSearch||'')}" oninput="ui.exCatalogSearch=this.value;render()" placeholder="Couch stretch, band pull apart…"></div>
+        <input id="exCatalogSearch" value="${esc(ui.exCatalogSearch||'')}" oninput="ui.exCatalogSearch=this.value;ui.focusField='exCatalogSearch';render()" placeholder="Couch stretch, band pull apart…"></div>
       <button type="button" class="btn primary small" onclick="addCustomExercise()">New exercise</button>
     </div>
     ${tabHtml}
     <p class="muted" style="margin-bottom:8px">${list.length} shown · ${warmCount} warm-up · ${coolCount} cool-down · starter list, add names as we go</p>
     ${rows ? `<div class="table-wrap"><table class="th-table data-table"><thead><tr><th>Title</th><th>Catalog</th><th>Typical</th><th>Unit</th><th>Per side</th></tr></thead><tbody>${rows}</tbody></table></div><div class="table-foot"><span>${list.length} exercise${list.length===1?'':'s'}</span></div>` : '<div class="empty-panel"><div class="eyebrow">Exercises</div><h2>No matches</h2><p class="muted">Try another search, switch catalog, or add a custom exercise.</p></div>'}`;
+}
+
+function setExCatalogSection(section){
+  ui.exCatalogSection = section || 'all';
+  ui.focusField = '';
+  render();
 }
 
 function addCustomExercise(){
@@ -1391,6 +1397,7 @@ function openExPicker(bi, ei){
   closeCoachExEdit();
   ui.exPicker = { bi, ei };
   ui.exSearch = '';
+  ui.focusField = 'exPickerSearch';
   render();
 }
 
@@ -1419,7 +1426,7 @@ function ensureCoachExerciseInCatalog(exerciseId, name, category){
   }
 }
 
-function closeExPicker(){ ui.exPicker = null; ui.exSearch = ''; render(); }
+function closeExPicker(){ ui.exPicker = null; ui.exSearch = ''; ui.focusField = ''; render(); }
 
 function pickExerciseVariant(exerciseId, name, category){
   if (!ui.exPicker) return;
@@ -1452,7 +1459,7 @@ function exercisePickerHtml(){
     <div class="picker-panel" role="dialog" aria-label="Choose exercise">
       <div class="row"><b>Choose exercise</b><button type="button" class="btn ghost small" onclick="closeExPicker()">Close</button></div>
       <div class="field" style="margin-top:12px"><label>Search variants</label>
-        <input value="${esc(ui.exSearch)}" oninput="ui.exSearch=this.value;render()" placeholder="deadlift, lateral raise…" autofocus></div>
+        <input id="exPickerSearch" value="${esc(ui.exSearch)}" oninput="ui.exSearch=this.value;ui.focusField='exPickerSearch';render()" placeholder="deadlift, lateral raise…"></div>
       <div class="picker-list">${list}</div>
     </div></div>`;
 }
@@ -1740,7 +1747,18 @@ function render(){
     growTextAreas();
     initBlockDrag();
   }
+  restoreTypingFocus();
   scheduleRefreshCloudStates();
+}
+
+function restoreTypingFocus(){
+  const id = ui.focusField;
+  if (!id) return;
+  const el = document.getElementById(id);
+  if (!el) return;
+  const n = String(el.value || '').length;
+  el.focus();
+  if (typeof el.setSelectionRange === 'function') el.setSelectionRange(n, n);
 }
 
 document.addEventListener('click', function coachKebabDismiss(ev) {
@@ -1765,6 +1783,7 @@ window.placeCellTemplate=placeCellTemplate; window.clearCell=clearCell;
 window.startCopyCell=startCopyCell; window.startMoveCell=startMoveCell; window.onEmptyCell=onEmptyCell;
 window.saveCellAsTemplate=saveCellAsTemplate; window.addWeek=addWeek;
 window.addCustomExercise=addCustomExercise;
+window.setExCatalogSection=setExCatalogSection;
 window.openCommentDrawer=openCommentDrawer; window.closeCommentDrawer=closeCommentDrawer;
 window.exportBridgeFile=exportBridgeFile;
 window.bindMyCloudIdToAthlete=bindMyCloudIdToAthlete;
