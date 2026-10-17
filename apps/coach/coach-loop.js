@@ -1049,6 +1049,16 @@
         cur.category = row.category;
         cur.builtIn = true;
         cur.source = row.source || 'THE-core-120';
+        if (row.unit) cur.unit = row.unit;
+        else delete cur.unit;
+        if (row.perSide) cur.perSide = row.perSide;
+        else delete cur.perSide;
+        if (row.typical) cur.typical = row.typical;
+        else delete cur.typical;
+        if (row.others) cur.others = row.others;
+        else delete cur.others;
+        if (row.review) cur.review = row.review;
+        else delete cur.review;
       }
     }
     state.meta = state.meta || {};

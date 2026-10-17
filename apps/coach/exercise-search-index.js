@@ -1060,6 +1060,1044 @@
       "ski erg",
       "skierg"
     ]
+  },
+  {
+    "id": "fbb-wu-90-90-alternating-dumbbell-floor-press",
+    "name": "90/90 Alternating Dumbbell Floor Press",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-alternating-glute-bridge-dumbbell-floor-press",
+    "name": "Alternating Glute Bridge Dumbbell Floor Press",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-alternating-landmine-rotational-deadlifts",
+    "name": "Alternating Landmine Rotational Deadlifts",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-alternating-split-stance-single-arm-kettlebell-swing",
+    "name": "Alternating Split Stance Single Arm Kettlebell Swing",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-arm-bar-rotation",
+    "name": "Arm Bar Rotation",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-band-pull-apart",
+    "name": "Band Pull Apart",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-banded-face-pull",
+    "name": "Banded Face Pull",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-banded-goodmorning",
+    "name": "Banded Goodmorning",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-banded-shoulder-external-rotation",
+    "name": "Banded Shoulder External Rotation",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-banded-ytw",
+    "name": "Banded YTW",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-barbell-horse-stance-pulse",
+    "name": "Barbell Horse Stance Pulse",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-bench-dip",
+    "name": "Bench Dip",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-bird-dog-row",
+    "name": "Bird Dog Row",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-body-row",
+    "name": "Body Row",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-bodyweight-cyclist-squat-pulse",
+    "name": "Bodyweight Cyclist Squat Pulse",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-bodyweight-side-plank-powell-raise",
+    "name": "Bodyweight Side Plank Powell Raise",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-bodyweight-walking-lunge",
+    "name": "Bodyweight Walking Lunge",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-bottom-of-dip-isometric",
+    "name": "Bottom of Dip Isometric",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-bottom-up-kettlebell-overhead-carry",
+    "name": "Bottom Up Kettlebell Overhead Carry",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-cardio-of-choice-run-row-bike-ski-jump-rope",
+    "name": "Cardio of Choice (Run/Row/Bike/Ski/Jump Rope)",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-cardio-sprint",
+    "name": "Cardio Sprint",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-cross-body-dumbbell-rdl",
+    "name": "Cross Body Dumbbell RDL",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-crush-grip-dumbbell-rotational-deadlift",
+    "name": "Crush Grip Dumbbell Rotational Deadlift",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-crush-grip-kettlebell-rotational-deadlift",
+    "name": "Crush Grip Kettlebell Rotational Deadlift",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-curtsy-squat",
+    "name": "Curtsy Squat",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-curtsy-step-down",
+    "name": "Curtsy Step Down",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-deficit-dual-dumbbell-sumo-deadlift",
+    "name": "Deficit Dual Dumbbell Sumo Deadlift",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dip-support-hold",
+    "name": "Dip Support Hold",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dual-dumbbell-bent-over-elbowing-row",
+    "name": "Dual Dumbbell Bent Over Elbowing Row",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dual-dumbbell-sumo-deadlift-high-pull",
+    "name": "Dual Dumbbell Sumo Deadlift High Pull",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dual-kettlebell-rack-lateral-banded-walk",
+    "name": "Dual Kettlebell Rack Lateral Banded Walk",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dual-kettlebell-rack-march",
+    "name": "Dual Kettlebell Rack March",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dumbbell-external-rotation-elbow-on-knee",
+    "name": "Dumbbell External Rotation Elbow on Knee",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dumbbell-full-raise",
+    "name": "Dumbbell Full Raise",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dumbbell-horse-stance-pulse",
+    "name": "Dumbbell Horse Stance + Pulse",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dumbbell-jefferson-curl",
+    "name": "Dumbbell Jefferson Curl",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dumbbell-lateral-lunge",
+    "name": "Dumbbell Lateral Lunge",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dumbbell-meadow-row",
+    "name": "Dumbbell Meadow Row",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dumbbell-renegade-row",
+    "name": "Dumbbell Renegade Row",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dumbbell-single-leg-glute-bridge",
+    "name": "Dumbbell Single Leg Glute Bridge",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dumbbell-single-leg-hip-bridge",
+    "name": "Dumbbell Single Leg Hip Bridge",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dumbbell-suitcase-knee-over-toe-split-squat",
+    "name": "Dumbbell Suitcase Knee Over Toe Split Squat",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dumbbell-windmill",
+    "name": "Dumbbell Windmill",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-dumbbell-windmill-press",
+    "name": "Dumbbell Windmill Press",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-elephant-walk-step",
+    "name": "Elephant Walk Step",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-foot-elevated-cossack-squat",
+    "name": "Foot Elevated Cossack Squat",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-front-foot-elevated-back-rack-knee-over-toe-split-squat",
+    "name": "Front Foot Elevated Back Rack Knee Over Toe Split Squat",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-front-foot-elevated-hand-supported-suitcase-kot-split-squat",
+    "name": "Front Foot Elevated Hand Supported Suitcase KOT Split Squat",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-front-foot-elevated-kot-split-squat",
+    "name": "Front Foot Elevated KOT Split Squat",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-front-foot-elevated-suitcase-knee-over-toe-split-squat",
+    "name": "Front Foot Elevated Suitcase Knee Over Toe Split Squat",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-glute-bridge-dumbbell-bench-press",
+    "name": "Glute Bridge Dumbbell Bench Press",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-glute-bridge-dumbbell-floor-press",
+    "name": "Glute Bridge Dumbbell Floor Press",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-goblet-cossack-squat",
+    "name": "Goblet Cossack Squat",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-goblet-curtsy-squat",
+    "name": "Goblet Curtsy Squat",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-goblet-heel-sit",
+    "name": "Goblet Heel Sit",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-goblet-wall-sit",
+    "name": "Goblet Wall Sit",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-half-kneeling-cable-row",
+    "name": "Half Kneeling Cable Row",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-half-kneeling-dumbbell-windmill",
+    "name": "Half Kneeling Dumbbell Windmill",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-half-kneeling-hip-flexor-to-half-kneeling-hamstring-flow",
+    "name": "Half Kneeling Hip Flexor to Half Kneeling Hamstring Flow",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-half-kneeling-weight-shift",
+    "name": "Half Kneeling Weight Shift",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-hand-supported-single-leg-dumbbell-romanian-deadlift",
+    "name": "Hand Supported Single Leg Dumbbell Romanian Deadlift",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-hand-supported-suitcase-kot-split-squat",
+    "name": "Hand Supported Suitcase KOT Split Squat",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-heels-elevated-wall-sit",
+    "name": "Heels Elevated Wall Sit",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-horse-stance-pulse",
+    "name": "Horse Stance Pulse",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-incline-bench-dumbbell-face-pull",
+    "name": "Incline Bench Dumbbell Face Pull",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-landmine-zercher-forward-lunge",
+    "name": "Landmine Zercher Forward Lunge",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-lateral-banded-walk",
+    "name": "Lateral Banded Walk",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-long-split-pulse",
+    "name": "Long Split Pulse",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-long-step-bodyweight-walking-lunge",
+    "name": "Long Step Bodyweight Walking Lunge",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-low-switch-cossack-squat",
+    "name": "Low Switch Cossack Squat",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-middle-split-hinge",
+    "name": "Middle Split Hinge",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-pvc-alternating-shoulder-circles",
+    "name": "PVC Alternating Shoulder Circles",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-quadruped-crawl",
+    "name": "Quadruped Crawl",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-rear-foot-elevated-dumbbell-romanian-deadlift",
+    "name": "Rear Foot Elevated Dumbbell Romanian Deadlift",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-reverse-nordic-band-assisted",
+    "name": "Reverse Nordic Band Assisted",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-reverse-quadruped-crawl",
+    "name": "Reverse Quadruped Crawl",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-reverse-shoulder-wall-circles",
+    "name": "Reverse Shoulder Wall Circles",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-ring-assisted-cossack-squat",
+    "name": "Ring Assisted Cossack Squat",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-ring-face-pull",
+    "name": "Ring Face Pull",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-ring-y-row",
+    "name": "Ring Y Row",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-scapular-pull-ups",
+    "name": "Scapular Pull Ups",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-seated-dumbbell-goodmorning",
+    "name": "Seated Dumbbell Goodmorning",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-shinbox-heel-touch",
+    "name": "Shinbox Heel Touch",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-shinbox-hip-extension-switch",
+    "name": "Shinbox Hip Extension + Switch",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-shinbox-rear-leg-er",
+    "name": "Shinbox Rear Leg ER",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-shinbox-switch",
+    "name": "Shinbox Switch",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-side-plank-dumbbell-powell-raise",
+    "name": "Side Plank Dumbbell Powell Raise",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-single-arm-banded-lat-pulldown",
+    "name": "Single Arm Banded Lat Pulldown",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-single-arm-dumbbell-half-turkish-get-up",
+    "name": "Single Arm Dumbbell Half Turkish Get Up",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-single-arm-powell-raise",
+    "name": "Single Arm Powell Raise",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-single-leg-bodyweight-hip-thrust",
+    "name": "Single Leg Bodyweight Hip Thrust",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-single-leg-cobra-romanian-deadlift",
+    "name": "Single Leg Cobra Romanian Deadlift",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-single-leg-dumbbell-romanian-deadlift",
+    "name": "Single Leg Dumbbell Romanian Deadlift",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-single-leg-hip-bridge-hold",
+    "name": "Single Leg Hip Bridge Hold",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-single-leg-hip-thrust-march",
+    "name": "Single Leg Hip Thrust March",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-slow-shoulder-circles",
+    "name": "Slow Shoulder Circles",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-split-squat-isometric",
+    "name": "Split Squat Isometric",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-split-stance-isometric-with-pulse",
+    "name": "Split Stance Isometric With Pulse",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-squat-pulse-in-bottom-position",
+    "name": "Squat Pulse in Bottom Position",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-standing-band-hip-abduction",
+    "name": "Standing Band Hip Abduction",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-step-through-reverse-lunge",
+    "name": "Step Through Reverse Lunge",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-straight-arm-banded-lat-pulldown",
+    "name": "Straight Arm Banded Lat Pulldown",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-straight-leg-hip-bridge-hold",
+    "name": "Straight Leg Hip Bridge Hold",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-sumo-stance-dumbbell-romanian-deadlift",
+    "name": "Sumo Stance Dumbbell Romanian Deadlift",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-supinated-band-pull-apart",
+    "name": "Supinated Band Pull-Apart",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-supinated-grip-body-row",
+    "name": "Supinated Grip Body Row",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-supine-band-lat-pull-over",
+    "name": "Supine Band Lat Pull Over",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-tall-kneeling-kettlebell-hip-to-halo",
+    "name": "Tall Kneeling Kettlebell Hip to Halo",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-theraband-around-the-world",
+    "name": "Theraband Around the World",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-theraband-glute-bridge",
+    "name": "Theraband Glute Bridge",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-theraband-hip-thrust",
+    "name": "Theraband Hip Thrust",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-turkish-get-up",
+    "name": "Turkish Get Up",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-wall-sit",
+    "name": "Wall Sit",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-wall-sit-adduction-bias",
+    "name": "Wall Sit Adduction Bias",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-wu-worlds-greatest-stretch",
+    "name": "Worlds Greatest Stretch",
+    "category": "Warm-Up",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-banded-cross-body-shoulder-stretch",
+    "name": "Banded Cross Body Shoulder Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-banded-shoulder-extension",
+    "name": "Banded Shoulder Extension",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-banded-shoulder-flexion",
+    "name": "Banded Shoulder Flexion",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-banded-single-arm-behind-the-back-stretch",
+    "name": "Banded Single Arm Behind the Back Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-banded-single-arm-pec-stretch",
+    "name": "Banded Single Arm Pec Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-behind-the-back-neck-stretch",
+    "name": "Behind the Back Neck Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-bottom-of-bench-dip-stretch",
+    "name": "Bottom of Bench Dip Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-bottom-of-dip-stretch",
+    "name": "Bottom of Dip Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-butterfly-stretch",
+    "name": "Butterfly Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-cat-cow",
+    "name": "Cat Cow",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-childs-pose-reach-through",
+    "name": "Childs Pose Reach Through",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-childs-pose-with-lat-stretch",
+    "name": "Childs Pose with Lat Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-couch-stretch",
+    "name": "Couch Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-couch-stretch-rocks",
+    "name": "Couch Stretch Rocks",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-downdog-to-updog",
+    "name": "Downdog to Updog",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-dynamic-adductor-stretch",
+    "name": "Dynamic Adductor Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-dynamic-couch-stretch",
+    "name": "Dynamic Couch Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-dynamic-pigeon-on-hands-and-knees",
+    "name": "Dynamic Pigeon on Hands and Knees",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-elevated-pigeon",
+    "name": "Elevated Pigeon",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-foot-elevated-hamstring-stretch",
+    "name": "Foot Elevated Hamstring Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-forward-fold-rotation",
+    "name": "Forward Fold Rotation",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-frog-stretch",
+    "name": "Frog Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-front-foot-elevated-hip-flexion-stretch",
+    "name": "Front Foot Elevated Hip Flexion Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-half-kneeling-hamstring-stretch",
+    "name": "Half Kneeling Hamstring Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-half-kneeling-hip-flexor-stretch",
+    "name": "Half Kneeling Hip Flexor Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-hip-sleeper-stretch",
+    "name": "Hip Sleeper Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-horse-stance-pulse",
+    "name": "Horse Stance Pulse",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-left-right-center-pancake-stretch",
+    "name": "Left, Right, Center Pancake Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-lumbar-roll-to-pancake",
+    "name": "Lumbar Roll to Pancake",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-middle-split",
+    "name": "Middle Split",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-pancake-stretch",
+    "name": "Pancake Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-passive-hang",
+    "name": "Passive Hang",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-pigeon-stretch",
+    "name": "Pigeon Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-pike-stretch",
+    "name": "Pike Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-pole-rhomboid-stretch",
+    "name": "Pole Rhomboid Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-prayer-stretch",
+    "name": "Prayer Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-pretzel-stretch",
+    "name": "Pretzel Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-pvc-box-shoulder-extension-stretch",
+    "name": "PVC Box Shoulder Extension Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-reclining-hero-pose",
+    "name": "Reclining Hero Pose",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-scorpion-chest-stretch",
+    "name": "Scorpion Chest Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-seal-pose",
+    "name": "Seal Pose",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-seal-stretch",
+    "name": "Seal Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-seated-barbell-shoulder-extension-stretch",
+    "name": "Seated Barbell Shoulder Extension Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-shinbox-heel-touch",
+    "name": "Shinbox Heel Touch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-shinbox-switch",
+    "name": "Shinbox Switch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-shoulder-extension-stretch",
+    "name": "Shoulder Extension Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-sidelying-90-90-thoracic-rotation",
+    "name": "Sidelying 90 90 Thoracic Rotation",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-sidelying-thoracic-rotation-with-reach",
+    "name": "Sidelying Thoracic Rotation with Reach",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-single-arm-banded-lat-stretch",
+    "name": "Single Arm Banded Lat Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-single-arm-wall-prayer-stretch",
+    "name": "Single Arm Wall Prayer Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-slant-board-jefferson-pulse",
+    "name": "Slant Board Jefferson Pulse",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-supinated-passive-hang",
+    "name": "Supinated Passive Hang",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-supine-bench-weighted-chest-opener",
+    "name": "Supine Bench Weighted Chest Opener",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-supine-weighted-chest-stretch",
+    "name": "Supine Weighted Chest Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-tall-kneeling-tricep-lat-stretch",
+    "name": "Tall Kneeling Tricep Lat Stretch",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-theraband-around-the-world",
+    "name": "Theraband Around the World",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-thoracic-rotation-with-sweep",
+    "name": "Thoracic Rotation with Sweep",
+    "category": "Cool-Down",
+    "aliases": []
+  },
+  {
+    "id": "fbb-cd-weight-assisted-straddle-fold",
+    "name": "Weight Assisted Straddle Fold",
+    "category": "Cool-Down",
+    "aliases": []
   }
 ];
 })(typeof window !== "undefined" ? window : global);

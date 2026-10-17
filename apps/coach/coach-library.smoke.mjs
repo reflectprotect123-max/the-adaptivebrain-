@@ -34,8 +34,22 @@ vm.runInContext(`${index}\n${search}\n${catalog}\n${loop}`, sandbox);
 
 must(Array.isArray(sandbox.COACH_EXERCISE_CATALOG), 'catalog array present');
 must(sandbox.COACH_EXERCISE_CATALOG.length >= 100, 'catalog has 120-library entries');
+const warm = sandbox.COACH_EXERCISE_CATALOG.filter((e) => e.category === 'Warm-Up');
+const cool = sandbox.COACH_EXERCISE_CATALOG.filter((e) => e.category === 'Cool-Down');
+must(warm.length === 115, 'warm-up starter library is 115, got ' + warm.length);
+must(cool.length === 58, 'cool-down starter library is 58, got ' + cool.length);
+must(warm.some((e) => e.name === 'Band Pull Apart' && e.unit === 'reps'), 'Band Pull Apart stays in warm-up');
+must(cool.some((e) => e.name === 'Couch Stretch' && e.perSide === 'Yes'), 'Couch Stretch stays in cool-down');
+must(warm.some((e) => e.name === 'Horse Stance Pulse') && cool.some((e) => e.name === 'Horse Stance Pulse'), 'shared names stay in both catalogs');
+must(warm.find((e) => e.name === 'Lateral Banded Walk').review.includes('Metres vs steps'), 'unit conflict stays visible');
+must(sandbox.COACH_EXERCISE_CATALOG.filter((e) => e.source === 'THE-core-120').length === 120, 'main library stays 120');
 const merged = sandbox.CoachLoop.mergeExerciseCatalog({ exercises: [], meta: {} });
 must(merged.exercises.length >= 100, 'mergeExerciseCatalog fills exercises');
+must(merged.exercises.some((e) => e.name === 'Couch Stretch' && e.category === 'Cool-Down' && e.typical), 'merge keeps cool-down prescription');
 must(sandbox.ExerciseSearch.search('deadlift', 5).length > 0, 'deadlift search works');
+const horse = sandbox.ExerciseSearch.search('Horse Stance Pulse', 5);
+must(horse.filter((h) => h.name === 'Horse Stance Pulse').length === 2, 'search returns both sections for a shared name');
+must(html.includes('Warm-Up'), 'coach library exposes the warm-up catalog');
+must(html.includes('Cool-Down'), 'coach library exposes the cool-down catalog');
 
 console.log('coach-library.smoke: ok');
