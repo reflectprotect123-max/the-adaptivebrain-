@@ -199,7 +199,9 @@
       const nextIsStrength =
         nextBlock &&
         nextBlock.type === 'strength' &&
-        !nextBlock.recoverySession;
+        !nextBlock.recoverySession &&
+        nextBlock.role !== 'warmup' &&
+        nextBlock.role !== 'cooldown';
 
       if (block.superset && block.type === 'strength' && nextIsStrength) {
         block.letter = ch + '1';
@@ -226,6 +228,8 @@
   }
 
   function categoryForBlock(block) {
+    if (block.role === 'warmup') return 'Warm-Up';
+    if (block.role === 'cooldown') return 'Cool-Down';
     if (block.category && BLOCK_CATEGORIES.includes(block.category)) return block.category;
     if (block.type === 'conditioning') return 'Conditioning';
     if (block.type === 'text') {
@@ -238,6 +242,7 @@
   }
 
   function scoringForBlock(block) {
+    if (block.role === 'warmup' || block.role === 'cooldown') return 'completion';
     if (block.scoring === 'weight' || block.scoring === 'completion') return block.scoring;
     return block.type === 'strength' ? 'weight' : 'completion';
   }
@@ -256,6 +261,13 @@
       !!block.conditioningType ||
       !!block.effort ||
       (!!block.modality && !hasEx);
+
+    if (block.role === 'warmup' || block.role === 'cooldown') {
+      block.type = 'strength';
+      block.scoring = 'completion';
+      block.category = block.role === 'warmup' ? 'Warm-Up' : 'Cool-Down';
+      return block;
+    }
 
     if (block.type === 'text' && !hasEx) return block;
 
@@ -440,6 +452,8 @@
       metric: partial.metric || 'Weight',
       restSec: partial.restSec == null ? 90 : partial.restSec,
       coachNote: partial.coachNote || '',
+      unit: partial.unit || '',
+      perSide: partial.perSide || '',
       athleteNote: partial.athleteNote || '',
       swappedFrom: partial.swappedFrom || null,
       logColumns: partial.logColumns || null,
@@ -595,7 +609,12 @@
       planLine: partial.planLine || '',
       recoverySession: !!partial.recoverySession,
       baselineDurationMin: partial.baselineDurationMin == null ? 0 : num(partial.baselineDurationMin),
+      role: partial.role === 'warmup' || partial.role === 'cooldown' ? partial.role : '',
     };
+    if (block.role) {
+      block.scoring = 'completion';
+      block.rounds = partial.rounds == null ? 3 : Math.max(1, num(partial.rounds) || 3);
+    }
     if (block.type === 'conditioning') applyCondBuilderToBlock(block);
     return normalizeBlockType(block);
   }
