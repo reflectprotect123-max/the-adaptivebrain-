@@ -2,6 +2,14 @@
 
 **Agents:** if the human says **read the handoff**, open [`HANDOFF.md`](HANDOFF.md). That is the current V1 start (not `docs/contracts/00-HANDOFF.md`).
 
+## Coach workspace and Windows app
+
+The Coach UI (`apps/coach`) and Windows installer (`apps/desktop`) now live here.
+See [Coach setup and release instructions](apps/coach/README.md).
+[Download the current installer](https://github.com/reflectprotect123-max/the-adaptivebrain-/releases/tag/coach-desktop-latest).
+The athlete app continues to live in strengthside; moving Coach does not change
+its Capgo bundle or workout behavior.
+
 Shared brain for the two apps:
 
 - [strengthside](https://github.com/reflectprotect123-max/strengthside) — Strength / TRACK

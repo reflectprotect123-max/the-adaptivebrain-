@@ -1,3 +1,5 @@
+> Coach ownership update — 17 October 2026: this repository now owns `apps/coach/` and `apps/desktop/`, migrated from strengthside. Coach version 1.0.3 updates from this repository’s `coach-desktop-latest` release. `pnpm run verify` checks the existing brain package and migrated Coach project. See `apps/coach/README.md`. Earlier app snapshots and parked work below are unchanged.
+
 # Adaptive Brain V1 — agent handoff
 
 **If the human said “read the handoff” (or “read the hand off”), this is the file.**  

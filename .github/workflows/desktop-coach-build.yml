@@ -1,0 +1,89 @@
+# Build THE Hybrid Coach Windows installer (.exe) and publish the bundled UI.
+name: Build coach desktop
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/desktop/**'
+      - 'apps/coach/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - '.github/workflows/desktop-coach-build.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+
+      - name: Install workspace deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Coach desktop smoke (bundled UI)
+        run: pnpm --filter @hybrid/coach-desktop run check
+
+      - name: Build Windows NSIS installer
+        working-directory: apps/desktop
+        run: pnpm run dist
+
+      - name: Publish coach-desktop-latest release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          VERSION="$(node -p "require('./apps/desktop/package.json').version")"
+          EXE="apps/desktop/dist/THE-Hybrid-Coach-Setup-${VERSION}.exe"
+          YML="apps/desktop/dist/latest.yml"
+          SHA="$(git rev-parse --short HEAD)"
+          EXE_NAME="THE-Hybrid-Coach-Setup-${VERSION}.exe"
+          NOTES="Windows desktop shell for THE Hybrid **Coach** app.
+
+          Bundles the Coach UI and updates it with this desktop release.
+          Shell auto-updates from this release (Coach → Check for app updates).
+
+          **Version:** \`${VERSION}\`
+          **Commit:** \`${SHA}\`
+
+          Install: Assets → \`${EXE_NAME}\`"
+
+          test -f "$EXE"
+          test -f "$YML"
+
+          if gh release view coach-desktop-latest >/dev/null 2>&1; then
+            gh release view coach-desktop-latest --json assets -q '.assets[].name' 2>/dev/null | while read -r name; do
+              if [[ -n "$name" && "$name" != "$EXE_NAME" && "$name" != "latest.yml" ]]; then
+                gh release delete-asset coach-desktop-latest "$name" --yes || true
+              fi
+            done
+            gh release edit coach-desktop-latest --title "Coach Desktop (latest)" --notes "$NOTES"
+            gh release upload coach-desktop-latest "$EXE" "$YML" --clobber
+          else
+            gh release create coach-desktop-latest "$EXE" "$YML" \
+              --title "Coach Desktop (latest)" \
+              --notes "$NOTES"
+          fi
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: THE-Hybrid-Coach-Windows
+          path: |
+            apps/desktop/dist/*.exe
+            apps/desktop/dist/latest.yml
+          if-no-files-found: error

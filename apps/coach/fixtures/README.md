@@ -1,0 +1,1 @@
+Frozen cross-app regression fixtures imported from strengthside commit 7d92c5b6e062e8a85f853d35bd6594731ca43056. These are test inputs, excluded from the desktop installer. They are not another athlete runtime or deployment target. The live athlete app and applied Supabase migration remain in strengthside. Trailing whitespace in the legacy HTML fixture is normalized.
