@@ -1,5 +1,13 @@
 {
-  "install": "node -v",
+  "name": "Adaptive Brain",
+  "install": "set -euo pipefail\ncorepack pnpm install --frozen-lockfile\nDEBIAN_FRONTEND=noninteractive corepack pnpm exec playwright install --with-deps chromium\n",
+  "start": "set -euo pipefail\nif curl -sf -o /dev/null --max-time 2 http://127.0.0.1:4173/coach.html; then exit 0; fi\nexec python3 -m http.server 4173 --bind 0.0.0.0 --directory apps/coach\n",
+  "ports": [
+    {
+      "name": "coach",
+      "port": 4173
+    }
+  ],
   "repositoryDependencies": [
     "github.com/reflectprotect123-max/strengthside",
     "github.com/reflectprotect123-max/Engine-side-"
