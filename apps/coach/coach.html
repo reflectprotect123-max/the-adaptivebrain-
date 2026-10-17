@@ -6,7 +6,7 @@
 <title>THE Hybrid — Coach</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
 /* Screenshot-clone chrome — Hybrid labels only */
 :root{
@@ -249,6 +249,24 @@ label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight
 .builder-steps{margin:12px 0}
 .prep-row{display:grid;grid-template-columns:28px 1fr 120px auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
 .prep-catalog{max-height:320px;overflow:auto;display:grid;gap:6px;margin-top:8px}
+.session-builder{margin-top:8px;padding:8px 16px 18px;border-radius:18px;background:#000;color:#fff;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans-serif}
+.session-builder .builder-steps{border-bottom-color:rgba(255,255,255,.1)}
+.session-builder .builder-steps button{color:#8e8e93;font-family:"Barlow Condensed",ui-sans-serif,system-ui,sans-serif;font-size:18px;letter-spacing:.03em}
+.session-builder .builder-steps button.on{color:#fff;border-bottom-color:#fff}
+.session-builder .block-card{background:#121212;border:1px solid rgba(255,255,255,.1);color:#fff;border-radius:14px}
+.session-builder .block-head,.session-builder .prep-row{border-color:rgba(255,255,255,.1)}
+.session-builder .letter-badge{background:#3a3a3c;color:#fff}
+.session-builder .prep-dose{color:#1ba3ff;font-size:13px;font-weight:600}
+.session-builder input,.session-builder textarea,.session-builder select{background:#1c1c1e;color:#fff;border-color:rgba(255,255,255,.16)}
+.session-builder .picker-item{background:#121212;color:#fff;border:1px solid rgba(255,255,255,.1);border-radius:12px;text-align:left}
+.session-builder .picker-item:hover{border-color:rgba(255,255,255,.28)}
+.session-builder .muted{color:#8e8e93}
+.session-builder .oled-next{width:100%;min-height:48px;border:1px solid rgba(255,255,255,.42);background:#fff;color:#000;border-radius:999px;font-family:"Barlow Condensed",ui-sans-serif,system-ui,sans-serif;font-size:18px;font-weight:700;letter-spacing:.02em}
+.session-builder .oled-next:hover{background:#f2f2f2}
+.session-builder .btn:focus-visible,.session-builder input:focus-visible{box-shadow:0 0 0 2px #000,0 0 0 4px #fff}
+@media (prefers-reduced-motion: reduce){
+  .session-builder .btn,.session-builder .picker-item{transition:none}
+}
 .picker-item{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel3);color:var(--text);transition:border-color var(--ease)}
 .picker-item:hover{border-color:rgba(212,165,116,.35)}
 .template-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);color:var(--text);transition:border-color var(--ease),box-shadow var(--ease)}
@@ -1639,6 +1657,18 @@ function setBuilderStep(step){
   render();
 }
 
+function prepDoseLabel(ex, rounds){
+  const n = rounds || ex.sets || 3;
+  if (ex.metric === 'Seconds') return n + ' × ' + L.formatMmSs(ex.reps);
+  const side = ex.perSide && ex.perSide !== 'No' ? ' / side' : '';
+  return n + ' × ' + (ex.reps || '—') + ' ' + (ex.metric || 'Reps') + side;
+}
+
+function prepAmountValue(ex){
+  if (ex.metric === 'Seconds') return L.formatMmSs(ex.reps);
+  return ex.reps || '';
+}
+
 function setPrepRounds(role, raw){
   const bi = prepBlockIndex(role);
   if (bi < 0) return;
@@ -1659,7 +1689,7 @@ function tBlocksRefresh(){
 function setPrepAmount(bi, ei, value){
   const ex = tpl(ui.templateId).blocks[bi].exercises[ei];
   if (!ex) return;
-  ex.reps = value;
+  ex.reps = ex.metric === 'Seconds' ? String(L.parseMmSs(value)) : value;
   persist();
 }
 
@@ -1726,10 +1756,10 @@ function prepCircuitHtml(role){
   const rounds = b ? (b.rounds || 3) : 3;
   const items = b ? (b.exercises || []) : [];
   const rows = items.map((ex, ei) => `<div class="prep-row">
-      <span class="letter-badge" style="width:26px;height:26px;font-size:11px">${ei + 1}</span>
-      <div><b>${esc(ex.name)}</b>${ex.perSide && ex.perSide !== 'No' ? `<div class="muted">Per side: ${esc(ex.perSide)}</div>` : ''}${ex.coachNote ? `<div class="muted">Needs review: ${esc(ex.coachNote)}</div>` : ''}</div>
-      <input aria-label="Amount for ${esc(ex.name)}" value="${esc(ex.reps || '')}" oninput="setPrepAmount(${bi},${ei},this.value)">
-      <span class="muted">${esc(ex.metric || 'Reps')}<button type="button" class="kebab-btn" title="Remove" onclick="removePrepExercise(${bi},${ei})">×</button></span>
+      <span class="letter-badge" style="width:32px;height:32px;font-size:13px">${ei + 1}</span>
+      <div><b>${esc(ex.name)}</b><div class="prep-dose">${esc(prepDoseLabel(ex, rounds))}</div>${ex.perSide && ex.perSide !== 'No' ? `<div class="muted">Per side: ${esc(ex.perSide)}</div>` : ''}${ex.coachNote ? `<div class="muted">Needs review: ${esc(ex.coachNote)}</div>` : ''}</div>
+      <input aria-label="Amount for ${esc(ex.name)}" value="${esc(prepAmountValue(ex))}" onchange="setPrepAmount(${bi},${ei},this.value)">
+      <button type="button" class="kebab-btn" title="Remove ${esc(ex.name)}" aria-label="Remove ${esc(ex.name)}" onclick="removePrepExercise(${bi},${ei})">×</button>
     </div>`).join('');
   const empty = role === 'cooldown' && !items.length ? '<p class="muted">Cool-down starts empty. Add movements from the catalog.</p>' : '';
   return `<section class="block-card">
@@ -1755,9 +1785,9 @@ function builderChrome(step, body){
   const tabs = `<div class="lib-tabs builder-steps" role="tablist" aria-label="Session builder">${steps.map(([k, label], n) => `<button type="button" role="tab" aria-selected="${step===k?'true':'false'}" class="${step===k?'on':''}" onclick="setBuilderStep('${k}')">${n + 1}. ${label}</button>`).join('')}</div>`;
   const nav = `<div class="row" style="margin-top:14px;justify-content:flex-end;gap:8px">
       ${prev ? `<button type="button" class="btn" onclick="setBuilderStep('${prev}')">Back</button>` : ''}
-      <button type="button" class="btn primary" onclick="setBuilderStep('${next}')">${next === 'done' ? 'Done' : 'Next'}</button>
+      <button type="button" class="btn primary oled-next" onclick="setBuilderStep('${next}')">${next === 'done' ? 'Done' : 'Next'}</button>
     </div>`;
-  return `${tabs}${body}${nav}`;
+  return `<div class="session-builder">${tabs}${body}${nav}</div>`;
 }
 
 function blockExerciseHtml(b, bi){
