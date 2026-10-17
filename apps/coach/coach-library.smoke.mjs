@@ -52,6 +52,6 @@ must(horse.filter((h) => h.name === 'Horse Stance Pulse').length === 2, 'search 
 must(html.includes('setExCatalogSection'), 'catalog tabs call setExCatalogSection');
 must(!html.includes('onclick="ui.exCatalogSection='), 'catalog tab click is not broken by nested quotes');
 must(html.includes('id="exPickerSearch"'), 'exercise picker search keeps an id so typing can stay focused');
-must(html.includes('restoreTypingFocus'), 'render restores the search caret');
+must(html.includes('onPickerSearch'), 'picker search updates the list without redrawing the page');
 
 console.log('coach-library.smoke: ok');

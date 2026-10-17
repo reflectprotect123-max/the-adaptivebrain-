@@ -1448,19 +1448,33 @@ function filteredExercises(){
   return (S.exercises||[]).slice(0, 80);
 }
 
-function exercisePickerHtml(){
-  if (!ui.exPicker) return '';
-  const q = String(ui.exSearch||'').trim();
+function pickerHitsHtml(query){
+  const q = String(query||'').trim();
   const hits = coachExerciseSuggestHits(q);
-  const list = hits.length
+  return hits.length
     ? hits.map(x => `<button type="button" class="picker-item" onclick='pickExerciseVariant(${JSON.stringify(x.exerciseId||'')},${JSON.stringify(x.name)},${JSON.stringify(x.category||'Custom')})'><span>${esc(x.name)}</span><span class="muted">${esc(x.category||'Custom')}</span></button>`).join('')
     : (q ? '<div class="muted">No library match — try another variant name.</div>' : '<div class="muted">Type to search exercise variants (names only).</div>');
+}
+
+function onPickerSearch(value){
+  ui.exSearch = value;
+  const list = document.querySelector('.picker-list');
+  if (!list) {
+    ui.focusField = 'exPickerSearch';
+    render();
+    return;
+  }
+  list.innerHTML = pickerHitsHtml(value);
+}
+
+function exercisePickerHtml(){
+  if (!ui.exPicker) return '';
   return `<div class="picker-overlay" onclick="if(event.target===this)closeExPicker()">
     <div class="picker-panel" role="dialog" aria-label="Choose exercise">
       <div class="row"><b>Choose exercise</b><button type="button" class="btn ghost small" onclick="closeExPicker()">Close</button></div>
       <div class="field" style="margin-top:12px"><label>Search variants</label>
-        <input id="exPickerSearch" value="${esc(ui.exSearch)}" oninput="ui.exSearch=this.value;ui.focusField='exPickerSearch';render()" placeholder="deadlift, lateral raise…"></div>
-      <div class="picker-list">${list}</div>
+        <input id="exPickerSearch" value="${esc(ui.exSearch)}" oninput="onPickerSearch(this.value)" placeholder="deadlift, lateral raise…"></div>
+      <div class="picker-list">${pickerHitsHtml(ui.exSearch)}</div>
     </div></div>`;
 }
 
@@ -1775,7 +1789,7 @@ window.saveComment=saveComment; window.toggleCard=toggleCard;
 window.openSession=openSession; window.openProgram=openProgram;
 window.newTemplate=newTemplate; window.newProgram=newProgram; window.parseSets=parseSets; window.addEx=addEx; window.addBlk=addBlk;
 window.removeBlk=removeBlk; window.removeEx=removeEx; window.toggleSuperset=toggleSuperset; window.moveBlock=moveBlock; window.growTextAreas=growTextAreas;
-window.openExPicker=openExPicker; window.closeExPicker=closeExPicker; window.pickExerciseVariant=pickExerciseVariant;
+window.openExPicker=openExPicker; window.closeExPicker=closeExPicker; window.pickExerciseVariant=pickExerciseVariant; window.onPickerSearch=onPickerSearch;
 window.setRowRep=setRowRep; window.setRowLoad=setRowLoad;
 window.patchCond=patchCond; window.setCondFmt=setCondFmt; window.nudgeCondMin=nudgeCondMin;
 window.toggleCellMenu=toggleCellMenu; window.openCellPick=openCellPick; window.closeCellPick=closeCellPick;
