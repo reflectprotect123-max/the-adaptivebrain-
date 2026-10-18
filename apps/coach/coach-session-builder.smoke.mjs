@@ -10,39 +10,12 @@ const dir = dirname(fileURLToPath(import.meta.url));
 const html = readFileSync(join(dir, 'coach.html'), 'utf8');
 const src = readFileSync(join(dir, 'coach-loop.js'), 'utf8');
 
-for (const needle of [
-  'Coach instructions',
-  'Add a block type',
-  '+ Strength',
-  'For Weight',
-  'For Completion',
-  'Choose exercise',
-  'Search variants',
-  'pickExerciseVariant',
-  'New session',
-  'block-card',
-  'engine-box',
-  'Effort',
-  'Steady-state',
-  'Edit prescription',
-  'Target RIR',
-  'builderPrescriptionHtml',
-  'training-core.js',
-  'whoop-common.js',
-  'log-columns.js',
-  'removeBlk',
-  'prep-textarea',
-  'Delete block',
-  'block-drag-handle',
-  'coachBlockList',
-  'moveBlock',
-]) {
-  if (!html.includes(needle)) throw new Error(`coach.html missing ${needle}`);
+for (const needle of ['CoachBuilder.create()', 'CoachBuilder.mount', './builder/library-ui.js', 'coachImportedBuilder']) {
+  if (!html.includes(needle)) throw new Error(`Coach missing imported builder: ${needle}`);
 }
-if (html.includes('Exercise instructions')) {
-  throw new Error('coach.html must not show per-exercise instructions field in builder');
+for (const retired of ['legacySessionHtml','openCoachExEdit','builderPrescriptionHtml','Autopilot','log-columns.js','setBuilderStep']) {
+  if (html.includes(retired)) throw new Error(`Retired editor still present: ${retired}`);
 }
-if (!src.includes('autopilot load')) throw new Error('coach-loop.js missing autopilot load hint');
 if (!src.includes('Uncategorized')) throw new Error('coach-loop.js missing Uncategorized category');
 if (!src.includes('COND_EFFORTS')) throw new Error('coach-loop.js missing COND_EFFORTS');
 if (!src.includes('applyCondBuilderToBlock')) throw new Error('coach-loop.js missing applyCondBuilderToBlock');
@@ -176,7 +149,7 @@ if (built.blocks[2].role !== 'cooldown' || built.blocks[2].category !== 'Cool-Do
   throw new Error('cool-down should stay empty');
 }
 if (built.blocks[2].supersetPartner) throw new Error('cool-down was paired into the superset');
-if (!html.includes('setBuilderStep') || !html.includes('CoachBuilder.create()') || !html.includes('CoachBuilder.mount')) {
+if (!html.includes('CoachBuilder.create()') || !html.includes('CoachBuilder.mount')) {
   throw new Error('coach session builder markup missing warm-up flow');
 }
 

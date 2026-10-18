@@ -8,7 +8,7 @@ The prior Coach migration moved the existing Coach editor. Exporting the newer a
 
 The source of `apps/coach/builder/{library.js,library-ui.js,library.css,strength-targets.js}` is the APK builder exported from `reflectprotect123-max/strengthside` commit `5551ef5a4394f16582c3a9687c38bb1e02859508` (the source pinned in that repository's builder export script). This imports the real model and view, rather than reproducing the old Coach prescription dialog.
 
-Coach opens that builder for strength templates, including existing templates. Its warm-up → lift cards → cool-down flow, numbered sets, photo keypad, range entry, final AMRAP at first working-set weight, tempo dropdown, circuits and supersets are retained. Coach's shell and athlete calendar stay in place. Pure engine templates continue using their engine editor; engine blocks in mixed templates are retained without rewriting their data.
+Coach opens that builder for strength templates, including existing templates. Its warm-up → lift cards → cool-down flow, numbered sets, photo keypad, range entry, final AMRAP at first working-set weight, tempo dropdown, circuits and supersets are retained. Coach's shell and athlete calendar stay in place. The follow-up retirement removes the entire older Coach editor, including its engine fallback. Only the imported builder opens. Existing engine blocks remain in saved templates without being rewritten by strength edits.
 
 Small integration differences from the exported source:
 
@@ -33,3 +33,9 @@ The source's prep defaults remain unchanged (five movements, three rounds; 180 s
 - CLI screenshots are retained under `/workspace/artifacts/coach-builder-import/` in this execution environment.
 
 Browser publishing uses offline demo state; live Supabase account delivery and physical Windows/Android installation are not claimed as tested by this change.
+
+## Follow-up: remove the old editor
+
+Removed the old prescription sheet, target-effort controls, block-type editor, drag handlers, old warm-up/cool-down editor, picker handlers, DOM bindings and editor-only CSS from `coach.html`. The imported warm-up → lift cards → cool-down screens are unchanged. Removed the old sheet from desktop and Capgo assets; its source remains only under `fixtures/` for historical data regression tests. Legacy serialization flags stay readable for old records, with plain wording in summaries instead of “Autopilot”.
+
+The browser suite now has seven journeys. The retirement journey checks all existing template types use the new editor, retired global entry points are absent, simply opening templates does not rewrite templates or assigned sessions, and the shared program calendar picker remains a proper modal.

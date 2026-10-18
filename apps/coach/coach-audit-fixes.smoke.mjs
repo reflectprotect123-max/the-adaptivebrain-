@@ -12,7 +12,7 @@ const syncSrc = readFileSync(join(dir, 'fixtures/coach-sync.js'), 'utf8');
 const cloudSrc = readFileSync(join(dir, 'coach-cloud.js'), 'utf8');
 const nutSrc = readFileSync(join(dir, 'coach-nutrition.js'), 'utf8');
 
-const logColsSrc = readFileSync(join(dir, 'log-columns.js'), 'utf8');
+const logColsSrc = readFileSync(join(dir, 'fixtures/log-columns.js'), 'utf8');
 const coachHtml = readFileSync(join(dir, 'coach.html'), 'utf8');
 const viewsSrc = readFileSync(join(dir, 'coach-views.js'), 'utf8');
 const indexHtml = readFileSync(join(dir, 'fixtures/legacy-athlete.html'), 'utf8');
@@ -197,11 +197,7 @@ if (!logColsSrc.includes("loadCol.kind === 'weight_kg'")) {
 }
 
 // coach.html deep audit hooks
-if (!coachHtml.includes('L.num(b.baselineDurationMin)')) {
-  throw new Error('setBlockType recovery must use L.num not num()');
-}
-if (!coachHtml.includes('function clearCondFields')) throw new Error('clearCondFields helper missing');
-if (!coachHtml.includes('closeCoachExEdit();')) throw new Error('coach.html missing closeCoachExEdit guards');
+if (coachHtml.includes('closeCoachExEdit') || coachHtml.includes('clearCondFields')) throw new Error('Retired editor hooks remain');
 if (!coachHtml.includes('blockTypeValue(b)')) throw new Error('cellSummary must use blockTypeValue');
 
 // coach-views

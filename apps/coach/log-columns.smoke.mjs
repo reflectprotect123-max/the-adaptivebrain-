@@ -7,12 +7,12 @@ import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 
 const dir = dirname(fileURLToPath(import.meta.url));
-const src = readFileSync(join(dir,'training-core.js'),'utf8')+'\n'+readFileSync(join(dir, 'log-columns.js'), 'utf8');
+const src = readFileSync(join(dir,'training-core.js'),'utf8')+'\n'+readFileSync(join(dir, 'fixtures/log-columns.js'), 'utf8');
 const html = readFileSync(join(dir, 'fixtures/legacy-athlete.html'), 'utf8');
 const coachHtml = readFileSync(join(dir, 'coach.html'), 'utf8');
 
 if (!html.includes('log-columns.js')) throw new Error('index.html missing log-columns.js');
-if (!coachHtml.includes('LogColumns.builderPrescriptionHtml')) throw new Error('coach builder prescription grid not wired');
+if (coachHtml.includes('LogColumns') || coachHtml.includes('log-columns.js')) throw new Error('retired sheet still wired into Coach');
 if (html.includes('LogColumns.builderPrescriptionHtml({compact:false})')) throw new Error('athlete exerciseSheet must not wire Prescription card');
 if (!html.includes("LOCAL_BUILD='the-hybrid-athlete-engine-v163'")) throw new Error('expected cache v162');
 if (!html.includes('athleteLiftEditor') || !html.includes('ath-lift-logger')) throw new Error('athlete lift logger editor missing');

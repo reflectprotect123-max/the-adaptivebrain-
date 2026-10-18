@@ -11,7 +11,7 @@ const src = readFileSync(join(dir, 'coach-loop.js'), 'utf8');
 const html = readFileSync(join(dir, 'coach.html'), 'utf8');
 const legacyApp = readFileSync(join(dir, 'fixtures/legacy-athlete.html'), 'utf8');
 const whoopBridge = readFileSync(join(dir,'whoop-common.js'),'utf8')+'\n'+readFileSync(join(dir, 'whoop.js'), 'utf8');
-const coachColumns = readFileSync(join(dir, 'log-columns.js'), 'utf8');
+const coachColumns = readFileSync(join(dir, 'fixtures/log-columns.js'), 'utf8');
 for (const token of ['readinessScore', 'decisionFromScore', 'athRecoveryGateOverlay'].map((name) => `function ${name}(`)) {
   if (legacyApp.includes(token)) throw new Error(`${token} must be removed`);
 }

@@ -1457,7 +1457,7 @@
         : '';
     const rest = ex.restSec ? ` · rest ${ex.restSec}s` : '';
     if (ex.autopilotVolume || (ex.sets == null && !String(ex.reps || '').trim())) {
-      return `autopilot${rest}${rir}`;
+      return `Sets and reps not specified${rest}${rir}`;
     }
     if (ex.loadExpr && ex.loadExpr.exprKind === 'pct_of_max') {
       const pct = Math.round(Number(ex.loadExpr.exprArg) * 100);
@@ -1468,7 +1468,7 @@
     }
     const load = String(ex.load || '').trim();
     const metric = ex.metric || 'Weight';
-    const loadBit = load ? ` @ ${load}${metric === 'Weight' ? 'kg' : ''}` : ' · autopilot load';
+    const loadBit = load ? ` @ ${load}${metric === 'Weight' ? 'kg' : ''}` : ' · weight selected during workout';
     return `${ex.sets} × ${ex.reps}${loadBit}${rest}${rir}`;
   }
 

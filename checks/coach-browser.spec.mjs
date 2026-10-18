@@ -134,3 +134,22 @@ test('builder edits save compactly without rewriting the retired same-device ath
   expect(await page.evaluate(() => S.templates.some(t => t.name === 'Cleanup check'))).toBe(true);
   expect(await page.evaluate(() => S.exercises.length)).toBeGreaterThan(2000);
 });
+
+
+test('only the newest builder opens, including old templates, and viewing never rewrites saved sessions',async({page})=>{
+ await page.route('https://**/*',r=>r.abort());await page.goto('/coach.html');
+ await page.getByRole('button',{name:'Demo coach (offline)'}).click();
+ const before=await page.evaluate(()=>JSON.stringify({templates:S.templates,sessions:S.sessions}));
+ for(const name of ['Full Body Strength','Aerobic Conditioning','Recovery Session']){
+  await page.evaluate(name=>openSession(S.templates.find(t=>t.name===name).id,'lifts'),name);
+  await expect(page.locator('#coachImportedBuilder')).toBeVisible();
+  await expect(page.getByRole('heading',{name:'Session Template',exact:true})).toBeVisible();
+  await expect(page.getByText(/Autopilot|Target RIR|Edit prescription/)).toHaveCount(0);
+ }
+ expect(await page.evaluate(()=>JSON.stringify({templates:S.templates,sessions:S.sessions}))).toBe(before);
+ expect(await page.evaluate(()=>['legacySessionHtml','openCoachExEdit','setBlockType','addBlk','LogColumns'].map(k=>typeof window[k]))).toEqual(Array(5).fill('undefined'));
+ await page.evaluate(()=>{openProgram(S.programs[0].id);openCellPick(1,1,'set');});
+ await expect(page.getByRole('dialog',{name:'Choose session template'})).toBeVisible();
+ expect(await page.locator('.picker-overlay').evaluate(el=>getComputedStyle(el).position)).toBe('fixed');
+ await page.getByRole('dialog',{name:'Choose session template'}).getByRole('button',{name:'Close',exact:true}).click();
+});
