@@ -711,7 +711,7 @@
     const overrideSection = sheet.autopilotVolume || compact
       ? ''
       : `<details class="rx-overrides" ${sheet.showOverrides ? 'open' : ''} ontoggle="if(this.isConnected)LogColumns.toggleOverrides(this.open)">
-        <summary>Per-set rep overrides (optional)</summary>
+        <summary onclick="LogColumns.toggleOverrides(!this.parentNode.open)">Per-set rep overrides (optional)</summary>
         ${builderOverridesTableHtml()}
       </details>`;
     const cardClass = compact ? 'card rx-prescription-card compact' : 'card rx-prescription-card';
@@ -987,6 +987,10 @@
       const fields = Array.from(presc.querySelectorAll('input,select,textarea'));
       const index = fields.indexOf(active);
       const selection = index >= 0 && typeof active.selectionStart === 'number' ? [active.selectionStart,active.selectionEnd] : null;
+      // Native details toggle events are asynchronous. Read the live open state
+      // before redrawing so an immediate first keystroke cannot close overrides.
+      const overrides = presc.querySelector('details.rx-overrides:not(.rx-advanced)');
+      if (overrides) sheet.showOverrides = overrides.open;
       const compact = presc.classList.contains('compact');
       const wrap = global.document.createElement('div');
       wrap.innerHTML = builderPrescriptionGridHtml({ compact });

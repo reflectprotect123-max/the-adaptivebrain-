@@ -53,3 +53,17 @@ test('returned athlete results keep metrics, load convention, canonical estimate
  await expect(chip.getByText(/13 reps · 30 kg plates/)).toBeVisible();await expect(chip.getByText(/30 seconds/)).toBeVisible();await expect(chip.getByText(/69.3 kg.*athlete engine/)).toBeVisible();
  await chip.getByRole('button',{name:'⋯',exact:true}).click();await expect(chip.getByText(/13 reps · 30 kg plates/)).toBeVisible();
 });
+
+test('same-tick input before the native details toggle event keeps overrides open',async({page})=>{
+ await page.route('https://**/*',r=>r.abort());await page.goto('/coach.html');await page.getByRole('button',{name:'Demo coach (offline)'}).click();
+ await page.getByRole('button',{name:'Library',exact:true}).click();await page.getByRole('button',{name:'New session',exact:true}).click();await page.getByRole('button',{name:'Next',exact:true}).click();await page.getByRole('button',{name:'Edit prescription',exact:true}).click();
+ const volume=page.locator('details').filter({has:page.getByText('Set sets & reps',{exact:true})});await volume.getByRole('spinbutton').fill('4');await volume.getByRole('spinbutton').press('Tab');
+ // Deliberately exercise the interval before the asynchronous native toggle event.
+ await page.evaluate(()=>{
+  const details=[...document.querySelectorAll('details')].find(d=>d.querySelector('summary')?.textContent==='Per-set rep overrides (optional)');
+  details.open=true;const input=details.querySelectorAll('input')[1];input.value='8';input.dispatchEvent(new Event('input',{bubbles:true}));
+ });
+ const over=page.locator('details').filter({has:page.getByText('Per-set rep overrides (optional)',{exact:true})});
+ await expect(over).toHaveAttribute('open','');await over.getByRole('textbox').nth(2).fill('6');await over.getByRole('textbox').nth(3).fill('AMRAP');await page.getByRole('button',{name:'Done',exact:true}).click();
+ await expect(page.getByText(/4 × 5, 8, 6, AMRAP/)).toBeVisible();
+});
