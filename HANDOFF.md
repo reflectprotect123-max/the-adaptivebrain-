@@ -137,7 +137,9 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 - WHOOP recovery must not soften / rewrite last Close output.
 - Do not tell the human to “start a new Cloud Agent” to fix sibling 403; that only helps if the **environment repo list / PAT** actually includes write. Classic PAT in-chat is what worked.
 
-**Coach exercise metrics (18 Oct 2026, noted, not built).** A lift tracks two columns. The first is required. The second may be None. Keep only: Reps, Rep Range, Weight (kg), Weight (%), Seconds, Meters. Off this menu: Weight (lb), Feet, Yards, Miles, Time (mm:ss), Linear Weight Progression, Watts, Calories, Inches, Velocity, Other, For Completion, and RPE. For Completion stays on circuits. A cool-down stays Reps and Seconds. The imported lift dropdown still offers the longer `training-core.js` list. Do not treat that dropdown as this decision.
+**Coach exercise metrics (18 Oct 2026).** A lift tracks two columns. The first is required. The second may be None. Keep only: Reps, Rep Range, Weight (kg), Weight (%), Seconds, Meters. Off this menu: Weight (lb), Feet, Yards, Miles, Time (mm:ss), Linear Weight Progression, Watts, Calories, Inches, Velocity, Other, For Completion, and RPE. For Completion stays on circuits. A cool-down stays Reps and Seconds. The imported lift dropdown still offers the longer `training-core.js` list. Do not treat that dropdown as this decision.
+
+**Coach exercise step (18 Oct 2026, plan, not built).** Implement `docs/superpowers/plans/2026-10-18-coach-exercise-builder.md`. Tempo is a closed card: nothing saved shows “No tempo” and “Add”; Add opens Lower, bottom pause, Lift, top pause. Delete, Up, Down, and Ungroup edit a lift group. Up or Down past the group drops that lift out. One lift left becomes its own lift. Superset links the tapped lifts into one group, including three, and the divider stays “− Superset”. “Add to group” puts another lift into a group that already exists. A coach-typed kilogram does not enter the brain. Leave the warm-up and cool-down screens alone.
 
 ---
 
