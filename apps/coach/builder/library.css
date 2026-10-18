@@ -151,6 +151,13 @@
   font-size: 13px;
 }
 
+.lib-text-btn:disabled,
+.lib-danger:disabled {
+  color: #8e8e93;
+  opacity: 0.45;
+  cursor: default;
+}
+
 .lib-field {
   margin: 0 16px 14px;
 }
@@ -270,6 +277,19 @@
   box-shadow: inset 0 0 0 4px #000;
 }
 
+.lib-pick-order {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--trn-blue);
+  color: #000;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex: none;
+}
+
 .lib-tabs {
   display: flex;
   gap: 18px;
@@ -349,6 +369,7 @@
 .lib-grid-h { color: #1ba3ff; font-weight: 650; }
 .lib-grid.tempo-grid .lib-grid-h { display: grid; gap: 6px; min-width: 0; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
 .lib-cell { min-height: 44px; border-radius: 10px; background: #1c1c1e; color: #fff; width: 100%; box-sizing: border-box; }
+.lib-cell.lib-athlete { background: transparent; color: var(--oled-muted, #8e8e93); display: grid; place-items: center; font-size: 13px; }
 .lib-grid.tempo-grid .lib-cell { text-align: center; font-size: 22px; padding: 0; }
 .lib-stepper { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 18px; }
 .lib-step { width: 46px; height: 46px; border-radius: 50%; border: 2px solid #1ba3ff; background: transparent; color: #1ba3ff; font-size: 28px; line-height: 1; }

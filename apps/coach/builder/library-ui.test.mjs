@@ -246,11 +246,11 @@ test('creating a session walks warm-up, the exercise picker, reps, tempo, cool-d
   assert.equal(S.libUi.screen, 'cooldown');
   assert.equal(S.libUi.flow, 'wizard');
   LibraryView.wizardBack();
-  assert.equal(S.libUi.screen, 'edit');
+  assert.equal(S.libUi.screen, 'reps');
   assert.equal(S.libUi.flow, 'wizard');
-  LibraryView.wizardBack();
-  assert.equal(S.libUi.screen, 'warmup');
-  LibraryView.wizardNext();
+  assert.match(LibraryView.html(), /Bench Press/);
+  assert.match(LibraryView.html(), /Lat Pull Downs/);
+  assert.equal((LibraryView.html().match(/− Superset/g) || []).length, 1);
   LibraryView.wizardNext();
   assert.equal(S.libUi.screen, 'cooldown');
   const cool = LibraryView.html();
@@ -372,7 +372,7 @@ test('the lift card uses the tempo dropdown and Next leaves for cool-down', () =
   assert.match(html, /Meters/);
   assert.match(html, /Watts/); // Coach retains the full existing metric contract.
   globalThis.LibraryView.wizardNext();
-  assert.equal(globalThis.S.libUi.screen, 'cooldown');
+  assert.equal(globalThis.S.libUi.screen, 'reps');
 });
 
 test('cool-down is a circuit and only offers seconds and reps', () => {
@@ -502,4 +502,116 @@ test('tempo accepts X only in the Lift phase so saved prescriptions match the br
  }
  S.libUi.tempoDraft=[...'33X1'];LibraryView.saveTempo(bid);
  assert.equal(HybridLibrary.template(S.library,tid).blocks.find(b=>b.id===bid).tempo,'33X1');
+});
+
+test('session Next opens the lifts and Back from cool-down returns to the last group', () => {
+  LibraryView.create();
+  LibraryView.wizardNext();
+  assert.equal(S.libUi.screen, 'edit');
+  LibraryView.wizardNext();
+  assert.equal(S.libUi.screen, 'cooldown');
+  const squat = S.library.catalog.exercises.find((e) => e.title === 'Back Squat');
+  const bench = S.library.catalog.exercises.find((e) => e.title === 'Bench Press');
+  const pull = S.library.catalog.exercises.find((e) => e.title === 'Lat Pull Downs');
+  S.libUi.screen = 'exercises';
+  S.libUi.flow = 'wizard';
+  S.libUi.tab = 'exercises';
+  S.libUi.selected = [];
+  LibraryView.togglePick(squat.id);
+  LibraryView.addPicked(false);
+  LibraryView.togglePick(bench.id);
+  LibraryView.togglePick(pull.id);
+  LibraryView.addPicked(true);
+  S.libUi.screen = 'edit';
+  S.libUi.flow = 'wizard';
+  LibraryView.wizardNext();
+  assert.equal(S.libUi.screen, 'reps');
+  assert.match(LibraryView.html(), /Back Squat/);
+  assert.doesNotMatch(LibraryView.html(), /Bench Press/);
+  LibraryView.wizardNext();
+  LibraryView.wizardNext();
+  assert.equal(S.libUi.screen, 'cooldown');
+  LibraryView.wizardBack();
+  assert.equal(S.libUi.screen, 'reps');
+  assert.match(LibraryView.html(), /Bench Press/);
+  assert.match(LibraryView.html(), /Lat Pull Downs/);
+});
+
+test('a triset has one superset line and the picker shows tap order', () => {
+  LibraryView.create();
+  const front = S.library.catalog.exercises.find((e) => e.title === 'Front Squat');
+  const bench = S.library.catalog.exercises.find((e) => e.title === 'Bench Press');
+  const pull = S.library.catalog.exercises.find((e) => e.title === 'Lat Pull Downs');
+  LibraryView.picker('exercises');
+  LibraryView.togglePick(pull.id);
+  LibraryView.togglePick(bench.id);
+  const picking = LibraryView.html();
+  const pullAt = picking.indexOf('<b>Lat Pull Downs</b>');
+  const benchAt = picking.indexOf('<b>Bench Press</b>');
+  assert.match(picking.slice(pullAt, pullAt + 80), /lib-pick-order">1</);
+  assert.match(picking.slice(benchAt, benchAt + 80), /lib-pick-order">2</);
+  LibraryView.togglePick(front.id);
+  LibraryView.addPicked(true);
+  S.libUi.screen = 'reps';
+  S.libUi.liftIndex = 0;
+  S.libUi.flow = 'wizard';
+  const html = LibraryView.html();
+  assert.match(html, /Lat Pull Downs/);
+  assert.match(html, /Bench Press/);
+  assert.match(html, /Front Squat/);
+  assert.equal((html.match(/− Superset/g) || []).length, 1);
+  const letters = HybridLibrary.lettered(HybridLibrary.template(S.library, S.libUi.tid))
+    .filter((b) => b.kind === 'lift' && !b.role)
+    .map((b) => b.letter);
+  assert.deepEqual(letters.slice(-3), ['F1', 'F2', 'F3']);
+});
+
+test('moving the first lift of a group keeps that lift on screen', () => {
+  LibraryView.create();
+  const tid = S.libUi.tid;
+  const squat = S.library.catalog.exercises.find((e) => e.title === 'Back Squat');
+  const bench = S.library.catalog.exercises.find((e) => e.title === 'Bench Press');
+  const pull = S.library.catalog.exercises.find((e) => e.title === 'Lat Pull Downs');
+  const front = S.library.catalog.exercises.find((e) => e.title === 'Front Squat');
+  LibraryView.picker('exercises');
+  LibraryView.togglePick(squat.id);
+  LibraryView.addPicked(false);
+  LibraryView.togglePick(bench.id);
+  LibraryView.togglePick(pull.id);
+  LibraryView.togglePick(front.id);
+  LibraryView.addPicked(true);
+  S.libUi.screen = 'reps';
+  S.libUi.liftIndex = 1;
+  S.libUi.flow = 'wizard';
+  const benchId = HybridLibrary.template(S.library, tid).blocks.find((b) => b.title === 'Bench Press').id;
+  LibraryView.moveLift(benchId, -1);
+  assert.equal(S.libUi.screen, 'reps');
+  const html = LibraryView.html();
+  assert.match(html, /Bench Press/);
+  assert.doesNotMatch(html, /Lat Pull Downs/);
+  const mains = HybridLibrary.lettered(HybridLibrary.template(S.library, tid)).filter((b) => b.kind === 'lift' && !b.role);
+  const moved = mains.find((b) => b.title === 'Bench Press');
+  const pullBlock = mains.find((b) => b.title === 'Lat Pull Downs');
+  const frontBlock = mains.find((b) => b.title === 'Front Squat');
+  assert.equal(moved.groupId, null);
+  assert.equal(moved.letter, 'F');
+  assert.equal(mains.find((b) => b.title === 'Back Squat').letter, 'G');
+  assert.ok(pullBlock.groupId);
+  assert.equal(pullBlock.groupId, frontBlock.groupId);
+  assert.equal(pullBlock.letter, 'H1');
+  assert.equal(frontBlock.letter, 'H2');
+});
+
+test('a kilogram cell names the athlete and stores no coach weight', () => {
+  LibraryView.create();
+  const tid = S.libUi.tid;
+  S.library = HybridLibrary.addExercise(S.library, tid, { title: 'Back Squat', columns: ['reps', 'weight_kg'] });
+  S.libUi.screen = 'edit';
+  S.libUi.tid = tid;
+  const html = LibraryView.html();
+  assert.match(html, /Athlete logs the weight/);
+  assert.match(html, />Athlete</);
+  assert.doesNotMatch(html, /lib-athlete[^>]*onclick|onclick[^>]*lib-athlete/);
+  const block = HybridLibrary.template(S.library, tid).blocks.find((b) => b.title === 'Back Squat');
+  assert.equal(Object.hasOwn(block, 'demoStartingKg'), false);
 });

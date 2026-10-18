@@ -4,6 +4,8 @@
 
 **Goal:** Make the live coach lift step match the decisions already made: no circuits, the six-metric menu, a closed tempo card, and simple edits of a superset or triset.
 
+**Already in the builder (18 Oct 2026):** Next on the session page opens the first main-lift group. Back from cool-down opens the last group. `repsStepHtml` draws one `− Superset` line per group. The picker shows tap order as `lib-pick-order`. `moveMainLift` swaps two main-lift slots and leaves warm-up and cool-down slots where they are, then `settleGroups` clears a `groupId` whose run length is 1. `moveLift` on the reps page sets `liftIndex` to the group that now contains that lift. A `weight_kg` or `weight_lb` cell is a `lib-athlete` label, “Athlete” or “Set 1 weight” on an AMRAP row. It has no input and does not write `demoStartingKg`.
+
 **Architecture:** Behavior stays in `apps/coach/builder/library.js` and `apps/coach/builder/library-ui.js`. Grouping stays `groupId` plus the existing `linkSuperset`, `unlinkSuperset`, `moveBlock`, and `lettered`. Tempo stays `tempoText` plus the existing save path. Metric ids stay in `apps/coach/training-core.js`. The lift menu is a short list in `library-ui.js`. `apps/coach/prototypes/exercise-concept.html` is a picture of the open card. It is not the editor.
 
 **Tech stack:** Vanilla IIFE on `CoachBuilderHost` / `globalThis`. Tests are `node --test apps/coach/builder/library-ui.test.mjs`, also run by `pnpm run check:coach`.
@@ -189,7 +191,7 @@ Keep `beginTempo`, `draftTempo`, `saveTempo`, and `strength-training-tempos`. `X
 
 A group is a consecutive run of main lifts (`kind === 'lift'` and no `role`) that share `groupId`. `lettered` already letters that run `B1` `B2` `B3` and draws `− Superset` between members (`editorHtml` lines 212–216, `chosenBlocksHtml` lines 382–386). Keep that.
 
-Picker behavior stays. `Add` (`addPicked(false)`) gives each pick its own letter. `Superset` (`addPicked(true)`, enabled at 2 or more) links those picks in tap order into one new group. Three picks are the triset. `wizardNext` still shows one group per Reps and sets step (`repsStepHtml` lines 597–601, `wizardNext` lines 767–774).
+Picker behavior stays, including the tap-order numbers already on each selected row. `Add` (`addPicked(false)`) gives each pick its own letter. `Superset` (`addPicked(true)`, enabled at 2 or more) links those picks in tap order into one new group. Three picks are the triset. One `− Superset` line is drawn for the whole run, including on the reps step. `wizardNext` from the session page opens the first group. Back from cool-down opens the last group.
 
 Replace `reorder()` and the `Reorder` button.
 
@@ -202,7 +204,7 @@ Add these controls on each main lift card (`exerciseCardHtml`), in the editor an
 | Down | Move this lift one place later among main lifts. |
 | Ungroup | Shown when this lift shares `groupId` with a neighbor. Calls `unlinkSuperset`, then settle. |
 
-**Move among main lifts.** `moveBlock` swaps array neighbors, and warm-up or cool-down blocks may sit between lifts. Copy the repeated-`moveBlock` loop in `reorder()` (lines 981–987), with the distance computed as follows. Take the main-lift list in array order. To move up, find the previous main lift and call `moveBlock(state, tid, bid, -1)` once per array slot until this lift’s index is the slot immediately before that previous lift. To move down, bubble with `dir` `1` until this lift sits immediately after the next main lift. If there is no previous or next main lift, do nothing.
+**Move among main lifts.** This is already `moveMainLift` in `library.js`. It collects the array slots of main lifts, swaps the chosen lift with the previous or next main lift inside those slots, and leaves every warm-up and cool-down block in its slot. Do not bubble with `moveBlock` until an index of `previous - 1`. That stop condition is impossible when the previous lift is already first.
 
 **Leaving a group.** After Delete, Up, or Down, settle:
 
