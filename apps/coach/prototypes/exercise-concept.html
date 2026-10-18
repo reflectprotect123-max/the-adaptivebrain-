@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Coach exercises — concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --th-blue: #2563eb;
+    --oled-bg: #050505;
+    --oled-surface: #1c1c1e;
+    --oled-line: #2c2c2e;
+    --oled-muted: #8e8e93;
+    --trn-blue: #1ba3ff;
+    --font: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #0a0a0a; color: #fff; font-family: var(--font); }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: default; }
+  h1, h2, h3, p { margin: 0; }
+
+  .board {
+    min-height: 100vh;
+    padding: 28px 32px 40px;
+    background:
+      radial-gradient(900px 420px at 12% -10%, rgba(37, 99, 235, 0.16), transparent 60%),
+      #0b0b0c;
+  }
+  .board-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 22px; }
+  .kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #8ab4ff; }
+  .board-head h1 { margin-top: 6px; font-family: var(--display); font-size: 42px; letter-spacing: 0.04em; font-weight: 700; text-transform: uppercase; }
+  .board-head p { max-width: 46ch; color: #a1a1aa; font-size: 14px; line-height: 1.45; }
+  .stage { display: grid; grid-template-columns: minmax(0, 1fr) 390px; gap: 22px; align-items: start; }
+
+  /* Coach chrome */
+  .coach {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    min-height: 920px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #222;
+    background: #f4f6f8;
+    color: #111418;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  }
+  .rail { background: #000; color: #fff; display: flex; flex-direction: column; align-items: center; padding: 14px 8px; gap: 6px; }
+  .mark { width: 36px; height: 36px; border-radius: 8px; background: #fff; color: #111; display: grid; place-items: center; font-weight: 800; font-size: 13px; margin-bottom: 10px; }
+  .rail button { width: 44px; height: 44px; border: 0; border-radius: 8px; background: transparent; color: rgba(255,255,255,.5); display: grid; place-items: center; }
+  .rail button.on { background: rgba(255,255,255,.12); color: #fff; }
+  .rail svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  .workspace { display: flex; flex-direction: column; min-width: 0; }
+  .header { min-height: 56px; background: #000; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .header b { font-size: 15px; font-weight: 600; }
+  .header-actions { display: flex; align-items: center; gap: 8px; }
+  .avatar { width: 32px; height: 32px; border-radius: 999px; background: #3f3f46; display: grid; place-items: center; font-size: 11px; font-weight: 700; }
+  .main { padding: 22px 28px 36px; }
+  .intro { margin-bottom: 16px; }
+  .intro .eyebrow { color: var(--th-blue); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+  .intro h2 { margin-top: 4px; font-size: 28px; font-weight: 600; letter-spacing: 0.01em; }
+  .intro .lede { margin-top: 6px; color: #5c6570; font-size: 13px; line-height: 1.45; max-width: 62ch; }
+
+  .steps { display: flex; gap: 0; border-bottom: 1px solid #e6e8eb; margin-bottom: 16px; }
+  .steps span { padding: 10px 14px; font-size: 13px; font-weight: 600; color: #8a9299; }
+  .steps span.on { color: var(--th-blue); box-shadow: inset 0 -2px 0 var(--th-blue); }
+
+  /* OLED exercise editor */
+  .oled {
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--oled-bg);
+    color: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    padding-bottom: 18px;
+  }
+  .session-fields { padding: 16px 16px 4px; }
+  .field { margin-bottom: 12px; }
+  .field label, .metrics label { display: block; font-size: 12px; color: var(--oled-muted); margin-bottom: 6px; }
+  .field input, .field textarea, .metrics select, .notes textarea {
+    width: 100%;
+    background: var(--oled-surface);
+    border: 1px solid var(--oled-line);
+    border-radius: 10px;
+    padding: 12px;
+    outline: none;
+  }
+  .field textarea, .notes textarea { min-height: 72px; resize: none; }
+  .card {
+    margin: 8px 16px 10px;
+    padding: 12px;
+    border-radius: 14px;
+    background: var(--oled-surface);
+    border: 1px solid var(--oled-line);
+  }
+  .card.open { background: transparent; border-color: transparent; padding: 8px 0 4px; margin-bottom: 4px; }
+  .top { display: flex; align-items: center; gap: 10px; }
+  .letter {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: #1c1c1e; border: 1px solid #3a3a3c;
+    display: grid; place-items: center; font-weight: 700; font-size: 13px; flex: none;
+  }
+  .open .letter { background: #111; }
+  .top h3 { flex: 1; font-size: 16px; font-weight: 650; }
+  .open .top h3 { font-family: var(--display); font-size: 32px; font-weight: 700; letter-spacing: 0.02em; line-height: 1; }
+  .danger { color: #ff6b6b; background: none; border: 0; font-size: 13px; padding: 0 6px; min-height: 36px; }
+  .done { min-height: 36px; padding: 0 14px; border: 1px solid #3a3a3c; border-radius: 10px; background: #1c1c1e; color: #fff; }
+  .rx { color: var(--trn-blue); font-size: 13px; font-weight: 600; margin: 6px 0 0 42px; }
+  .open .rx { margin: 8px 0 12px; }
+  .notes { display: block; margin: 0 0 14px; }
+  .metrics { margin-bottom: 14px; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .grid { display: grid; grid-template-columns: 36px 1fr 1fr; gap: 10px 12px; align-items: center; }
+  .gh { color: var(--trn-blue); font-weight: 650; font-size: 13px; }
+  .cell {
+    min-height: 44px; border-radius: 10px; background: #1c1c1e; border: 1px solid #2c2c2e;
+    display: grid; place-items: center; font-size: 16px; font-weight: 600;
+  }
+  .cell.focus { box-shadow: 0 0 0 2px var(--trn-blue); }
+  .cell.amrap { color: var(--trn-blue); letter-spacing: 0.06em; font-size: 13px; }
+  .setnum { text-align: center; color: #d4d4d8; font-weight: 600; }
+  .tempo { margin-top: 14px; }
+  .tempo-btn {
+    min-height: 44px; padding: 10px 14px; border: 1px solid #3a3a3c; border-radius: 10px;
+    background: #1c1c1e; color: #fff; font-weight: 600;
+  }
+  .tempo-menu { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 0 4px; }
+  .opt { min-height: 40px; padding: 8px 12px; border: 1px solid #3a3a3c; border-radius: 10px; background: #1c1c1e; }
+  .opt.on { border-color: var(--trn-blue); color: var(--trn-blue); }
+  .tempo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 8px; }
+  .tempo-grid label { display: grid; gap: 6px; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--trn-blue); font-weight: 650; }
+  .tempo-grid .cell { font-size: 22px; }
+  .hint { color: var(--oled-muted); font-size: 11px; letter-spacing: 0; text-transform: none; font-weight: 500; }
+  .stepper { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 16px; }
+  .step {
+    width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--trn-blue);
+    background: transparent; color: var(--trn-blue); font-size: 28px; line-height: 1;
+  }
+  .link { display: block; margin: 10px auto 0; background: none; border: 0; color: var(--trn-blue); font-weight: 600; font-size: 15px; min-height: 44px; }
+  .ss {
+    text-align: center; color: var(--trn-blue); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.04em; margin: 4px 16px; border: 1px solid var(--trn-blue);
+    border-radius: 999px; padding: 4px;
+  }
+  .row-btns { display: flex; gap: 12px; margin: 8px 16px 12px; }
+  .row-btns button {
+    flex: 1; min-height: 48px; border-radius: 999px; border: 1.5px solid var(--trn-blue);
+    background: transparent; color: var(--trn-blue); font-weight: 600;
+  }
+  .next-wrap { padding: 8px 16px 4px; }
+  .next { width: 100%; min-height: 48px; border: 0; border-radius: 12px; background: var(--trn-blue); color: #fff; font-weight: 700; }
+
+  /* Detail phones */
+  .phones { display: grid; gap: 18px; }
+  .phone-wrap { color: #a1a1aa; }
+  .phone-wrap figcaption { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 8px; }
+  .phone {
+    width: 390px; height: 780px; border-radius: 36px; padding: 14px;
+    background: #161616; border: 1px solid #2a2a2a;
+    box-shadow: 0 24px 60px rgba(0,0,0,.4);
+  }
+  .screen { height: 100%; border-radius: 26px; overflow: hidden; background: #050505; position: relative; color: #fff; }
+  .screen .oled { border-radius: 0; max-width: none; height: 100%; overflow: auto; }
+  .pad {
+    position: absolute; left: 0; right: 0; bottom: 0; background: #141414;
+    border-radius: 18px 18px 0 0; padding: 16px 18px 18px;
+  }
+  .pad-top { display: flex; align-items: flex-end; gap: 8px; margin-bottom: 14px; }
+  .pad-val { font-size: 54px; font-weight: 500; letter-spacing: -1px; line-height: 1; display: flex; align-items: flex-end; }
+  .caret { width: 3px; height: 42px; background: #3a3a3c; border-radius: 4px; margin-left: 4px; }
+  .pad-unit { color: #8e8e93; font-size: 16px; letter-spacing: 0.14em; margin-bottom: 8px; }
+  .pad-x { margin-left: auto; background: transparent; border: 0; color: #fff; font-size: 28px; width: 44px; height: 44px; }
+  .keys { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px 10px; justify-items: center; }
+  .key {
+    width: 72px; height: 72px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.92);
+    background: transparent; color: #fff; font-size: 28px;
+  }
+  .key.wide { width: 92px; border-radius: 16px; font-size: 14px; letter-spacing: 0.08em; }
+  .dim { filter: brightness(0.45); pointer-events: none; }
+</style>
+</head>
+<body>
+  <main class="board">
+    <header class="board-head">
+      <div>
+        <div class="kicker">Coach concept · the middle only</div>
+        <h1>Exercises</h1>
+      </div>
+      <p>The lift block between warm-up and cool-down. Same OLED cards the strength builder already uses: letter, prescription, two metrics, set grid, tempo, superset, final AMRAP. Warm-up and cool-down are not redrawn.</p>
+    </header>
+    <div class="stage">
+      <section class="coach" aria-label="Coach exercise editor">
+        <aside class="rail">
+          <div class="mark">TH</div>
+          <button type="button" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/></svg></button>
+          <button type="button" class="on" aria-label="Training"><svg viewBox="0 0 24 24"><path d="M6 9v6M18 9v6M3 12h3M18 12h3M9 8h6v8H9z"/></svg></button>
+          <button type="button" aria-label="Athletes"><svg viewBox="0 0 24 24"><path d="M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"/><circle cx="9.5" cy="7.5" r="3"/><path d="M20 19v-1a3.5 3.5 0 0 0-2.5-3.3M16.5 4.7a3 3 0 0 1 0 5.6"/></svg></button>
+        </aside>
+        <div class="workspace">
+          <header class="header">
+            <b>Lower Strength</b>
+            <div class="header-actions"><div class="avatar">JC</div></div>
+          </header>
+          <div class="main">
+            <div class="intro">
+              <div class="eyebrow">Session template</div>
+              <h2>Lower Strength</h2>
+              <p class="lede">Exercises only. The coach writes the lifts here, then continues.</p>
+            </div>
+            <div class="steps" aria-hidden="true">
+              <span>Warm-up</span>
+              <span class="on">Exercises</span>
+              <span>Cool-down</span>
+            </div>
+            <div class="oled">
+              <div class="session-fields">
+                <div class="field">
+                  <label>Title</label>
+                  <input value="Lower Strength" readonly />
+                </div>
+                <div class="field">
+                  <label>Session instructions</label>
+                  <textarea readonly placeholder="Coach notes for Start Session"></textarea>
+                </div>
+              </div>
+
+              <article class="card open">
+                <div class="top">
+                  <span class="letter">A</span>
+                  <h3>Back Squat</h3>
+                  <button class="danger" type="button">Delete</button>
+                  <button class="done" type="button">Done</button>
+                </div>
+                <div class="rx">4 × 5 · 80 kg · 31X1</div>
+                <label class="notes"><textarea readonly>Brace before the descent. Last set stays a hard 5.</textarea></label>
+                <div class="metrics">
+                  <label>What do you want to track?</label>
+                  <div class="cols">
+                    <select aria-label="First metric" disabled><option>Reps</option></select>
+                    <select aria-label="Second metric" disabled><option>Weight (kg)</option></select>
+                  </div>
+                </div>
+                <div class="grid">
+                  <span></span><div class="gh">Reps</div><div class="gh">Kg</div>
+                  <span class="setnum">1</span><div class="cell">5</div><div class="cell">80</div>
+                  <span class="setnum">2</span><div class="cell">5</div><div class="cell">80</div>
+                  <span class="setnum">3</span><div class="cell focus">5</div><div class="cell">82.5</div>
+                  <span class="setnum">4</span><div class="cell">5</div><div class="cell">80</div>
+                </div>
+                <div class="tempo">
+                  <button class="tempo-btn" type="button">31X1</button>
+                  <div class="tempo-menu">
+                    <button class="opt" type="button">No tempo</button>
+                    <button class="opt on" type="button">31X1</button>
+                    <button class="opt" type="button">20X1</button>
+                    <button class="opt" type="button">Add tempo</button>
+                  </div>
+                  <div class="tempo-grid">
+                    <label>Lower<div class="cell">3</div><span class="hint">way down</span></label>
+                    <label>Pause<div class="cell">1</div><span class="hint">bottom</span></label>
+                    <label>Lift<div class="cell">X</div><span class="hint">X means fast</span></label>
+                    <label>Pause<div class="cell">1</div><span class="hint">top</span></label>
+                  </div>
+                </div>
+                <div class="stepper">
+                  <button class="step" type="button" aria-label="Remove a set">−</button>
+                  <span>Set</span>
+                  <button class="step" type="button" aria-label="Add a set">+</button>
+                </div>
+                <button class="link" type="button">Add final AMRAP</button>
+              </article>
+
+              <div class="ss">− Superset</div>
+              <article class="card">
+                <div class="top"><span class="letter">B1</span><div><h3>Bench Press</h3><div class="rx" style="margin:4px 0 0">3 × 8 · 60 kg</div></div></div>
+              </article>
+              <article class="card">
+                <div class="top"><span class="letter">B2</span><div><h3>Barbell Row</h3><div class="rx" style="margin:4px 0 0">3 × 8 · 70 kg</div></div></div>
+              </article>
+
+              <article class="card">
+                <div class="top"><span class="letter">C</span><div><h3>Romanian Deadlift</h3><div class="rx" style="margin:4px 0 0">3 × 8 / AMRAP · 100 kg</div></div></div>
+              </article>
+
+              <div class="row-btns">
+                <button type="button">+ Add Exercise</button>
+                <button type="button">+ Add Circuit</button>
+              </div>
+              <div class="next-wrap"><button class="next" type="button">Next</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="phones">
+        <figure class="phone-wrap">
+          <figcaption>Set number</figcaption>
+          <div class="phone">
+            <div class="screen">
+              <div class="oled dim" style="padding-top:28px">
+                <article class="card open">
+                  <div class="top"><span class="letter">A</span><h3>Back Squat</h3></div>
+                  <div class="rx">4 × 5 · 80 kg · 31X1</div>
+                  <div class="grid">
+                    <span></span><div class="gh">Reps</div><div class="gh">Kg</div>
+                    <span class="setnum">1</span><div class="cell">5</div><div class="cell">80</div>
+                    <span class="setnum">2</span><div class="cell">5</div><div class="cell">80</div>
+                    <span class="setnum">3</span><div class="cell focus">5</div><div class="cell">82.5</div>
+                  </div>
+                </article>
+              </div>
+              <div class="pad">
+                <div class="pad-top">
+                  <div class="pad-val">5<span class="caret"></span></div>
+                  <div class="pad-unit">REPS</div>
+                  <button class="pad-x" type="button" aria-label="Close">×</button>
+                </div>
+                <div class="keys">
+                  <button class="key" type="button">1</button><button class="key" type="button">2</button><button class="key" type="button">3</button>
+                  <button class="key" type="button">4</button><button class="key" type="button">5</button><button class="key" type="button">6</button>
+                  <button class="key" type="button">7</button><button class="key" type="button">8</button><button class="key" type="button">9</button>
+                  <button class="key wide" type="button">.</button><button class="key" type="button">0</button><button class="key wide" type="button">DEL</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
