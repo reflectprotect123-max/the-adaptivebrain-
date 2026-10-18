@@ -3,8 +3,10 @@
   "library_version": "exercise-catalogues-2026-10-17",
   "source": {
     "table": "public.exercise_catalogue",
+    "sources_table": "public.exercise_catalogue_sources",
     "project": "orysjncrksmdfabpuftd",
-    "release": "https://github.com/reflectprotect123-max/strengthside/releases/tag/exercise-catalogues"
+    "migration": "strengthside supabase/migrations/20261018090000_exercise_catalogue.sql",
+    "pull_request": "https://github.com/reflectprotect123-max/strengthside/pull/273"
   },
   "counts": {
     "main": 1674,

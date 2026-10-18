@@ -212,17 +212,8 @@ $$;
 revoke all on function public.set_coach_working_max(uuid, text, text, text, numeric) from public, anon;
 grant execute on function public.set_coach_working_max(uuid, text, text, text, numeric) to authenticated;
 
--- Shared catalogue. Authenticated can read. Writes stay on the service role.
-alter table public.exercise_catalogue enable row level security;
-revoke all on public.exercise_catalogue from anon, authenticated;
-grant select on public.exercise_catalogue to authenticated;
-
-drop policy if exists exercise_catalogue_read on public.exercise_catalogue;
-create policy exercise_catalogue_read on public.exercise_catalogue
-  for select to authenticated
-  using (true);
-
-create index if not exists exercise_catalogue_canonical_idx
-  on public.exercise_catalogue (canonical_exercise_id);
+-- exercise_catalogue and exercise_catalogue_sources already exist on the
+-- live project (strengthside 20261018090000, PR 273). This migration does
+-- not alter them. Catalogue ids are search keys, not working-max keys.
 
 notify pgrst, 'reload schema';

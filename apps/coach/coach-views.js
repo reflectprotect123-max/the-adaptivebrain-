@@ -727,8 +727,10 @@
     if (!Lifts || !athleteId) return;
     var name = String(liftField('liftName') || '').trim();
     if (!name) return;
-    var hit = root.ExerciseSearch && root.ExerciseSearch.search(name, 1)[0];
-    var exerciseId = hit && hit.name.toLowerCase() === name.toLowerCase() ? hit.exerciseId : '';
+    var hit = root.ExerciseSearch && root.ExerciseSearch.search(name, 8).find(function (h) {
+      return h.name.toLowerCase() === name.toLowerCase() && !(root.CoachCatalogue && root.CoachCatalogue.isCatalogueId(h.exerciseId));
+    });
+    var exerciseId = hit ? hit.exerciseId : '';
     S().liftMemory = Lifts.remember(S().liftMemory, {
       athleteId: athleteId,
       name: name,
@@ -749,8 +751,10 @@
     var name = String(liftField('liftName') || '').trim();
     var kg = Number(liftField('liftWm'));
     if (!name || !(kg > 0)) return;
-    var hit = root.ExerciseSearch && root.ExerciseSearch.search(name, 1)[0];
-    var exerciseId = hit && hit.name.toLowerCase() === name.toLowerCase() ? hit.exerciseId : '';
+    var hit = root.ExerciseSearch && root.ExerciseSearch.search(name, 8).find(function (h) {
+      return h.name.toLowerCase() === name.toLowerCase() && !(root.CoachCatalogue && root.CoachCatalogue.isCatalogueId(h.exerciseId));
+    });
+    var exerciseId = hit ? hit.exerciseId : '';
     S().liftMemory = Lifts.setWorkingMax(S().liftMemory, {
       athleteId: athleteId,
       name: name,

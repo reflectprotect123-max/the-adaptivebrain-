@@ -404,6 +404,7 @@ label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight
 <script src="./coach-exercise-catalog.js"></script>
 <script src="./coach-loop.js"></script>
 <script src="./coach-lifts.js"></script>
+<script src="./coach-catalogue.js"></script>
 <script src="./log-columns.js"></script>
 <script src="./coach-nutrition.js"></script>
 <script src="./coach-bridge.js"></script>
@@ -900,7 +901,7 @@ function exercisesCatalogHtml(){
       <button type="button" class="btn primary small" onclick="addCustomExercise()">New exercise</button>
     </div>
     ${tabHtml}
-    <p class="muted" style="margin-bottom:8px">${shown.length} of ${list.length} shown · ${warmCount} warm-up · ${coolCount} cool-down · ${catalogueCount} from the exercise catalogue</p>
+    <p class="muted" style="margin-bottom:8px">${shown.length} of ${list.length} shown · ${warmCount} warm-up · ${coolCount} cool-down · ${catalogueCount} from the exercise catalogue. The catalogue is search only and does not share a working max.</p>
     ${rows ? `<div class="table-wrap"><table class="th-table data-table"><thead><tr><th>Title</th><th>Catalog</th><th>Typical</th><th>Unit</th><th>Per side</th></tr></thead><tbody>${rows}</tbody></table></div><div class="table-foot"><span>${shown.length} of ${list.length}</span></div>` : '<div class="empty-panel"><div class="eyebrow">Exercises</div><h2>No matches</h2><p class="muted">Try another search, switch catalog, or add a custom exercise.</p></div>'}`;
 }
 
@@ -2036,6 +2037,10 @@ render();
     const { data } = await Whoop.client().auth.getSession();
     const session = data && data.session;
     if (!session || !session.user) return;
+    if (window.CoachCatalogue) {
+      const cat = await CoachCatalogue.refresh(S);
+      if (cat && cat.ok && cat.changed) { persist(); render(); }
+    }
     const email = session.user.email;
     if (!email) return;
     const meta = session.user.user_metadata || {};

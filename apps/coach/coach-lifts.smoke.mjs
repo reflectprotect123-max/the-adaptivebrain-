@@ -82,6 +82,7 @@ must(sql.includes('enable row level security'), 'lift memory enables RLS');
 must(sql.includes('revoke all on public.coach_lift_memory from anon, authenticated'), 'anon has no table grant');
 must(sql.includes('security invoker'), 'RPCs stay invoker');
 must(!/grant\s+execute[\s\S]{0,80}to\s+anon/i.test(sql), 'anon cannot execute the RPCs');
-must(sql.includes('exercise_catalogue_read'), 'catalogue is readable by a signed-in coach');
+must(!/alter table public\.exercise_catalogue/i.test(sql), 'catalogue DDL stays in strengthside PR 273');
+must(!sql.includes('exercise_catalogue_read'), 'this migration does not replace the catalogue read policy');
 
 console.log('coach-lifts.smoke: ok');
