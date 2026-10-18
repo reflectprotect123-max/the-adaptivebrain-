@@ -15,5 +15,11 @@
   "coach-cloud.js",
   "coach-views.js",
   "icons/coach-192.png",
-  "icons/coach-512.png"
+  "icons/coach-512.png",
+  "builder/host.js",
+  "builder/strength-targets.js",
+  "builder/library.js",
+  "builder/library-ui.js",
+  "builder/library.css",
+  "builder/host.css"
 ]

@@ -176,7 +176,7 @@ if (built.blocks[2].role !== 'cooldown' || built.blocks[2].category !== 'Cool-Do
   throw new Error('cool-down should stay empty');
 }
 if (built.blocks[2].supersetPartner) throw new Error('cool-down was paired into the superset');
-if (!html.includes('setBuilderStep') || !html.includes('Jump Rope') || !html.includes("role:'warmup'")) {
+if (!html.includes('setBuilderStep') || !html.includes('CoachBuilder.create()') || !html.includes('CoachBuilder.mount')) {
   throw new Error('coach session builder markup missing warm-up flow');
 }
 

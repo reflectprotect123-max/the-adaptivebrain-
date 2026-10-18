@@ -23,27 +23,47 @@ test('moved Coach opens its offline workspace with local scripts intact', async 
   expect(errors).toEqual([]);
 });
 
-test('prescription editor accepts variable reps without detached inputs and keeps unprescribed kg',async({page})=>{
- await page.route('https://**/*',route=>route.abort());const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto('/coach.html');await page.getByRole('button',{name:'Demo coach (offline)'}).click();
- await page.getByRole('button',{name:'Library',exact:true}).click();await page.getByRole('button',{name:'New session',exact:true}).click();
- await page.getByRole('button',{name:'Next',exact:true}).click();await page.getByRole('button',{name:'Edit prescription',exact:true}).click();
- const d=page.locator('details').filter({has:page.getByText('Set sets & reps',{exact:true})});
- await d.getByRole('spinbutton').fill('4');await d.getByRole('spinbutton').press('Tab');
- // Ordinary typing must retain focus/caret through the redraw.
- await page.getByRole('textbox',{name:'Target reps or effort',exact:true}).fill('');
- await page.getByRole('textbox',{name:'Target reps or effort',exact:true}).pressSequentially('10');
- await page.getByText('Per-set rep overrides (optional)',{exact:true}).click();
- const over=page.locator('details').filter({has:page.getByText('Per-set rep overrides (optional)',{exact:true})});
- await over.getByRole('textbox').nth(1).fill('8');await over.getByRole('textbox').nth(2).fill('6');await over.getByRole('textbox').nth(3).fill('AMRAP');
- await page.getByRole('button',{name:'Done',exact:true}).click();
- await expect(page.getByText(/4 × 10, 8, 6, AMRAP/)).toBeVisible();
- await page.getByRole('textbox',{name:'Tempo for Back Squat'}).fill('33X1');
- const ex=await page.evaluate(()=>S.templates.at(-1).blocks.find(b=>b.exercises?.some(e=>e.name==='Back Squat')).exercises[0]);
- expect(ex.logColumns.some(c=>c.kind==='weight_kg')).toBe(true);expect(ex.tempo).toBe('33X1');expect(errors).toEqual([]);
- await page.getByRole('button',{name:'Edit prescription',exact:true}).click();
- await expect(page.getByText('How hard was that set?Average · RIR ~3',{exact:true})).toBeVisible();
- await expect(page.getByRole('slider',{name:'Difficulty slider preview'})).toHaveAttribute('max','4');
+async function newImportedSession(page) {
+ await page.route('https://**/*',r=>r.abort());await page.goto('/coach.html');
+ await page.getByRole('button',{name:'Demo coach (offline)'}).click();await page.getByRole('button',{name:'Library',exact:true}).click();
+ await page.getByRole('button',{name:'New session',exact:true}).click();await expect(page.getByRole('heading',{name:'Warm-up',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Next',exact:true}).click();
+ await page.getByRole('button',{name:'+ Add Exercise',exact:true}).click();
+ await page.getByPlaceholder('Search exercises and circuits').fill('Back Squat');
+ await page.locator('.lib-pick-row').filter({has:page.getByText('Back Squat',{exact:true})}).click();
+ await page.getByRole('button',{name:'Add (1)',exact:true}).click();
+ await page.getByRole('button',{name:'Back',exact:true}).click();
+}
+async function setReps(page,n,value) {
+ await page.getByRole('button',{name:`Set ${n} reps`,exact:true}).first().click();
+ for(const ch of value) await page.locator('.photo-pad').getByRole('button',{name:ch,exact:true}).click();
+ await page.getByRole('button',{name:'Close keypad',exact:true}).click();
+}
+test('APK builder authors variable reps, tempo, AMRAP, then posts and publishes the same prescription',async({page})=>{
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));await newImportedSession(page);
+ await expect(page.getByRole('button',{name:'Edit prescription',exact:true})).toHaveCount(0);
+ await page.getByRole('textbox',{name:'Session title',exact:true}).fill('APK import browser session');
+ for(const [i,reps] of ['10','8','6'].entries()) await setReps(page,i+1,reps);
+ await page.getByRole('button',{name:'Add final AMRAP',exact:true}).click();
+ await expect(page.getByLabel('Set 4 AMRAP')).toBeVisible();await expect(page.getByText('Set 1 weight',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Tempo for Back Squat',exact:true}).click();await page.getByRole('button',{name:'Add tempo',exact:true}).click();
+ for(const [label,value] of [['Lower','3'],['Bottom pause','3'],['Lift','X'],['Top pause','1']])await page.getByRole('textbox',{name:`${label} for Back Squat`,exact:true}).fill(value);
+ await page.locator('.tempo-add').getByRole('button',{name:'Save',exact:true}).click();
+ await expect(page.getByRole('button',{name:'Tempo for Back Squat',exact:true})).toHaveText('33X1');
+ await page.getByRole('button',{name:'Next',exact:true}).click();await expect(page.getByRole('heading',{name:'Cool-down',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Next',exact:true}).click();await page.locator('#sessionPostDate').fill('2026-10-19');
+ await page.getByRole('button',{name:'Post to calendar',exact:true}).click();
+ const chip=page.locator('.cal-chip').filter({hasText:'APK import browser session'});await expect(chip).toBeVisible();
+ await chip.getByRole('button',{name:'⋯',exact:true}).click();
+ await chip.getByRole('button',{name:'Publish',exact:true}).click();
+ const payload=await page.evaluate(()=>{
+  const session=S.sessions.find(s=>s.name==='APK import browser session');return CoachBridge.sessionForAthlete(session,'test@example.test');
+ });
+ expect(payload.published).toBe(true);const lift=payload.blocks.find(b=>b.title==='Back Squat');
+ expect(lift.setTargets.map(t=>t.reps?.min??'AMRAP')).toEqual([10,8,6,'AMRAP']);expect(lift.tempo).toBe('33X1');expect(lift.columns).toEqual(['reps','weight_kg']);
+ await page.reload();await page.getByRole('button',{name:'Library',exact:true}).click();await page.getByRole('button',{name:/APK import browser session.*Edit/}).click();
+ await page.getByRole('button',{name:'Next',exact:true}).click();await expect(page.getByRole('button',{name:'Tempo for Back Squat'})).toHaveText('33X1');
+ expect(errors).toEqual([]);
 });
 
 test('returned athlete results keep metrics, load convention, canonical estimate and open state through redraw',async({page})=>{
@@ -59,20 +79,16 @@ test('returned athlete results keep metrics, load convention, canonical estimate
  await chip.getByRole('button',{name:'⋯',exact:true}).click();await expect(chip.getByText(/13 reps · 30 kg plates/)).toBeVisible();
 });
 
-test('same-tick input before the native details toggle event keeps overrides open',async({page})=>{
- await page.route('https://**/*',r=>r.abort());await page.goto('/coach.html');await page.getByRole('button',{name:'Demo coach (offline)'}).click();
- await page.getByRole('button',{name:'Library',exact:true}).click();await page.getByRole('button',{name:'New session',exact:true}).click();await page.getByRole('button',{name:'Next',exact:true}).click();await page.getByRole('button',{name:'Edit prescription',exact:true}).click();
- const volume=page.locator('details').filter({has:page.getByText('Set sets & reps',{exact:true})});await volume.getByRole('spinbutton').fill('4');await volume.getByRole('spinbutton').press('Tab');
- // Deliberately exercise the interval before the asynchronous native toggle event.
- await page.evaluate(()=>{
-  const details=[...document.querySelectorAll('details')].find(d=>d.querySelector('summary')?.textContent==='Per-set rep overrides (optional)');
-  details.open=true;const input=details.querySelectorAll('input')[1];input.value='8';input.dispatchEvent(new Event('input',{bubbles:true}));
- });
- const over=page.locator('details').filter({has:page.getByText('Per-set rep overrides (optional)',{exact:true})});
- await expect(over).toHaveAttribute('open','');await over.getByRole('textbox').nth(2).fill('6');await over.getByRole('textbox').nth(3).fill('AMRAP');await page.getByRole('button',{name:'Done',exact:true}).click();
- await expect(page.getByText(/4 × 5, 8, 6, AMRAP/)).toBeVisible();
+test('APK keypad enforces rep ranges and metrics survive reload without affecting logger state',async({page})=>{
+ await newImportedSession(page);
+ await page.getByRole('combobox',{name:'First metric for Back Squat'}).selectOption('reps_range');
+ await setReps(page,1,'6–8');
+ await expect(page.getByRole('button',{name:'Set 1 reps',exact:true}).first()).toHaveText('6-8');
+ await page.getByRole('combobox',{name:'Second metric for Back Squat'}).selectOption('weight_lb');
+ await page.getByRole('textbox',{name:'Session title'}).fill('Range and pounds');
+ await page.reload();
+ expect(await page.evaluate(()=>{const t=S.templates.find(t=>t.name==='Range and pounds');return t.blocks.find(b=>b.title==='Back Squat').columns;})).toEqual(['reps_range','weight_lb']);
 });
-
 
 test('downloaded file bundle acknowledges startup after render and retains Coach storage', async ({ page }) => {
   const root = fileURLToPath(new URL('../', import.meta.url));

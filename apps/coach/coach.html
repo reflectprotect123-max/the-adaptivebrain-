@@ -391,6 +391,8 @@ label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight
 }
 
 </style>
+<link rel="stylesheet" href="./builder/library.css">
+<link rel="stylesheet" href="./builder/host.css">
 </head>
 <body>
 <div id="gate"></div>
@@ -410,6 +412,10 @@ label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight
 <script src="./coach-bridge.js"></script>
 <script src="./coach-cloud.js"></script>
 <script src="./coach-views.js"></script>
+<script src="./builder/host.js"></script>
+<script src="./builder/strength-targets.js"></script>
+<script src="./builder/library.js"></script>
+<script src="./builder/library-ui.js"></script>
 <script>
 const L = window.CoachLoop;
 const N = window.CoachNutrition;
@@ -546,6 +552,7 @@ function go(view, extra){
   render();
 }
 function openSession(templateId, step){
+  CoachBuilder.reset();
   closeCoachExEdit();
   ui.cellMenu = null;
   ui.templateId = templateId;
@@ -920,25 +927,7 @@ function addCustomExercise(){
 }
 
 function newTemplate(){
-  const rounds = 3;
-  const seed = [
-    ['Bike', '180'],
-    ['Row', '180'],
-    ['Run', '180'],
-    ['Ski', '180'],
-    ['Jump Rope', '60'],
-  ].map(([name, amount]) => L.makeExercise({
-    name, sets: rounds, reps: amount, load: '', metric: 'Seconds', restSec: 0, unit: 'seconds', perSide: 'No',
-  }));
-  const t = L.makeTemplate({
-    name:'New session',
-    coachInstructions:'',
-    blocks:[
-      L.makeBlock({ heading:'Warm-up', type:'strength', category:'Warm-Up', scoring:'completion', role:'warmup', rounds, exercises: seed }),
-      L.makeBlock({ heading:'Strength', type:'strength', category:'Strength/Power', scoring:'weight', exercises:[L.makeExercise({ name:'Back Squat', exerciseId:'core-back-squat', sets:3, reps:'5', load:'', metric:'Weight' })] }),
-      L.makeBlock({ heading:'Cool-down', type:'strength', category:'Cool-Down', scoring:'completion', role:'cooldown', rounds, exercises:[] }),
-    ],
-  });
+  const t = CoachBuilder.create();
   S.templates.push(t);
   persist();
   openSession(t.id, 'warmup');
@@ -1816,6 +1805,14 @@ function blockExerciseHtml(b, bi){
 function sessionHtml(){
   const t = tpl(ui.templateId);
   if (!t) return libraryHtml();
+  const onlyEngine=(t.blocks||[]).length && (t.blocks||[]).every(b=>b.type==='conditioning'||b.type==='recovery');
+  if (onlyEngine) return legacySessionHtml();
+  return `<div><button type="button" class="btn ghost small page-back" onclick="go('library',{lib:'sessions'})">← Back to sessions</button>
+    <div id="coachImportedBuilder"></div></div>`;
+}
+function legacySessionHtml(){
+  const t = tpl(ui.templateId);
+  if (!t) return libraryHtml();
   ui.lib = 'sessions';
   const built = (t.blocks || []).some(isPrepBlock);
   const step = built ? (ui.builderStep || 'warmup') : '';
@@ -1959,6 +1956,9 @@ function growTextAreas(){
   } catch (e) {}
 }
 
+CoachBuilder.init({state:()=>S,template:tpl,persist,
+  back:()=>go('library',{lib:'sessions'}),
+  calendar:(athleteId,date)=>go('athlete',{athleteId,calMonth:date.slice(0,7)})});
 function render(){
   const acc = account();
   $('gate').classList.add('hidden');
@@ -1981,6 +1981,7 @@ function render(){
   else body = feedHtml();
   $('coachApp').innerHTML = coachChrome(body);
   if (ui.view === 'session') {
+    if (document.getElementById('coachImportedBuilder')) CoachBuilder.mount(ui.templateId,ui.builderStep);
     growTextAreas();
     initBlockDrag();
   }

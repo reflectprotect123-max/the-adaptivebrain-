@@ -1,0 +1,29 @@
+#coachImportedBuilder {
+  --oled-bg:#050505;--oled-surface:#1c1c1e;--oled-line:#2c2c2e;--oled-muted:#8e8e93;
+  --trn-blue:#1ba3ff;--trn-letter-bg:#1c1c1e;--font-display:'Barlow Condensed',sans-serif;
+  --tap:44px;--nav-h:0px;--fab-size:48px;
+  color:#fff;background:var(--oled-bg);max-width:680px;margin:0 auto;border-radius:16px;
+  isolation:isolate;overflow-wrap:anywhere;
+}
+#coachImportedBuilder button {cursor:pointer;}
+#coachImportedBuilder input,#coachImportedBuilder select,#coachImportedBuilder textarea {color:#fff;background:#1c1c1e;}
+#coachImportedBuilder .shell-screen--library {min-height:65vh;}
+#coachImportedBuilder .lib-wizard-next {position:sticky;left:auto;right:auto;transform:none;width:100%;bottom:0;padding:12px 16px;background:#050505;z-index:5;}
+#coachImportedBuilder .oled-cta {width:100%;min-height:48px;color:#fff;background:var(--trn-blue);border-radius:12px;}
+#coachImportedBuilder .photo-pad {z-index:100;box-shadow:0 -8px 40px #0009;}
+#coachImportedBuilder .lib-sheet {z-index:90;}
+
+@scope (#coachImportedBuilder) {
+
+}
+#coachImportedBuilder {color-scheme:dark;}
+@scope (#coachImportedBuilder) {
+  .tempo-pick {margin:12px 0;}
+  .tempo-btn,.tempo-opt {min-height:44px;padding:10px 14px;border:1px solid #3a3a3c;border-radius:10px;background:#1c1c1e;color:#fff;}
+  .tempo-menu {padding:12px 0;}
+  .tempo-opt {margin:0 6px 8px 0;}
+  .tempo-add {padding:12px 0;}
+  .lib-block h3 {color:#fff;}
+}
+
+#coachImportedBuilder h1,#coachImportedBuilder h2 {color:#fff;}
