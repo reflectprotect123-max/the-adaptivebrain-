@@ -2,7 +2,7 @@
 
 > **For agentic workers:** Implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax. Each phase is self-contained. Read the cited lines before editing.
 
-**Goal:** Make the live coach lift step match the decisions already made: the six-metric menu, a closed tempo card, and simple edits of a superset or triset.
+**Goal:** Make the live coach lift step match the decisions already made: no circuits, the six-metric menu, a closed tempo card, and simple edits of a superset or triset.
 
 **Architecture:** Behavior stays in `apps/coach/builder/library.js` and `apps/coach/builder/library-ui.js`. Grouping stays `groupId` plus the existing `linkSuperset`, `unlinkSuperset`, `moveBlock`, and `lettered`. Tempo stays `tempoText` plus the existing save path. Metric ids stay in `apps/coach/training-core.js`. The lift menu is a short list in `library-ui.js`. `apps/coach/prototypes/exercise-concept.html` is a picture of the open card. It is not the editor.
 
@@ -15,7 +15,8 @@
 - Leave the warm-up screen and the cool-down screen alone. Cool-down already offers only Reps and Seconds (`prepTrackOptions` in `library-ui.js`).
 - Do not edit `packages/brain`, `apps/strength`, or `apps/engine`.
 - Do not add a starting-weight field. `canonicalBlock` and `patchBlock` already delete `demoStartingKg` (`library.js` lines 47–50 and 234). Weight cells on a lift card stay empty. An AMRAP weight cell stays “Set 1 weight”.
-- Do not delete metric ids from `training-core.js`. Circuits still use `for_completion`.
+- There is no circuit in this builder. No Circuits tab, no Add Circuit, no New Circuit, no For Completion block to add.
+- Do not delete metric ids from `training-core.js`. `for_completion` may remain in that file. The coach cannot pick it.
 - Do not re-litigate Easy/Medium/Hard, the 1–5 feel screen, or shadow mode.
 - The superset divider text stays `− Superset` for two lifts and for three or more.
 - Tap order is group order. `togglePick` stores ids in a `Set`, which keeps insertion order (`library-ui.js` `togglePick`).
@@ -35,7 +36,7 @@ Discovery is done. Copy these. Do not invent a second grouping model.
 | `removeBlock` | `removeBlock(state, tid, bid)` | `library.js` lines 206–211 |
 | `addExercise` | `addExercise(state, tid, { catalogId })` — pushes a lift with `groupId: null` onto the end of `blocks`. | `library.js` lines 164–203 |
 | `liftGroups` | Local. Walks lettered main lifts. One array per consecutive `groupId` run. | `library-ui.js` lines 501–512 |
-| `addPicked` | `LibraryView.addPicked(asSuperset)` — adds `ui.selected` in order. `true` chains `linkSuperset` on the new ids. Circuits skip the chain. | `library-ui.js` lines 708–724 |
+| `addPicked` | `LibraryView.addPicked(asSuperset)` — adds `ui.selected` in order. `true` chains `linkSuperset` on the new ids. The `circuits` branch in this function is removed in Phase 1. | `library-ui.js` lines 708–724 |
 | `tempoText` | `tempoText(value)` — four characters, digits, and `X`. Otherwise `''`. | `library.js` lines 267–270 |
 | `tempoControl` / `beginTempo` / `draftTempo` / `saveTempo` | Closed menu today. Empty face says “No tempo”. “Add tempo” is inside the hidden menu. Four boxes: Lower / way down, Pause / bottom, Lift / X means fast, Pause / top. `X` is valid only in the Lift box. Storage key `strength-training-tempos`. | `library-ui.js` lines 152–166 and 807–849 |
 | `LIFT_METRICS` + `liftTrackOptions` | Short list plus every other `TrainingCore.definitions` entry (`watts`, `lwp`, and the rest). | `library-ui.js` lines 111–125 |
@@ -50,10 +51,54 @@ Discovery is done. Copy these. Do not invent a second grouping model.
 - `unlinkSuperset` is exported and unused. Call it. Do not write a new ungroup function.
 - Setting `groupId` on a lift that is not next to the rest of the run does nothing visible. `lettered` only joins a consecutive run. After `addExercise`, bubble the new lift with `moveBlock` until it sits immediately after the run.
 - `docs/handoff-misc/09-product-design/product-and-technical-design.md` still lists RPE in an old coach table. That file loses to `HANDOFF.md`.
+- Warm-up and cool-down screens are titled Warm-up and Cool-down. `prepCircuitHtml` is only the function name. Leave those screens alone. `placeTextBlock` may still store a text block as `kind: 'circuit'`. That storage is not a circuit the coach picks.
 
 ---
 
-## Phase 1: Lift metric menu
+## Phase 1: Remove circuits
+
+**What to implement**
+
+The exercise picker is exercises only. Copy the exercise branch of `pickerHtml` and delete the circuit branch.
+
+Remove these controls:
+
+- The picker tab `Circuits` and `LibraryView.picker('circuits')` (`library-ui.js` around lines 349–369).
+- `+ Add Circuit` in `editorHtml` (line 252).
+- `Create New Circuit`, `newCirc`, `saveNewCirc`, and the New Circuit sheet (`createSheetHtml` around line 425).
+- The search placeholder “Search exercises and circuits”. The placeholder is “Search exercises”.
+- `+ Add Circuit` in `apps/coach/prototypes/exercise-concept.html` (the button near line 292).
+
+The library chrome in `apps/coach/coach.html` `libraryTabs` (line 728) still draws a disabled Circuits tab. Remove that tab. `apps/coach/coach-clone.smoke.mjs` line 28 asserts the source contains `Circuits`. Change that assertion so the file passes with the tab gone.
+
+`addCircuit`, `createCatalogCircuit`, and `SEED_CIRCUITS` can stay in `library.js` so an imported template still loads. No button calls them.
+
+**Documentation references**
+
+- `HANDOFF.md` “Coach exercise step” — there is no Circuits tab
+- `library-ui.js` `pickerHtml` lines 345–376, `editorHtml` line 252, `addPicked` lines 708–724
+- `library.js` `SEED_CIRCUITS` lines 19–24 and `addCircuit` lines 141–162
+- `coach.html` `libraryTabs` lines 727–732
+- Test `new exercise and circuit forms render without editor-only block references` in `library-ui.test.mjs` lines 134–137
+
+**Verification**
+
+- [ ] Picker HTML has no `Circuits`, `New Circuit`, or `Add Circuit`.
+- [ ] `newEx` still renders New Exercise.
+- [ ] The test that called `newCirc` no longer expects New Circuit.
+- [ ] `coach-clone.smoke.mjs` no longer requires the word `Circuits`.
+- [ ] Warm-up still lists Bike. Cool-down still offers only Reps and Seconds.
+- [ ] `node --test apps/coach/builder/library-ui.test.mjs` passes.
+
+**Anti-pattern guards**
+
+- Do not redesign the warm-up or cool-down screens.
+- Do not delete `placeTextBlock`.
+- Do not remove `for_completion` from `training-core.js`.
+
+---
+
+## Phase 2: Lift metric menu
 
 **What to implement**
 
@@ -72,7 +117,7 @@ The menu is exactly:
 
 The first select has no None. The second select starts with `none` / None, then the same six. Use `liftTrackOptions(selected, allowNone)` for both lift-card selects (`exerciseCardHtml`, lines 305–309).
 
-Point the new-exercise sheet at that same function. `saveNewEx` reads `#libNewC1` and `#libNewC2` (`library-ui.js` `saveNewEx`). Replace the `trackOptions(...)` calls in `createSheetHtml` for the exercise sheet with `liftTrackOptions`. Leave the circuit sheet on its current fields.
+Point the new-exercise sheet at that same function. `saveNewEx` reads `#libNewC1` and `#libNewC2` (`library-ui.js` `saveNewEx`). Replace the `trackOptions(...)` calls in the New Exercise sheet with `liftTrackOptions`. Phase 1 removed the circuit sheet.
 
 **Documentation references**
 
@@ -97,7 +142,7 @@ Point the new-exercise sheet at that same function. `saveNewEx` reads `#libNewC1
 
 ---
 
-## Phase 2: Closed tempo card
+## Phase 3: Closed tempo card
 
 **What to implement**
 
@@ -138,7 +183,7 @@ Keep `beginTempo`, `draftTempo`, `saveTempo`, and `strength-training-tempos`. `X
 
 ---
 
-## Phase 3: Delete, Up, Down, Ungroup, Add to group
+## Phase 4: Delete, Up, Down, Ungroup, Add to group
 
 **What to implement**
 
@@ -210,14 +255,14 @@ Add tests in `library-ui.test.mjs` that build the template through `LibraryView`
 - Do not change the divider string.
 - Do not call `unlinkSuperset` on a lift that still has a consecutive partner.
 - Do not use `window.prompt` or raw `3-1` indexes.
-- Do not link circuits. `addPicked` already skips `linkSuperset` when the tab is circuits. Join mode stays on the exercises tab.
+- Join mode stays on the exercise picker. There is no circuits tab.
 
 ---
 
-## Phase 4: Verification
+## Phase 5: Verification
 
 - [ ] Re-read `HANDOFF.md` “Coach exercise metrics” and “Coach exercise step” and confirm the diff does only those things.
-- [ ] Grep `apps/coach/builder/library-ui.js` for `window.prompt`, `weight_lb`, `time_mmss`, `Watts`, and `Reorder`. The lift menu and the reorder prompt are gone. `training-core.js` may still contain those metric ids.
+- [ ] Grep `apps/coach/builder/library-ui.js` for `window.prompt`, `weight_lb`, `time_mmss`, `Watts`, `Reorder`, `Add Circuit`, and `Circuits`. The lift menu, the reorder prompt, and the circuit controls are gone. `training-core.js` may still contain those metric ids.
 - [ ] Grep `apps/coach` for `demoStartingKg`. The only hits are the deletes in `canonicalBlock` and `patchBlock`.
 - [ ] `node --test apps/coach/builder/library-ui.test.mjs` passes.
 - [ ] `pnpm run check:coach` passes.
