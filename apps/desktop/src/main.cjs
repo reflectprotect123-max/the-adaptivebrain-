@@ -3,10 +3,11 @@
  *
  * Packaged builds also auto-update the shell via GitHub Releases (electron-updater).
  *
- * Does not bundle coach HTML or touch athlete app code.
+ * Capgo updates the bundled Coach UI; GitHub updates the native shell.
  */
 const { app, BrowserWindow, shell, Menu } = require('electron');
 const { initUpdater } = require('./updater.cjs');
+const { createLiveUpdater } = require('./live-updater.cjs');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 
@@ -23,6 +24,7 @@ const COACH_URL = resolveCoachUrl();
 let mainWindow = null;
 /** @type {{ isEnabled: boolean; checkForUpdates: () => unknown } | null} */
 let updater = null;
+let liveUpdater = null;
 
 function coachOrigin(url) {
   try {
@@ -55,12 +57,16 @@ function buildMenu() {
       label: 'Coach',
       submenu: [
         {
-          label: 'Reload coach (get latest UI)',
+          label: 'Reload coach',
           accelerator: 'CmdOrCtrl+R',
           click: () => {
             const win = getMainWindow();
             if (win) win.webContents.reload();
           },
+        },
+        {
+          label: 'Check for Coach updates (Capgo)',
+          click: () => { liveUpdater?.check(true).catch(console.error); },
         },
         {
           label: 'Check for app updates',
@@ -90,7 +96,7 @@ function buildMenu() {
   Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 }
 
-function createWindow() {
+async function createWindow() {
   const win = new BrowserWindow({
     width: 1320,
     height: 900,
@@ -99,6 +105,7 @@ function createWindow() {
     title: 'THE Hybrid Coach',
     autoHideMenuBar: false,
     webPreferences: {
+      preload: path.join(__dirname, 'preload.cjs'),
       contextIsolation: true,
       nodeIntegration: false,
       sandbox: true,
@@ -120,17 +127,22 @@ function createWindow() {
     }
   });
 
-  win.loadURL(COACH_URL);
   mainWindow = win;
+  if (app.isPackaged && !process.env.HYBRID_COACH_URL) {
+    liveUpdater = createLiveUpdater(win);
+    await liveUpdater.start(path.join(process.resourcesPath, 'coach', 'coach.html'));
+  } else {
+    await win.loadURL(COACH_URL);
+  }
   return win;
 }
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   buildMenu();
-  createWindow();
+  await createWindow();
   updater = initUpdater(getMainWindow);
   app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    if (BrowserWindow.getAllWindows().length === 0) createWindow().catch(console.error);
   });
 });
 

@@ -14,6 +14,9 @@ importers:
 
   apps/desktop:
     dependencies:
+      '@capgo/electron-updater':
+        specifier: 0.0.6
+        version: 0.0.6(electron@33.4.11)
       electron-updater:
         specifier: ^6.6.2
         version: 6.8.9
@@ -31,6 +34,11 @@ packages:
 
   7zip-bin@5.2.0:
     resolution: {integrity: sha512-ukTPVhqG4jNzMro2qA9HSCSSVJN3aN7tlb+hfqYCt3ER0yWroeA2VR38MNrOHLQ/cVj+DaIMad0kFCtWWowh/A==}
+
+  '@capgo/electron-updater@0.0.6':
+    resolution: {integrity: sha512-Hs3aeOekkT7XrQFpIyzWa4xl8DmvHB9z9s7O12eBn0+JKotIZiRfC9uN86T5Wo8mSRbOqSBKvG1eH1Wyfj2BSQ==}
+    peerDependencies:
+      electron: '>=20.0.0'
 
   '@develar/schema-utils@2.6.5':
     resolution: {integrity: sha512-0cp4PsWQ/9avqTVMCtZ+GirikIA36ikvjtHweU4/j8yLtgObI0+JUPhYFScgwlteveGB1rt3Cm8UhN04XayDig==}
@@ -1398,6 +1406,13 @@ packages:
 snapshots:
 
   7zip-bin@5.2.0: {}
+
+  '@capgo/electron-updater@0.0.6(electron@33.4.11)':
+    dependencies:
+      electron: 33.4.11
+      extract-zip: 2.0.1
+    transitivePeerDependencies:
+      - supports-color
 
   '@develar/schema-utils@2.6.5':
     dependencies:

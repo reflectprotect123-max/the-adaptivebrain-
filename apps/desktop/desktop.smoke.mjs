@@ -20,6 +20,7 @@ must(fs.existsSync(mainPath), 'main process missing: ' + pkg.main);
 must(fs.existsSync(updaterPath), 'updater process missing: src/updater.cjs');
 must(pkg.build?.appId === 'com.hybrid.coach', 'appId must be com.hybrid.coach');
 must(String(pkg.main).endsWith('.cjs'), 'electron main must be CommonJS .cjs');
+must(pkg.dependencies?.['@capgo/electron-updater'] === '0.0.6', 'Capgo Electron SDK must be pinned');
 must(pkg.dependencies?.['electron-updater'], 'electron-updater dependency required for shell OTA');
 must(pkg.build?.publish?.provider === 'generic', 'publish.provider must be generic for coach-desktop-latest OTA');
 const releaseFeed = 'https://github.com/reflectprotect123-max/the-adaptivebrain-/releases/download/coach-desktop-latest';
@@ -55,3 +56,10 @@ console.log('coach-desktop.smoke: ok', {
   version: pkg.version,
   shellOta: pkg.build.publish.provider,
 });
+
+const liveSrc = fs.readFileSync(path.join(here, 'src/live-updater.cjs'), 'utf8');
+must(mainSrc.includes('./live-updater.cjs'), 'main must wire Coach Capgo updater');
+must(mainSrc.includes('preload.cjs'), 'sandboxed health bridge missing');
+must(liveSrc.includes("'com.hybrid.coach'"), 'Coach must have its own Capgo app');
+must(liveSrc.includes("'coach-live'"), 'Coach must have its own Capgo channel');
+must(coachHtml.includes('CoachDesktop?.notifyAppReady()'), 'Coach must acknowledge successful startup');

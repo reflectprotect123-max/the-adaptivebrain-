@@ -54,7 +54,8 @@ jobs:
           EXE_NAME="THE-Hybrid-Coach-Setup-${VERSION}.exe"
           NOTES="Windows desktop shell for THE Hybrid **Coach** app.
 
-          Bundles the Coach UI and updates it with this desktop release.
+          Includes the fallback Coach UI and Capgo live UI updates (desktop 1.0.6+).
+          Coach → Check for Coach updates (Capgo), then close and reopen to apply.
           Shell auto-updates from this release (Coach → Check for app updates).
 
           **Version:** \`${VERSION}\`

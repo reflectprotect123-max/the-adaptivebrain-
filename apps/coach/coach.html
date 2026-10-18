@@ -2030,6 +2030,8 @@ window.bindMyCloudIdToAthlete=bindMyCloudIdToAthlete;
 window.pushCloudNow=pushCloudNow;
 CoachViews.init({ L, S, ui, persist, esc, go, render, $, tpl, prog, ses, athleteBy, team });
 render();
+// The local UI is usable before optional cloud authentication finishes.
+window.CoachDesktop?.notifyAppReady();
 (async function coachAuthBoot(){
   try {
     if (!(window.Whoop && Whoop.client)) return;

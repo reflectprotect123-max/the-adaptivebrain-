@@ -1,16 +1,17 @@
 {
   "name": "@hybrid/coach-desktop",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": true,
-  "description": "THE Hybrid System coach \u2014 Windows desktop shell with GitHub-release OTA",
+  "description": "THE Hybrid Coach \u2014 Capgo UI updates and GitHub desktop updates",
   "main": "src/main.cjs",
   "scripts": {
     "start": "electron .",
-    "typecheck": "node --check src/main.cjs && node --check src/updater.cjs && node --check desktop.smoke.mjs",
+    "typecheck": "node --check src/main.cjs && node --check src/updater.cjs && node --check desktop.smoke.mjs && node --check src/live-updater.cjs && node --check src/preload.cjs",
     "dist": "electron-builder --win nsis --publish never",
-    "check": "node desktop.smoke.mjs"
+    "check": "node desktop.smoke.mjs && node --test src/live-updater.test.cjs"
   },
   "dependencies": {
+    "@capgo/electron-updater": "0.0.6",
     "electron-updater": "^6.6.2"
   },
   "devDependencies": {
@@ -25,6 +26,7 @@
     },
     "files": [
       "src/**/*",
+      "!src/**/*.test.cjs",
       "package.json",
       "node_modules/electron-updater/**/*"
     ],

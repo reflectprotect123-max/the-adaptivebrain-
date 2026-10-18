@@ -1,6 +1,6 @@
 /**
  * Auto-update for the packaged Windows shell via GitHub Releases (electron-updater).
- * The coach UI is bundled with the shell; both update together.
+ * The installer includes a fallback Coach UI; Capgo delivers later UI updates.
  */
 const { app, dialog } = require('electron');
 const { autoUpdater } = require('electron-updater');

@@ -1,3 +1,8 @@
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { execFileSync } from 'node:child_process';
 import { test, expect } from 'playwright/test';
 
 test('moved Coach opens its offline workspace with local scripts intact', async ({ page }) => {
@@ -66,4 +71,28 @@ test('same-tick input before the native details toggle event keeps overrides ope
  const over=page.locator('details').filter({has:page.getByText('Per-set rep overrides (optional)',{exact:true})});
  await expect(over).toHaveAttribute('open','');await over.getByRole('textbox').nth(2).fill('6');await over.getByRole('textbox').nth(3).fill('AMRAP');await page.getByRole('button',{name:'Done',exact:true}).click();
  await expect(page.getByText(/4 × 5, 8, 6, AMRAP/)).toBeVisible();
+});
+
+
+test('downloaded file bundle acknowledges startup after render and retains Coach storage', async ({ page }) => {
+  const root = fileURLToPath(new URL('../', import.meta.url));
+  const stage = fs.mkdtempSync(path.join(os.tmpdir(), 'coach-ota-browser-'));
+  try {
+    execFileSync(process.execPath, ['scripts/stage-coach-capgo.mjs', stage], { cwd: root });
+    await page.route('https://**/*', route => route.abort());
+    await page.addInitScript(() => {
+      window.CoachDesktop = { notifyAppReady() {
+        window.acknowledgedAfterRender = !!(document.getElementById('gate')?.innerHTML || document.getElementById('coachApp')?.innerHTML);
+      } };
+    });
+    await page.goto(pathToFileURL(path.join(root, 'apps/coach/coach.html')).href);
+    await expect.poll(() => page.evaluate(() => window.acknowledgedAfterRender)).toBe(true);
+    await page.getByRole('button', { name: 'Demo coach (offline)' }).click();
+    await expect(page.getByText('Coach Home', { exact: true }).first()).toBeVisible();
+    const saved = await page.evaluate(() => JSON.stringify({ ...localStorage }));
+    await page.goto(pathToFileURL(path.join(stage, 'index.html')).href);
+    await expect.poll(() => page.evaluate(() => window.acknowledgedAfterRender)).toBe(true);
+    await expect(page.getByText('Coach Home', { exact: true }).first()).toBeVisible();
+    expect(await page.evaluate(() => JSON.stringify({ ...localStorage }))).toBe(saved);
+  } finally { fs.rmSync(stage, { recursive: true, force: true }); }
 });
