@@ -332,9 +332,28 @@
       statusPill +
       macroPill +
       '</div>' +
+      (s.athleteResult ? '<details class="athlete-results" ' + (ui().resultOpen?.[s.id] ? 'open ' : '') + 'ontoggle="if(this.isConnected)CoachViews.toggleResults(\'' + s.id + '\',this.open)"><summary>Results</summary>' +
+        (s.athleteResult.sets || []).slice().sort(function(a,b) {
+          return String(a.payload?.page?.letter||'').localeCompare(String(b.payload?.page?.letter||'')) || (a.payload?.row?.ordinal||0)-(b.payload?.row?.ordinal||0);
+        }).map(function(r) {
+          var p=r.payload||{}, row=p.row||{}, cells=row.cells||{}, parts=[];
+          if(row.reps!=null)parts.push(row.reps+' reps');
+          if(row.kg!=null){
+            var convention=row.context?.normalizedLoad?.convention;
+            parts.push(row.kg+' kg'+(convention==='barbell_plates'?' plates':convention==='per_hand'?' per hand':''));
+          }
+          Object.keys(cells).forEach(function(k){if(cells[k]!==''&&cells[k]!=null)parts.push(cells[k]+' '+k.replace(/_/g,' '));});
+          if(row.effort)parts.push(row.effort.replace(/_/g,' '));
+          if(row.miss)parts.push('Did not complete');
+          return '<p>'+esc((p.page||{}).title||r.exerciseKey)+' · '+esc(row.purpose||'set')+' · '+parts.map(esc).join(' · ')+'</p>';
+        }).join('') + (s.athleteResult.estimates||[]).filter(function(e){return Number.isFinite(e.payload?.freshE1rm);}).map(function(e){return '<p>e1RM · '+esc(e.exerciseKey)+' · '+esc(e.payload.freshE1rm.toFixed(1))+' kg · '+esc(e.payload.confidence||'')+' · athlete engine</p>';}).join('') + '</details>' : '') +
       chipMenu(s.id) +
       '</div>'
     );
+  }
+
+  function toggleResults(id,open) {
+    (ui().resultOpen || (ui().resultOpen = {}))[id] = !!open;
   }
 
   function toggleChipMenu(id, ev) {
@@ -665,8 +684,105 @@
       cells +
       '</div></div>' +
       libraryPickOverlay() +
+      (athleteId && !teamMode ? liftMemoryHtml(athleteId) : '') +
       '</div>'
     );
+  }
+
+  function liftMemoryHtml(athleteId) {
+    var Lifts = root.CoachLifts;
+    if (!Lifts) return '';
+    var rows = Lifts.listFor(S().liftMemory, athleteId);
+    var body = rows.length
+      ? rows
+          .map(function (row) {
+            var last = row.lastKg == null ? '—' : row.lastKg + ' kg';
+            var wm = row.e1rmKg > 0 ? row.e1rmKg + ' kg' : '—';
+            return (
+              '<tr data-lift-key="' +
+              esc(row.key) +
+              '"><td><b>' +
+              esc(row.name) +
+              '</b></td><td data-lift-last>' +
+              esc(last) +
+              '</td><td data-lift-e1rm>' +
+              esc(wm) +
+              '</td><td class="muted">' +
+              esc(row.source || '—') +
+              '</td></tr>'
+            );
+          })
+          .join('')
+      : '<tr><td colspan="4" class="muted">No working sets yet.</td></tr>';
+    return (
+      '<div class="card" id="lift-memory" style="margin-top:16px"><div class="eyebrow">Working max</div>' +
+      '<p class="muted">LAST is the last working load. Working max is the e1RM. A miss does not raise it. Warm-up and cool-down do not write it.</p>' +
+      '<div class="table-wrap"><table class="th-table data-table"><thead><tr><th>Lift</th><th>LAST</th><th>Working max</th><th>Source</th></tr></thead><tbody>' +
+      body +
+      '</tbody></table></div>' +
+      '<div class="rx-grid cols-4" style="margin-top:12px">' +
+      '<div class="field"><label>Lift</label><input id="liftName" value="Back Squat"></div>' +
+      '<div class="field"><label>Load (kg)</label><input id="liftKg" type="number" min="0" step="0.5" value="100"></div>' +
+      '<div class="field"><label>Reps</label><input id="liftReps" type="number" min="1" step="1" value="5"></div>' +
+      '<div class="field"><label>Working max (kg)</label><input id="liftWm" type="number" min="0" step="0.1" placeholder="Coach set"></div></div>' +
+      '<label class="check-row"><input id="liftMiss" type="checkbox"> Miss — keep the working max</label>' +
+      '<div class="row" style="justify-content:flex-start;gap:8px;flex-wrap:wrap;margin-top:8px">' +
+      '<button type="button" class="btn primary small" data-athlete-id="' +
+      esc(athleteId) +
+      '" onclick="CoachViews.recordLiftSet(this.getAttribute(\'data-athlete-id\'))">Record working set</button>' +
+      '<button type="button" class="btn small" data-athlete-id="' +
+      esc(athleteId) +
+      '" onclick="CoachViews.saveWorkingMax(this.getAttribute(\'data-athlete-id\'))">Set working max</button></div></div>'
+    );
+  }
+
+  function liftField(id) {
+    var el = document.getElementById(id);
+    return el ? el.value : '';
+  }
+
+  function recordLiftSet(athleteId) {
+    var Lifts = root.CoachLifts;
+    if (!Lifts || !athleteId) return;
+    var name = String(liftField('liftName') || '').trim();
+    if (!name) return;
+    var hit = root.ExerciseSearch && root.ExerciseSearch.search(name, 8).find(function (h) {
+      return h.name.toLowerCase() === name.toLowerCase() && !(root.CoachCatalogue && root.CoachCatalogue.isCatalogueId(h.exerciseId));
+    });
+    var exerciseId = hit ? hit.exerciseId : '';
+    S().liftMemory = Lifts.remember(S().liftMemory, {
+      athleteId: athleteId,
+      name: name,
+      exerciseId: exerciseId,
+      loadKg: liftField('liftKg'),
+      reps: liftField('liftReps'),
+      effort: 'medium',
+      miss: !!(document.getElementById('liftMiss') && document.getElementById('liftMiss').checked),
+    });
+    persist();
+    ctx.render();
+    Lifts.syncRemember && Lifts.syncRemember(S(), athleteId, name);
+  }
+
+  function saveWorkingMax(athleteId) {
+    var Lifts = root.CoachLifts;
+    if (!Lifts || !athleteId) return;
+    var name = String(liftField('liftName') || '').trim();
+    var kg = Number(liftField('liftWm'));
+    if (!name || !(kg > 0)) return;
+    var hit = root.ExerciseSearch && root.ExerciseSearch.search(name, 8).find(function (h) {
+      return h.name.toLowerCase() === name.toLowerCase() && !(root.CoachCatalogue && root.CoachCatalogue.isCatalogueId(h.exerciseId));
+    });
+    var exerciseId = hit ? hit.exerciseId : '';
+    S().liftMemory = Lifts.setWorkingMax(S().liftMemory, {
+      athleteId: athleteId,
+      name: name,
+      exerciseId: exerciseId,
+      e1rmKg: kg,
+    });
+    persist();
+    ctx.render();
+    Lifts.syncWorkingMax && Lifts.syncWorkingMax(S(), athleteId, name);
   }
 
   function publishAllVisible() {
@@ -854,6 +970,7 @@
     teamNameCount: teamNameCount,
     saveCreateTeam: saveCreateTeam,
     toggleChipMenu: toggleChipMenu,
+    toggleResults: toggleResults,
     publishChip: publishChip,
     unpublishChip: unpublishChip,
     deleteChip: deleteChip,
@@ -868,5 +985,7 @@
     addMealDay: addMealDay,
     pushBridge: pushBridge,
     saveAthleteCloudId: saveAthleteCloudId,
+    recordLiftSet: recordLiftSet,
+    saveWorkingMax: saveWorkingMax,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

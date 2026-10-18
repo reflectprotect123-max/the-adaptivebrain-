@@ -6,7 +6,7 @@
 <title>THE Hybrid — Coach</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
 /* Screenshot-clone chrome — Hybrid labels only */
 :root{
@@ -246,6 +246,27 @@ label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight
 .picker-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);display:grid;place-items:center;z-index:50;padding:20px;animation:coachFade .2s var(--ease) both}
 .picker-panel{width:min(520px,100%);max-height:min(80vh,640px);overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:16px;box-shadow:var(--shadow)}
 .picker-list{display:grid;gap:6px;margin-top:12px;max-height:360px;overflow:auto}
+.builder-steps{margin:12px 0}
+.prep-row{display:grid;grid-template-columns:28px 1fr 120px auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.prep-catalog{max-height:320px;overflow:auto;display:grid;gap:6px;margin-top:8px}
+.session-builder{margin-top:8px;padding:8px 16px 18px;border-radius:18px;background:#000;color:#fff;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans-serif}
+.session-builder .builder-steps{border-bottom-color:rgba(255,255,255,.1)}
+.session-builder .builder-steps button{color:#8e8e93;font-family:"Barlow Condensed",ui-sans-serif,system-ui,sans-serif;font-size:18px;letter-spacing:.03em}
+.session-builder .builder-steps button.on{color:#fff;border-bottom-color:#fff}
+.session-builder .block-card{background:#121212;border:1px solid rgba(255,255,255,.1);color:#fff;border-radius:14px}
+.session-builder .block-head,.session-builder .prep-row{border-color:rgba(255,255,255,.1)}
+.session-builder .letter-badge{background:#3a3a3c;color:#fff}
+.session-builder .prep-dose{color:#1ba3ff;font-size:13px;font-weight:600}
+.session-builder input,.session-builder textarea,.session-builder select{background:#1c1c1e;color:#fff;border-color:rgba(255,255,255,.16)}
+.session-builder .picker-item{background:#121212;color:#fff;border:1px solid rgba(255,255,255,.1);border-radius:12px;text-align:left}
+.session-builder .picker-item:hover{border-color:rgba(255,255,255,.28)}
+.session-builder .muted{color:#8e8e93}
+.session-builder .oled-next{width:100%;min-height:48px;border:1px solid rgba(255,255,255,.42);background:#fff;color:#000;border-radius:999px;font-family:"Barlow Condensed",ui-sans-serif,system-ui,sans-serif;font-size:18px;font-weight:700;letter-spacing:.02em}
+.session-builder .oled-next:hover{background:#f2f2f2}
+.session-builder .btn:focus-visible,.session-builder input:focus-visible{box-shadow:0 0 0 2px #000,0 0 0 4px #fff}
+@media (prefers-reduced-motion: reduce){
+  .session-builder .btn,.session-builder .picker-item{transition:none}
+}
 .picker-item{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel3);color:var(--text);transition:border-color var(--ease)}
 .picker-item:hover{border-color:rgba(212,165,116,.35)}
 .template-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);color:var(--text);transition:border-color var(--ease),box-shadow var(--ease)}
@@ -382,6 +403,8 @@ label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight
 <script src="./exercise-search.js"></script>
 <script src="./coach-exercise-catalog.js"></script>
 <script src="./coach-loop.js"></script>
+<script src="./coach-lifts.js"></script>
+<script src="./coach-catalogue.js"></script>
 <script src="./log-columns.js"></script>
 <script src="./coach-nutrition.js"></script>
 <script src="./coach-bridge.js"></script>
@@ -391,6 +414,11 @@ label{display:block;margin:0 0 6px;color:var(--muted);font-size:10px;font-weight
 const L = window.CoachLoop;
 const N = window.CoachNutrition;
 let S = L.mergeExerciseCatalog(L.loadState());
+if (window.CoachLifts) {
+  const beforeMemory = JSON.stringify(S.liftMemory || null);
+  CoachLifts.ensureFromSessions(S);
+  if (JSON.stringify(S.liftMemory || null) !== beforeMemory) L.saveState(undefined, S);
+}
 const ui = {
   view:'home', lib:'sessions', athleteId:null, teamId:null, programId:null, templateId:null, sessionId:null,
   expandAll:false, expanded:{}, err:'', exPicker:null, exSearch:'', exEdit:null,
@@ -398,6 +426,7 @@ const ui = {
   calMonth:null, calDay:null, chipMenu:null, libPick:null,
   assignTeamId:null, assignStart:null, nutAthleteId:null,
   exCatalogSearch:'', commentDrawer:null, filterAthlete:'all',
+  builderStep:'', prepQuery:'',
 };
 
 const $ = (id) => document.getElementById(id);
@@ -517,13 +546,16 @@ function go(view, extra){
   if ((view === 'athlete' || view === 'team') && !ui.calMonth) ui.calMonth = L.today().slice(0, 7);
   render();
 }
-function openSession(templateId){
+function openSession(templateId, step){
   closeCoachExEdit();
   ui.cellMenu = null;
   ui.templateId = templateId;
   ui.lib = 'sessions';
   ui.exPicker = null;
+  ui.prepQuery = '';
   ui.view = 'session';
+  const built = (tpl(templateId)?.blocks || []).some(b => b.role === 'warmup' || b.role === 'cooldown');
+  ui.builderStep = step || (built ? 'warmup' : '');
   render();
 }
 function openProgram(programId){
@@ -832,17 +864,51 @@ function libraryHtml(){
   return `${tabs}${programsListHtml()}`;
 }
 
+function exerciseCatalogBucket(e){
+  if (e && (e.category === 'Warm-Up' || e.category === 'Cool-Down')) return e.category;
+  return 'main';
+}
+
 function exercisesCatalogHtml(){
   const q = String(ui.exCatalogSearch||'').trim().toLowerCase();
-  const list = (S.exercises||[]).filter(e => !q || String(e.name).toLowerCase().includes(q) || String(e.category||'').toLowerCase().includes(q));
-  const rows = list.map(e => `<tr><td><b>${esc(e.name)}</b></td><td class="muted">${e.builtIn?'EXERCISE':'CUSTOM'}</td><td class="muted">${esc(e.category||'—')}</td><td class="muted">—</td><td class="muted">—</td></tr>`).join('');
+  const section = ui.exCatalogSection || 'all';
+  const all = S.exercises || [];
+  const warmCount = all.filter(e => e.category === 'Warm-Up').length;
+  const coolCount = all.filter(e => e.category === 'Cool-Down').length;
+  const mainCount = all.filter(e => exerciseCatalogBucket(e) === 'main').length;
+  const catalogueCount = all.filter(e => e.source === 'supabase-exercise-catalogue').length;
+  const list = all.filter(e => {
+    if (section !== 'all' && exerciseCatalogBucket(e) !== section) return false;
+    if (!q) return true;
+    const blob = [e.name, e.category, e.typical, e.unit, e.review].join(' ').toLowerCase();
+    return blob.includes(q);
+  }).slice().sort((a, b) => String(a.name).localeCompare(String(b.name)));
+  const shown = list.slice(0, 120);
+  const tabs = [
+    ['all', `All (${all.length})`],
+    ['Warm-Up', `Warm-Up (${warmCount})`],
+    ['Cool-Down', `Cool-Down (${coolCount})`],
+    ['main', `Main library (${mainCount})`],
+  ];
+  const tabHtml = `<div class="lib-tabs" role="tablist" aria-label="Exercise catalogs">${tabs.map(([k, label]) => `<button type="button" role="tab" aria-selected="${section===k?'true':'false'}" class="${section===k?'on':''}" data-catalog-section="${esc(k)}" onclick="setExCatalogSection(this.getAttribute('data-catalog-section'))">${esc(label)}</button>`).join('')}</div>`;
+  const rows = shown.map(e => {
+    const note = [e.review ? `Needs review: ${e.review}` : '', e.others ? `Also seen: ${e.others}` : ''].filter(Boolean).join(' ');
+    return `<tr><td><b>${esc(e.name)}</b>${note ? `<div class="muted">${esc(note)}</div>` : ''}</td><td class="muted">${esc(e.category||'—')}</td><td class="muted">${esc(e.typical||'—')}</td><td class="muted">${esc(e.unit||'—')}</td><td class="muted">${esc(e.perSide||'—')}</td></tr>`;
+  }).join('');
   return `<div class="toolbar-row">
       <div class="field"><label>Search exercises</label>
-        <input value="${esc(ui.exCatalogSearch||'')}" oninput="ui.exCatalogSearch=this.value;render()" placeholder="Squat, row…"></div>
+        <input id="exCatalogSearch" value="${esc(ui.exCatalogSearch||'')}" oninput="ui.exCatalogSearch=this.value;ui.focusField='exCatalogSearch';render()" placeholder="Couch stretch, band pull apart…"></div>
       <button type="button" class="btn primary small" onclick="addCustomExercise()">New exercise</button>
     </div>
-    <p class="muted" style="margin-bottom:8px">${list.length} exercise${list.length===1?'':'s'} · 120-library variant search in session builder</p>
-    ${rows ? `<div class="table-wrap"><table class="th-table data-table"><thead><tr><th>Title</th><th>Type</th><th>Tags</th><th>Video</th><th>Created By</th></tr></thead><tbody>${rows}</tbody></table></div><div class="table-foot"><span class="rows-per-page">Rows per page: 100</span><span>1–${list.length} of ${list.length}</span></div>` : '<div class="empty-panel"><div class="eyebrow">Exercises</div><h2>No matches</h2><p class="muted">Try another search, or add a custom exercise.</p></div>'}`;
+    ${tabHtml}
+    <p class="muted" style="margin-bottom:8px">${shown.length} of ${list.length} shown · ${warmCount} warm-up · ${coolCount} cool-down · ${catalogueCount} from the exercise catalogue. The catalogue is search only and does not share a working max.</p>
+    ${rows ? `<div class="table-wrap"><table class="th-table data-table"><thead><tr><th>Title</th><th>Catalog</th><th>Typical</th><th>Unit</th><th>Per side</th></tr></thead><tbody>${rows}</tbody></table></div><div class="table-foot"><span>${shown.length} of ${list.length}</span></div>` : '<div class="empty-panel"><div class="eyebrow">Exercises</div><h2>No matches</h2><p class="muted">Try another search, switch catalog, or add a custom exercise.</p></div>'}`;
+}
+
+function setExCatalogSection(section){
+  ui.exCatalogSection = section || 'all';
+  ui.focusField = '';
+  render();
 }
 
 function addCustomExercise(){
@@ -855,14 +921,28 @@ function addCustomExercise(){
 }
 
 function newTemplate(){
+  const rounds = 3;
+  const seed = [
+    ['Bike', '180'],
+    ['Row', '180'],
+    ['Run', '180'],
+    ['Ski', '180'],
+    ['Jump Rope', '60'],
+  ].map(([name, amount]) => L.makeExercise({
+    name, sets: rounds, reps: amount, load: '', metric: 'Seconds', restSec: 0, unit: 'seconds', perSide: 'No',
+  }));
   const t = L.makeTemplate({
     name:'New session',
     coachInstructions:'',
-    blocks:[L.makeBlock({ heading:'Strength', type:'strength', category:'Strength/Power', scoring:'weight', exercises:[L.makeExercise({ name:'Back Squat', exerciseId:'core-back-squat', sets:3, reps:'5', load:'', metric:'Weight' })] })],
+    blocks:[
+      L.makeBlock({ heading:'Warm-up', type:'strength', category:'Warm-Up', scoring:'completion', role:'warmup', rounds, exercises: seed }),
+      L.makeBlock({ heading:'Strength', type:'strength', category:'Strength/Power', scoring:'weight', exercises:[L.makeExercise({ name:'Back Squat', exerciseId:'core-back-squat', sets:3, reps:'5', load:'', metric:'Weight' })] }),
+      L.makeBlock({ heading:'Cool-down', type:'strength', category:'Cool-Down', scoring:'completion', role:'cooldown', rounds, exercises:[] }),
+    ],
   });
   S.templates.push(t);
   persist();
-  openSession(t.id);
+  openSession(t.id, 'warmup');
 }
 
 function newProgram(){
@@ -1136,10 +1216,9 @@ function patchCoachExTargetRir(bi, ei, raw){
 
 function coachTargetRirField(bi, ei){
   const ex = tplBlocks()[bi].exercises[ei];
-  const val = ex.targetRir != null ? ex.targetRir : '';
-  return `<div class="field" style="margin-top:8px"><label>Target RIR</label>
-    <input type="number" min="0" max="10" step="1" placeholder="2 (default)" value="${val}" aria-label="Target reps in reserve" onchange="patchCoachExTargetRir(${bi},${ei},this.value)">
-    <p class="muted" style="margin:4px 0 0;font-size:11px">In-session autoreg aims for this many reps in reserve. Blank uses engine default (2).</p></div>`;
+  return `<p class="muted">Target RIR: 3 · Average · engine controlled</p>
+    <div class="field"><label>Tempo</label><input value="${esc(ex.tempo||'')}" aria-label="Tempo for ${esc(ex.name||'lift')}" placeholder="20X1 or 3-1-X-0"
+      oninput="if(!this.value||/^(?:[0-9]{2}[0-9Xx][0-9]|[0-9]+-[0-9]+-(?:[0-9]+|[Xx])-[0-9]+)$/.test(this.value)){tplBlocks()[${bi}].exercises[${ei}].tempo=this.value;persist()}"></div>`;
 }
 
 function coachExerciseRxHtml(bi, ei){
@@ -1196,7 +1275,11 @@ function addBlk(type){
     : type === 'text'
       ? { type:'text', heading:'Prep', category:'Prep', scoring:'completion', notes:'' }
       : { type:'strength', heading:'Strength', category:'Strength/Power', scoring:'weight', exercises:[L.makeExercise({ name:'Back Squat', exerciseId:'core-back-squat', sets:3, reps:'8', load:'', metric:'Weight' })] };
-  t.blocks.push(L.makeBlock(partial));
+  t.blocks = t.blocks || [];
+  const coolAt = t.blocks.findIndex(b => b.role === 'cooldown');
+  const block = L.makeBlock(partial);
+  if (coolAt >= 0) t.blocks.splice(coolAt, 0, block);
+  else t.blocks.push(block);
   t.blocks = L.decorateBlocks(t.blocks);
   persist(); render();
 }
@@ -1365,6 +1448,7 @@ function openExPicker(bi, ei){
   closeCoachExEdit();
   ui.exPicker = { bi, ei };
   ui.exSearch = '';
+  ui.focusField = 'exPickerSearch';
   render();
 }
 
@@ -1393,7 +1477,7 @@ function ensureCoachExerciseInCatalog(exerciseId, name, category){
   }
 }
 
-function closeExPicker(){ ui.exPicker = null; ui.exSearch = ''; render(); }
+function closeExPicker(){ ui.exPicker = null; ui.exSearch = ''; ui.focusField = ''; render(); }
 
 function pickExerciseVariant(exerciseId, name, category){
   if (!ui.exPicker) return;
@@ -1415,19 +1499,33 @@ function filteredExercises(){
   return (S.exercises||[]).slice(0, 80);
 }
 
-function exercisePickerHtml(){
-  if (!ui.exPicker) return '';
-  const q = String(ui.exSearch||'').trim();
+function pickerHitsHtml(query){
+  const q = String(query||'').trim();
   const hits = coachExerciseSuggestHits(q);
-  const list = hits.length
+  return hits.length
     ? hits.map(x => `<button type="button" class="picker-item" onclick='pickExerciseVariant(${JSON.stringify(x.exerciseId||'')},${JSON.stringify(x.name)},${JSON.stringify(x.category||'Custom')})'><span>${esc(x.name)}</span><span class="muted">${esc(x.category||'Custom')}</span></button>`).join('')
     : (q ? '<div class="muted">No library match — try another variant name.</div>' : '<div class="muted">Type to search exercise variants (names only).</div>');
+}
+
+function onPickerSearch(value){
+  ui.exSearch = value;
+  const list = document.querySelector('.picker-list');
+  if (!list) {
+    ui.focusField = 'exPickerSearch';
+    render();
+    return;
+  }
+  list.innerHTML = pickerHitsHtml(value);
+}
+
+function exercisePickerHtml(){
+  if (!ui.exPicker) return '';
   return `<div class="picker-overlay" onclick="if(event.target===this)closeExPicker()">
     <div class="picker-panel" role="dialog" aria-label="Choose exercise">
       <div class="row"><b>Choose exercise</b><button type="button" class="btn ghost small" onclick="closeExPicker()">Close</button></div>
       <div class="field" style="margin-top:12px"><label>Search variants</label>
-        <input value="${esc(ui.exSearch)}" oninput="ui.exSearch=this.value;render()" placeholder="deadlift, lateral raise…" autofocus></div>
-      <div class="picker-list">${list}</div>
+        <input id="exPickerSearch" value="${esc(ui.exSearch)}" oninput="onPickerSearch(this.value)" placeholder="deadlift, lateral raise…"></div>
+      <div class="picker-list">${pickerHitsHtml(ui.exSearch)}</div>
     </div></div>`;
 }
 
@@ -1534,6 +1632,172 @@ function condEngineHtml(b, bi){
   </div>`;
 }
 
+function isPrepBlock(b){
+  return !!(b && (b.role === 'warmup' || b.role === 'cooldown'));
+}
+
+function prepBlockIndex(role){
+  return tplBlocks().findIndex(b => b.role === role);
+}
+
+function parsePrepDose(row){
+  const typical = String(row?.typical || '');
+  const match = typical.match(/(\d+(?:\s*[-–]\s*\d+)?)/);
+  const amount = match ? match[1].replace(/\s+/g, '') : '';
+  const unit = String(row?.unit || 'reps');
+  let metric = 'Reps';
+  if (unit.startsWith('second')) metric = 'Seconds';
+  else if (unit.startsWith('metre') || unit.startsWith('meter')) metric = 'Meters';
+  else if (unit.startsWith('step')) metric = 'Steps';
+  return { amount, metric, unit };
+}
+
+function setBuilderStep(step){
+  if (step === 'done') {
+    ui.builderStep = '';
+    ui.prepQuery = '';
+    go('library', { lib:'sessions' });
+    return;
+  }
+  ui.builderStep = step;
+  ui.prepQuery = '';
+  ui.focusField = '';
+  render();
+}
+
+function prepDoseLabel(ex, rounds){
+  const n = rounds || ex.sets || 3;
+  if (ex.metric === 'Seconds') return n + ' × ' + L.formatMmSs(ex.reps);
+  const side = ex.perSide && ex.perSide !== 'No' ? ' / side' : '';
+  return n + ' × ' + (ex.reps || '—') + ' ' + (ex.metric || 'Reps') + side;
+}
+
+function prepAmountValue(ex){
+  if (ex.metric === 'Seconds') return L.formatMmSs(ex.reps);
+  return ex.reps || '';
+}
+
+function setPrepRounds(role, raw){
+  const bi = prepBlockIndex(role);
+  if (bi < 0) return;
+  const n = Math.max(1, Number(raw) || 1);
+  const b = tpl(ui.templateId).blocks[bi];
+  b.rounds = n;
+  (b.exercises || []).forEach(ex => { ex.sets = n; });
+  tBlocksRefresh();
+}
+
+function tBlocksRefresh(){
+  const t = tpl(ui.templateId);
+  t.blocks = L.decorateBlocks(t.blocks);
+  persist();
+  render();
+}
+
+function setPrepAmount(bi, ei, value){
+  const ex = tpl(ui.templateId).blocks[bi].exercises[ei];
+  if (!ex) return;
+  ex.reps = ex.metric === 'Seconds' ? String(L.parseMmSs(value)) : value;
+  persist();
+}
+
+function removePrepExercise(bi, ei){
+  tpl(ui.templateId).blocks[bi].exercises.splice(ei, 1);
+  tBlocksRefresh();
+}
+
+function addPrepFromCatalog(exerciseId){
+  const row = (S.exercises || []).find(e => e.id === exerciseId);
+  if (!row) return;
+  const role = row.category === 'Cool-Down' ? 'cooldown' : 'warmup';
+  const bi = prepBlockIndex(role);
+  if (bi < 0) return;
+  const b = tpl(ui.templateId).blocks[bi];
+  if ((b.exercises || []).some(ex => ex.exerciseId === exerciseId || ex.name === row.name)) return;
+  const dose = parsePrepDose(row);
+  b.exercises = b.exercises || [];
+  b.exercises.push(L.makeExercise({
+    name: row.name,
+    exerciseId: row.id,
+    category: row.category,
+    sets: b.rounds || 3,
+    reps: dose.amount,
+    load: '',
+    metric: dose.metric,
+    restSec: 0,
+    unit: row.unit || dose.unit,
+    perSide: row.perSide || '',
+    coachNote: row.review || '',
+  }));
+  tBlocksRefresh();
+}
+
+function prepCatalogMatches(role){
+  const cat = role === 'cooldown' ? 'Cool-Down' : 'Warm-Up';
+  const q = String(ui.prepQuery || '').trim().toLowerCase();
+  return (S.exercises || []).filter(e => e.category === cat && (!q || String(e.name).toLowerCase().includes(q) || String(e.typical || '').toLowerCase().includes(q)))
+    .slice()
+    .sort((a, b) => String(a.name).localeCompare(String(b.name)));
+}
+
+function prepCatalogListHtml(role){
+  const rows = prepCatalogMatches(role);
+  if (!rows.length) return '<div class="muted">No matches in this catalog.</div>';
+  return rows.map(e => `<button type="button" class="picker-item" data-prep-id="${esc(e.id)}" onclick="addPrepFromCatalog(this.getAttribute('data-prep-id'))"><span>${esc(e.name)}</span><span class="muted">${esc(e.typical || e.unit || '')}</span></button>`).join('');
+}
+
+function onPrepCatalogSearch(value){
+  ui.prepQuery = value;
+  const list = document.getElementById('prepCatalogList');
+  if (!list) {
+    render();
+    return;
+  }
+  const role = ui.builderStep === 'cooldown' ? 'cooldown' : 'warmup';
+  list.innerHTML = prepCatalogListHtml(role);
+}
+
+function prepCircuitHtml(role){
+  const bi = prepBlockIndex(role);
+  const b = bi >= 0 ? tplBlocks()[bi] : null;
+  const title = role === 'cooldown' ? 'Cool-down' : 'Warm-up';
+  const rounds = b ? (b.rounds || 3) : 3;
+  const items = b ? (b.exercises || []) : [];
+  const rows = items.map((ex, ei) => `<div class="prep-row">
+      <span class="letter-badge" style="width:32px;height:32px;font-size:13px">${ei + 1}</span>
+      <div><b>${esc(ex.name)}</b><div class="prep-dose">${esc(prepDoseLabel(ex, rounds))}</div>${ex.perSide && ex.perSide !== 'No' ? `<div class="muted">Per side: ${esc(ex.perSide)}</div>` : ''}${ex.coachNote ? `<div class="muted">Needs review: ${esc(ex.coachNote)}</div>` : ''}</div>
+      <input aria-label="Amount for ${esc(ex.name)}" value="${esc(prepAmountValue(ex))}" onchange="setPrepAmount(${bi},${ei},this.value)">
+      <button type="button" class="kebab-btn" title="Remove ${esc(ex.name)}" aria-label="Remove ${esc(ex.name)}" onclick="removePrepExercise(${bi},${ei})">×</button>
+    </div>`).join('');
+  const empty = role === 'cooldown' && !items.length ? '<p class="muted">Cool-down starts empty. Add movements from the catalog.</p>' : '';
+  return `<section class="block-card">
+    <div class="block-head"><span class="letter-badge">${esc(b?.letter || (role === 'warmup' ? 'A' : 'C'))}</span><b>${title}</b>
+      <label class="row" style="gap:6px;margin:0">Rounds <input type="number" min="1" style="width:72px" value="${rounds}" aria-label="${title} rounds" onchange="setPrepRounds('${role}', this.value)"></label>
+    </div>
+    <div class="block-body">
+      ${empty}
+      ${rows || ''}
+      <div class="field" style="margin-top:12px"><label>Search ${title.toLowerCase()}s</label>
+        <input id="prepCatalogSearch" value="${esc(ui.prepQuery || '')}" placeholder="${role === 'cooldown' ? 'Couch stretch…' : 'Band pull apart…'}" oninput="onPrepCatalogSearch(this.value)"></div>
+      <div class="prep-catalog" id="prepCatalogList">${prepCatalogListHtml(role)}</div>
+    </div>
+  </section>`;
+}
+
+function builderChrome(step, body){
+  const steps = [['warmup','Warm-up'],['lifts','Lifts'],['cooldown','Cool-down']];
+  const order = steps.map(s => s[0]);
+  const i = order.indexOf(step);
+  const prev = i > 0 ? order[i - 1] : '';
+  const next = i < order.length - 1 ? order[i + 1] : 'done';
+  const tabs = `<div class="lib-tabs builder-steps" role="tablist" aria-label="Session builder">${steps.map(([k, label], n) => `<button type="button" role="tab" aria-selected="${step===k?'true':'false'}" class="${step===k?'on':''}" onclick="setBuilderStep('${k}')">${n + 1}. ${label}</button>`).join('')}</div>`;
+  const nav = `<div class="row" style="margin-top:14px;justify-content:flex-end;gap:8px">
+      ${prev ? `<button type="button" class="btn" onclick="setBuilderStep('${prev}')">Back</button>` : ''}
+      <button type="button" class="btn primary oled-next" onclick="setBuilderStep('${next}')">${next === 'done' ? 'Done' : 'Next'}</button>
+    </div>`;
+  return `<div class="session-builder">${tabs}${body}${nav}</div>`;
+}
+
 function blockExerciseHtml(b, bi){
   const kind = blockTypeValue(b);
   if (kind === 'conditioning' || kind === 'recovery') return condEngineHtml(b, bi);
@@ -1554,12 +1818,17 @@ function sessionHtml(){
   const t = tpl(ui.templateId);
   if (!t) return libraryHtml();
   ui.lib = 'sessions';
-  const blocks = tplBlocks().map((b, i) => {
+  const built = (t.blocks || []).some(isPrepBlock);
+  const step = built ? (ui.builderStep || 'warmup') : '';
+  if (built) ui.builderStep = step;
+  const showLifts = !step || step === 'lifts';
+  const blocks = showLifts ? tplBlocks().map((b, i) => {
+    if (step && isPrepBlock(b)) return '';
     const kind = blockTypeValue(b);
     const blocksRef = tpl(ui.templateId).blocks;
     const isPartner = isSupersetPartnerBlock(blocksRef, i);
     const scoring = `<select title="How the athlete logs this strength block" onchange="tpl(ui.templateId).blocks[${i}].scoring=this.value;persist()"><option value="weight" ${b.scoring==='weight'?'selected':''}>Track load</option><option value="completion" ${b.scoring==='completion'?'selected':''}>Completion only</option></select>`;
-    const superset = kind === 'strength' && !isPartner
+    const superset = kind === 'strength' && !isPartner && !isPrepBlock(b)
       ? `<label class="row" style="gap:6px;margin:0;font-size:11px;color:var(--muted);text-transform:none;letter-spacing:0;font-weight:500">
           <input type="checkbox" style="width:auto" ${b.superset?'checked':''} onchange="toggleSuperset(${i},this.checked)"> Superset</label>`
       : (isPartner ? `<span class="pill" style="font-size:10px">Superset pair</span>` : '');
@@ -1580,8 +1849,20 @@ function sessionHtml(){
         ${blockExerciseHtml(b, i)}
       </div>
     </section>`;
-  }).join('');
+  }).join('') : '';
   const instrLen = (t.coachInstructions||'').length;
+  const circuit = step === 'warmup' ? prepCircuitHtml('warmup') : step === 'cooldown' ? prepCircuitHtml('cooldown') : '';
+  const liftList = showLifts ? `<div class="block-list" id="coachBlockList">${blocks}</div>
+    <div class="add-block-bar stack">
+      <p class="muted" style="margin:0">Add a block type</p>
+      <div class="row" style="justify-content:flex-start;gap:8px;flex-wrap:wrap">
+        <button type="button" class="btn primary small" onclick="addBlk('strength')">+ Strength</button>
+        <button type="button" class="btn small" onclick="addBlk('conditioning')">+ Conditioning</button>
+        <button type="button" class="btn small" onclick="addBlk('recovery')">+ Recovery</button>
+        <button type="button" class="btn small" onclick="addBlk('text')">+ Prep notes</button>
+      </div>
+    </div>` : '';
+  const editor = `${circuit}${liftList}${exercisePickerHtml()}`;
   return `<div class="fade-in"><button type="button" class="btn ghost small page-back" onclick="go('library',{lib:'sessions'})">← Back to sessions</button>
     <div class="builder-top" style="margin-top:12px">
       <input class="builder-title" value="${esc(t.name)}" aria-label="Session title" oninput="tpl(ui.templateId).name=this.value;persist()">
@@ -1592,17 +1873,7 @@ function sessionHtml(){
       <span class="char-count">${instrLen}/10000</span>
       <textarea maxlength="10000" placeholder="Use this area to help the athlete understand goals for today's session." oninput="tpl(ui.templateId).coachInstructions=this.value;persist();var c=this.closest('.instructions-box')&&this.closest('.instructions-box').querySelector('.char-count');if(c)c.textContent=this.value.length+'/10000'">${esc(t.coachInstructions||'')}</textarea>
     </div>
-    <div class="block-list" id="coachBlockList">${blocks}</div>
-    <div class="add-block-bar stack">
-      <p class="muted" style="margin:0">Add a block type</p>
-      <div class="row" style="justify-content:flex-start;gap:8px;flex-wrap:wrap">
-        <button type="button" class="btn primary small" onclick="addBlk('strength')">+ Strength</button>
-        <button type="button" class="btn small" onclick="addBlk('conditioning')">+ Conditioning</button>
-        <button type="button" class="btn small" onclick="addBlk('recovery')">+ Recovery</button>
-        <button type="button" class="btn small" onclick="addBlk('text')">+ Prep notes</button>
-      </div>
-    </div>
-    ${exercisePickerHtml()}</div>`;
+    ${step ? builderChrome(step, editor) : editor}</div>`;
 }
 
 function coachChrome(body){
@@ -1714,7 +1985,18 @@ function render(){
     growTextAreas();
     initBlockDrag();
   }
+  restoreTypingFocus();
   scheduleRefreshCloudStates();
+}
+
+function restoreTypingFocus(){
+  const id = ui.focusField;
+  if (!id) return;
+  const el = document.getElementById(id);
+  if (!el) return;
+  const n = String(el.value || '').length;
+  el.focus();
+  if (typeof el.setSelectionRange === 'function') el.setSelectionRange(n, n);
 }
 
 document.addEventListener('click', function coachKebabDismiss(ev) {
@@ -1730,8 +2012,10 @@ window.go=go; window.signOut=signOut; window.resetDemo=resetDemo; window.tryLogi
 window.saveComment=saveComment; window.toggleCard=toggleCard;
 window.openSession=openSession; window.openProgram=openProgram;
 window.newTemplate=newTemplate; window.newProgram=newProgram; window.parseSets=parseSets; window.addEx=addEx; window.addBlk=addBlk;
+window.setBuilderStep=setBuilderStep; window.addPrepFromCatalog=addPrepFromCatalog; window.setPrepRounds=setPrepRounds;
+window.setPrepAmount=setPrepAmount; window.removePrepExercise=removePrepExercise; window.onPrepCatalogSearch=onPrepCatalogSearch;
 window.removeBlk=removeBlk; window.removeEx=removeEx; window.toggleSuperset=toggleSuperset; window.moveBlock=moveBlock; window.growTextAreas=growTextAreas;
-window.openExPicker=openExPicker; window.closeExPicker=closeExPicker; window.pickExerciseVariant=pickExerciseVariant;
+window.openExPicker=openExPicker; window.closeExPicker=closeExPicker; window.pickExerciseVariant=pickExerciseVariant; window.onPickerSearch=onPickerSearch;
 window.setRowRep=setRowRep; window.setRowLoad=setRowLoad;
 window.patchCond=patchCond; window.setCondFmt=setCondFmt; window.nudgeCondMin=nudgeCondMin;
 window.toggleCellMenu=toggleCellMenu; window.openCellPick=openCellPick; window.closeCellPick=closeCellPick;
@@ -1739,6 +2023,7 @@ window.placeCellTemplate=placeCellTemplate; window.clearCell=clearCell;
 window.startCopyCell=startCopyCell; window.startMoveCell=startMoveCell; window.onEmptyCell=onEmptyCell;
 window.saveCellAsTemplate=saveCellAsTemplate; window.addWeek=addWeek;
 window.addCustomExercise=addCustomExercise;
+window.setExCatalogSection=setExCatalogSection;
 window.openCommentDrawer=openCommentDrawer; window.closeCommentDrawer=closeCommentDrawer;
 window.exportBridgeFile=exportBridgeFile;
 window.bindMyCloudIdToAthlete=bindMyCloudIdToAthlete;
@@ -1751,6 +2036,10 @@ render();
     const { data } = await Whoop.client().auth.getSession();
     const session = data && data.session;
     if (!session || !session.user) return;
+    if (window.CoachCatalogue) {
+      const cat = await CoachCatalogue.refresh(S);
+      if (cat && cat.ok && cat.changed) { persist(); render(); }
+    }
     const email = session.user.email;
     if (!email) return;
     const meta = session.user.user_metadata || {};

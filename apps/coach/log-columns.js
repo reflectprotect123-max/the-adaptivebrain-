@@ -88,7 +88,7 @@
     } else if (ex && ex.loadExpr && ex.loadExpr.exprKind === 'lwp_delta') {
       const d = String(ex.loadExpr.exprArg ?? '');
       cols.unshift({ id: newId(), kind: 'weight_lwp', value: d, values: splitValues(d, setCount) });
-    } else if (ex && String(ex.load || '').trim()) {
+    } else if (ex && (String(ex.load || '').trim() || ex.metric === 'Weight')) {
       cols.unshift({
         id: newId(),
         kind: 'weight_kg',
@@ -102,7 +102,7 @@
   function coachNormalizeColumns(ex) {
     const setCount = Math.max(1, Number(ex && ex.sets) || 3);
     if (ex && Array.isArray(ex.logColumns) && ex.logColumns.length) {
-      return ex.logColumns.map((c) => {
+      const columns = ex.logColumns.map((c) => {
         const kind = KIND_MAP[c.kind] ? c.kind : 'reps';
         const value = c.value == null ? '' : String(c.value);
         const values =
@@ -111,6 +111,10 @@
             : splitValues(value, setCount);
         return { id: c.id || newId(), kind, value: joinValues(values), values };
       });
+      if (ex.metric === 'Weight' && columns.some(c => ['reps','reps_range'].includes(c.kind)) && !columns.some(c => isLoadKind(c.kind))) {
+        columns.unshift({id:newId(),kind:'weight_kg',value:'',values:splitValues('',setCount)});
+      }
+      return columns;
     }
     return coachDefaultColumns(ex || {});
   }
@@ -182,7 +186,8 @@
       const values = Array.isArray(c.values) ? c.values : splitValues(c.value, setCount || ex.sets || 1);
       return { id: c.id || newId(), kind: c.kind, value: joinValues(values), values };
     });
-    cols = cols.filter((c) => !isLoadKind(c.kind) || hasPinnedLoad([c]) || sheet.athleteMode || sheet.autopilotVolume);
+    // A blank kg target means the engine chooses the load; it is still a logged metric.
+    cols = cols.filter((c) => !isLoadKind(c.kind) || c.kind === 'weight_kg' || hasPinnedLoad([c]) || sheet.athleteMode || sheet.autopilotVolume);
     ex.logColumns = cols;
     if (setCount) ex.sets = Math.max(1, setCount);
     const effort = effortColumn(cols);
@@ -459,6 +464,8 @@
 
   function clearPinnedLoad() {
     sheet.columns = sheet.columns.filter((c) => !isLoadKind(c.kind));
+    // Clearing the prescription keeps the athlete's actual-load field.
+    sheet.columns.unshift({id:newId(),kind:'weight_kg',value:'',values:splitValues('',sheet.sets)});
     refreshPrescription();
     notifyChange();
   }
@@ -475,19 +482,9 @@
   }
 
   function toggleOverrides(on) {
+    if (sheet.showOverrides === !!on) return;
     sheet.showOverrides = !!on;
-    if (!sheet.showOverrides) {
-      sheet.columns.forEach((c) => {
-        const base = (c.values || [])[0] == null ? '' : c.values[0];
-        if (shouldForwardFillColumn(c.kind)) {
-          c.values = splitValues(base, sheet.sets);
-        } else {
-          c.values = [base, ...Array.from({ length: Math.max(0, sheet.sets - 1) }, () => '')];
-        }
-        c.value = joinValues(c.values);
-      });
-    }
-    refreshPrescription();
+    refreshTwin();
     notifyChange();
   }
 
@@ -713,8 +710,8 @@
       </div>`;
     const overrideSection = sheet.autopilotVolume || compact
       ? ''
-      : `<details class="rx-overrides" ${sheet.showOverrides ? 'open' : ''} ontoggle="LogColumns.toggleOverrides(this.open)">
-        <summary>Per-set rep overrides (optional)</summary>
+      : `<details class="rx-overrides" ${sheet.showOverrides ? 'open' : ''} ontoggle="if(this.isConnected)LogColumns.toggleOverrides(this.open)">
+        <summary onclick="LogColumns.toggleOverrides(!this.parentNode.open)">Per-set rep overrides (optional)</summary>
         ${builderOverridesTableHtml()}
       </details>`;
     const cardClass = compact ? 'card rx-prescription-card compact' : 'card rx-prescription-card';
@@ -756,7 +753,7 @@
   function builderTargetRir(ex) {
     const n = ex && ex.targetRir;
     if (n != null && Number.isFinite(Number(n))) return Math.max(0, Math.min(4, Math.round(Number(n))));
-    return 2;
+    return 3;
   }
 
   function builderTargetRirLabel(rir) {
@@ -912,16 +909,15 @@
   function builderLoggerTwinHtml() {
     const effort = effortColumn();
     const meta = effort ? kindMeta(effort.kind) : kindMeta('reps');
-    const rir = sheet.targetRir != null ? sheet.targetRir : 2;
+    const rir = global.TrainingCore?.rir?.average ?? 3;
     const loadDisplay = hasPinnedLoad()
       ? String((loadColumn().values || [])[0] || '').trim()
       : '—';
     const effortVal = String((effort && effort.values || [])[0] ?? (effort && effort.value) ?? '').trim() || '—';
-    const restLabel = fmtRest(sheet.restSec);
     return `<div class="logger-screen dial-strength" id="builderLoggerCard" style="min-height:0;margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:20px;background:var(--panel)">
       <div class=eyebrow>Athlete logger preview</div>
       <div class=task>This lift</div>
-      <div class=progressline>One set at a time · Rest ${restLabel} after Next</div>
+      <div class=progressline>One set at a time · Choose rest in the logger; starts on Log set</div>
       <div class=setchip>Set <b>1</b> / ${sheet.sets || 3}</div>
       <div class="hero">
         <div class=hero-label>Tap to edit</div>
@@ -933,10 +929,10 @@
         <div class=hero-target>Target: <b>RIR ${rir}</b> · next set adjusts from slider</div>
       </div>
       <div class="slider-card">
-        <div class=sliderhead><b>How hard was that set?</b><span class=slidervalue>Medium · RIR ~${rir}</span></div>
-        <input type="range" disabled min="0" max="5" step="1" value="2" aria-label="Difficulty slider preview">
+        <div class=sliderhead><b>How hard was that set?</b><span class=slidervalue>Average · RIR ~${rir}</span></div>
+        <input type="range" disabled min="0" max="4" step="1" value="2" aria-label="Difficulty slider preview">
         <div class=sliderlabels>
-          <span>Very easy</span><span>Easy</span><span>Medium</span><span>Hard</span><span>Max</span><span>Didn't finish</span>
+          <span>Very Easy</span><span>Easy</span><span>Average</span><span>Hard</span><span>Max Effort</span>
         </div>
       </div>
       <div class=next-wrap>
@@ -980,14 +976,32 @@
     return builderPrescriptionHtml();
   }
 
+  let refreshingPrescription = false;
   function refreshPrescription() {
+    if (refreshingPrescription) return;
     const presc = global.document && global.document.getElementById('builderPrescriptionCard');
     if (presc) {
+      refreshingPrescription = true;
+      try {
+      const active = global.document.activeElement;
+      const fields = Array.from(presc.querySelectorAll('input,select,textarea'));
+      const index = fields.indexOf(active);
+      const selection = index >= 0 && typeof active.selectionStart === 'number' ? [active.selectionStart,active.selectionEnd] : null;
+      // Native details toggle events are asynchronous. Read the live open state
+      // before redrawing so an immediate first keystroke cannot close overrides.
+      const overrides = presc.querySelector('details.rx-overrides:not(.rx-advanced)');
+      if (overrides) sheet.showOverrides = overrides.open;
       const compact = presc.classList.contains('compact');
       const wrap = global.document.createElement('div');
       wrap.innerHTML = builderPrescriptionGridHtml({ compact });
       presc.replaceWith(wrap.firstChild);
+      if (index >= 0) {
+        const replacement = global.document.getElementById('builderPrescriptionCard').querySelectorAll('input,select,textarea')[index];
+        replacement?.focus({preventScroll:true});
+        if (selection && replacement?.setSelectionRange && !['number','range'].includes(replacement.type)) replacement.setSelectionRange(...selection);
+      }
       if (!compact) refreshTwin();
+      } finally { refreshingPrescription = false; }
     }
   }
 

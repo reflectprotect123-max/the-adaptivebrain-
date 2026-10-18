@@ -199,7 +199,9 @@
       const nextIsStrength =
         nextBlock &&
         nextBlock.type === 'strength' &&
-        !nextBlock.recoverySession;
+        !nextBlock.recoverySession &&
+        nextBlock.role !== 'warmup' &&
+        nextBlock.role !== 'cooldown';
 
       if (block.superset && block.type === 'strength' && nextIsStrength) {
         block.letter = ch + '1';
@@ -226,6 +228,8 @@
   }
 
   function categoryForBlock(block) {
+    if (block.role === 'warmup') return 'Warm-Up';
+    if (block.role === 'cooldown') return 'Cool-Down';
     if (block.category && BLOCK_CATEGORIES.includes(block.category)) return block.category;
     if (block.type === 'conditioning') return 'Conditioning';
     if (block.type === 'text') {
@@ -238,6 +242,7 @@
   }
 
   function scoringForBlock(block) {
+    if (block.role === 'warmup' || block.role === 'cooldown') return 'completion';
     if (block.scoring === 'weight' || block.scoring === 'completion') return block.scoring;
     return block.type === 'strength' ? 'weight' : 'completion';
   }
@@ -256,6 +261,13 @@
       !!block.conditioningType ||
       !!block.effort ||
       (!!block.modality && !hasEx);
+
+    if (block.role === 'warmup' || block.role === 'cooldown') {
+      block.type = 'strength';
+      block.scoring = 'completion';
+      block.category = block.role === 'warmup' ? 'Warm-Up' : 'Cool-Down';
+      return block;
+    }
 
     if (block.type === 'text' && !hasEx) return block;
 
@@ -440,9 +452,13 @@
       metric: partial.metric || 'Weight',
       restSec: partial.restSec == null ? 90 : partial.restSec,
       coachNote: partial.coachNote || '',
+      unit: partial.unit || '',
+      perSide: partial.perSide || '',
       athleteNote: partial.athleteNote || '',
       swappedFrom: partial.swappedFrom || null,
       logColumns: partial.logColumns || null,
+      tempo: partial.tempo || '',
+      ...Object.fromEntries(['equipmentId','loadConvention','minimumKg','barWeightKg','equipmentStepKg','availableLoads','rampCount'].filter(k=>partial[k]!=null).map(k=>[k,partial[k]])),
       loadExpr: partial.loadExpr || null,
     };
     if (partial.targetRir != null && partial.targetRir !== '' && Number.isFinite(Number(partial.targetRir))) {
@@ -595,7 +611,12 @@
       planLine: partial.planLine || '',
       recoverySession: !!partial.recoverySession,
       baselineDurationMin: partial.baselineDurationMin == null ? 0 : num(partial.baselineDurationMin),
+      role: partial.role === 'warmup' || partial.role === 'cooldown' ? partial.role : '',
     };
+    if (block.role) {
+      block.scoring = 'completion';
+      block.rounds = partial.rounds == null ? 3 : Math.max(1, num(partial.rounds) || 3);
+    }
     if (block.type === 'conditioning') applyCondBuilderToBlock(block);
     return normalizeBlockType(block);
   }
@@ -826,7 +847,7 @@
   function publishSession(session) {
     if (!session) return session;
     session.published = true;
-    session.publishedAt = new Date().toISOString();
+    session.publishedAt = session.publishedAt || new Date().toISOString();
     return session;
   }
 
@@ -1049,6 +1070,20 @@
         cur.category = row.category;
         cur.builtIn = true;
         cur.source = row.source || 'THE-core-120';
+        if (row.unit) cur.unit = row.unit;
+        else delete cur.unit;
+        if (row.perSide) cur.perSide = row.perSide;
+        else delete cur.perSide;
+        if (row.typical) cur.typical = row.typical;
+        else delete cur.typical;
+        if (row.others) cur.others = row.others;
+        else delete cur.others;
+        if (row.review) cur.review = row.review;
+        else delete cur.review;
+        if (row.catalogue) cur.catalogue = row.catalogue;
+        else delete cur.catalogue;
+        if (row.movementCategory) cur.movementCategory = row.movementCategory;
+        else delete cur.movementCategory;
       }
     }
     state.meta = state.meta || {};

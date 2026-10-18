@@ -7,3 +7,7 @@ When the human says **read the handoff** (also: “read the hand off”, “the 
 3. Do **not** treat `docs/contracts/00-HANDOFF.md` as current unless `HANDOFF.md` sends you there for formulas/history.
 
 Stay on **`main`** (or the working branch if you are mid-PR). Do **not** re-merge ZIP-era history. Strength and Engine V1 loggers + lift memory are on those remotes’ `main`.
+
+## Cloud agents
+
+`start` serves the Coach workspace at <http://127.0.0.1:4173/coach.html>. Use **Demo coach (offline)** — that path and `pnpm run verify` do not need Supabase credentials. Canonical commands are in `apps/coach/README.md`.

@@ -1,5 +1,13 @@
 {
-  "install": "node -v",
+  "name": "Adaptive Brain",
+  "install": "set -euo pipefail\ncorepack pnpm install --frozen-lockfile\nDEBIAN_FRONTEND=noninteractive corepack pnpm exec playwright install --with-deps chromium\npython3 -m pip install --user graphifyy\nsudo ln -sfn \"$HOME/.local/bin/graphify\" /usr/local/bin/graphify\nsudo ln -sfn \"$HOME/.local/bin/graphify-mcp\" /usr/local/bin/graphify-mcp\nif ! dpkg -s obsidian >/dev/null 2>&1; then\n  curl -fsSL -o /tmp/obsidian_1.13.7_amd64.deb https://github.com/obsidianmd/obsidian-releases/releases/download/v1.13.7/obsidian_1.13.7_amd64.deb\n  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y /tmp/obsidian_1.13.7_amd64.deb\nfi\nif ! command -v claude-mem >/dev/null 2>&1; then\n  CI=true CLAUDE_MEM_ONLINE_OPTIN=false npx --yes claude-mem install --no-auto-start\n  sudo ln -sfn \"$HOME/.local/bin/claude-mem\" /usr/local/bin/claude-mem\nfi\n",
+  "start": "set -euo pipefail\nif curl -sf -o /dev/null --max-time 2 http://127.0.0.1:4173/coach.html; then exit 0; fi\nexec python3 -m http.server 4173 --bind 0.0.0.0 --directory apps/coach\n",
+  "ports": [
+    {
+      "name": "coach",
+      "port": 4173
+    }
+  ],
   "repositoryDependencies": [
     "github.com/reflectprotect123-max/strengthside",
     "github.com/reflectprotect123-max/Engine-side-"

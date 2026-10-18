@@ -144,4 +144,40 @@ if (cond.effort !== 'hard' || cond.modality !== 'Rower') throw new Error('applyC
 if (L.formatMmSs(240) !== '4:00') throw new Error('formatMmSs');
 if (L.parseMmSs('3:00') !== 180) throw new Error('parseMmSs');
 
+const built = L.makeTemplate({
+  name: 'Builder session',
+  blocks: [
+    L.makeBlock({
+      heading: 'Warm-up',
+      type: 'strength',
+      role: 'warmup',
+      rounds: 3,
+      exercises: [L.makeExercise({ name: 'Bike', sets: 3, reps: '180', metric: 'Seconds' })],
+    }),
+    L.makeBlock({
+      type: 'strength',
+      superset: true,
+      exercises: [L.makeExercise({ name: 'Back Squat', sets: 3, reps: '5' })],
+    }),
+    L.makeBlock({
+      heading: 'Cool-down',
+      type: 'strength',
+      role: 'cooldown',
+      rounds: 3,
+      exercises: [],
+    }),
+  ],
+});
+if (built.blocks[0].role !== 'warmup' || built.blocks[0].category !== 'Warm-Up' || built.blocks[0].scoring !== 'completion') {
+  throw new Error('warm-up block lost its role: ' + JSON.stringify({ role: built.blocks[0].role, category: built.blocks[0].category, scoring: built.blocks[0].scoring }));
+}
+if (built.blocks[0].exercises[0].reps !== '180') throw new Error('warm-up dose');
+if (built.blocks[2].role !== 'cooldown' || built.blocks[2].category !== 'Cool-Down' || built.blocks[2].exercises.length) {
+  throw new Error('cool-down should stay empty');
+}
+if (built.blocks[2].supersetPartner) throw new Error('cool-down was paired into the superset');
+if (!html.includes('setBuilderStep') || !html.includes('Jump Rope') || !html.includes("role:'warmup'")) {
+  throw new Error('coach session builder markup missing warm-up flow');
+}
+
 console.log('coach-session-builder: ok', { blocks: t.blocks.length, letter: t.blocks[0].letter, plan });
