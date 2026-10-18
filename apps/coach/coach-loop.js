@@ -457,6 +457,8 @@
       athleteNote: partial.athleteNote || '',
       swappedFrom: partial.swappedFrom || null,
       logColumns: partial.logColumns || null,
+      tempo: partial.tempo || '',
+      ...Object.fromEntries(['equipmentId','loadConvention','minimumKg','barWeightKg','equipmentStepKg','availableLoads','rampCount'].filter(k=>partial[k]!=null).map(k=>[k,partial[k]])),
       loadExpr: partial.loadExpr || null,
     };
     if (partial.targetRir != null && partial.targetRir !== '' && Number.isFinite(Number(partial.targetRir))) {
@@ -845,7 +847,7 @@
   function publishSession(session) {
     if (!session) return session;
     session.published = true;
-    session.publishedAt = new Date().toISOString();
+    session.publishedAt = session.publishedAt || new Date().toISOString();
     return session;
   }
 

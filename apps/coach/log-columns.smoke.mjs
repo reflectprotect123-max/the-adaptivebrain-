@@ -97,4 +97,9 @@ const carryLayout = LC.columnLayout(carryEx);
 if (carryLayout.layout !== 'triple') throw new Error('carry layout should be triple');
 if (carryLayout.cols.length !== 3) throw new Error('carry should have 3 cols');
 
+LC.beginSheet({metric:'Weight',sets:3,reps:'8',load:'50'});
+LC.clearPinnedLoad();
+const cleared=LC.getSheetColumns().find(c=>c.kind==='weight_kg');
+if(!cleared || cleared.values.some(v=>v!==''))throw new Error('clearing prescribed load must retain blank kg for athlete actuals');
+
 console.log('log-columns.smoke: ok');

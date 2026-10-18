@@ -332,9 +332,28 @@
       statusPill +
       macroPill +
       '</div>' +
+      (s.athleteResult ? '<details class="athlete-results" ' + (ui().resultOpen?.[s.id] ? 'open ' : '') + 'ontoggle="if(this.isConnected)CoachViews.toggleResults(\'' + s.id + '\',this.open)"><summary>Results</summary>' +
+        (s.athleteResult.sets || []).slice().sort(function(a,b) {
+          return String(a.payload?.page?.letter||'').localeCompare(String(b.payload?.page?.letter||'')) || (a.payload?.row?.ordinal||0)-(b.payload?.row?.ordinal||0);
+        }).map(function(r) {
+          var p=r.payload||{}, row=p.row||{}, cells=row.cells||{}, parts=[];
+          if(row.reps!=null)parts.push(row.reps+' reps');
+          if(row.kg!=null){
+            var convention=row.context?.normalizedLoad?.convention;
+            parts.push(row.kg+' kg'+(convention==='barbell_plates'?' plates':convention==='per_hand'?' per hand':''));
+          }
+          Object.keys(cells).forEach(function(k){if(cells[k]!==''&&cells[k]!=null)parts.push(cells[k]+' '+k.replace(/_/g,' '));});
+          if(row.effort)parts.push(row.effort.replace(/_/g,' '));
+          if(row.miss)parts.push('Did not complete');
+          return '<p>'+esc((p.page||{}).title||r.exerciseKey)+' · '+esc(row.purpose||'set')+' · '+parts.map(esc).join(' · ')+'</p>';
+        }).join('') + (s.athleteResult.estimates||[]).filter(function(e){return Number.isFinite(e.payload?.freshE1rm);}).map(function(e){return '<p>e1RM · '+esc(e.exerciseKey)+' · '+esc(e.payload.freshE1rm.toFixed(1))+' kg · '+esc(e.payload.confidence||'')+' · athlete engine</p>';}).join('') + '</details>' : '') +
       chipMenu(s.id) +
       '</div>'
     );
+  }
+
+  function toggleResults(id,open) {
+    (ui().resultOpen || (ui().resultOpen = {}))[id] = !!open;
   }
 
   function toggleChipMenu(id, ev) {
@@ -951,6 +970,7 @@
     teamNameCount: teamNameCount,
     saveCreateTeam: saveCreateTeam,
     toggleChipMenu: toggleChipMenu,
+    toggleResults: toggleResults,
     publishChip: publishChip,
     unpublishChip: unpublishChip,
     deleteChip: deleteChip,

@@ -1216,10 +1216,9 @@ function patchCoachExTargetRir(bi, ei, raw){
 
 function coachTargetRirField(bi, ei){
   const ex = tplBlocks()[bi].exercises[ei];
-  const val = ex.targetRir != null ? ex.targetRir : '';
-  return `<div class="field" style="margin-top:8px"><label>Target RIR</label>
-    <input type="number" min="0" max="10" step="1" placeholder="2 (default)" value="${val}" aria-label="Target reps in reserve" onchange="patchCoachExTargetRir(${bi},${ei},this.value)">
-    <p class="muted" style="margin:4px 0 0;font-size:11px">In-session autoreg aims for this many reps in reserve. Blank uses engine default (2).</p></div>`;
+  return `<p class="muted">Target RIR: 3 · Average · engine controlled</p>
+    <div class="field"><label>Tempo</label><input value="${esc(ex.tempo||'')}" aria-label="Tempo for ${esc(ex.name||'lift')}" placeholder="20X1 or 3-1-X-0"
+      oninput="if(!this.value||/^(?:[0-9]{2}[0-9Xx][0-9]|[0-9]+-[0-9]+-(?:[0-9]+|[Xx])-[0-9]+)$/.test(this.value)){tplBlocks()[${bi}].exercises[${ei}].tempo=this.value;persist()}"></div>`;
 }
 
 function coachExerciseRxHtml(bi, ei){
