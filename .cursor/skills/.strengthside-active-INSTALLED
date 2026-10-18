@@ -1,0 +1,22 @@
+strengthside active Cursor skills (146)
+from https://github.com/reflectprotect123-max/strengthside
+commit 679c4a88a1871f688d086219b82d43d185875860
+installed 2026-10-18 into .cursor/skills
+
+53 already present by directory name were left untouched.
+10 identical SKILL.md copies were skipped:
+  brutalist-skill (industrial-brutalist-ui)
+  gpt-tasteskill (gpt-taste)
+  image-to-code-skill (image-to-code)
+  minimalist-skill (minimalist-ui)
+  output-skill (full-output-enforcement)
+  redesign-skill (redesign-existing-projects)
+  soft-skill (high-end-visual-design)
+  stitch-skill (stitch-design-taste)
+  taste-skill (design-taste-frontend)
+  taste-skill-v1 (design-taste-frontend-v1)
+
+Saved alternatives and cloud snapshots were not installed.
+
+Remove the 83 new directories with:
+rm -rf .cursor/skills/{agentic,ant,artistic,basic,bento,bold,brutalism,cafe,canvas,claude,claymorphism,clean,codex,colorful,contemporary,corporate,cosmic,creative,dithered,documents,doodle,dramatic,editorial,enterprise,expressive,fantasy,fiction,flat,friendly,futuristic,geometric,glassmorphism,gradient,immersive,impeccable,levels,lingo,material,matrix,minimal,modern,mono,neobrutalism,neon,neumorphism,pacman,paper,perspective,playwright-cli,power,premium,presentations,professional,pulse,refined,replica-architect,replica-backend,replica-brand,replica-build,replica-deploy,replica-design,replica-diff,replica-entrepreneur,replica-launch,replica-recon,replica-test,retro,riso,roku,sega,shadcn,sketch,skeumorphism,sleek,spacious,spreadsheets,square,stitch,storytelling,terracotta,tetris,vibrant,vintage}
