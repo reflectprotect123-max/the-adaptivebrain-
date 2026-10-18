@@ -5,9 +5,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const pkg = JSON.parse(fs.readFileSync(path.join(here, 'package.json'), 'utf8'));
+const config = createRequire(import.meta.url)('./electron-builder.cjs');
 const mainPath = path.join(here, pkg.main);
 const updaterPath = path.join(here, 'src/updater.cjs');
 const coachPath = path.resolve(here, '../coach/coach.html');
@@ -29,7 +31,7 @@ must(
   String(pkg.build?.publish?.url || '').includes('coach-desktop-latest'),
   'publish.url must point at coach-desktop-latest release feed',
 );
-must(pkg.build?.extraResources?.some((row) => row.from === '../coach' && row.to === 'coach'), 'coach UI must be bundled with the desktop app');
+must(config.extraResources?.some((row) => row.from === '../coach' && row.to === 'coach'), 'coach UI must be bundled with the desktop app');
 
 const mainSrc = fs.readFileSync(mainPath, 'utf8');
 const updaterSrc = fs.readFileSync(updaterPath, 'utf8');
@@ -43,7 +45,8 @@ must(mainSrc.includes('Check for app updates'), 'menu must expose shell update c
 must(updaterSrc.includes('autoUpdater'), 'updater must use electron-updater');
 must(updaterSrc.includes('coach-desktop-latest'), 'updater feed must use coach-desktop-latest release');
 must(updaterSrc.includes(releaseFeed), 'runtime updater must use the Adaptive Brain release feed');
-must(pkg.build.extraResources[0].filter.includes('!fixtures/**'), 'regression fixtures must not ship in the installer');
+must(config.extraResources[0].filter.every(name => !name.startsWith('fixtures/') && !name.startsWith('strength-') && !name.endsWith('.smoke.mjs')), 'only Coach runtime assets may ship');
+for (const asset of config.extraResources[0].filter) must(fs.existsSync(path.resolve(here, '../coach', asset)), 'release asset missing: ' + asset);
 must(updaterSrc.includes('app.isPackaged'), 'updater must skip in dev unpackaged runs');
 must(coachHtml.includes('coach-loop.js'), 'bundled coach.html must load coach-loop.js');
 must(coachHtml.includes('coach-views.js'), 'bundled coach.html must load coach-views.js');

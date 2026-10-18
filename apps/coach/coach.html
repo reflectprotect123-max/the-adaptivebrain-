@@ -434,7 +434,6 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&
 const dash = (v) => (v == null || v === '') ? '–' : String(v);
 function persist(){
   L.saveState(null, S);
-  if (window.CoachBridge) CoachBridge.push(S);
   if (window.CoachViews) CoachViews.bindState(S);
   scheduleCloudPush();
 }
@@ -446,7 +445,7 @@ function scheduleCloudPush(){
   cloudPushTimer = setTimeout(async () => {
     try {
       if (!(await CoachCloud.isSignedIn())) return;
-      const r = await CoachCloud.pushPublished(S);
+      const r = await CoachCloud.pushPublished(S, { skipUnchanged: true });
       if (r && r.errors && r.errors.length) console.warn('coach cloud push', r.errors);
     } catch (e) {
       console.warn('coach cloud push failed', e);
@@ -872,7 +871,7 @@ function exerciseCatalogBucket(e){
 function exercisesCatalogHtml(){
   const q = String(ui.exCatalogSearch||'').trim().toLowerCase();
   const section = ui.exCatalogSection || 'all';
-  const all = S.exercises || [];
+  const all = window.ExerciseSearch ? ExerciseSearch.visibleEntries(S.exercises || []) : (S.exercises || []);
   const warmCount = all.filter(e => e.category === 'Warm-Up').length;
   const coolCount = all.filter(e => e.category === 'Cool-Down').length;
   const mainCount = all.filter(e => exerciseCatalogBucket(e) === 'main').length;

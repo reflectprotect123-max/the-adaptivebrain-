@@ -8,7 +8,7 @@ import vm from 'node:vm';
 
 const dir = dirname(fileURLToPath(import.meta.url));
 const bridgeSrc = readFileSync(join(dir, 'coach-bridge.js'), 'utf8');
-const syncSrc = readFileSync(join(dir, 'coach-sync.js'), 'utf8');
+const syncSrc = readFileSync(join(dir, 'fixtures/coach-sync.js'), 'utf8');
 const loopSrc = readFileSync(join(dir, 'coach-loop.js'), 'utf8');
 const html = readFileSync(join(dir, 'coach.html'), 'utf8');
 const indexHtml = readFileSync(join(dir, 'fixtures/legacy-athlete.html'), 'utf8');

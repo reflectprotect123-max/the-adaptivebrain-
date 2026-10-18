@@ -28,7 +28,7 @@ const sandbox = { console, module: { exports: {} }, localStorage, globalThis: {}
 sandbox.globalThis = sandbox;
 sandbox.window = sandbox;
 
-for (const file of ['coach-loop.js', 'coach-nutrition.js', 'coach-bridge.js', 'coach-sync.js']) {
+for (const file of ['coach-loop.js', 'coach-nutrition.js', 'coach-bridge.js', 'fixtures/coach-sync.js']) {
   vm.runInNewContext(load(file), sandbox);
   if (file === 'coach-loop.js') sandbox.CoachLoop = sandbox.module.exports;
   if (file === 'coach-nutrition.js') sandbox.CoachNutrition = sandbox.module.exports;

@@ -1,4 +1,7 @@
-# Installed GitHub repos (pulled from sibling apps)
+# GitHub source inventory (snapshots archived)
+
+Full source trees are retained in the [pre-cleanup archive](ARCHIVE.md). Installed
+skills remain in `.cursor/skills/`; the table below records their original sources.
 
 Shallow snapshots of every **GitHub source that was actually installed** in
 `strengthside` and `Engine-side-` (skills lockfiles, `skills.md`, Engine

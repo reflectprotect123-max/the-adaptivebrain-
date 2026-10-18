@@ -126,14 +126,14 @@
     const sb = client();
     const existing = await sb
       .from('assigned_session')
-      .select('id,state,resolved_snapshot,published_at')
+      .select('id,state,resolved_snapshot,published_at,scheduled_date,timezone,coach_session_key')
       .eq('athlete_id', row.athlete_id)
       .eq('coach_session_key', row.coach_session_key)
       .maybeSingle();
     if (existing.error) throw existing.error;
     if (existing.data && existing.data.id) {
       const patch = {
-        state: row.state,
+        state: existing.data.state === 'completed' && row.state === 'published' ? 'completed' : row.state,
         scheduled_date: row.scheduled_date,
         timezone: row.timezone,
         coach_session_key: row.coach_session_key,
@@ -144,6 +144,7 @@
       } else if (prescription(existing.data.resolved_snapshot) !== prescription(row.resolved_snapshot)) {
         throw new Error('Published workout is frozen. Duplicate it to publish a changed prescription.');
       }
+      if (Object.keys(patch).every(key => existing.data[key] === patch[key])) return existing.data.id;
       const upd = await sb.from('assigned_session').update(patch).eq('id', existing.data.id).select('id').single();
       if (upd.error) throw upd.error;
       if (!upd.data?.id) throw new Error('Publish affected no assignment');
@@ -155,6 +156,13 @@
     return ins.data && ins.data.id;
   }
 
+  // Cache acknowledgements only for background pushes, scoped to authenticated
+  // coach + athlete + session. Manual publish always reconciles with the server.
+  const acknowledged = new Map();
+  const ACK_TTL_MS = 60000;
+  function outboundSignature(row) {
+    return JSON.stringify([row.id, row.state, row.scheduled_date, row.timezone, prescription(row.resolved_snapshot)]);
+  }
   let publishQueue = Promise.resolve();
   function pushPublished(state,opts) {
     const task=publishQueue.then(()=>pushPublishedNow(state,opts));
@@ -165,7 +173,11 @@
   async function pushPublishedNow(state, opts) {
     opts = opts || {};
     const Bridge = typeof globalThis !== 'undefined' ? globalThis.CoachBridge : null;
-    if (!(await isSignedIn())) {
+    for (const [key, ack] of acknowledged) if (Date.now() - ack.at >= ACK_TTL_MS) acknowledged.delete(key);
+    let coachId;
+    try { coachId = await sessionUserId(); } catch (_) {}
+    if (!coachId) {
+      acknowledged.clear();
       status.lastError = 'auth_required';
       status.lastOk = false;
       status.lastErrors = [{ error: 'auth_required' }];
@@ -178,6 +190,8 @@
     });
 
     let pushed = 0;
+    let unchanged = 0;
+    let identityChanged = false;
     const errors = [];
     let lastAthlete = null;
     for (const session of sessions) {
@@ -188,7 +202,11 @@
         errors.push({ sessionId: session.id, error: 'athlete missing cloudUserId' });
         continue;
       }
-      if (!session.cloudAssignedId) session.cloudAssignedId = uuid();
+      const previousId = session.cloudAssignedId;
+      if (!session.cloudAssignedId) {
+        session.cloudAssignedId = uuid();
+        identityChanged = true; // Keep the pending ID stable even if the first request fails.
+      }
       const htmlSession = sessionForCloud(session, Bridge);
       const nutrition = nutritionSnapshot(state, athlete.id, session.date);
       const row = {
@@ -208,14 +226,23 @@
         timezone: timezone(),
         coach_session_key: session.id,
       };
+      const key = JSON.stringify([coachId, cloudId, session.id]);
+      const ack = acknowledged.get(key);
+      if (opts.skipUnchanged && ack && Date.now() - ack.at < ACK_TTL_MS && ack.signature === outboundSignature(row)) {
+        unchanged++;
+        continue;
+      }
       try {
         session.cloudAssignedId = await upsertAssigned(row);
-        saveIdentity(state);
+        identityChanged = identityChanged || session.cloudAssignedId !== previousId;
+        acknowledged.set(key, { signature: outboundSignature({ ...row, id: session.cloudAssignedId }), at: Date.now() });
         pushed++;
       } catch (e) {
+        acknowledged.delete(key);
         errors.push({ sessionId: session.id, error: String(e.message || e) });
       }
     }
+    if (identityChanged) saveIdentity(state);
 
     status.lastPushAt = new Date().toISOString();
     status.lastCount = pushed;
@@ -223,7 +250,7 @@
     status.lastError = errors.length ? errors[0].error : '';
     status.lastErrors = errors;
     status.lastAthleteName = (lastAthlete && lastAthlete.name) || '';
-    return { ok: errors.length === 0, pushed: pushed, errors: errors };
+    return { ok: errors.length === 0, pushed: pushed, unchanged, errors: errors };
   }
 
   async function unpublishSession(state, session) {

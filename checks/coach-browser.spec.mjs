@@ -96,3 +96,25 @@ test('downloaded file bundle acknowledges startup after render and retains Coach
     expect(await page.evaluate(() => JSON.stringify({ ...localStorage }))).toBe(saved);
   } finally { fs.rmSync(stage, { recursive: true, force: true }); }
 });
+
+test('builder edits save compactly without rewriting the retired same-device athlete bridge', async ({ page }) => {
+  await page.route('https://**/*', route => route.abort());
+  await page.goto('/coach.html');
+  await page.getByRole('button', { name: 'Demo coach (offline)' }).click();
+  await page.getByRole('button', { name: 'Library', exact: true }).click();
+  await page.getByRole('button', { name: 'New session', exact: true }).click();
+  await page.getByRole('button', { name: 'Next', exact: true }).click();
+  await page.evaluate(() => localStorage.removeItem('THE-coach-bridge-v1'));
+  await page.getByRole('textbox', { name: 'Session title', exact: true }).fill('Cleanup check');
+  const saved = await page.evaluate(() => ({
+    json: JSON.parse(localStorage.getItem('THE-coach-loop-v1')),
+    bridge: localStorage.getItem('THE-coach-bridge-v1'),
+    liveExerciseCount: S.exercises.length,
+  }));
+  expect(saved.liveExerciseCount).toBeGreaterThan(2000);
+  expect(saved.json.exercises).toEqual([]);
+  expect(saved.bridge).toBeNull();
+  await page.reload();
+  expect(await page.evaluate(() => S.templates.some(t => t.name === 'Cleanup check'))).toBe(true);
+  expect(await page.evaluate(() => S.exercises.length)).toBeGreaterThan(2000);
+});

@@ -19,10 +19,6 @@
     ctx.persist();
   }
 
-  function pushBridge() {
-    if (root.CoachBridge) root.CoachBridge.push(ctx.S);
-  }
-
   function L() {
     return ctx.L;
   }
@@ -983,7 +979,6 @@
     saveNutOverride: saveNutOverride,
     clearNutOverride: clearNutOverride,
     addMealDay: addMealDay,
-    pushBridge: pushBridge,
     saveAthleteCloudId: saveAthleteCloudId,
     recordLiftSet: recordLiftSet,
     saveWorkingMax: saveWorkingMax,

@@ -17,8 +17,10 @@ Open `/coach.html` on that local server. The offline demo is available on the lo
 screen. Use an existing Supabase account for cloud publishing and WHOOP.
 
 Build the Windows app with `corepack pnpm --filter @hybrid/coach-desktop run dist`.
-Main-branch changes to Coach or desktop files publish the `coach-desktop-latest`
-release in this repository. Version 1.0.3 uses this repository for subsequent
+Run the **Build coach desktop** workflow explicitly to publish a new native
+`coach-desktop-latest` release. Main-branch changes run verification without
+rebuilding the installer. Browser-only releases use the [Capgo script](../desktop/CAPGO.md)
+after verification is complete. Version 1.0.3 uses this repository for subsequent
 updates; install it once to replace an earlier installer using the old release feed.
 
 The migration preserves the Coach UI from strengthside commit

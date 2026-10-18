@@ -8,7 +8,7 @@ import vm from 'node:vm';
 
 const dir = dirname(fileURLToPath(import.meta.url));
 
-const syncSrc = readFileSync(join(dir, 'coach-sync.js'), 'utf8');
+const syncSrc = readFileSync(join(dir, 'fixtures/coach-sync.js'), 'utf8');
 const cloudSrc = readFileSync(join(dir, 'coach-cloud.js'), 'utf8');
 const sandbox = { console, module: { exports: {} }, globalThis: {}, Whoop: null };
 sandbox.globalThis = sandbox;

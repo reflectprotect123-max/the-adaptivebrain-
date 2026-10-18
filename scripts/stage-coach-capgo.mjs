@@ -8,9 +8,12 @@ const output = path.resolve(process.argv[2] || path.join(root, 'apps/desktop/dis
 if (output === root || output === source || source.startsWith(output + path.sep)) throw new Error('Unsafe staging directory');
 fs.mkdirSync(output, { recursive: true });
 if (fs.readdirSync(output).length) throw new Error('Staging directory must be empty');
-for (const entry of fs.readdirSync(source)) {
-  if (entry === 'icons') fs.cpSync(path.join(source, entry), path.join(output, entry), { recursive: true });
-  else if (/\.(js|html)$/.test(entry)) fs.copyFileSync(path.join(source, entry), path.join(output, entry));
+const assets = JSON.parse(fs.readFileSync(path.join(root, 'apps/desktop/coach-assets.json'), 'utf8'));
+for (const entry of assets) {
+  if (entry === 'coach.html') continue;
+  const target = path.join(output, entry);
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.copyFileSync(path.join(source, entry), target);
 }
 // SDK loads www/index.html. Keep the Coach document there, rather than a redirect.
 fs.copyFileSync(path.join(source, 'coach.html'), path.join(output, 'index.html'));

@@ -17,13 +17,18 @@ Shared brain for the two apps:
 
 ## GitHub sources installed in those apps
 
-Every GitHub repo those projects actually installed (skills lockfiles, `skills.md`, Engine `HANDOFF.md`) is snapshotted under [`vendor/github/`](vendor/github/). Catalog: [`vendor/github/INVENTORY.md`](vendor/github/INVENTORY.md). Combined pins: [`skills-lock.json`](skills-lock.json). Cursor skills installed under [`.cursor/skills/`](.cursor/skills/) (41 skills).
+Installed Cursor skills live under [`.cursor/skills/`](.cursor/skills/) (608 skills).
+Upstream URLs are recorded in [`vendor/github/INVENTORY.md`](vendor/github/INVENTORY.md),
+with combined pins in [`skills-lock.json`](skills-lock.json). Full upstream source
+snapshots and historic handoff ZIPs are recoverable from the
+[archive commit](vendor/github/ARCHIVE.md), rather than copied into the product tree.
 
 ## Handoff package (uploaded ZIPs)
 
 Current product/agent handoff: [`HANDOFF.md`](HANDOFF.md).
 
-`Hybrid-Strength-CoLocated.zip`, `Hybrid-Conditioning-CoLocated.zip`, `Hybrid-Misc-Shared.zip` on `main`.
+The original `Hybrid-Strength-CoLocated.zip`, `Hybrid-Conditioning-CoLocated.zip` and
+`Hybrid-Misc-Shared.zip` remain available in the [archive](vendor/github/ARCHIVE.md).
 
 - Older ZIP contract (superseded where it disagrees with `HANDOFF.md` + V1 spec): [`docs/contracts/00-HANDOFF.md`](docs/contracts/00-HANDOFF.md)
 - Formulas and numbers: [`docs/contracts/`](docs/contracts/)

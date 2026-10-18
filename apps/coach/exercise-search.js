@@ -37,6 +37,17 @@
     return global.EXERCISE_SEARCH_INDEX || [];
   }
 
+  // Hide redundant legacy/core duplicates in fresh choices. Keep every ID
+  // available to existing workouts, and retain prep and banded variants.
+  function visibleEntries(entries) {
+    var canonical = new Set(entries.filter(function (e) {
+      return e.source === 'supabase-exercise-catalogue' && e.catalogue === 'main';
+    }).map(function (e) { return norm(e.name); }));
+    return entries.filter(function (e) {
+      return !(e.source === 'THE-core-120' && canonical.has(norm(e.name)));
+    });
+  }
+
   function byId(exerciseId) {
     if (!exerciseId) return null;
     return indexEntries().find(function (e) {
@@ -88,7 +99,7 @@
     if (!queryNorm) return [];
 
     var queryTokens = [...new Set(tokens(query))];
-    var ranked = indexEntries()
+    var ranked = visibleEntries(indexEntries())
       .map(function (entry) {
         return { entry: entry, score: scoreEntry(entry, queryNorm, queryTokens) };
       })
@@ -145,7 +156,7 @@
 
   global.ExerciseSearch = {
     search: search,
-    byId: byId,
+    visibleEntries: visibleEntries,
   mergeCustomHits: mergeCustomHits,
   norm: norm,
   byId: byId,

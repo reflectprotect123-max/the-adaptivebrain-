@@ -3,15 +3,8 @@ name: Build coach desktop
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'apps/desktop/**'
-      - 'apps/coach/**'
-      - 'package.json'
-      - 'pnpm-lock.yaml'
-      - 'pnpm-workspace.yaml'
-      - '.github/workflows/desktop-coach-build.yml'
+  # Native releases are explicit. UI-only edits ship via the tested Capgo script,
+  # and docs/tests must not rebuild or replace the Windows installer.
 
 permissions:
   contents: write

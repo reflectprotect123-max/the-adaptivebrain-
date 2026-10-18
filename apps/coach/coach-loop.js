@@ -1420,7 +1420,17 @@
 
   function saveState(storage, state) {
     storage = storage || defaultStorage();
-    storage.setItem(STORAGE, JSON.stringify(state));
+    // Builtin catalogue rows are restored on load. Keep custom rows and any
+    // additional/changed metadata, without modifying the live editor state.
+    const catalog = catalogEntries();
+    const base = new Map((catalog || []).map(row => [row.id, row]));
+    const exercises = (state.exercises || []).filter(row => {
+      if (!row || typeof row !== 'object') return true;
+      const original = base.get(row.id);
+      return !original || Object.keys(row).some(key =>
+        row[key] !== original[key] && JSON.stringify(row[key]) !== JSON.stringify(original[key]));
+    });
+    storage.setItem(STORAGE, JSON.stringify({ ...state, exercises }));
     return state;
   }
 

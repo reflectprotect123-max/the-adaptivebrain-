@@ -23,7 +23,7 @@ local URL. Otherwise Electron opens `apps/coach/coach.html` directly.
 ## Build a Windows installer
 
 ```bash
-pnpm run dist          # local build, no publish
+pnpm run dist          # local build using the shared Coach asset inventory, no publish
 # GitHub Actions → Build coach desktop publishes the installer.
 ```
 

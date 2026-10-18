@@ -1,0 +1,19 @@
+[
+  "coach.html",
+  "training-core.js",
+  "whoop-common.js",
+  "whoop.js",
+  "exercise-search-index.js",
+  "exercise-search.js",
+  "coach-exercise-catalog.js",
+  "coach-loop.js",
+  "coach-lifts.js",
+  "coach-catalogue.js",
+  "log-columns.js",
+  "coach-nutrition.js",
+  "coach-bridge.js",
+  "coach-cloud.js",
+  "coach-views.js",
+  "icons/coach-192.png",
+  "icons/coach-512.png"
+]

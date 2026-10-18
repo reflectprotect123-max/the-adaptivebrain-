@@ -1,8 +1,0 @@
-{
-  "extends": "@tsconfig/bun/tsconfig.json",
-  "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
-    "types": ["bun"]
-  },
-  "exclude": ["node_modules", "fixtures"]
-}
