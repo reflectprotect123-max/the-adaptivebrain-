@@ -35,13 +35,15 @@
     aside {
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 0.75rem;
+      min-height: 0;
       padding: 1.15rem 1.1rem 1rem;
-      background: var(--panel);
+      background: rgba(8, 12, 20, 0.88);
       border-right: 1px solid var(--line);
       backdrop-filter: blur(16px);
-      overflow: auto;
+      overflow: hidden;
     }
+    aside > div:first-child { flex: 0 0 auto; }
     h1 {
       margin: 0;
       font-family: Palatino, "Iowan Old Style", Georgia, serif;
@@ -51,11 +53,13 @@
     }
     .lead { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.45; }
     #card {
+      flex: 0 0 auto;
+      max-height: 46vh;
+      overflow: auto;
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 0.9rem 0.95rem 1rem;
-      background: rgba(255,255,255,0.04);
-      min-height: 9.5rem;
+      background: rgba(12, 18, 30, 0.96);
     }
     #card .room {
       display: inline-block;
@@ -72,9 +76,10 @@
     #wires { margin: 0.7rem 0 0; padding: 0; list-style: none; }
     #wires li { color: var(--muted); font-size: 0.8rem; line-height: 1.35; padding: 0.12rem 0; }
     #wires strong { color: var(--ink); font-weight: 600; }
-    .legend { display: flex; flex-wrap: wrap; gap: 0.35rem 0.7rem; font-size: 0.75rem; color: var(--muted); }
+    .legend { flex: 0 0 auto; display: flex; flex-wrap: wrap; gap: 0.35rem 0.7rem; font-size: 0.75rem; color: var(--muted); }
     .sw { display: inline-block; width: 0.55rem; height: 0.55rem; border-radius: 50%; margin-right: 0.28rem; vertical-align: 1px; }
     #find {
+      flex: 0 0 auto;
       width: 100%;
       border: 1px solid var(--line);
       background: rgba(0,0,0,0.28);
@@ -83,7 +88,7 @@
       padding: 0.55rem 0.7rem;
       font: inherit;
     }
-    #catalog { display: flex; flex-direction: column; gap: 0.85rem; }
+    #catalog { flex: 1 1 auto; min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: 0.85rem; }
     #catalog h3 {
       margin: 0 0 0.3rem;
       font-size: 0.68rem;
@@ -104,7 +109,7 @@
       cursor: pointer;
     }
     #catalog button[aria-current="true"] { color: #ffe0a8; }
-    .links { margin-top: auto; font-size: 0.78rem; color: var(--muted); }
+    .links { position: relative; z-index: 1; flex: 0 0 auto; margin-top: -0.4rem; font-size: 0.78rem; color: var(--muted); background: #080c14; padding-top: 0.55rem; }
     .links a { color: #d7e4f2; }
     main { position: relative; min-height: 0; }
     #orb { position: absolute; inset: 0; }
@@ -212,13 +217,13 @@
 
       { id: 'coach', room: 'coach', label: 'Coach\n1.0.3', x: -250, y: 310, size: 28,
         does: 'The coach workspace in this repo, apps/coach. Demo coach (offline) opens the imported session builder. Version 1.0.3 updates from this repo. Publishing uses the same Supabase project as the athletes.' },
-      { id: 'warmup', room: 'coach', label: 'Warm-up', x: -90, y: 400, size: 15,
+      { id: 'warmup', room: 'coach', label: 'Warm-up', x: -120, y: 420, size: 15,
         does: 'First wizard screen. Prep blocks such as Bike, Row, Run, Ski, and Jump Rope. Next opens the session template. Back returns to the library. This screen is prep text, not a main-lift group.' },
-      { id: 'session', room: 'coach', label: 'Session', x: 90, y: 450, size: 18,
+      { id: 'session', room: 'coach', label: 'Session', x: 70, y: 500, size: 18,
         does: 'The session template. Every main lift is a card here: reps, tempo, AMRAP, notes. Next on this screen opens cool-down. It does not walk the reps step. The reps step is reached from the exercise picker.' },
-      { id: 'picker', room: 'coach', label: 'Picker', x: -40, y: 560, size: 16,
+      { id: 'picker', room: 'coach', label: 'Picker', x: -70, y: 620, size: 16,
         does: 'Add Exercise. Tap order is the order of the run. Next walks each lift group on the reps step, then cool-down. Back returns to the session template.' },
-      { id: 'super', room: 'coach', label: 'Superset\nrun', x: 130, y: 600, size: 14,
+      { id: 'super', room: 'coach', label: 'Superset\nrun', x: 140, y: 680, size: 14,
         does: 'Adjacent main lifts that share a groupId. A pair is a superset. Three is a triset. One line marks the run. A lift left alone drops the group. Warm-up letters are used first, so the first main lift is often later in the alphabet.' },
       { id: 'reps', room: 'coach', label: 'Reps\n& sets', x: 250, y: 530, size: 16,
         does: 'One group at a time, opened by the picker. Up and Down swap that lift with the previous or next main lift and stay on the card that moved. Next continues to the next group, then cool-down.' },
@@ -231,17 +236,17 @@
       { id: 'circuits', room: 'coach', label: 'Circuits\ntab', x: -220, y: 520, size: 13,
         does: 'Still in the imported editor, as its own catalog and sheet. A circuit block is separate from a superset run of main lifts.' },
 
-      { id: 'sb', room: 'basement', label: 'Supabase', x: 0, y: -430, size: 30,
+      { id: 'sb', room: 'basement', label: 'Supabase', x: 0, y: -470, size: 30,
         does: 'One project, orysjncrksmdfabpuftd. Auth, Postgres, and Edge functions. Service role stays on Edge. The apps use the anon key plus the user JWT.' },
-      { id: 'auth', room: 'basement', label: 'Auth', x: -190, y: -500, size: 14,
+      { id: 'auth', room: 'basement', label: 'Auth', x: -230, y: -580, size: 14,
         does: 'GoTrue sessions for Strength, Engine, and Coach. WHOOP connect requires that user JWT.' },
-      { id: 'kv', room: 'basement', label: 'integration\n_kv', x: 200, y: -500, size: 14,
+      { id: 'kv', room: 'basement', label: 'integration\n_kv', x: 240, y: -580, size: 14,
         does: 'Postgres schema engine.integration_kv. WHOOP tokens live here: token:whoop:u: for Engine, token:whoop:s: for TRACK.' },
       { id: 'edgeWww', room: 'basement', label: 'Edge\nwww', x: 230, y: -340, size: 13,
         does: 'Hosts the Engine public site. ENGINE_CONFIG.functionsProvider is supabase. Public origin is /functions/v1/www/.' },
       { id: 'edgeStr', room: 'basement', label: 'Edge\nstrength', x: -250, y: -330, size: 13,
         does: 'Hosts TRACK HTML on the same Supabase project.' },
-      { id: 'edgeBrain', room: 'basement', label: 'Edge\nbrain', x: -150, y: -390, size: 12,
+      { id: 'edgeBrain', room: 'basement', label: 'Edge\nbrain', x: -160, y: -400, size: 12,
         does: 'The brain landing page. It is a host, not the kernel.' },
       { id: 'edgeWhoop', room: 'basement', label: 'whoop-*', x: 20, y: -310, size: 15,
         does: 'whoop-connect, callback, webhook, sync, and health. Live WHOOP on the phones uses these Edge functions with x-hybrid-product. Netlify copies of whoop-connect are 404.' },
@@ -255,7 +260,7 @@
         does: 'thehybridsystem.netlify.app. A porch in front of the old owner site. Strength WHOOP and coach calls that still point here are proxies, not the live Edge path.' },
       { id: 'netOwn', room: 'basement', tone: 'porch', label: 'Owner\nsite', x: -700, y: -340, size: 13,
         does: 'thehybridengine1.netlify.app. _hybrid-proxy.mjs used to forward WHOOP and brain-coach. Those Netlify functions are 404 for whoop-connect. Tokens do not live on the athlete site.' },
-      { id: 'whoop', room: 'basement', tone: 'whoop', label: 'WHOOP', x: 0, y: -640, size: 22,
+      { id: 'whoop', room: 'basement', tone: 'whoop', label: 'WHOOP', x: 0, y: -720, size: 22,
         does: 'WHOOP cloud. OAuth and webhooks land on Edge, then a recovery score can show on Engine home and inform dailyZones. The closed wire is the one into decideNext.' },
       { id: 'or', room: 'basement', tone: 'whoop', label: 'OpenRouter', x: 520, y: -430, size: 16,
         does: 'Chat model host behind brain-coach. Words only. The closed wire is the one into decideNext.' },
@@ -336,7 +341,7 @@
       const [bg, border] = tone(t);
       return {
         id: t.id, label: t.label, x: t.x, y: t.y, size: t.size,
-        color: { background: bg, border, highlight: { background: bg, border: '#fff' } },
+        color: { background: bg, border, highlight: { background: bg, border: '#fff' }, hover: { background: bg, border: '#fff' } },
         font: { color: '#f4efe6', size: t.size > 24 ? 13 : 11, face: 'Segoe UI, sans-serif' },
         shadow: { enabled: true, color: 'rgba(0,0,0,0.45)', size: 12, x: 0, y: 4 }
       };
@@ -345,8 +350,8 @@
     const edges = new vis.DataSet(EDGES.map((e) => ({
       id: e.id, from: e.from, to: e.to,
       dashes: e.kind === 'forbidden',
-      width: e.kind === 'forbidden' ? 1.2 : 0.8,
-      color: { color: e.kind === 'forbidden' ? 'rgba(255,93,108,0.85)' : 'rgba(180,198,216,0.28)', highlight: '#fff' },
+      width: e.kind === 'forbidden' ? 1.1 : 0.6,
+      color: { color: e.kind === 'forbidden' ? 'rgba(255,93,108,0.55)' : 'rgba(180,198,216,0.12)', highlight: '#fff' },
       arrows: { to: { enabled: true, scaleFactor: 0.45 } },
       smooth: { type: 'continuous', roundness: 0.35 },
       font: { size: 0, color: '#d7e2ee', strokeWidth: 4, strokeColor: '#070b12', face: 'Segoe UI, sans-serif' }
@@ -370,10 +375,10 @@
       glow.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = glow;
       ctx.beginPath();
-      ctx.arc(brain.x, brain.y, 680, 0, Math.PI * 2);
+      ctx.arc(brain.x, brain.y, 780, 0, Math.PI * 2);
       ctx.fill();
       ctx.lineWidth = 1;
-      [210, 390, 590].forEach((radius, i) => {
+      [210, 430, 740].forEach((radius, i) => {
         ctx.strokeStyle = i === 0 ? 'rgba(228,177,90,0.28)' : 'rgba(210,224,238,0.1)';
         ctx.beginPath();
         ctx.arc(brain.x, brain.y, radius, 0, Math.PI * 2);
@@ -382,9 +387,23 @@
       ctx.restore();
     });
 
-    function rgba(hex, alpha) {
+    function mix(hex, amount) {
       const n = parseInt(hex.slice(1), 16);
-      return 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + alpha + ')';
+      const toward = [8, 12, 20];
+      const rgb = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((v, i) =>
+        Math.round(v * amount + toward[i] * (1 - amount)).toString(16).padStart(2, '0'));
+      return '#' + rgb.join('');
+    }
+    function nodeColor(t, on) {
+      const [bg, border] = tone(t);
+      const face = on ? bg : mix(bg, 0.34);
+      const edge = on ? border : mix(border, 0.2);
+      return {
+        background: face,
+        border: edge,
+        highlight: { background: bg, border: '#fff' },
+        hover: { background: bg, border: '#fff' }
+      };
     }
 
     let selected = null;
@@ -398,12 +417,11 @@
         });
       }
       nodes.update(THINGS.map((t) => {
-        const [bg, border] = tone(t);
         const on = !id || near.has(t.id);
         return {
           id: t.id,
-          color: { background: on ? bg : rgba(bg, 0.16), border: on ? border : 'rgba(255,255,255,0.04)' },
-          font: { color: on ? '#f4efe6' : 'rgba(244,239,230,0.16)', size: t.size > 24 ? 13 : 11 }
+          color: nodeColor(t, on),
+          font: { color: on ? '#f4efe6' : '#5c6b7c', size: t.size > 24 ? 13 : 11 }
         };
       }));
       edges.update(EDGES.map((e) => {
@@ -441,7 +459,6 @@
     function choose(id) {
       paint(id);
       network.selectNodes([id]);
-      network.focus(id, { scale: 0.95, animation: { duration: 380, easingFunction: 'easeInOutQuad' } });
     }
 
     const catalog = document.getElementById('catalog');
@@ -475,11 +492,11 @@
       else {
         paint(null);
         network.unselectAll();
-        network.fit({ animation: { duration: 380, easingFunction: 'easeInOutQuad' } });
+        network.fit({ animation: { duration: 380, easingFunction: 'easeInOutQuad' }, padding: 56 });
       }
     });
 
-    network.once('afterDrawing', () => network.fit({ animation: false }));
+    network.once('afterDrawing', () => network.fit({ animation: false, padding: 56 }));
   </script>
 </body>
 </html>
