@@ -151,4 +151,4 @@ Last run on this branch: kernel **33/33**, Strength snapshot **32/32**, Engine s
 | `apps/strength/`, `apps/engine/` | Wired athlete UI snapshots |
 | `scripts/publish-sibling-apps.sh` | Overlay snapshots onto sibling remotes |
 | `.cursor/environment.json` | `repositoryDependencies` for the two apps |
-| `docs/wiring/` | House-wiring map: fuse box drawing + Graphify orb (`index.html`, `graphify-out/graph.html`, `callflow.html`) |
+| `docs/wiring/` | House orb: each room and what it does (`index.html`), plus the fuse-box drawing, kernel graph, and `callflow.html` |
