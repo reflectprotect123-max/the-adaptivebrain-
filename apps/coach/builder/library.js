@@ -224,6 +224,56 @@
     return st;
   }
 
+  function isMainLift(block) {
+    return block.kind === 'lift' && !block.role;
+  }
+
+  function settleGroups(state, tid) {
+    const st = clone(ensure(state));
+    const t = st.templates.find((x) => x.id === tid);
+    if (!t) return st;
+    const mains = t.blocks.filter(isMainLift);
+    const drop = [];
+    let i = 0;
+    while (i < mains.length) {
+      const gid = mains[i].groupId;
+      if (!gid) {
+        i += 1;
+        continue;
+      }
+      let j = i + 1;
+      while (j < mains.length && mains[j].groupId === gid) j += 1;
+      if (j === i + 1) drop.push(mains[i].id);
+      i = j;
+    }
+    for (const id of drop) {
+      const block = t.blocks.find((x) => x.id === id);
+      if (block) block.groupId = null;
+    }
+    return st;
+  }
+
+  function moveMainLift(state, tid, bid, dir) {
+    const st = clone(ensure(state));
+    const t = st.templates.find((x) => x.id === tid);
+    if (!t) return st;
+    const slots = [];
+    t.blocks.forEach((block, index) => {
+      if (isMainLift(block)) slots.push(index);
+    });
+    const from = slots.findIndex((index) => t.blocks[index].id === bid);
+    const to = from + (dir < 0 ? -1 : 1);
+    if (from < 0 || to < 0 || to >= slots.length) return st;
+    const mains = slots.map((index) => t.blocks[index]);
+    const held = mains[from];
+    mains[from] = mains[to];
+    mains[to] = held;
+    slots.forEach((index, n) => {
+      t.blocks[index] = mains[n];
+    });
+    return settleGroups(st, tid);
+  }
+
   function patchBlock(state, tid, bid, patch) {
     const st = clone(ensure(state));
     const t = st.templates.find((x) => x.id === tid);
@@ -501,6 +551,8 @@
     addExercise,
     removeBlock,
     moveBlock,
+    moveMainLift,
+    settleGroups,
     patchBlock,
     placeTextBlock,
     tempoText,

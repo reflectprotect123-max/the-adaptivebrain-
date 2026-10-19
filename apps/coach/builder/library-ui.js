@@ -202,6 +202,15 @@
       </div>`;
   }
 
+  function supersetDivider(blocks, index) {
+    const block = blocks[index];
+    const prev = blocks[index - 1];
+    const before = blocks[index - 2];
+    if (!(prev && block && prev.kind === 'lift' && block.kind === 'lift' && prev.groupId && prev.groupId === block.groupId)) return '';
+    if (before && before.kind === 'lift' && before.groupId === block.groupId) return '';
+    return `<div class="lib-ss">− Superset</div>`;
+  }
+
   function editorHtml() {
     const st = lib();
     const t = root.HybridLibrary.template(st, ui().tid);
@@ -210,10 +219,7 @@
     const back = wizard() ? 'LibraryView.wizardBack()' : 'LibraryView.goList()';
     let body = '';
     blocks.forEach((b, i) => {
-      const prev = blocks[i - 1];
-      if (prev && prev.kind === 'lift' && b.kind === 'lift' && prev.groupId && prev.groupId === b.groupId) {
-        body += `<div class="lib-ss">− Superset</div>`;
-      }
+      body += supersetDivider(blocks, i);
       const meta = b.kind === 'circuit' ? 'For Completion' : root.HybridLibrary.rxFor(b);
       const summary = `<article class="lib-block">
         <div class="lib-block-top">
@@ -282,7 +288,10 @@
         if (target?.purpose === 'amrap') return `<div class="lib-cell" aria-label="Set ${n} AMRAP">AMRAP</div>`;
         return `<button type="button" class="lib-cell" aria-label="Set ${n} reps" onclick="LibraryView.openNumberPad('set:${i}','${esc(b.id)}')">${esc(repText(target))}</button>`;
       }
-      if (target?.purpose === 'amrap' && (key === 'weight_kg' || key === 'weight_lb')) return '<div class="lib-cell">Set 1 weight</div>';
+      if (key === 'weight_kg' || key === 'weight_lb') {
+        const text = target?.purpose === 'amrap' ? 'Set 1 weight' : 'Athlete';
+        return `<div class="lib-cell lib-athlete" aria-label="Athlete logs the weight">${text}</div>`;
+      }
       return '<div class="lib-cell"></div>';
     };
     const rows = Array.from({ length: rowCount }, (_, i) => {
@@ -290,6 +299,8 @@
       const n = i + 1;
       return `<span>${n}</span>${rowMetricHtml(c1, t, n, i)}${rowMetricHtml(c2, t, n, i)}`;
     }).join('');
+    const mains = root.HybridLibrary.lettered(currentTemplate() || { blocks: [] }).filter((x) => x.kind === 'lift' && !x.role);
+    const at = mains.findIndex((x) => x.id === b.id);
     const amrap = targets.at(-1)?.purpose === 'amrap';
     const metric1Id = `libMetric1_${b.id}`;
     const metric2Id = `libMetric2_${b.id}`;
@@ -297,11 +308,13 @@
       <div class="lib-ex-top">
         <span class="lib-letter">${esc(b.letter)}</span>
         <h3>${esc(b.title)}</h3>
+        <button type="button" class="lib-text-btn" aria-label="Move ${esc(b.title)} up"${at <= 0 ? ' disabled' : ''} onclick="LibraryView.moveLift('${esc(b.id)}',-1)">Up</button>
+        <button type="button" class="lib-text-btn" aria-label="Move ${esc(b.title)} down"${at < 0 || at === mains.length - 1 ? ' disabled' : ''} onclick="LibraryView.moveLift('${esc(b.id)}',1)">Down</button>
         <button type="button" class="lib-danger" aria-label="Delete ${esc(b.title)}" onclick="LibraryView.removeBlock('${esc(b.id)}')">Delete</button>
         <button type="button" class="lib-done" onclick="LibraryView.closeNumberPad()">Done</button>
       </div>
       <div class="meta">${esc(root.HybridLibrary.rxFor(b))}</div>
-      <label class="lib-notes"><textarea placeholder="Add notes or instructions here" onchange="LibraryView.patchBlock({notes:this.value.split('\\n').filter(Boolean)},'${esc(b.id)}')">${esc((b.notes || []).join('\n'))}</textarea></label>
+      <label class="lib-notes"><textarea placeholder="Add notes or instructions here" onchange="LibraryView.patchBlock({notes:this.value.split('\\n').filter(Boolean)},'${esc(b.id)}', false)">${esc((b.notes || []).join('\n'))}</textarea></label>
       <div class="lib-field lib-metrics">
         <label>What do you want to track?</label>
         <div class="lib-cols">
@@ -334,8 +347,8 @@
       return `<div class="lib-sheet" onclick="if(event.target===this)LibraryView.closeSheet()">
         <div class="lib-sheet-card">
           <h2>Edit circuit</h2>
-          <div class="lib-field"><label>Title</label><input value="${esc(b.title)}" onchange="LibraryView.patchBlock({title:this.value})"></div>
-          <div class="lib-field"><label>Instructions</label><textarea onchange="LibraryView.patchBlock({instructions:this.value})">${esc(b.instructions || '')}</textarea></div>
+          <div class="lib-field"><label>Title</label><input value="${esc(b.title)}" onchange="LibraryView.patchBlock({title:this.value}, null, false)"></div>
+          <div class="lib-field"><label>Instructions</label><textarea onchange="LibraryView.patchBlock({instructions:this.value}, null, false)">${esc(b.instructions || '')}</textarea></div>
           <button type="button" class="lib-primary" onclick="LibraryView.closeSheet()">Done</button>
         </div></div>`;
     }
@@ -380,10 +393,7 @@
     const blocks = root.HybridLibrary.lettered(currentTemplate() || { blocks: [] }).filter((b) => !b.role);
     let body = '';
     blocks.forEach((b, i) => {
-      const prev = blocks[i - 1];
-      if (prev && prev.kind === 'lift' && b.kind === 'lift' && prev.groupId && prev.groupId === b.groupId) {
-        body += `<div class="lib-ss">− Superset</div>`;
-      }
+      body += supersetDivider(blocks, i);
       body += `<article class="lib-block"><div class="lib-block-top"><span class="lib-letter">${esc(b.letter)}</span><div style="flex:1"><h3>${esc(b.title)}</h3></div></div></article>`;
     });
     return body;
@@ -394,11 +404,18 @@
     const tab = u.tab || 'exercises';
     const hits = root.HybridLibrary.searchCatalog(lib(), tab, u.q);
     const selected = new Set(u.selected || []);
-    return hits.map((h) => `
+    const order = u.selected || [];
+    return hits.map((h) => {
+      const n = order.indexOf(h.id);
+      const mark = n >= 0
+        ? `<span class="lib-pick-order">${n + 1}</span>`
+        : `<span class="lib-radio${selected.has(h.id) ? ' on' : ''}"></span>`;
+      return `
       <button type="button" class="lib-pick-row" onclick="LibraryView.togglePick('${esc(h.id)}')">
         <b>${esc(h.title)}</b>
-        <span class="lib-radio${selected.has(h.id) ? ' on' : ''}"></span>
-      </button>`).join('') || `<div class="lib-empty">No results. Create something new.</div>`;
+        ${mark}
+      </button>`;
+    }).join('') || `<div class="lib-empty">No results. Create something new.</div>`;
   }
 
   function createSheetHtml() {
@@ -597,7 +614,8 @@
   function repsStepHtml() {
     const groups = liftGroups(currentTemplate());
     const group = groups[ui().liftIndex || 0] || [];
-    return wizardChrome('Reps and sets', group.map((b) => exerciseCardHtml(b)).join('')) + numberPadHtml();
+    const body = group.map((block, index) => supersetDivider(group, index) + exerciseCardHtml(block)).join('');
+    return wizardChrome('Reps and sets', body) + numberPadHtml();
   }
 
   function overviewHtml() {
@@ -617,7 +635,7 @@
         const next = plan.blocks[i + 1];
         const a = String(block.letter || '').match(/^([A-Za-z]+)(\d+)$/);
         const b = next && String(next.letter || '').match(/^([A-Za-z]+)(\d+)$/);
-        const ss = a && b && a[1] === b[1] && Number(b[2]) === Number(a[2]) + 1 ? `<div class="trn-ss">− Superset</div>` : '';
+        const ss = a && b && a[1] === b[1] && a[2] === '1' && b[2] === '2' ? `<div class="trn-ss">− Superset</div>` : '';
         return `<article class="trn-block trn-block--lift"><span class="trn-letter">${esc(block.letter)}</span><div class="trn-lift-body"><h3 class="trn-lift-title">${esc(block.title)}</h3><p class="trn-lift-rx">${esc(block.prescription)}</p></div></article>${ss}`;
       }
       return '';
@@ -649,7 +667,7 @@
     create() {
       const next = root.HybridLibrary.createTemplate(lib(), {});
       root.S.library = next;
-      go('warmup', { tid: next.templates[0].id, flow: 'wizard', liftIndex: 0, bid: null, selected: [], q: '' });
+      go('warmup', { tid: next.templates[0].id, flow: 'wizard', liftIndex: 0, bid: null, selected: [], q: '', fromReps: false });
     },
     open(tid) { go('edit', { tid, bid: null, q: '', flow: null }); },
     patchTpl(patch) {
@@ -763,15 +781,15 @@
       const index = ui().liftIndex || 0;
       if (s === 'instructions') return go('warmup');
       if (s === 'warmup') return go('edit', { bid: null, selected: [], q: '', flow: 'wizard' });
-      if (s === 'edit') return go('cooldown', { bid: null });
+      if (s === 'edit') return go('cooldown', { liftIndex: 0, bid: null, fromReps: false });
       if (s === 'exercises' || s === 'picker') {
-        if (!groups.length) return go('cooldown', { liftIndex: 0 });
-        return go('reps', { liftIndex: 0, bid: groups[0][0].id });
+        if (!groups.length) return go('cooldown', { liftIndex: 0, fromReps: false });
+        return go('reps', { liftIndex: 0, bid: groups[0][0].id, fromReps: true });
       }
       if (s === 'reps') {
-        if (!groups.length) return go('cooldown', { liftIndex: 0, bid: null });
-        if (index + 1 < groups.length) return go('reps', { liftIndex: index + 1, bid: groups[index + 1][0].id });
-        return go('cooldown', { liftIndex: 0, bid: null });
+        if (!groups.length) return go('cooldown', { liftIndex: 0, bid: null, fromReps: false });
+        if (index + 1 < groups.length) return go('reps', { liftIndex: index + 1, bid: groups[index + 1][0].id, fromReps: true });
+        return go('cooldown', { liftIndex: 0, bid: null, fromReps: true });
       }
       if (s === 'cooldown') {
         const lifts = (currentTemplate()?.blocks || []).filter((b) => b.kind === 'lift' && !b.role);
@@ -794,7 +812,11 @@
         if (index > 0 && groups[index - 1]) return go('reps', { liftIndex: index - 1, bid: groups[index - 1][0].id });
         return go('exercises', { selected: [], bid: null });
       }
-      if (s === 'cooldown') return go('edit', { bid: null, selected: [], q: '', flow: 'wizard' });
+      if (s === 'cooldown') {
+        if (!groups.length || !ui().fromReps) return go('edit', { bid: null, selected: [], q: '', flow: 'wizard', fromReps: false });
+        const last = groups.length - 1;
+        return go('reps', { liftIndex: last, bid: groups[last][0].id, flow: 'wizard', fromReps: true });
+      }
       if (s === 'overview') return go('cooldown');
     },
     toggleTempo(bid) {
@@ -849,7 +871,11 @@
     },
     editBlock(bid) { numberPad = null; root.S.libUi.bid = bid; root.S.libUi.repError = null; root.S.libUi.targetError=null; save(); },
     closeSheet() { numberPad = null; root.S.libUi.bid = null; save(); },
-    patchBlock(patch, bid) { if (bid) root.S.libUi.bid = bid; setLib(root.HybridLibrary.patchBlock(lib(), ui().tid, ui().bid, patch)); },
+    patchBlock(patch, bid, paint) {
+      if (bid) root.S.libUi.bid = bid;
+      root.S.library = root.HybridLibrary.patchBlock(lib(), ui().tid, ui().bid, patch);
+      save(paint === false ? { paint: false } : undefined);
+    },
     openNumberPad(field, bid) {
       if (bid) root.S.libUi.bid = bid;
       const use = field === 'reps' ? 'set:0' : field;
@@ -966,7 +992,29 @@
     removeBlock(bid) {
       numberPad = null;
       if (ui().bid === bid) root.S.libUi.bid = null;
-      setLib(root.HybridLibrary.removeBlock(lib(), ui().tid, bid));
+      const screen = ui().screen;
+      const index = ui().liftIndex || 0;
+      let st = root.HybridLibrary.removeBlock(lib(), ui().tid, bid);
+      st = root.HybridLibrary.settleGroups(st, ui().tid);
+      root.S.library = st;
+      if (screen === 'reps') {
+        const groups = liftGroups(currentTemplate());
+        if (!groups.length) return go('cooldown', { liftIndex: 0, bid: null });
+        const next = Math.min(index, groups.length - 1);
+        return go('reps', { liftIndex: next, bid: null });
+      }
+      save();
+    },
+    moveLift(bid, dir) {
+      const st = root.HybridLibrary.moveMainLift(lib(), ui().tid, bid, dir);
+      root.S.library = st;
+      if (ui().screen === 'reps') {
+        const groups = liftGroups(currentTemplate());
+        const idx = groups.findIndex((group) => group.some((block) => block.id === bid));
+        if (idx >= 0) return go('reps', { liftIndex: idx, bid });
+        if (!groups.length) return go('cooldown', { liftIndex: 0, bid: null });
+      }
+      save();
     },
     reorder() {
       const t = root.HybridLibrary.template(lib(), ui().tid);
