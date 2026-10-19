@@ -314,7 +314,7 @@
         <button type="button" class="lib-done" onclick="LibraryView.closeNumberPad()">Done</button>
       </div>
       <div class="meta">${esc(root.HybridLibrary.rxFor(b))}</div>
-      <label class="lib-notes"><textarea placeholder="Add notes or instructions here" onchange="LibraryView.patchBlock({notes:this.value.split('\\n').filter(Boolean)},'${esc(b.id)}')">${esc((b.notes || []).join('\n'))}</textarea></label>
+      <label class="lib-notes"><textarea placeholder="Add notes or instructions here" onchange="LibraryView.patchBlock({notes:this.value.split('\\n').filter(Boolean)},'${esc(b.id)}', false)">${esc((b.notes || []).join('\n'))}</textarea></label>
       <div class="lib-field lib-metrics">
         <label>What do you want to track?</label>
         <div class="lib-cols">
@@ -347,8 +347,8 @@
       return `<div class="lib-sheet" onclick="if(event.target===this)LibraryView.closeSheet()">
         <div class="lib-sheet-card">
           <h2>Edit circuit</h2>
-          <div class="lib-field"><label>Title</label><input value="${esc(b.title)}" onchange="LibraryView.patchBlock({title:this.value})"></div>
-          <div class="lib-field"><label>Instructions</label><textarea onchange="LibraryView.patchBlock({instructions:this.value})">${esc(b.instructions || '')}</textarea></div>
+          <div class="lib-field"><label>Title</label><input value="${esc(b.title)}" onchange="LibraryView.patchBlock({title:this.value}, null, false)"></div>
+          <div class="lib-field"><label>Instructions</label><textarea onchange="LibraryView.patchBlock({instructions:this.value}, null, false)">${esc(b.instructions || '')}</textarea></div>
           <button type="button" class="lib-primary" onclick="LibraryView.closeSheet()">Done</button>
         </div></div>`;
     }
@@ -667,7 +667,7 @@
     create() {
       const next = root.HybridLibrary.createTemplate(lib(), {});
       root.S.library = next;
-      go('warmup', { tid: next.templates[0].id, flow: 'wizard', liftIndex: 0, bid: null, selected: [], q: '' });
+      go('warmup', { tid: next.templates[0].id, flow: 'wizard', liftIndex: 0, bid: null, selected: [], q: '', fromReps: false });
     },
     open(tid) { go('edit', { tid, bid: null, q: '', flow: null }); },
     patchTpl(patch) {
@@ -781,18 +781,15 @@
       const index = ui().liftIndex || 0;
       if (s === 'instructions') return go('warmup');
       if (s === 'warmup') return go('edit', { bid: null, selected: [], q: '', flow: 'wizard' });
-      if (s === 'edit') {
-        if (!groups.length) return go('cooldown', { liftIndex: 0, bid: null });
-        return go('reps', { liftIndex: 0, bid: groups[0][0].id });
-      }
+      if (s === 'edit') return go('cooldown', { liftIndex: 0, bid: null, fromReps: false });
       if (s === 'exercises' || s === 'picker') {
-        if (!groups.length) return go('cooldown', { liftIndex: 0 });
-        return go('reps', { liftIndex: 0, bid: groups[0][0].id });
+        if (!groups.length) return go('cooldown', { liftIndex: 0, fromReps: false });
+        return go('reps', { liftIndex: 0, bid: groups[0][0].id, fromReps: true });
       }
       if (s === 'reps') {
-        if (!groups.length) return go('cooldown', { liftIndex: 0, bid: null });
-        if (index + 1 < groups.length) return go('reps', { liftIndex: index + 1, bid: groups[index + 1][0].id });
-        return go('cooldown', { liftIndex: 0, bid: null });
+        if (!groups.length) return go('cooldown', { liftIndex: 0, bid: null, fromReps: false });
+        if (index + 1 < groups.length) return go('reps', { liftIndex: index + 1, bid: groups[index + 1][0].id, fromReps: true });
+        return go('cooldown', { liftIndex: 0, bid: null, fromReps: true });
       }
       if (s === 'cooldown') {
         const lifts = (currentTemplate()?.blocks || []).filter((b) => b.kind === 'lift' && !b.role);
@@ -816,9 +813,9 @@
         return go('exercises', { selected: [], bid: null });
       }
       if (s === 'cooldown') {
-        if (!groups.length) return go('edit', { bid: null, selected: [], q: '', flow: 'wizard' });
+        if (!groups.length || !ui().fromReps) return go('edit', { bid: null, selected: [], q: '', flow: 'wizard', fromReps: false });
         const last = groups.length - 1;
-        return go('reps', { liftIndex: last, bid: groups[last][0].id, flow: 'wizard' });
+        return go('reps', { liftIndex: last, bid: groups[last][0].id, flow: 'wizard', fromReps: true });
       }
       if (s === 'overview') return go('cooldown');
     },
@@ -874,7 +871,11 @@
     },
     editBlock(bid) { numberPad = null; root.S.libUi.bid = bid; root.S.libUi.repError = null; root.S.libUi.targetError=null; save(); },
     closeSheet() { numberPad = null; root.S.libUi.bid = null; save(); },
-    patchBlock(patch, bid) { if (bid) root.S.libUi.bid = bid; setLib(root.HybridLibrary.patchBlock(lib(), ui().tid, ui().bid, patch)); },
+    patchBlock(patch, bid, paint) {
+      if (bid) root.S.libUi.bid = bid;
+      root.S.library = root.HybridLibrary.patchBlock(lib(), ui().tid, ui().bid, patch);
+      save(paint === false ? { paint: false } : undefined);
+    },
     openNumberPad(field, bid) {
       if (bid) root.S.libUi.bid = bid;
       const use = field === 'reps' ? 'set:0' : field;

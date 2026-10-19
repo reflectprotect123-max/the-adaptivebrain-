@@ -372,7 +372,7 @@ test('the lift card uses the tempo dropdown and Next leaves for cool-down', () =
   assert.match(html, /Meters/);
   assert.match(html, /Watts/); // Coach retains the full existing metric contract.
   globalThis.LibraryView.wizardNext();
-  assert.equal(globalThis.S.libUi.screen, 'reps');
+  assert.equal(globalThis.S.libUi.screen, 'cooldown');
 });
 
 test('cool-down is a circuit and only offers seconds and reps', () => {
@@ -504,12 +504,14 @@ test('tempo accepts X only in the Lift phase so saved prescriptions match the br
  assert.equal(HybridLibrary.template(S.library,tid).blocks.find(b=>b.id===bid).tempo,'33X1');
 });
 
-test('session Next opens the lifts and Back from cool-down returns to the last group', () => {
+test('session Next reaches cool-down, and the picker walk still opens each group', () => {
   LibraryView.create();
   LibraryView.wizardNext();
   assert.equal(S.libUi.screen, 'edit');
   LibraryView.wizardNext();
   assert.equal(S.libUi.screen, 'cooldown');
+  LibraryView.wizardBack();
+  assert.equal(S.libUi.screen, 'edit');
   const squat = S.library.catalog.exercises.find((e) => e.title === 'Back Squat');
   const bench = S.library.catalog.exercises.find((e) => e.title === 'Bench Press');
   const pull = S.library.catalog.exercises.find((e) => e.title === 'Lat Pull Downs');
@@ -522,8 +524,6 @@ test('session Next opens the lifts and Back from cool-down returns to the last g
   LibraryView.togglePick(bench.id);
   LibraryView.togglePick(pull.id);
   LibraryView.addPicked(true);
-  S.libUi.screen = 'edit';
-  S.libUi.flow = 'wizard';
   LibraryView.wizardNext();
   assert.equal(S.libUi.screen, 'reps');
   assert.match(LibraryView.html(), /Back Squat/);
@@ -535,6 +535,14 @@ test('session Next opens the lifts and Back from cool-down returns to the last g
   assert.equal(S.libUi.screen, 'reps');
   assert.match(LibraryView.html(), /Bench Press/);
   assert.match(LibraryView.html(), /Lat Pull Downs/);
+  S.libUi.screen = 'edit';
+  S.libUi.flow = 'wizard';
+  LibraryView.wizardNext();
+  assert.equal(S.libUi.screen, 'cooldown');
+  LibraryView.wizardBack();
+  assert.equal(S.libUi.screen, 'edit');
+  assert.match(LibraryView.html(), /Back Squat/);
+  assert.match(LibraryView.html(), /Bench Press/);
 });
 
 test('a triset has one superset line and the picker shows tap order', () => {
