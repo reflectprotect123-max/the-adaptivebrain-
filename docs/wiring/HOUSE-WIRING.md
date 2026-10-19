@@ -1,6 +1,8 @@
 # Hybrid house wiring (product + backend)
 
-The Adaptive Brain is the **fuse box**. Athletes never stand in this room. Strength and Engine are the **rooms**. The **basement** is backend. Wires are messages, not shared UI.
+The Adaptive Brain is the **fuse box**. Athletes never stand in this room. Strength and Engine are the **rooms**. Coach writes the session. The **basement** is backend. Wires are messages, not shared UI.
+
+The picture is [`index.html`](index.html): one orb, each piece selectable, with the sentence for what it does.
 
 ## Fuse box (main breaker)
 
@@ -25,14 +27,14 @@ The apps copy the same kernel as `brain-kernel.js`. They do not call each other.
 Repo: `strengthside` `apps/athlete`. Snapshot: `apps/strength`.
 Athlete logs: kg, reps, Easy / Medium / Hard.
 Logger talks to Brain: `open` (last kg) → `decideNext` (next row kg) → `close` (lastKg).
-Phone OTA: Capgo `com.hybrid.athlete` **1.0.84** (dogfood default; live pinned too).
+Phone OTA: Capgo `com.hybrid.athlete` **1.0.86** (live and dogfood).
 
 ## Room: Engine
 
 Repo: `Engine-side-`. Snapshot: `apps/engine`.
 Athlete logs: actual output, Easy / Medium / Hard after rest.
 Logger talks to Brain: `open` (typed number or last Close) → `decideNext` → `close` (`confirmAnchor`).
-Phone OTA: Capgo `com.hybrid.engine` **1.0.5**. Assemble www must copy `brain-kernel.js`.
+Phone OTA: Capgo `com.hybrid.engine` **1.0.7**. Assemble www must copy `brain-kernel.js`.
 
 ## Basement: one Supabase project
 
@@ -80,9 +82,21 @@ WHOOP does not call `decideNext` and must not rewrite a confirmed output anchor.
 - Capgo Cloud: two apps, dogfood + live channels
 - Native shells: Capacitor `@capgo/capacitor-updater`
 
-## Isolated circuit: coach
+## Room: Coach
 
-OpenRouter from Engine Edge `brain-coach` (or Strength via Netlify proxy → owner site). Breaker off for kg and watts.
+Repo: this one, `apps/coach`. Desktop updates: Coach **1.0.3** from `coach-desktop-latest`.
+Demo coach (offline) opens the imported session builder.
+
+Wizard wires:
+
+- Warm-up Next opens the session template. The prep screens stay prep.
+- Session Next opens cool-down. The lift cards on that page already carry reps, tempo, and AMRAP.
+- Exercise picker Next walks each main-lift group on the reps step, then cool-down.
+- A superset or triset is adjacent main lifts that share a `groupId`. The circuits tab is still in the editor as its own block kind.
+- The weight cell is a label (`Set 1 weight` on an AMRAP row). `demoStartingKg` is stripped on save. That cell does not connect to `decideNext`.
+- Cool-down Next opens the calendar only when a main lift exists. Post is an unpublished draft. Publish freezes the assigned workout for the athlete.
+
+OpenRouter still sits behind Edge `brain-coach` (Strength’s old path was the Netlify porch). Chat does not feed kilograms or watts.
 
 ## Shared law
 
