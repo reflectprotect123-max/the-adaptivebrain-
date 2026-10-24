@@ -20,6 +20,9 @@ for (const name of checks) {
   if (result.error) throw result.error;
   if (result.status !== 0) process.exit(result.status || 1);
 }
-const imported = spawnSync(process.execPath, ['--test', resolve(dir, 'builder/library-ui.test.mjs')], {cwd:root,stdio:'inherit'});
-if(imported.status !== 0) process.exit(imported.status || 1);
+const builderTests = readdirSync(resolve(dir, 'builder')).filter((name) => name.endsWith('.test.mjs')).sort();
+for (const name of builderTests) {
+  const imported = spawnSync(process.execPath, ['--test', resolve(dir, 'builder', name)], {cwd:root,stdio:'inherit'});
+  if (imported.status !== 0) process.exit(imported.status || 1);
+}
 console.log(`Coach checks: ${checks.length} passed; local UI assets verified.`);

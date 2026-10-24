@@ -62,6 +62,7 @@
   }
 
   function prepRoundCount(t) {
+    if (t?.warmupRounds != null && Number(t.warmupRounds) > 0) return Math.max(1, Number(t.warmupRounds));
     const items = (t?.blocks || []).filter((b) => b.role === 'warmup');
     return items.reduce((n, b) => Math.max(n, Number(b.setCount) || 0), 0) || 3;
   }
@@ -321,6 +322,8 @@
         <button type="button" class="lib-step" aria-label="Add a set" onclick="LibraryView.nudgeSets(1,'${esc(b.id)}')">+</button>
       </div>
       ${hasReps ? `<button type="button" class="lib-text-btn" onclick="LibraryView.toggleAmrap('${esc(b.id)}')">${amrap ? 'Remove AMRAP' : 'Add final AMRAP'}</button>` : ''}
+      <div class="lib-field"><label>Rest (sec)</label><input type="number" min="0" step="5" aria-label="Rest (sec) for ${esc(b.title)}" value="${esc(b.restSec ?? '')}" onchange="LibraryView.patchBlock({restSec:this.value===''?null:Number(this.value)},'${esc(b.id)}')"></div>
+      <div class="lib-field"><label>Ramp sets</label><input type="number" min="0" max="6" aria-label="Ramp sets for ${esc(b.title)}" value="${esc(b.rampCount ?? '')}" onchange="LibraryView.patchBlock({rampCount:this.value===''?null:Number(this.value)},'${esc(b.id)}')"></div>
     </article>`;
   }
 
@@ -573,13 +576,15 @@
 
   function prepCircuitHtml(role) {
     const title = role === 'cooldown' ? 'Cool-down' : 'Warm-up';
-    const items = root.HybridLibrary.lettered(currentTemplate() || { blocks: [] }).filter((b) => b.role === role);
+    const tpl = currentTemplate() || { blocks: [] };
+    const items = root.HybridLibrary.lettered(tpl).filter((b) => b.role === role);
     const listed = items.map((b) => {
       const track = role === 'cooldown' ? prepTrackSelect(b) : '';
       return `<article class="lib-block"><div class="lib-block-top"><span class="lib-letter">${esc(b.letter)}</span><div style="flex:1"><h3>${esc(b.title)}</h3><p class="sum">${esc(root.HybridLibrary.rxFor(b))}</p></div></div>${track}</article>`;
     }).join('');
     const n = (ui().selected || []).length;
     const searchLabel = role === 'cooldown' ? 'Search cool-downs' : 'Search warm-ups';
+    const rounds = role === 'warmup' ? `<div class="lib-field"><label>Rounds</label><input type="number" min="1" max="12" aria-label="Warm-up rounds" value="${esc(prepRoundCount(tpl))}" onchange="LibraryView.setWarmupRounds(this.value)"></div>` : '';
     return `
       <div class="shell-screen shell-screen--library">
         <div class="lib-head-row">
@@ -587,6 +592,7 @@
           <h1>${esc(title)}</h1>
           <button type="button" class="lib-text-btn" ${n < 1 ? 'disabled' : ''} onclick="LibraryView.addPrepPicked('${role}')">Add${n ? ` (${n})` : ''}</button>
         </div>
+        ${rounds}
         ${listed}
         <div class="lib-search"><input value="${esc(ui().q || '')}" placeholder="${esc(searchLabel)}" aria-label="${esc(searchLabel)}" oninput="LibraryView.search(this.value)"></div>
         <div id="libResults">${prepCatalogRowsHtml(role)}</div>
@@ -850,6 +856,15 @@
     editBlock(bid) { numberPad = null; root.S.libUi.bid = bid; root.S.libUi.repError = null; root.S.libUi.targetError=null; save(); },
     closeSheet() { numberPad = null; root.S.libUi.bid = null; save(); },
     patchBlock(patch, bid) { if (bid) root.S.libUi.bid = bid; setLib(root.HybridLibrary.patchBlock(lib(), ui().tid, ui().bid, patch)); },
+    setWarmupRounds(value) {
+      const n = Math.max(1, Number(value) || 3);
+      let st = root.HybridLibrary.patchTemplate(lib(), ui().tid, { warmupRounds: n });
+      const t = root.HybridLibrary.template(st, ui().tid);
+      for (const b of (t?.blocks || []).filter((x) => x.role === 'warmup')) {
+        st = root.HybridLibrary.patchBlock(st, ui().tid, b.id, { setCount: n });
+      }
+      setLib(st);
+    },
     openNumberPad(field, bid) {
       if (bid) root.S.libUi.bid = bid;
       const use = field === 'reps' ? 'set:0' : field;
