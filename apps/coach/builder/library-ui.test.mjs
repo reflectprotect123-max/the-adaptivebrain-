@@ -39,7 +39,7 @@ test('create opens the warm-up circuit instead of the note wizard', () => {
   const html = globalThis.LibraryView.html();
   assert.match(html, /Warm-up/);
   assert.match(html, /Bike/);
-  assert.match(html, /3:00|180/);
+  assert.match(html, /Seconds/);
   assert.doesNotMatch(html, /Session instructions/);
   globalThis.S.library = prior;
 });
@@ -71,6 +71,8 @@ test('wizard edit shows Next on the lift cards and keeps tempo off warm-up block
   const prior = globalThis.S.library;
   globalThis.S.library = globalThis.HybridLibrary.emptyState();
   LibraryView.create();
+  LibraryView.togglePrepPick('bike');
+  LibraryView.addPrepPicked('warmup');
   LibraryView.wizardNext();
   assert.equal(S.libUi.screen, 'edit');
   const tid = S.libUi.tid;
@@ -199,6 +201,8 @@ test('creating a session walks warm-up, the exercise picker, reps, tempo, cool-d
   assert.match(LibraryView.html(), />Warm-up</);
   assert.match(LibraryView.html(), /Bike/);
   assert.match(LibraryView.html(), />Next</);
+  LibraryView.togglePrepPick('bike');
+  LibraryView.addPrepPicked('warmup');
   LibraryView.wizardNext();
   assert.equal(S.libUi.screen, 'edit');
   assert.match(LibraryView.html(), /Session instructions/);
@@ -488,6 +492,21 @@ test('wizard Next opens the calendar and Back returns to cool-down', () => {
   globalThis.LibraryView.calendar(tid, false);
   globalThis.LibraryView.calendarBack();
   assert.equal(globalThis.S.libUi.screen, 'list');
+});
+
+test('lift cards expose Rest (sec) and Ramp sets and warmup exposes Rounds', () => {
+  LibraryView.create();
+  const tid = S.libUi.tid;
+  S.library = HybridLibrary.addExercise(S.library, tid, { title: 'Incline Bench', columns: ['reps', 'weight_kg'] });
+  S.libUi.screen = 'edit';
+  const liftHtml = LibraryView.html();
+  assert.match(liftHtml, /Rest \(sec\)/);
+  assert.match(liftHtml, /Ramp sets/);
+  S.libUi.screen = 'warmup';
+  assert.match(LibraryView.html(), /Rounds/);
+  assert.match(LibraryView.html(), /Seconds/);
+  LibraryView.picker('exercises');
+  assert.match(LibraryView.html(), /Superset/);
 });
 
 test('tempo accepts X only in the Lift phase so saved prescriptions match the brain context',()=>{

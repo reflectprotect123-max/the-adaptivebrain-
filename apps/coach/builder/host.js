@@ -61,9 +61,10 @@
       const ex={...clone(existing),id:b.id,name:b.title,exerciseId:b.exerciseId||'',sets:ts?.length||b.setCount,reps:rep,
         autopilotVolume:false,tempo:b.tempo||'',columns:clone(b.columns||[]),logColumns:(b.columns||[]).map(kind=>({kind})),
         coachNote:(b.notes||[]).join('\n'),setTargets:ts?clone(ts):undefined};
-      for(const key of ['equipmentId','loadConvention','exerciseType','minimumKg','barWeightKg','equipmentStepKg','availableLoads']) if(b[key]!=null) ex[key]=clone(b[key]);
+      for(const key of ['equipmentId','loadConvention','exerciseType','minimumKg','barWeightKg','equipmentStepKg','availableLoads','rampCount','restSec','restSeconds','pctLow','pctHigh','percentMode','percentBasis','basisLift','basisReps','oneRm','percent','startPct','rpe','exerciseId','groupId']) if(b[key]!=null) ex[key]=clone(b[key]);
+      if(ex.restSec!=null && ex.restSeconds==null) ex.restSeconds=ex.restSec;
       return {...clone(b),type:'strength',heading:b.title,category:b.role==='warmup'?'Warm-Up':b.role==='cooldown'?'Cool-Down':'Strength/Power',
-        scoring:b.role?'completion':'weight',rounds:b.setCount,exercises:[ex]};
+        scoring:b.role?'completion':'weight',rounds:b.setCount,groupId:b.groupId||null,exercises:[ex]};
     });
     // Engine blocks remain byte-for-byte intact; the strength import never rewrites them.
     t.blocks.push(...retained);

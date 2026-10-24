@@ -27,6 +27,23 @@ test('new APK prescription survives Coach calendar, publishing, bridge and compi
  const receivedLift=received.blocks.find(b=>b.title==='Back Squat');assert.equal(receivedLift.coachExerciseId,lift.id);assert.equal(receivedLift.tempo,'20X1');
  const compiled=h.HybridLibrary.compile(received);const played=compiled.blocks.find(b=>b.title==='Back Squat');assert.equal(played.setTargets.length,4);assert.equal(played.tempo,'20X1');assert.equal(state.sessions.length,1);assert.equal(L.addCalendarSession(state,{templateId:id,athleteId:'a',date:s.date}),null);
 });
+test('applyBuilder publishes rest, ramp, percent, catalogue and groupId for the athlete app',()=>{
+ const c=fixture(),h=c.CoachBuilderHost,L=c.CoachLoop;
+ let st=h.HybridLibrary.createTemplate(h.HybridLibrary.emptyState(),{title:'Ibex'});
+ const id=st.templates[0].id;
+ st=h.HybridLibrary.addExercise(st,id,{title:'Incline Bench',columns:['reps','weight_kg']});
+ const a=st.templates[0].blocks.at(-1);
+ a.restSec=90;a.rampCount=2;a.pctLow=63;a.pctHigh=68;a.percentMode='straight';a.exerciseId='cat_bench';
+ st=h.HybridLibrary.addExercise(st,id,{title:'Deficit Back Rack Lunge',columns:['reps','weight_kg']});
+ st=h.HybridLibrary.linkSuperset(st,id,a.id,st.templates[0].blocks.at(-1).id);
+ const t={id,name:'',blocks:[]};c.CoachBuilder.applyBuilder(t,st.templates[0],L);
+ const state={templates:[t],sessions:[]};const s=L.addCalendarSession(state,{templateId:id,athleteId:'a',date:'2026-10-24'});L.publishSession(s);
+ const payload=c.CoachBridge.sessionForAthlete(s,'athlete@example.test');
+ const lift=payload.blocks[0],ex=lift.exercises[0];
+ assert.equal(ex.restSec,90);assert.equal(ex.restSeconds,90);assert.equal(ex.rampCount,2);assert.equal(ex.percentMode,'straight');
+ assert.equal(ex.exerciseId,'cat_bench');assert.equal(lift.groupId,payload.blocks[1].groupId);
+});
+
 test('Coach and APK state namespaces remain separate and all metric options survive',()=>{
  const c=fixture();assert.equal(c.HybridLibrary,undefined);assert.ok(c.CoachBuilderHost.HybridLibrary);assert.ok(c.CoachBuilderHost.StrengthTargets);
  for(const metric of c.TrainingCore.definitions||[]){const t={id:'t',name:'Metrics',blocks:[{id:'b',kind:'lift',title:'Test',setCount:3,repTarget:'8',columns:[metric.key]}]};const d=c.CoachBuilder.toBuilder(t);c.CoachBuilder.applyBuilder(t,d,c.CoachLoop);assert.equal(t.blocks[0].columns[0],metric.key);}

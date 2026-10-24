@@ -31,14 +31,28 @@
     return JSON.parse(JSON.stringify(v));
   }
 
-  function inferredMetadata(title='') {
+  function timedOrBodyweight(title, extras={}) {
+    const value=String(title||'');
+    const cols=extras.columns||[];
+    const timed=cols.includes('seconds')||cols.includes('time_mmss');
+    const loaded=cols.some((c)=>['weight_kg','weight_lb','weight_pct','lwp'].includes(c));
+    const cardio=/^(?:bike|row|run|ski|jump rope)\b/i.test(value.trim())||/jump rope/i.test(value);
+    const bodyweight=/bodyweight/i.test(value)&&!/weighted|dumbbell|\bdb\b|barbell/i.test(value);
+    if((extras.role==='warmup'||extras.role==='cooldown')&&timed&&!loaded)return true;
+    return (timed&&!loaded)||cardio||bodyweight;
+  }
+
+  function inferredMetadata(title='', extras={}) {
     const value=String(title);
+    if(timedOrBodyweight(value, extras))return {equipmentId:'bodyweight',loadConvention:'bodyweight',exerciseType:(extras.columns||[]).includes('seconds')||(extras.columns||[]).includes('time_mmss')?'timed':'bodyweight'};
     if(/farmer|suitcase|carry/i.test(value))return {equipmentId:/dumbbell|\bdb\b/i.test(value)?'dumbbell':null,loadConvention:'per_hand',exerciseType:'carry'};
     if(/plank|\bhold\b/i.test(value))return {equipmentId:'bodyweight',loadConvention:'bodyweight',exerciseType:'hold'};
     if(/goblet/i.test(value))return {equipmentId:'dumbbell',loadConvention:'single',exerciseType:'accessory',minimumKg:1};
     if(/dumbbell|\bdb\b/i.test(value))return {equipmentId:'dumbbell',loadConvention:'per_hand',exerciseType:/curl|extension|raise|fly|flye|calf|kickback/i.test(value)?'accessory':null,minimumKg:1};
     if(/barbell/i.test(value))return {equipmentId:'barbell',loadConvention:'total',minimumKg:20,equipmentStepKg:2.5};
-    if(/^(?:back squat|front squat|bench press|snatch grip rack deadlift)$/i.test(value.trim()))return {equipmentId:'barbell',loadConvention:'total',exerciseType:'main',minimumKg:20,equipmentStepKg:2.5};
+    if(/\brdl\b|romanian deadlift/i.test(value)||/lunge/i.test(value)||/incline bench|bench press/i.test(value)||/^(?:back squat|front squat|snatch grip rack deadlift)$/i.test(value.trim())) {
+      return {equipmentId:'barbell',loadConvention:'total',exerciseType:'main',minimumKg:20,equipmentStepKg:2.5};
+    }
     return {};
   }
 
@@ -46,7 +60,7 @@
 
   function canonicalBlock(block) {
     const b={...block};
-    for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','restSec','demoStartingKg'])delete b[key];
+    for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','demoStartingKg'])delete b[key];
     return b;
   }
 
@@ -99,7 +113,7 @@
     for(const template of next.templates)for(const block of template.blocks||[])if(block.kind==='lift'){
       const hit=byId.get(block.exerciseId)||byTitle.get(String(block.title||'').trim().toLowerCase());
       if(hit){block.exerciseId=hit.id;for(const key of LOAD_METADATA)if(block[key]==null&&hit[key]!=null)block[key]=clone(hit[key]);}
-      else Object.assign(block,{...inferredMetadata(block.title),...block});
+      else Object.assign(block,{...inferredMetadata(block.title,{columns:block.columns,role:block.role}),...block});
     }
     return next;
   }
@@ -115,17 +129,6 @@
       title: String(title || 'Session Template').trim() || 'Session Template',
       instructions: String(instructions || ''),
       blocks: [],
-    });
-    [
-      ['Bike', '180'],
-      ['Row', '180'],
-      ['Run', '180'],
-      ['Ski', '180'],
-      ['Jump Rope', '60'],
-    ].forEach(([title, value]) => {
-      Object.assign(st, addExercise(st, st.templates[0].id, {
-        title, columns: ['seconds'], setCount: 3, value, role: 'warmup',
-      }));
     });
     return st;
   }
@@ -167,7 +170,8 @@
     if (!t) return st;
     let cols = Array.isArray(columns) && columns.length ? columns.slice() : ['reps', 'weight_kg'];
     let name = title || 'Exercise';
-    let metadata=inferredMetadata(name),exerciseId=null;
+    const prepRole = role === 'warmup' || role === 'cooldown' ? role : null;
+    let metadata=inferredMetadata(name,{columns:cols,role:prepRole}),exerciseId=null;
     if (catalogId) {
       const hit = st.catalog.exercises.find((c) => c.id === catalogId);
       if (hit) {
@@ -180,11 +184,11 @@
     if (!cols.length) cols = ['reps'];
     const tracksReps = cols.some((c) => c === 'reps' || c === 'reps_range');
     const prescribed = value != null && String(value).trim() ? String(value).trim() : '';
-    const prepRole = role === 'warmup' || role === 'cooldown' ? role : null;
     if (prepRole === 'cooldown') {
       const allowed = cols.filter((c) => c === 'reps' || c === 'seconds');
       cols = allowed.length ? allowed : ['seconds'];
     }
+    if(timedOrBodyweight(name,{columns:cols,role:prepRole}))metadata=inferredMetadata(name,{columns:cols,role:prepRole});
     t.blocks.push({
       id: nid('blk'),
       kind: 'lift',
@@ -231,7 +235,7 @@
     const b = t.blocks.find((x) => x.id === bid);
     if (!b) return st;
     Object.assign(b, patch);
-    for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','restSec','demoStartingKg'])delete b[key];
+    for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','demoStartingKg'])delete b[key];
     if (Array.isArray(b.columns)) b.columns = b.columns.filter((k) => k && k !== 'none');
     if (Array.isArray(patch.setTargets)) {
       const targets=root.StrengthTargets.normalize({...b,setTargets:patch.setTargets});
@@ -358,6 +362,30 @@
     return 'Strength/Power';
   }
 
+  const PERCENT_FIELDS=['pctLow','pctHigh','percentMode','percentBasis','basisLift','basisReps','oneRm','percent','startPct','rpe'];
+
+  function percentFields(block) {
+    const notes=(block.notes||[]).join(' ');
+    const prescribed=String(block.prescribed||'');
+    const fromNotes=notes.match(/(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)%/);
+    const fromPrescribed=prescribed.match(/^(\d+(?:\.\d+)?)(?:\s*[-–]\s*(\d+(?:\.\d+)?))?$/);
+    const cols=block.columns||[];
+    let pctLow=block.pctLow,pctHigh=block.pctHigh;
+    if(pctLow==null&&fromNotes){pctLow=Number(fromNotes[1]);pctHigh=Number(fromNotes[2]);}
+    if(pctLow==null&&cols.includes('weight_pct')&&fromPrescribed){
+      pctLow=Number(fromPrescribed[1]);
+      pctHigh=fromPrescribed[2]!=null?Number(fromPrescribed[2]):pctLow;
+    }
+    let percentMode=block.percentMode;
+    if(!percentMode&&pctLow!=null)percentMode=/build/i.test(notes)?'build':'straight';
+    const out={};
+    if(pctLow!=null)out.pctLow=pctLow;
+    if(pctHigh!=null)out.pctHigh=pctHigh;
+    if(percentMode)out.percentMode=percentMode;
+    for(const key of PERCENT_FIELDS)if(out[key]==null&&block[key]!=null)out[key]=clone(block[key]);
+    return out;
+  }
+
   function compile(tpl) {
     const blocks = [];
     let lastSection = '';
@@ -385,7 +413,10 @@
         const setTargets=hasReps?root.StrengthTargets.normalize(targetInput):null;
         const rx = rxFor(Array.isArray(b.setTargets)?{...b,setTargets}:b);
         const tempo = tempoText(b.tempo);
-        blocks.push({
+        const inferred=inferredMetadata(b.title,{columns,role:b.role});
+        const timed=timedOrBodyweight(b.title,{columns,role:b.role});
+        if(timed)columns=columns.filter(c=>!['weight_kg','weight_lb','weight_pct','lwp'].includes(c));
+        const lift={
           kind: 'lift',
           targetContractVersion: 2,
           letter: b.letter,
@@ -400,16 +431,21 @@
           columns,
           setCount: setTargets?.length||b.setCount,
           exerciseId: b.exerciseId,
-          equipmentId: b.equipmentId,
-          equipmentStepKg: b.equipmentStepKg,
-          availableLoads: b.availableLoads,
-          minimumKg: b.minimumKg,
-          barWeightKg: b.barWeightKg,
-          loadConvention: b.loadConvention,
-          exerciseType: b.exerciseType,
+          equipmentId: timed?'bodyweight':b.equipmentId,
+          equipmentStepKg: timed?undefined:b.equipmentStepKg,
+          availableLoads: timed?undefined:b.availableLoads,
+          minimumKg: timed?undefined:b.minimumKg,
+          barWeightKg: timed?undefined:b.barWeightKg,
+          loadConvention: timed?'bodyweight':b.loadConvention,
+          exerciseType: timed?(inferred.exerciseType||'bodyweight'):b.exerciseType,
           rampCount: b.rampCount,
+          restSec: b.restSec,
+          restSeconds: b.restSeconds ?? b.restSec,
+          groupId: b.groupId,
           section,
-        });
+          ...percentFields(b),
+        };
+        blocks.push(lift);
       }
     }
     return {
