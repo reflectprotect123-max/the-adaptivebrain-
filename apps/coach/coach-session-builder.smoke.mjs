@@ -152,5 +152,8 @@ if (built.blocks[2].supersetPartner) throw new Error('cool-down was paired into 
 if (!html.includes('CoachBuilder.create()') || !html.includes('CoachBuilder.mount')) {
   throw new Error('coach session builder markup missing warm-up flow');
 }
+if (!html.includes("ui.builderStep = step || 'warmup'")) {
+  throw new Error('Library reopen must start the imported builder at warm-up');
+}
 
 console.log('coach-session-builder: ok', { blocks: t.blocks.length, letter: t.blocks[0].letter, plan });

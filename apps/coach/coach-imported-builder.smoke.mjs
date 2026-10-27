@@ -57,6 +57,17 @@ test('opening an existing template keeps legacy catalogue IDs and saves new cata
  c.CoachBuilderHost.LibraryView.patchTpl({title:'Renamed existing'});
  assert.deepEqual(t.blocks.flatMap(b=>b.exercises||[]).map(e=>e.exerciseId),before);
  const h=c.CoachBuilderHost;h.S.library=h.HybridLibrary.createCatalogExercise(h.S.library,{title:'My new lift',columns:['reps','weight_kg']});h.save();
- assert.equal(state.builderCatalog.exercises.length,1);c.CoachBuilder.reset();c.CoachBuilder.mount(t.id,'lifts');assert.ok(h.S.library.catalog.exercises.some(e=>e.title==='My new lift'));
+ assert.equal(state.builderCatalog.exercises.length,1); c.CoachBuilder.reset();c.CoachBuilder.mount(t.id,'lifts');assert.ok(h.S.library.catalog.exercises.some(e=>e.title==='My new lift'));
  assert.equal(h.HybridLibrary.searchCatalog(h.S.library,'exercises','Back Squat').filter(e=>e.title==='Back Squat').length,1);
+});
+
+test('mounting a saved lift without an explicit step starts at warm-up',()=>{
+ const c=fixture();c.document={getElementById:()=>null};
+ const state=c.CoachLoop.mergeExerciseCatalog(c.CoachLoop.buildSeed());
+ const t=c.CoachBuilder.create();state.templates.push(t);
+ t.blocks=[{id:'blk_squat',kind:'lift',type:'strength',title:'Back Squat',tempo:'33X1',columns:['reps','weight_kg'],exercises:[{id:'blk_squat',name:'Back Squat',tempo:'33X1'}]}];
+ c.CoachBuilder.init({state:()=>state,template:id=>state.templates.find(x=>x.id===id),persist(){}});
+ c.CoachBuilder.mount(t.id);
+ assert.equal(c.CoachBuilderHost.S.libUi.screen,'warmup');
+ assert.equal(c.CoachBuilder.toBuilder(t).blocks.find(b=>b.title==='Back Squat').tempo,'33X1');
 });

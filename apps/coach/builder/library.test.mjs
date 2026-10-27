@@ -160,3 +160,24 @@ test('applyBuilder copies rest, ramp, percent, catalogue id and groupId onto the
   assert.equal(published.groupId, t.blocks[1].groupId);
   assert.equal(ex.groupId, published.groupId);
 });
+
+test('authored tempo survives persist and reopen into the builder', () => {
+  const c = load();
+  const Lib = c.CoachBuilderHost.HybridLibrary;
+  let st = Lib.createTemplate(Lib.emptyState(), { title: 'APK import browser session' });
+  const id = st.templates[0].id;
+  st = Lib.addExercise(st, id, { title: 'Back Squat', columns: ['reps', 'weight_kg'] });
+  const bid = st.templates[0].blocks[0].id;
+  st = Lib.patchBlock(st, id, bid, { tempo: '33X1' });
+  const t = { id, name: 'APK import browser session', blocks: [] };
+  c.CoachBuilder.applyBuilder(t, st.templates[0], c.CoachLoop);
+  assert.equal(t.blocks[0].tempo, '33X1');
+  assert.equal(t.blocks[0].exercises[0].tempo, '33X1');
+  const store = c.CoachLoop.memoryStorage();
+  const state = c.CoachLoop.mergeExerciseCatalog(c.CoachLoop.buildSeed());
+  state.templates.push(t);
+  c.CoachLoop.saveState(store, state);
+  const restored = c.CoachLoop.loadState(store).templates.find((x) => x.id === id);
+  const draft = c.CoachBuilder.toBuilder(restored);
+  assert.equal(draft.blocks.find((b) => b.title === 'Back Squat').tempo, '33X1');
+});

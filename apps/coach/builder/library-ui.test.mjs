@@ -522,3 +522,21 @@ test('tempo accepts X only in the Lift phase so saved prescriptions match the br
  S.libUi.tempoDraft=[...'33X1'];LibraryView.saveTempo(bid);
  assert.equal(HybridLibrary.template(S.library,tid).blocks.find(b=>b.id===bid).tempo,'33X1');
 });
+
+test('reopening from warm-up Next shows the authored Back Squat tempo', () => {
+  const prior = globalThis.S.library;
+  globalThis.S.library = HybridLibrary.emptyState();
+  LibraryView.create();
+  LibraryView.wizardNext();
+  const tid = S.libUi.tid;
+  S.library = HybridLibrary.addExercise(S.library, tid, { title: 'Back Squat', columns: ['reps', 'weight_kg'] });
+  const bid = HybridLibrary.template(S.library, tid).blocks.find((b) => b.title === 'Back Squat').id;
+  S.library = HybridLibrary.patchBlock(S.library, tid, bid, { tempo: '33X1' });
+  S.libUi = { ...S.libUi, screen: 'warmup', flow: 'wizard', tid, bid: null };
+  LibraryView.wizardNext();
+  assert.equal(S.libUi.screen, 'edit');
+  const html = LibraryView.html();
+  assert.match(html, /Tempo for Back Squat/);
+  assert.match(html, />33X1</);
+  globalThis.S.library = prior;
+});

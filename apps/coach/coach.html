@@ -465,8 +465,7 @@ function openSession(templateId, step){
   ui.templateId = templateId;
   ui.lib = 'sessions';
   ui.view = 'session';
-  const built = (tpl(templateId)?.blocks || []).some(b => b.role === 'warmup' || b.role === 'cooldown');
-  ui.builderStep = step || (built ? 'warmup' : '');
+  ui.builderStep = step || 'warmup';
   render();
 }
 function openProgram(programId){

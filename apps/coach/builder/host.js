@@ -108,7 +108,7 @@
       lib.catalog.exercises=state.exercises.map(ex=>({...clone(ex),title:ex.name,columns:columns(ex),coachHidden:!visible.has(ex.id)}));
       knownExercises=new Set(lib.catalog.exercises.map(e=>e.id));knownCircuits=new Set(lib.catalog.circuits.map(e=>e.id));
       lib.catalog.exercises.push(...(custom.exercises||[]));lib.catalog.circuits.push(...(custom.circuits||[]));
-      lib.templates=[toBuilder(t)];host.S={library:lib,libUi:{screen:step==='warmup'?'warmup':step==='cooldown'?'cooldown':'edit',flow:'wizard',tid:id,q:'',selected:[],liftIndex:0}};
+      lib.templates=[toBuilder(t)];host.S={library:lib,libUi:{screen:step==='cooldown'?'cooldown':(step==='lifts'||step==='edit'?'edit':'warmup'),flow:'wizard',tid:id,q:'',selected:[],liftIndex:0}};
     }
     root.LibraryView=host.LibraryView;
     host.LibraryView.goList=()=>{save();context.back();};
