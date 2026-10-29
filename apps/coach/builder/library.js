@@ -35,7 +35,7 @@
     const value=String(title);
     if(/farmer|suitcase|carry/i.test(value))return {equipmentId:/dumbbell|\bdb\b/i.test(value)?'dumbbell':null,loadConvention:'per_hand',exerciseType:'carry'};
     if(/plank|\bhold\b/i.test(value))return {equipmentId:'bodyweight',loadConvention:'bodyweight',exerciseType:'hold'};
-    if(/goblet/i.test(value))return {equipmentId:'dumbbell',loadConvention:'single',exerciseType:'accessory',minimumKg:1};
+    if(/goblet/i.test(value))return {equipmentId:/kettlebell|\bkb\b/i.test(value)?'kettlebell':'dumbbell',loadConvention:'single',exerciseType:'accessory',minimumKg:1};
     if(/dumbbell|\bdb\b/i.test(value))return {equipmentId:'dumbbell',loadConvention:'per_hand',exerciseType:/curl|extension|raise|fly|flye|calf|kickback/i.test(value)?'accessory':null,minimumKg:1};
     if(/barbell/i.test(value))return {equipmentId:'barbell',loadConvention:'total',minimumKg:20,equipmentStepKg:2.5};
     if(/^(?:back squat|front squat|bench press|snatch grip rack deadlift)$/i.test(value.trim()))return {equipmentId:'barbell',loadConvention:'total',exerciseType:'main',minimumKg:20,equipmentStepKg:2.5};
