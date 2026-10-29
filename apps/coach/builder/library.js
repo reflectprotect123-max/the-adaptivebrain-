@@ -46,7 +46,7 @@
 
   function canonicalBlock(block) {
     const b={...block};
-    for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','restSec','demoStartingKg'])delete b[key];
+    for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','demoStartingKg'])delete b[key];
     return b;
   }
 
@@ -231,7 +231,8 @@
     const b = t.blocks.find((x) => x.id === bid);
     if (!b) return st;
     Object.assign(b, patch);
-    for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','restSec','demoStartingKg'])delete b[key];
+    for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','demoStartingKg'])delete b[key];
+    if(b.restSec!=null){const r=Math.round(Number(b.restSec));if(Number.isFinite(r)&&r>=0&&r<=600)b.restSec=r;else delete b.restSec;}
     if (Array.isArray(b.columns)) b.columns = b.columns.filter((k) => k && k !== 'none');
     if (Array.isArray(patch.setTargets)) {
       const targets=root.StrengthTargets.normalize({...b,setTargets:patch.setTargets});

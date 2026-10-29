@@ -43,3 +43,14 @@ test('opening an existing template keeps legacy catalogue IDs and saves new cata
  assert.equal(state.builderCatalog.exercises.length,1);c.CoachBuilder.reset();c.CoachBuilder.mount(t.id,'lifts');assert.ok(h.S.library.catalog.exercises.some(e=>e.title==='My new lift'));
  assert.equal(h.HybridLibrary.searchCatalog(h.S.library,'exercises','Back Squat').filter(e=>e.title==='Back Squat').length,1);
 });
+test('rest seconds survive builder patch, applyBuilder and bridge',()=>{
+ const c=fixture(),H=c.CoachBuilderHost.HybridLibrary,L=c.CoachLoop;
+ let st=H.createTemplate(H.emptyState(),{title:'Rest'});const id=st.templates[0].id;
+ st=H.addExercise(st,id,{title:'DB Bench Press',columns:['reps','weight_kg'],value:'8',setCount:3});
+ const bid=st.templates[0].blocks.at(-1).id;st=H.patchBlock(st,id,bid,{restSec:90});
+ assert.equal(st.templates[0].blocks.at(-1).restSec,90);
+ const t={id,name:'',blocks:[]};c.CoachBuilder.applyBuilder(t,st.templates[0],L);
+ const state={templates:[t],sessions:[]};const s=L.addCalendarSession(state,{templateId:id,athleteId:'a',date:'2026-11-02'});L.publishSession(s);
+ const out=c.CoachBridge.sessionForAthlete(s,'a@x.test').blocks.find(b=>b.title==='DB Bench Press');
+ assert.equal(out.restSec,90);
+});
