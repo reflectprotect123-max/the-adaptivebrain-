@@ -54,3 +54,16 @@ test('rest seconds survive builder patch, applyBuilder and bridge',()=>{
  const out=c.CoachBridge.sessionForAthlete(s,'a@x.test').blocks.find(b=>b.title==='DB Bench Press');
  assert.equal(out.restSec,90);
 });
+test('each side and count-in survive to the athlete payload',()=>{
+ const c=fixture(),H=c.CoachBuilderHost.HybridLibrary,L=c.CoachLoop;
+ let st=H.createTemplate(H.emptyState(),{title:'Sides'});const id=st.templates[0].id;
+ st=H.addExercise(st,id,{title:'Suitcase Carry (each side)',columns:['meters','weight_kg'],value:'20',setCount:3});
+ st=H.addExercise(st,id,{title:'Couch Stretch',role:'cooldown',columns:['seconds'],value:'45',setCount:1,countIn:3});
+ const [carry,stretch]=st.templates[0].blocks.slice(-2);st=H.patchBlock(st,id,stretch.id,{perSide:true});
+ assert.equal(st.templates[0].blocks.find(b=>b.id===carry.id).perSide,true);
+ const t={id,name:'',blocks:[]};c.CoachBuilder.applyBuilder(t,st.templates[0],L);
+ const state={templates:[t],sessions:[]};const s=L.addCalendarSession(state,{templateId:id,athleteId:'a',date:'2026-11-02'});L.publishSession(s);
+ const out=c.CoachBridge.sessionForAthlete(s,'a@x.test').blocks;
+ const oc=out.find(b=>/Suitcase/.test(b.title)),os=out.find(b=>/Couch/.test(b.title));
+ assert.equal(oc.exercises[0].perSide,'each');assert.equal(os.exercises[0].perSide,'each');assert.equal(os.countIn,3);
+});

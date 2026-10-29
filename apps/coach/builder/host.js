@@ -45,7 +45,8 @@
         if(ts.some(t=>t.reps&&t.reps.min!==t.reps.max) && cols.includes('reps')) cols[cols.indexOf('reps')]='reps_range';
         blocks.push({...clone(ex),id:ex.id,kind:'lift',title:ex.name,role,groupId:groupId||(b.exercises.length>1?`group:${b.id}`:null),
           setCount:Math.max(1,Number(ex.sets)||3),repTarget:ts[0]?.reps?String(ts[0].reps.min):'8',columns:cols,
-          ...(hasReps?{setTargets:ts}:{}),prescribed:hasReps?'':prescribed||String(ex.reps||''),notes,tempo:ex.tempo||'',exerciseId:ex.exerciseId||null});
+          ...(hasReps?{setTargets:ts}:{}),prescribed:hasReps?'':prescribed||String(ex.reps||''),notes,tempo:ex.tempo||'',exerciseId:ex.exerciseId||null,
+          perSide:ex.perSide==='each'?true:undefined,countIn:Math.max(0,Number(b.countIn)||Number(ex.countIn)||0)});
       }
     }
     return {id:t.id,title:t.name,instructions:t.coachInstructions||'',blocks};
@@ -60,7 +61,7 @@
       const existing=old.get(b.id)||{};
       const ex={...clone(existing),id:b.id,name:b.title,exerciseId:b.exerciseId||'',sets:ts?.length||b.setCount,reps:rep,
         autopilotVolume:false,tempo:b.tempo||'',columns:clone(b.columns||[]),logColumns:(b.columns||[]).map(kind=>({kind})),
-        coachNote:(b.notes||[]).join('\n'),setTargets:ts?clone(ts):undefined};
+        coachNote:(b.notes||[]).join('\n'),setTargets:ts?clone(ts):undefined,perSide:b.perSide?'each':undefined,countIn:Math.max(0,Number(b.countIn)||0)};
       for(const key of ['equipmentId','loadConvention','exerciseType','minimumKg','barWeightKg','equipmentStepKg','availableLoads']) if(b[key]!=null) ex[key]=clone(b[key]);
       return {...clone(b),type:'strength',heading:b.title,category:b.role==='warmup'?'Warm-Up':b.role==='cooldown'?'Cool-Down':'Strength/Power',
         scoring:b.role?'completion':'weight',rounds:b.setCount,exercises:[ex]};

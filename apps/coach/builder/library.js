@@ -193,7 +193,8 @@
       repTarget: tracksReps && prescribed ? prescribed : (cols.includes('reps_range') ? '8-12' : '8'),
       prescribed: !tracksReps && prescribed ? prescribed : '',
       role: prepRole,
-      countIn: prepRole ? Math.max(0, Number(countIn) || 0) : 0,
+      countIn: Math.max(0, Number(countIn) || 0),
+      perSide: /\(each side\)|each side$/i.test(name) || undefined,
       columns: cols,
       notes: Array.isArray(notes) ? notes : [],
       exerciseId,
@@ -233,6 +234,7 @@
     Object.assign(b, patch);
     for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','demoStartingKg'])delete b[key];
     if(b.restSec!=null){const r=Math.round(Number(b.restSec));if(Number.isFinite(r)&&r>=0&&r<=600)b.restSec=r;else delete b.restSec;}
+    if(Object.prototype.hasOwnProperty.call(patch,'perSide'))b.perSide=!!patch.perSide;
     if (Array.isArray(b.columns)) b.columns = b.columns.filter((k) => k && k !== 'none');
     if (Array.isArray(patch.setTargets)) {
       const targets=root.StrengthTargets.normalize({...b,setTargets:patch.setTargets});
