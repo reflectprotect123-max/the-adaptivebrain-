@@ -57,7 +57,14 @@
       prescribed:ex.prescribed||prescribed||(!targets?String(ex.reps||''):''),groupId:b.groupId||null,
       coachAssignmentId:id.split(':')[1],coachExerciseId:ex.id||null,coachBlockId:b.id||null};
     for(const key of META)if(ex[key]!=null)block[key]=clone(ex[key]);
+    carryFields(block, ex, role);
     return block;
+  }
+  function carryFields(block, ex, role) {
+    const rest=Number(ex?.restSec??block.restSec);if(Number.isFinite(rest)&&rest>=0&&rest<=600)block.restSec=Math.round(rest);
+    const ci=Number(ex?.countIn??block.countIn);if(Number.isFinite(ci)&&ci>0&&ci<=10)block.countIn=Math.round(ci);
+    if(/^(yes|each|per side)$/i.test(ex?.perSide||'')||block.perSide===true)block.eachSide=true;
+    if(role==='warmup')block.section='Warm-Up';else if(role==='cooldown')block.section='Cool-Down';
   }
   function convert(row) {
     const date=row.scheduled_date;
@@ -69,7 +76,12 @@
     session.blocks.forEach((b,i)=>{
       if(root.StrengthOnly.isConditioning(b))return;
       const id=`coach:${row.id}:${b.id||i}`;
-      if(b.kind==='lift'||b.kind==='circuit') {blocks.push({...clone(b),id,coachAssignmentId:row.id,coachExerciseId:b.id});return;}
+      if(b.kind==='lift'||b.kind==='circuit') {
+        const block={...clone(b),id,coachAssignmentId:row.id,coachExerciseId:b.id};
+        const role=block.role||(/warm.?up/i.test(block.category||'')?'warmup':/cool.?down/i.test(block.category||'')?'cooldown':null);
+        carryFields(block, (b.exercises||[])[0], role);
+        blocks.push(block);return;
+      }
       if(Array.isArray(b.exercises)&&b.exercises.length) {
         b.exercises.forEach((ex,j)=>blocks.push(exercise(ex,b,`${id}:${ex.id||j}`)));
       } else if(b.instructions||b.coachNote) {
