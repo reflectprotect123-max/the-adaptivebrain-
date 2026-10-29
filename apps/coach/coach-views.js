@@ -341,7 +341,11 @@
           Object.keys(cells).forEach(function(k){if(cells[k]!==''&&cells[k]!=null)parts.push(cells[k]+' '+k.replace(/_/g,' '));});
           if(row.effort)parts.push(row.effort.replace(/_/g,' '));
           if(row.miss)parts.push('Did not complete');
-          return '<p>'+esc((p.page||{}).title||r.exerciseKey)+' · '+esc(row.purpose||'set')+' · '+parts.map(esc).join(' · ')+'</p>';
+          var pg=p.page||{};
+          if(pg.eachSide===true||/\(each side\)/i.test(pg.title||''))parts.push('per side');
+          if(row.skipped&&!row.logged)parts.push('skipped');
+          var purpose=/cool/i.test(String(pg.section||pg.phase||pg.kind||''))?'cooldown':(row.purpose||'set');
+          return '<p>'+esc(pg.title||r.exerciseKey)+' · '+esc(purpose)+' · '+parts.map(esc).join(' · ')+'</p>';
         }).join('') + (s.athleteResult.estimates||[]).filter(function(e){return Number.isFinite(e.payload?.freshE1rm);}).map(function(e){return '<p>e1RM · '+esc(e.exerciseKey)+' · '+esc(e.payload.freshE1rm.toFixed(1))+' kg · '+esc(e.payload.confidence||'')+' · athlete engine</p>';}).join('') + '</details>' : '') +
       chipMenu(s.id) +
       '</div>'
