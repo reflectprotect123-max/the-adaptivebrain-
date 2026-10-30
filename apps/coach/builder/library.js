@@ -31,22 +31,36 @@
     return JSON.parse(JSON.stringify(v));
   }
 
+  // Lower-body lifts step +5 kg on a barbell; everything else is upper (+2.5 kg).
+  const LOWER=/squat|deadlift|\brdl\b|romanian|hip thrust|glute bridge|lunge|split squat|step.?up|leg press|good morning|swing|calf/i;
+  function region(value){return LOWER.test(value)?'lower':'upper';}
   function inferredMetadata(title='') {
-    const value=String(title);
-    if(/farmer|suitcase|carry/i.test(value))return {equipmentId:/dumbbell|\bdb\b/i.test(value)?'dumbbell':null,loadConvention:'per_hand',exerciseType:'carry'};
-    if(/plank|\bhold\b/i.test(value))return {equipmentId:'bodyweight',loadConvention:'bodyweight',exerciseType:'hold'};
-    if(/goblet/i.test(value))return {equipmentId:'dumbbell',loadConvention:'single',exerciseType:'accessory',minimumKg:1};
-    if(/dumbbell|\bdb\b/i.test(value))return {equipmentId:'dumbbell',loadConvention:'per_hand',exerciseType:/curl|extension|raise|fly|flye|calf|kickback/i.test(value)?'accessory':null,minimumKg:1};
-    if(/barbell/i.test(value))return {equipmentId:'barbell',loadConvention:'total',minimumKg:20,equipmentStepKg:2.5};
-    if(/^(?:back squat|front squat|bench press|snatch grip rack deadlift)$/i.test(value.trim()))return {equipmentId:'barbell',loadConvention:'total',exerciseType:'main',minimumKg:20,equipmentStepKg:2.5};
+    const value=String(title),bodyRegion=region(value);
+    const with_=m=>({...m,bodyRegion});
+    if(/farmer|suitcase|carry/i.test(value))return with_({equipmentId:/dumbbell|\bdb\b/i.test(value)?'dumbbell':/kettlebell|\bkb\b/i.test(value)?'kettlebell':null,loadConvention:'per_hand',exerciseType:'carry'});
+    if(/plank|\bhold\b/i.test(value))return with_({equipmentId:'bodyweight',loadConvention:'bodyweight',exerciseType:'hold'});
+    if(/goblet/i.test(value))return with_({equipmentId:/kettlebell|\bkb\b/i.test(value)?'kettlebell':'dumbbell',loadConvention:'single',exerciseType:'accessory',minimumKg:/kettlebell|\bkb\b/i.test(value)?4:1});
+    if(/dumbbell|\bdb\b/i.test(value))return with_({equipmentId:'dumbbell',loadConvention:'per_hand',exerciseType:/curl|extension|raise|fly|flye|calf|kickback/i.test(value)?'accessory':null,minimumKg:1});
+    if(/kettlebell|\bkb\b/i.test(value))return with_({equipmentId:'kettlebell',loadConvention:'single',exerciseType:'accessory',minimumKg:4});
+    if(/trap.?bar|hex.?bar/i.test(value))return with_({equipmentId:'barbell',loadConvention:'total',exerciseType:'main',minimumKg:25,barWeightKg:25,equipmentStepKg:2.5});
+    if(/pull.?up|chin.?up|\bdips?\b|push.?up|inverted row/i.test(value))return with_({equipmentId:'bodyweight',loadConvention:'bodyweight',exerciseType:'main'});
+    if(/barbell/i.test(value))return with_({equipmentId:'barbell',loadConvention:'total',minimumKg:20,equipmentStepKg:2.5,...(/squat|deadlift|bench|overhead press|\bohp\b/i.test(value)?{exerciseType:'main'}:{})});
+    if(/^(?:back squat|front squat|bench press|snatch grip rack deadlift|deadlift|sumo deadlift|overhead press|ohp|military press|strict press|push press)$/i.test(value.trim()))return with_({equipmentId:'barbell',loadConvention:'total',exerciseType:'main',minimumKg:20,equipmentStepKg:2.5});
+    if(/\brdl\b|romanian deadlift|hip thrust|good morning|pendlay row|bent.?over row|barbell row|incline bench|close.?grip bench|rack pull/i.test(value))return with_({equipmentId:'barbell',loadConvention:'total',minimumKg:20,equipmentStepKg:2.5});
     return {};
   }
+  // Typed titles match the catalogue loosely; unmatched lifts get a stable title key.
+  function titleKey(title=''){
+    return String(title).toLowerCase().replace(/\((?:each side|per side)\)/g,' ').replace(/\bdb\b/g,'dumbbell').replace(/\bkb\b/g,'kettlebell').replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,'_');
+  }
 
-  const LOAD_METADATA=['equipmentId','loadConvention','exerciseType','minimumKg','barWeightKg','equipmentStepKg','availableLoads'];
+  const LOAD_METADATA=['equipmentId','loadConvention','exerciseType','minimumKg','barWeightKg','equipmentStepKg','availableLoads','bodyRegion','startingKg'];
 
   function canonicalBlock(block) {
     const b={...block};
-    for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','restSec','demoStartingKg'])delete b[key];
+    // A legacy demo starting weight is the coach's cold-start load; keep it as startingKg.
+    if(b.startingKg==null&&Number(b.demoStartingKg)>0)b.startingKg=Number(b.demoStartingKg);
+    for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','demoStartingKg'])delete b[key];
     return b;
   }
 
@@ -161,7 +175,7 @@
     return st;
   }
 
-  function addExercise(state, tid, { title, setCount, columns, notes, catalogId, value, role, countIn } = {}) {
+  function addExercise(state, tid, { title, setCount, columns, notes, catalogId, value, role, countIn, startingKg } = {}) {
     const st = clone(ensure(state));
     const t = st.templates.find((x) => x.id === tid);
     if (!t) return st;
@@ -176,6 +190,11 @@
         exerciseId=hit.id;metadata=exerciseRecord(hit);
       }
     }
+    if(!exerciseId){
+      const key=titleKey(name),hit=st.catalog.exercises.find(c=>titleKey(c.title)===key);
+      if(hit){exerciseId=hit.id;metadata=exerciseRecord(hit);}else if(key)exerciseId='title:'+key;
+    }
+    const start=Number(startingKg);if(Number.isFinite(start)&&start>0)metadata={...metadata,startingKg:start};
     cols = cols.filter((k) => k && k !== 'none');
     if (!cols.length) cols = ['reps'];
     const tracksReps = cols.some((c) => c === 'reps' || c === 'reps_range');
@@ -193,7 +212,8 @@
       repTarget: tracksReps && prescribed ? prescribed : (cols.includes('reps_range') ? '8-12' : '8'),
       prescribed: !tracksReps && prescribed ? prescribed : '',
       role: prepRole,
-      countIn: prepRole ? Math.max(0, Number(countIn) || 0) : 0,
+      countIn: Math.max(0, Number(countIn) || 0),
+      perSide: /\(each side\)|each side$/i.test(name) || undefined,
       columns: cols,
       notes: Array.isArray(notes) ? notes : [],
       exerciseId,
@@ -231,7 +251,9 @@
     const b = t.blocks.find((x) => x.id === bid);
     if (!b) return st;
     Object.assign(b, patch);
-    for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','restSec','demoStartingKg'])delete b[key];
+    for(const key of ['repMin','repMax','targetReps','targetRepMax','targetEffort','demoStartingKg'])delete b[key];
+    if(b.restSec!=null){const r=Math.round(Number(b.restSec));if(Number.isFinite(r)&&r>=0&&r<=600)b.restSec=r;else delete b.restSec;}
+    if(Object.prototype.hasOwnProperty.call(patch,'perSide'))b.perSide=!!patch.perSide;
     if (Array.isArray(b.columns)) b.columns = b.columns.filter((k) => k && k !== 'none');
     if (Array.isArray(patch.setTargets)) {
       const targets=root.StrengthTargets.normalize({...b,setTargets:patch.setTargets});
@@ -408,6 +430,8 @@
           loadConvention: b.loadConvention,
           exerciseType: b.exerciseType,
           rampCount: b.rampCount,
+          bodyRegion: b.bodyRegion,
+          startingKg: b.startingKg,
           section,
         });
       }

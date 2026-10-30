@@ -458,7 +458,7 @@
       swappedFrom: partial.swappedFrom || null,
       logColumns: partial.logColumns || null,
       tempo: partial.tempo || '',
-      ...Object.fromEntries(['equipmentId','loadConvention','minimumKg','barWeightKg','equipmentStepKg','availableLoads','rampCount'].filter(k=>partial[k]!=null).map(k=>[k,partial[k]])),
+      ...Object.fromEntries(['equipmentId','loadConvention','exerciseType','minimumKg','barWeightKg','equipmentStepKg','availableLoads','rampCount','bodyRegion','startingKg'].filter(k=>partial[k]!=null).map(k=>[k,partial[k]])),
       loadExpr: partial.loadExpr || null,
     };
     if (partial.targetRir != null && partial.targetRir !== '' && Number.isFinite(Number(partial.targetRir))) {
