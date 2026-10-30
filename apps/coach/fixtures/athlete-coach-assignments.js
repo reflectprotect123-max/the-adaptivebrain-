@@ -1,7 +1,7 @@
 /** Coach assigned_session -> athlete library. Server-owned plans, athlete-owned actuals. */
 (function(root) {
   const clone=x=>JSON.parse(JSON.stringify(x));
-  const META=['equipmentId','loadConvention','exerciseType','minimumKg','barWeightKg','equipmentStepKg','availableLoads','rampCount'];
+  const META=['equipmentId','loadConvention','exerciseType','minimumKg','barWeightKg','equipmentStepKg','availableLoads','rampCount','bodyRegion','startingKg'];
   let epoch=0,flight=null;
   let status={ok:false,reason:'not_synced',count:0};
   function values(value,count) {

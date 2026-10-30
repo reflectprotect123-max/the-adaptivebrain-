@@ -20,6 +20,6 @@ for (const name of checks) {
   if (result.error) throw result.error;
   if (result.status !== 0) process.exit(result.status || 1);
 }
-const imported = spawnSync(process.execPath, ['--test', resolve(dir, 'builder/library-ui.test.mjs')], {cwd:root,stdio:'inherit'});
+const imported = spawnSync(process.execPath, ['--test', resolve(dir, 'builder/library-ui.test.mjs'), resolve(dir, 'builder/brain-metadata.test.mjs')], {cwd:root,stdio:'inherit'});
 if(imported.status !== 0) process.exit(imported.status || 1);
 console.log(`Coach checks: ${checks.length} passed; local UI assets verified.`);

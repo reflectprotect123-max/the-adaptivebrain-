@@ -62,7 +62,7 @@
       const ex={...clone(existing),id:b.id,name:b.title,exerciseId:b.exerciseId||'',sets:ts?.length||b.setCount,reps:rep,
         autopilotVolume:false,tempo:b.tempo||'',columns:clone(b.columns||[]),logColumns:(b.columns||[]).map(kind=>({kind})),
         coachNote:(b.notes||[]).join('\n'),setTargets:ts?clone(ts):undefined,perSide:b.perSide?'each':undefined,countIn:Math.max(0,Number(b.countIn)||0)};
-      for(const key of ['equipmentId','loadConvention','exerciseType','minimumKg','barWeightKg','equipmentStepKg','availableLoads']) if(b[key]!=null) ex[key]=clone(b[key]);
+      for(const key of ['equipmentId','loadConvention','exerciseType','minimumKg','barWeightKg','equipmentStepKg','availableLoads','bodyRegion','startingKg']) if(b[key]!=null) ex[key]=clone(b[key]);
       return {...clone(b),type:'strength',heading:b.title,category:b.role==='warmup'?'Warm-Up':b.role==='cooldown'?'Cool-Down':'Strength/Power',
         scoring:b.role?'completion':'weight',rounds:b.setCount,exercises:[ex]};
     });
