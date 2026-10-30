@@ -21,6 +21,7 @@
       }
       if(!['adaptive','first_working_set'].includes(t.loadRule?.kind))return fail(`${label}: choose a supported load rule.`);
       if(typeof t.toFailure!=='boolean')return fail(`${label}: author toFailure as true or false.`);
+      if(t.pct!==undefined&&!(typeof t.pct==='number'&&Number.isFinite(t.pct)&&t.pct>0&&t.pct<=110))return fail(`${label}: enter a % of 1RM between 0 and 110.`);
       if(t.purpose==='amrap') {
         if(t.reps!==null)return fail(`${label}: AMRAP reps must be null.`);
         if(i!==targets.length-1)return fail(`${label}: AMRAP must be the final authored set.`);
@@ -41,7 +42,8 @@
         :block.repTarget!=null?reps(block.repTarget)
         :block.targetRepMax!=null?reps({min:block.targetReps,max:block.targetRepMax}):reps(block.targetReps);
       if(!range)throw new RangeError('Enter a positive integer rep target or an increasing rep range.');
-      authored=Array.from({length:block.setCount},()=>({purpose:'working',reps:range,loadRule:{kind:'adaptive'},toFailure:false}));
+      authored=Array.from({length:block.setCount},(_,i)=>({purpose:'working',reps:range,loadRule:{kind:'adaptive'},toFailure:false,
+        ...(Array.isArray(block.setPct)&&block.setPct[i]!=null?{pct:Number(block.setPct[i])}:{})}));
     }
     if(!Array.isArray(authored))throw new RangeError('Set targets must be an array.');
     const targets=authored.map((t,i)=>({
@@ -49,7 +51,8 @@
       purpose:t?.purpose??'working',
       reps:t?.purpose==='amrap'?(t.reps===undefined?null:t.reps):reps(t?.reps),
       loadRule:{kind:t?.loadRule?.kind??'adaptive'},
-      toFailure:t?.toFailure??false
+      toFailure:t?.toFailure??false,
+      ...(t?.pct!=null?{pct:typeof t.pct==='string'?Number(t.pct.replace('%','')):t.pct}:{})
     }));
     const result=validate(targets);
     if(!result.valid)throw new RangeError(result.error);
